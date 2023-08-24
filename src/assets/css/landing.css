@@ -13,10 +13,6 @@
     height: 100%;
   }
 
-  .w-custom{
-    /* width: 25rem; */
-  }
-
   .circle-container1 {
     position: absolute;
   }
@@ -35,18 +31,6 @@
     top: 5%;
   }
 
-  .login-container {
-    z-index: 1;
-    /* background-color: #fff; */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-
   @media (max-width: 768px) {
     .login-sub {
       border-radius: 16px !important;
@@ -55,22 +39,90 @@
       padding: 40px !important;
       z-index: 100 !important;
       border: 2px solid #9FC134 !important;
-      margin-left: 20px !important;
-      margin-right: 20px !important;
     }
+  }
+.login-container {
+	z-index: 1;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
 
-    /* .circle-container1,
-    .circle-container2 {
-      display: none;
-    } */
-  }
+.login-button {
+	width: 398px;
+	max-width: 396px;
+	height: 56px;
+	border: 1px solid #79AA00;
+	border-radius: 12px;
+	background-color: rgba(121, 170, 0, 0.1);
+	font-weight: 700;
+		font-size: 16px;
+}
+ @media (max-width: 768px) {
 
-  .bg-light-green {
-    background-color: #79AA001A;
-  }
-  .bg-primary-green{
-    background-color: #79AA00;
-  }
-  .green-border{
-    border-color:#9FC134 !important;
-  }
+	.login-button {
+			width: 100% !important
+		}
+				.guest-btn {
+					Width: 100% !important;
+				}
+ }
+.guest-btn{
+	Width: 398px;
+		Height: 56px;
+		border: 1px solid #79AA00;
+		border-radius: 12px;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		-ms-border-radius: 12px;
+		-o-border-radius: 12px;
+		background-color: rgba(121, 170, 0, 1);
+		color: #fff;
+		font-weight: 700;
+		font-size: 16px;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 20px;
+	background-color: #ffffff;
+}
+
+.footer-left {
+	font-size: 16px;
+	font-weight: 400;
+	color: rgba(30, 37, 43, 1);
+	line-height: 16px;
+}
+.icon-text{
+	font-size: 16px;
+		font-weight: 400;
+		color: rgba(30, 37, 43, 1);
+		line-height: 16px;
+}
+.footer-icons {
+	display: flex;
+	gap: 10px;
+}
+@media (max-width: 768px) {
+	.footer {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.footer-icons {
+		margin-top: 10px;
+		padding: 0px !important;
+	}
+		.footer-left{
+			padding: 0px !important;
+		}
+}
