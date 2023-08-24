@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import "../assets/css/login.css";
+import "../assets/css/landing.css";
 import right_circle from "../assets/images/icons/login/right-circle.svg";
 import left_circle from "../assets/images/icons/login/left-circle.svg";
 import logo from "../assets/images/icons/login/plant-rebag-logo.svg";
 import AuthFooter from "../components/auth_footer/AuthFooter";
-const Login = () => {
+const Landing = () => {
   return (
     <>
       <div>
@@ -43,4 +43,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Landing;
