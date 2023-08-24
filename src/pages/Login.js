@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import "../assets/css/login.css";
 import right_circle from "../assets/images/icons/login/right-circle.svg";
 import left_circle from "../assets/images/icons/login/left-circle.svg";
 import logo from "../assets/images/icons/login/plant-rebag-logo.svg";
+import AuthFooter from "../components/auth_footer/AuthFooter";
 const Login = () => {
   return (
     <>
@@ -21,18 +23,22 @@ const Login = () => {
         />
       </div>
       <div className="login-container">
-        {/* <h2 className="text-center">Login</h2> */}
-        <div className="logo-image">
-          <img src={logo} alt="" className="mx-auto d-block" />
-        </div>
-        <span className="logo-text text-center mt-3">Scan and Earn Money</span>
-        <div className="login-btn mt-4">
-          <button class="login-button">Login</button>
-        </div>
-        <div className="guest-btn mt-2">
-          <button class="login-button">Start Scanning as a Guest</button>
+        <div className="login-sub text-center">
+          <div className="logo-image d-flex justify-content-center">
+            <img src={logo} alt="" className="img-fluid mb-2" />
+          </div>
+          <span className="logo-text pt-3">Scan and Earn Money</span>
+          <div className="login-btn mt-5">
+            <button className="login-button btn-lg btn-block">Login</button>
+          </div>
+          <div className="login-btn mt-3">
+            <button className="guest-btn btn-lg btn-block">
+              Start Scanning as a Guest
+            </button>
+          </div>
         </div>
       </div>
+      <AuthFooter />
     </>
   );
 };
