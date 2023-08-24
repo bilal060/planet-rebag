@@ -22,12 +22,14 @@ const Login = () => {
       </div>
       <div className="login-container">
         {/* <h2 className="text-center">Login</h2> */}
-        <div className="logo-image">
-          <img src={logo} alt="" className="logo" />
-        </div>
-        <span className="logo-text">Scan and Earn Money</span>
-        <div className="login-btn">
-          <button class="login-button">Button</button>
+        <div className="login-sub">
+          <div className="logo-image">
+            <img src={logo} alt="" className="logo" />
+          </div>
+          <span className="logo-text">Scan and Earn Money</span>
+          <div className="login-btn">
+            <button class="login-button">Button</button>
+          </div>
         </div>
       </div>
     </>
