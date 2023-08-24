@@ -23,11 +23,14 @@ const Login = () => {
       <div className="login-container">
         {/* <h2 className="text-center">Login</h2> */}
         <div className="logo-image">
-          <img src={logo} alt="" className="logo" />
+          <img src={logo} alt="" className="mx-auto d-block" />
         </div>
-        <span className="logo-text">Scan and Earn Money</span>
-        <div className="login-btn">
-          <button class="login-button">Button</button>
+        <span className="logo-text text-center mt-3">Scan and Earn Money</span>
+        <div className="login-btn mt-4">
+          <button class="login-button">Login</button>
+        </div>
+        <div className="guest-btn mt-2">
+          <button class="login-button">Start Scanning as a Guest</button>
         </div>
       </div>
     </>

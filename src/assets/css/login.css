@@ -42,6 +42,26 @@
           display: none;
       }
   }
-	.login-button{
-
-	}
+.login-button{
+	Width: 398px;
+	Height: 56px;
+	border: 1px solid #79AA00;
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	-ms-border-radius: 12px;
+	-o-border-radius: 12px;
+	background-color: rgba(121, 170, 0, 0.1);
+}
+.guest-btn{
+	Width: 398px;
+		Height: 56px;
+		border: 1px solid #79AA00;
+		border-radius: 12px;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		-ms-border-radius: 12px;
+		-o-border-radius: 12px;
+		background-color: rgba(121, 170, 0, 1);
+		color: #fff;
+}
