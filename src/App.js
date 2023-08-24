@@ -1,4 +1,6 @@
 import "./App.css";
+import "../src/assets/css/modal.css";
+
 import { BrowserRouter as Router } from "react-router-dom";
 import NavigationRoutes from "./routes/NavigationRoutes";
 import ErrorBoundary from "./shared/ErrorBoundary";
