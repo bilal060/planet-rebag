@@ -73,12 +73,12 @@ function NavigationRoutes() {
             <Home />
           </MainLayout>
         }
-      >
+      ></Route>
           <Route exact path="/" element={<Landing />}></Route>
 
       <Route exact path="/checkMail" element={<CheckMail />}></Route>
       <Route exact path="/forgetPassword" element={<ForgetPassword />}></Route>
-//       <Route exact path="/login" element={<Login />}></Route>
+{/* //       <Route exact path="/login" element={<Login />}></Route> */}
 
     </Routes>
   );
