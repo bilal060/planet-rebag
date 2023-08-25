@@ -14,7 +14,7 @@ const ItemCategories = () => {
   const [modalShow, setModalShow] = useState(false);
   const [category, setCategory] = useState("All");
   const [file, setFile] = useState(null);
-  const [addCategory, setAddCategory] = useState({
+  const [setAddCategory] = useState({
     categoryName: "",
     photo: "",
   });

@@ -8,6 +8,7 @@
     padding: 40px 38px !important;
     width: calc(100vw - 265px) !important;
     background: #F8F8F8 !important;
+    overflow-y: auto !important;
 }
 
 .userimage {
