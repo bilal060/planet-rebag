@@ -1,3 +1,19 @@
+.font-weight-700 {
+    font-weight: 700 !important;
+}
+
+.font-weight-600 {
+    font-weight: 600 !important;
+}
+
+.ps-12 {
+    padding-left: 12px !important;
+}
+
+.pe-12 {
+    padding-right: 12px !important;
+}
+
 .inputstyle {
     border-radius: 12px !important;
     background: #F8F8F8 !important;
@@ -74,6 +90,37 @@
 .height-32px {
     height: 32px !important;
 }
-.rounded-8px{
+
+.rounded-8px {
     border-radius: 8px !important;
+}
+
+.store-logo {
+    border-radius: 4px;
+    background: var(--white, #FFF);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.store-card {
+    border-radius: 9px !important;
+    border: 1px solid #EEE !important;
+    background: var(--white, #FFF) !important;
+    box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.05) !important;
+}
+
+.store-card .card-header {
+    box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.05) !important;
+    background: #EEE !important;
+    border: 0 !important;
+    border-radius: 8px 8px 0px 0px !important;
+}
+
+.store-card .card-footer {
+    border-color: rgba(238, 238, 238, 0.93) !important;
+    border-radius: 0px 0px 8px 8px !important;
 }

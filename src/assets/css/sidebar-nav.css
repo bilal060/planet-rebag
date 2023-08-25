@@ -8,6 +8,12 @@
   height: 100%;
 }
 
+.main-navigation ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .main-navigation .ps-sidebar-container {
   display: flex;
   flex-direction: column;
