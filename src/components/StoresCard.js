@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import StoreLogo from "../assets/images/icons/dashboardicons/storeLogo";
 import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
 import { Col, Form, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const StoresCard = (props) => {
   const {
@@ -26,9 +27,11 @@ const StoresCard = (props) => {
               <h3 className="fs-5 d-sm-block d-none">{storeName}</h3>
             </div>
             <div className="d-flex align-items-center gap-3">
+              <Link to="/stores-details">
               <button className="green-btn height-32px font-weight-600 rounded-8px py-2 px-3">
                 {btnText}
               </button>
+              </Link>
               <ThreeDotsIcon />
             </div>
           </div>
