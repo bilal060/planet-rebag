@@ -61,7 +61,7 @@ function Home() {
   
   return (
     <div>
-      <div className="total-cards d-flex justify-content-between">
+      <div className="total-cards d-flex justify-content-between gap-4">
         <TotalCard
           icon={TotalItems}
           value="2392"

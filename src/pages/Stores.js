@@ -4,6 +4,7 @@ import AddNewCategoryIcon from "../assets/images/icons/dashboardicons/addNewCate
 import StoresCard from "../components/StoresCard";
 import { Col, Form, Modal, Row } from "react-bootstrap";
 import UploadIcon from "../assets/images/icons/dashboardicons/uploadIcon";
+import StoreLogo from "../assets/images/icons/dashboardicons/storeLogo";
 
 const cardData = [
   {
@@ -85,11 +86,10 @@ const Stores = () => {
       setFile(imageFile?.name);
     }
   };
-  console.log(addCategory);
   return (
     <div className="stores">
-      <div className="d-flex align-items-center justify-content-between mb-3">
-        <h4 className="fs-3">All Stores </h4>
+      <div className="d-flex align-items-center justify-content-between mb-4 ps-12 pe-12">
+        <h4 className="fs-3 ">All Stores </h4>
         <button
           className="green-btn-outline d-flex"
           onClick={() => setModalShow(true)}
@@ -110,6 +110,8 @@ const Stores = () => {
                 totalSubStores={data.totalSubStores}
                 numberOfPos={data.numberOfPos}
                 storeLocation={data.storeLocation}
+                storeIcon=<StoreLogo />
+                btnText="View Store"
               />
             </Col>
           );

@@ -11,8 +11,10 @@ const StoresCard = (props) => {
     itemsReturned,
     totalRedeemPrice,
     totalSubStores,
-    noofPos,
+    numberOfPos,
     storeLocation,
+    btnText,
+    storeIcon,
   } = props;
   return (
     <>
@@ -20,45 +22,46 @@ const StoresCard = (props) => {
         <Card.Header className="px-4 py-2">
           <div className="d-flex align-items-center justify-content-between gap-3">
             <div className="d-flex align-items-center gap-3">
-              <div className="store-logo">
-                <StoreLogo />
-              </div>
-              <h3 className="fs-5">{storeName}</h3>
+              <div className="store-logo">{storeIcon}</div>
+              <h3 className="fs-5 d-sm-block d-none">{storeName}</h3>
             </div>
             <div className="d-flex align-items-center gap-3">
-              <button className="green-btn height-32px rounded-8px py-2 px-3">
-                View Store
+              <button className="green-btn height-32px font-weight-600 rounded-8px py-2 px-3">
+                {btnText}
               </button>
               <ThreeDotsIcon />
             </div>
           </div>
         </Card.Header>
         <Card.Body className="p-4">
-          <Row>
-            <Col sm="4" className="p-0">
+          <Row className="flex-wrap">
+            <Col sm="4" md="6" xxl="4" className="p-0">
               <div className="mb-4">
                 <h6 className="mb-2 font-weight-700">Store ID</h6>
                 <p>{storeId}</p>
               </div>
-
-              <h6 className="mb-2 font-weight-700">Total Sub Stores</h6>
-              <p>{totalSubStores}</p>
             </Col>
-            <Col sm="4" className="p-0">
+            <Col sm="4" md="6" xxl="4" className="p-0">
               <div className="mb-4">
                 <h6 className="mb-2 font-weight-700">Items Returned</h6>
                 <p>{itemsReturned}</p>
               </div>
-
-              <h6 className="mb-2 font-weight-700">No. of POS</h6>
-              <p>{noofPos}</p>
             </Col>
-            <Col sm="4" className="p-0">
+            <Col sm="4" md="6" xxl="4" className="p-0">
               <div className="mb-4">
                 <h6 className="mb-2 font-weight-700">Total Redeem Price</h6>
                 <p>{totalRedeemPrice}</p>
               </div>
-
+            </Col>
+            <Col sm="4" md="6" xxl="4" className="p-0">
+              <h6 className="mb-2 font-weight-700">Total Sub Stores</h6>
+              <p>{totalSubStores}</p>
+            </Col>
+            <Col sm="4" md="6" xxl="4" className="p-0">
+              <h6 className="mb-2 font-weight-700">No. of POS</h6>
+              <p>{numberOfPos}</p>
+            </Col>
+            <Col sm="4" md="6" xxl="4" className="p-0">
               <h6 className="mb-2 font-weight-700">Store Location</h6>
               <p>{storeLocation}</p>
             </Col>

@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 
 function MainLayout({ children }) {
   const location = useLocation();
-  const heroMessage = ["/stores", "/item-categories"];
+  const heroMessage = ["/home"];
   return (
     <div className="main-layout">
       <SideBarNav />
@@ -14,12 +14,12 @@ function MainLayout({ children }) {
         <div>
           <div
             className={`d-flex ${
-              !heroMessage.includes(location.pathname)
+              heroMessage.includes(location.pathname)
                 ? "justify-content-between"
                 : "justify-content-end"
-            } mb-5`}
+            } mb-5 pb-3`}
           >
-            {!heroMessage.includes(location.pathname) && (
+            {heroMessage.includes(location.pathname) && (
               <div>
                 <h1>Welcome, Tony!</h1>
               </div>
