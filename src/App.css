@@ -52,3 +52,16 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.bg-light-green{
+  background-color: rgba(121, 170, 0, 0.1);
+}
+.bg-light-blue{
+  background-color: #3486C11A
+}
+.bg-light-orange{
+  background-color: #EB9B001A
+}
+.bg-light-cyan{
+  background-color: #81CFB01A
+}

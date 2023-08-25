@@ -1,16 +1,18 @@
 import React from 'react'
-import { Row } from 'react-bootstrap'
-import TotalStore from "../assets/images/icons/Total Store.svg"
+import { Col, Image, Row } from 'react-bootstrap'
+import "../assets/css/totalcard.css"
 
-function TotalCard() {
+
+function TotalCard(props) {
   return (
     <div>
-        <Row>
-            <Col>
-                <Image src={TotalStore}/>
+        <Row className={`${props.class} p-3 total-card`}>
+            <Col sm="3" md="3" lg="3" xl="3">
+                <Image src={props.icon}/>
             </Col>
             <Col>
-
+                <h4>{props.value}</h4>
+                <p>{props.title}</p>
             </Col>
         </Row>
     </div>
