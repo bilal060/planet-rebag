@@ -6,17 +6,13 @@ import TotalStore from "../assets/images/icons/Total Store.svg";
 import TotalPrice from "../assets/images/icons/Total Price.svg";
 import BagIcon from "../assets/images/icons/dashboardicons/bag";
 import BottleIcon from "../assets/images/icons/dashboardicons/bottle";
+import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
 import Radios from "../components/Radios";
-import { Form } from "react-bootstrap";
+import { Form, Table } from "react-bootstrap";
 
 function Home() {
-  const [modalShow, setModalShow] = useState(false);
   const [category, setCategory] = useState("All");
-  const [file, setFile] = useState(null);
-  const [addCategory, setAddCategory] = useState({
-    categoryName: "",
-    photo: "",
-  });
+  
   const radio = [
     {
       id: "1",
@@ -33,18 +29,36 @@ function Home() {
       text: "Bottle",
     },
   ];
-  const attachFile = (e) => {
-    if (e.target.files) {
-      let imageFile = e.target.files[0];
-      setAddCategory((prevState) => ({
-        ...prevState,
-        photo: Array.from(e.target.files),
-      }));
-      setFile(imageFile?.name);
-    }
-  };
-  console.log(addCategory);
-
+  const tableData = [
+    {
+      id: "CF783457",
+      returnedBag: "7",
+      returnedBottle: "7",
+      TotalQty: "14",
+      RedeemPrice: "AED 5.00",
+      StoreLocation: "Al Ain, Abu Dhabi",
+      time: "10:19 AM  |  23/07/2023",
+    },
+    {
+      id: "CF783457",
+      returnedBag: "20",
+      returnedBottle: "20",
+      TotalQty: "40",
+      RedeemPrice: "AED 5.00",
+      StoreLocation: "Al Ain, Abu Dhabi",
+      time: "10:19 AM  |  23/07/2023",
+    },
+    {
+      id: "CF783457",
+      returnedBag: "13",
+      returnedBottle: "13",
+      TotalQty: "26",
+      RedeemPrice: "AED 5.00",
+      StoreLocation: "Al Ain, Abu Dhabi",
+      time: "10:19 AM  |  23/07/2023",
+    },
+  ];
+  
   return (
     <div>
       <div className="total-cards d-flex justify-content-between">
@@ -91,17 +105,54 @@ function Home() {
         </div>
         <div className="w-25">
           <Form className="d-flex justify-content-start">
-          <Form.Label className="d-flex justify-content-center w-100 mt-2 gap-2">Select Store:</Form.Label>
-          <Form.Select
-            aria-label="Default drop-input select example"
-            className="w-100 d-flex justify-content-end"
-            defaultValue="all"
-            // onChange={(e) => filterSpaceHandler(e.target.value)}
-          >
-            <option value="all">All Stores</option>
-          </Form.Select>
+            <Form.Label className="d-flex justify-content-center w-100 mt-2 gap-2 fw-bold">
+              Select Store:
+            </Form.Label>
+            <Form.Select
+              aria-label="Default drop-input select example"
+              className="w-100 d-flex justify-content-end"
+              defaultValue="all"
+              // onChange={(e) => filterSpaceHandler(e.target.value)}
+            >
+              <option value="all">All Stores</option>
+            </Form.Select>
           </Form>
         </div>
+      </div>
+
+      <div className="table-main mt-3">
+        <Table className="table-design" striped hover>
+          <thead>
+            <tr>
+              <th>Session ID</th>
+              <th>Returned Bags</th>
+              <th>Returned Bottles</th>
+              <th>Total Qty</th>
+              <th>Redeem Price</th>
+              <th>Store Location</th>
+              <th>Time & Date</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {(tableData || []).map((data, index) => {
+              return (
+                <tr key={index}>
+                  <td>{data.id}</td>
+                  <td>{data.returnedBag}</td>
+                  <td>{data.returnedBottle}</td>
+                  <td>{data.TotalQty}</td>
+                  <td>{data.RedeemPrice}</td>
+                  <td>{data.StoreLocation}</td>
+                  <td>{data.time}</td>
+                  <td>
+                    {/* <ThreeDotsIcon /> */}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
       </div>
     </div>
   );
