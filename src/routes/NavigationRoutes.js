@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layout/MainLayout.js";
 import ItemCategories from "../pages/ItemCategories.js";
 const Home = React.lazy(() => import("../pages/Home.js"));
-const Login = React.lazy(() => import("../pages/Login"));
+const Login = React.lazy(() => import("../pages/Landing.js"));
 function NavigationRoutes() {
   const routes = (
     <Routes>
