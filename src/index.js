@@ -1,31 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import "../src/assets/css/common.css";
 
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { combineReducers, createStore, applyMiddleware, compose } from "redux";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 
-const { persistStore, persistReducer } = require('redux-persist');
+const { persistStore, persistReducer } = require("redux-persist");
 
 const rootReducer = combineReducers({
-  key: "value"
+  key: "value",
 });
 
 let devtools, store;
-const isClient = typeof window !== 'undefined';
+const isClient = typeof window !== "undefined";
 if (isClient) {
-  devtools =
-    window.__REDUX_DEVTOOLS_EXTENSION__
-      ? window.__REDUX_DEVTOOLS_EXTENSION__()
-      : (f) => f;
+  devtools = window.__REDUX_DEVTOOLS_EXTENSION__
+    ? window.__REDUX_DEVTOOLS_EXTENSION__()
+    : (f) => f;
 
-  const storage = require('redux-persist/lib/storage').default;
+  const storage = require("redux-persist/lib/storage").default;
   const persistConfig = {
-    key: 'instant-space',
+    key: "instant-space",
     storage,
   };
 
@@ -39,12 +39,12 @@ if (isClient) {
   store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+      <App />
     </Provider>
   </React.StrictMode>
 );
