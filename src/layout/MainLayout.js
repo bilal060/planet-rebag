@@ -9,7 +9,12 @@ function MainLayout({ children }) {
     <div className="main-layout">
       <SideBarNav />
       <main className="main-container">
-        <div className="d-flex justify-content-end mb-5">
+        <div className="d-flex justify-content-between mb-5">
+          <div>
+            <h1>
+              Welcome, Tony!
+            </h1>
+          </div>
           <div className="d-flex align-items-center gap-2">
             <div>
               <h4 className="fs-5">Tony Stark</h4>
