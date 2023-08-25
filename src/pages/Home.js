@@ -68,7 +68,7 @@ function Home() {
               icon={TotalItems}
               value="2392"
               title="Total Items Returned"
-              class="bg-light-green"
+              classes="bg-light-green"
               text="text-green"
             />
           </Col>
@@ -77,7 +77,7 @@ function Home() {
               icon={TotalUsers}
               value="3492"
               title="Total App Users"
-              class="bg-light-blue"
+              classes="bg-light-blue"
               text="text-blue"
             />
           </Col>
@@ -86,7 +86,7 @@ function Home() {
               icon={TotalStore}
               value="65"
               title="Total Stores"
-              class="bg-light-orange"
+              classes="bg-light-orange"
               text="text-orange"
             />
           </Col>
@@ -95,7 +95,7 @@ function Home() {
               icon={TotalPrice}
               value="AED 3492.50"
               title="Total Redeem Price"
-              class="bg-light-cyan"
+              classes="bg-light-cyan"
               text="text-cyan"
             />
           </Col>

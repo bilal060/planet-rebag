@@ -3,16 +3,25 @@ import { Col, Image, Row } from "react-bootstrap";
 import "../assets/css/totalcard.css";
 
 function TotalCard(props) {
+
+    const {
+        classes,
+        icon,
+        value,
+        text,
+        title,
+      } = props;
+
   return (
     <div className='w-100'>
         <div className='p-2'>
-        <Row className={`${props.class} p-3 total-card justify-content-center`}>
+        <Row className={`${classes} p-3 total-card justify-content-center`}>
             <Col sm="12" md="3" lg="3" xl="3">
-                <Image src={props.icon}/>
+                <Image src={icon}/>
             </Col>
             <Col>
-                <h4 className={`${props.text}`}>{props.value}</h4>
-                <p>{props.title}</p>
+                <h4 className={`${text}`}>{value}</h4>
+                <p>{title}</p>
             </Col>
         </Row>
         </div>
