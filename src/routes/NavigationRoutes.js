@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layout/MainLayout.js";
 import Stores from "../pages/Stores.js";
+const StoreDetail = React.lazy(()=> import('../pages/StoreDetail.js'));
 const ItemCategories = React.lazy(() => import("../pages/ItemCategories.js"));
 const Home = React.lazy(() => import("../pages/Home.js"));
 const Landing = React.lazy(() => import("../pages/Landing.js"));
@@ -26,6 +27,15 @@ function NavigationRoutes() {
         element={
           <MainLayout>
             <Stores />
+          </MainLayout>
+        }
+      ></Route>
+      <Route
+        exact
+        path="/stores-details"
+        element={
+          <MainLayout>
+            <StoreDetail />
           </MainLayout>
         }
       ></Route>

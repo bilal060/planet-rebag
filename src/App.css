@@ -65,3 +65,24 @@ body {
 .bg-light-cyan{
   background-color: #81CFB01A
 }
+
+
+.text-green{
+  color: #79AA00
+}
+.text-blue{
+  color: #3486C1
+}
+.text-orange{
+  color: #EB9B00
+}
+.text-cyan{
+  color: #81CFB0
+}
+
+
+.table-main {
+  overflow: auto;
+  border-radius: 8px;
+  border: 1px solid #EEE;
+}

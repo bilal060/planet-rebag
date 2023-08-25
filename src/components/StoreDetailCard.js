@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import TotalCard from "../components/TotalCard";
-import TotalItems from "../assets/images/icons/Total Items.svg";
-import TotalUsers from "../assets/images/icons/Total user.svg";
-import TotalStore from "../assets/images/icons/Total Store.svg";
-import TotalPrice from "../assets/images/icons/Total Price.svg";
+import { Col, Form, Image, Row, Table } from "react-bootstrap";
+import StoreLogo from "../assets/images/StoreLogo.svg";
+import "../assets/css/detailcard.css"
+import Radios from "./Radios";
 import BagIcon from "../assets/images/icons/dashboardicons/bag";
 import BottleIcon from "../assets/images/icons/dashboardicons/bottle";
-import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
-import Radios from "../components/Radios";
-import { Col, Form, Row, Table } from "react-bootstrap";
 
-function Home() {
+function StoreDetailCard() {
   const [category, setCategory] = useState("All");
+
 
   const radio = [
     {
@@ -61,43 +58,47 @@ function Home() {
 
   return (
     <div>
-      <div className="total-cards">
+      <div className="bg-white p-4 custom-bg">
         <Row>
-          <Col sm="12" md="12" lg="6" xl="3" className="p-0">
-            <TotalCard
-              icon={TotalItems}
-              value="2392"
-              title="Total Items Returned"
-              class="bg-light-green"
-              text="text-green"
-            />
+          <Col sm="2" md="2" lg="2" xl="2">
+            <span className="p- bg-greyDark">
+              <Image src={StoreLogo} />
+            </span>
           </Col>
-          <Col sm="12" md="12" lg="6" xl="3" className="p-0">
-            <TotalCard
-              icon={TotalUsers}
-              value="3492"
-              title="Total App Users"
-              class="bg-light-blue"
-              text="text-blue"
-            />
-          </Col>
-          <Col sm="12" md="12" lg="6" xl="3" className="p-0">
-            <TotalCard
-              icon={TotalStore}
-              value="65"
-              title="Total Stores"
-              class="bg-light-orange"
-              text="text-orange"
-            />
-          </Col>
-          <Col sm="12" md="12" lg="6" xl="3" className="p-0">
-            <TotalCard
-              icon={TotalPrice}
-              value="AED 3492.50"
-              title="Total Redeem Price"
-              class="bg-light-cyan"
-              text="text-cyan"
-            />
+          <Col>
+            <Row>
+              <Col>
+                <h6>Store Name</h6>
+                <span>Carrefour</span>
+              </Col>
+              <Col>
+                <h6>Store ID</h6>
+                <span>CF783457</span>
+              </Col>
+              <Col>
+                <h6>Total POS</h6>
+                <span>60</span>
+              </Col>
+              <Col>
+                <h6>Total Sub Stores</h6>
+                <span>26</span>
+              </Col>
+            </Row>
+            <Row className="mt-3">
+              <Col>
+                <h6>Items Returned</h6>
+                <span>1209</span>
+              </Col>
+              <Col>
+                <h6>Total Redeem Price</h6>
+                <span>AED 5639.00</span>
+              </Col>
+              <Col>
+                <h6>Store Location</h6>
+                <span>Al Ain, Abu Dhabi</span>
+              </Col>
+              <Col></Col>
+            </Row>
           </Col>
         </Row>
       </div>
@@ -129,7 +130,7 @@ function Home() {
 
         <Col className="">
           <Form className="d-flex justify-content-start">
-            <Form.Label className="d-flex justify-content-end w-100 mt-2 gap-2 fw-bold">
+            <Form.Label className="d-flex justify-content-center w-100 mt-2 gap-2 fw-bold">
               Select Store:
             </Form.Label>
             <Form.Select
@@ -176,8 +177,9 @@ function Home() {
           </tbody>
         </Table>
       </div>
+
     </div>
   );
 }
 
-export default Home;
+export default StoreDetailCard;
