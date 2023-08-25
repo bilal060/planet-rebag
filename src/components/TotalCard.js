@@ -1,7 +1,6 @@
-import React from 'react'
-import { Col, Image, Row } from 'react-bootstrap'
-import "../assets/css/totalcard.css"
-
+import React from "react";
+import { Col, Image, Row } from "react-bootstrap";
+import "../assets/css/totalcard.css";
 
 function TotalCard(props) {
   return (
@@ -19,6 +18,7 @@ function TotalCard(props) {
         </div>
     </div>
   )
+
 }
 
-export default TotalCard
+export default TotalCard;

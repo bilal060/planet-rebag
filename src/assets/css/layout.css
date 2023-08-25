@@ -5,9 +5,10 @@
 }
 
 .main-container {
-    padding: 40px 38px !important;
+    padding: 32px 40px !important;
     width: calc(100vw - 265px) !important;
     background: #F8F8F8 !important;
+    overflow-y: auto !important;
 }
 
 .userimage {
@@ -21,5 +22,7 @@
 @media screen and (max-width:768px) {
     .main-container {
         width: calc(100vw - 90px) !important;
+        padding: 32px 20px !important;
     }
+
 }

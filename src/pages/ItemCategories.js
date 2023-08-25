@@ -12,12 +12,12 @@ import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
 
 const ItemCategories = () => {
   const [modalShow, setModalShow] = useState(false);
-  const [category, setCategory] = useState("All");
   const [file, setFile] = useState(null);
-  const [addCategory, setAddCategory] = useState({
+  const [setAddCategory] = useState({
     categoryName: "",
     photo: "",
   });
+  const [category, setCategory] = useState("All");
   const radio = [
     {
       id: "1",
@@ -35,6 +35,48 @@ const ItemCategories = () => {
     },
   ];
   const tableData = [
+    {
+      id: 1,
+      categoryIcon: <BagIcon />,
+      categoryName: "Bag",
+      noofStores: 3,
+      time: "10:19 AM  |  23/07/2023",
+    },
+    {
+      id: 2,
+      categoryIcon: <BottleIcon />,
+      categoryName: "Bottle",
+      noofStores: 5,
+      time: "10:19 AM  |  23/07/2023",
+    },
+    {
+      id: 2,
+      categoryIcon: <BagIcon />,
+      categoryName: "Bag",
+      noofStores: 5,
+      time: "10:19 AM  |  23/07/2023",
+    },
+    {
+      id: 1,
+      categoryIcon: <BagIcon />,
+      categoryName: "Bag",
+      noofStores: 3,
+      time: "10:19 AM  |  23/07/2023",
+    },
+    {
+      id: 2,
+      categoryIcon: <BottleIcon />,
+      categoryName: "Bottle",
+      noofStores: 5,
+      time: "10:19 AM  |  23/07/2023",
+    },
+    {
+      id: 2,
+      categoryIcon: <BagIcon />,
+      categoryName: "Bag",
+      noofStores: 5,
+      time: "10:19 AM  |  23/07/2023",
+    },
     {
       id: 1,
       categoryIcon: <BagIcon />,

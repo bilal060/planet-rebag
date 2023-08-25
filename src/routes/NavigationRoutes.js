@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layout/MainLayout.js";
 import Stores from "../pages/Stores.js";
 const StoreDetail = React.lazy(()=> import('../pages/StoreDetail.js'));
+import AppUserCardView from "../pages/AppUserCardView.js";
+import AppUserDetailView from "../pages/AppUserDetailView.js";
 const ItemCategories = React.lazy(() => import("../pages/ItemCategories.js"));
 const Home = React.lazy(() => import("../pages/Home.js"));
 const Landing = React.lazy(() => import("../pages/Landing.js"));
@@ -44,7 +46,16 @@ function NavigationRoutes() {
         path="/users"
         element={
           <MainLayout>
-            <Home />
+            <AppUserCardView />
+          </MainLayout>
+        }
+      ></Route>
+      <Route
+        exact
+        path="/users/detail"
+        element={
+          <MainLayout>
+            <AppUserDetailView />
           </MainLayout>
         }
       ></Route>
@@ -60,30 +71,10 @@ function NavigationRoutes() {
       <Route
         exact
         path="/transaction-history"
-        element={
-          <MainLayout>
-            <Home />
-          </MainLayout>
-        }
+        element={<MainLayout></MainLayout>}
       ></Route>
-      <Route
-        exact
-        path="/requests"
-        element={
-          <MainLayout>
-            <Home />
-          </MainLayout>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/support"
-        element={
-          <MainLayout>
-            <Home />
-          </MainLayout>
-        }
-      ></Route>
+      <Route exact path="/requests" element={<MainLayout></MainLayout>}></Route>
+      <Route exact path="/support" element={<MainLayout></MainLayout>}></Route>
       <Route exact path="/" element={<Landing />}></Route>
 
       <Route exact path="/checkMail" element={<CheckMail />}></Route>
