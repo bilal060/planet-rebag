@@ -1,0 +1,38 @@
+.button input[type="radio"] {
+    opacity: 0.011;
+    z-index: 100;
+}
+
+.button input[type="radio"]:checked+label {
+    background: var(--primary-green);
+    color: white;
+    font-weight: 700;
+}
+
+.button input[type="radio"]:checked+label svg path {
+    fill: white;
+}
+
+.button label {
+    background: white;
+    height: 48px !important;
+    padding: 6px 16px !important;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 90;
+    line-height: 1.8em;
+    color: #A8A8A8;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    /* 16px */
+}
+
+.radios input {
+    display: none !important;
+}
