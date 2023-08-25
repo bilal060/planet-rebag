@@ -1,0 +1,250 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+.font-16 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 16px;
+}
+.font-16-400 {
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+}
+.font-32 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+}
+.big-text-color {
+  color: rgba(82, 109, 0, 1);
+}
+.small-text-color {
+  color: rgba(119, 119, 119, 1);
+}
+.regular-text-color {
+  color: rgba(30, 37, 43, 1);
+}
+/* auth circles */
+
+.circle-container1 {
+  position: absolute;
+}
+
+.circle-container2 {
+  position: absolute;
+}
+
+.circle-left {
+  left: -15px;
+  bottom: 15%;
+}
+
+.circle-right {
+  right: 0;
+  top: 5%;
+}
+
+/*pre login page*/
+
+@media (max-width: 768px) {
+  .login-sub {
+    border-radius: 16px !important;
+    background: var(--white, #fff) !important;
+    box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.05) !important;
+    padding: 40px !important;
+    z-index: 100 !important;
+    border: 2px solid #9fc134 !important;
+  }
+}
+
+.login-container {
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login-button {
+  width: 398px;
+  max-width: 396px;
+  height: 56px;
+  border: 1px solid #79aa00;
+  border-radius: 12px;
+  background-color: rgba(121, 170, 0, 0.1);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .login-button {
+    width: 100% !important;
+    height: 100%;
+  }
+
+  .guest-btn {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.guest-btn {
+  width: 398px;
+  height: 56px;
+  border: 1px solid #79aa00;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  background-color: rgba(121, 170, 0, 1);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* Auth footer */
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  background-color: #ffffff;
+}
+
+.footer-left {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(30, 37, 43, 1);
+  line-height: 16px;
+}
+
+.icon-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(30, 37, 43, 1);
+  line-height: 16px;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-icons {
+    margin-top: 10px;
+    padding: 0px !important;
+  }
+
+  .footer-left {
+    padding: 0px !important;
+  }
+}
+
+/* check mail */
+
+.bg-light-green {
+  background-color: #79aa001a;
+}
+.bg-primary-green {
+  background-color: #79aa00;
+}
+
+.green-border {
+  border-color: #9fc134 !important;
+}
+
+.green-text {
+  color: #526d00;
+}
+
+/* forget password */
+
+.w-custom {
+  width: 25rem;
+}
+.logo-container {
+  position: absolute;
+}
+
+.logo {
+  left: 5% !important;
+  top: 6% !important;
+}
+.emailInput {
+  width: 398px;
+  height: 56px;
+  font-size: 16px;
+  line-height: 16px;
+  background-color: rgba(248, 248, 248, 1);
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+}
+@media (max-width: 767px) {
+  .emailInput {
+    width: 100%;
+    height: auto;
+    padding: 8px;
+    font-size: 14px;
+    line-height: 14px;
+  }
+  .w-custom {
+    width: 20rem;
+  }
+}
+.logo-hide-top,
+.logo-hide {
+  display: none;
+}
+@media screen and (min-width: 786px) {
+  .logo-hide-top {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 785px) {
+  .logo-hide {
+    display: block;
+  }
+}
+
+/* password input */
+.password-input {
+  position: relative;
+}
+.eye-icon {
+  position: absolute;
+  right: 50%; /* Adjust the value as needed */
+  top: 50%; /* Vertically center the icon */
+  transform: translateY(-50%);
+}
