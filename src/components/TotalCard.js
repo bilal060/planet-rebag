@@ -4,18 +4,21 @@ import "../assets/css/totalcard.css";
 
 function TotalCard(props) {
   return (
-    <>
-      <Row className={`${props.class} p-4 total-card w-100`}>
-        <Col sm="3" md="3" lg="3" xl="3">
-          <Image src={props.icon} />
-        </Col>
-        <Col>
-          <h4>{props.value}</h4>
-          <p>{props.title}</p>
-        </Col>
-      </Row>
-    </>
-  );
+    <div className='w-100'>
+        <div className='p-2'>
+        <Row className={`${props.class} p-3 total-card justify-content-center`}>
+            <Col sm="12" md="3" lg="3" xl="3">
+                <Image src={props.icon}/>
+            </Col>
+            <Col>
+                <h4 className={`${props.text}`}>{props.value}</h4>
+                <p>{props.title}</p>
+            </Col>
+        </Row>
+        </div>
+    </div>
+  )
+
 }
 
 export default TotalCard;
