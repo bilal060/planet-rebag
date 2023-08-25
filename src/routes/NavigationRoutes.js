@@ -1,16 +1,15 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layout/MainLayout.js";
-import ItemCategories from "../pages/ItemCategories.js";
+const ItemCategories= React.lazy(()=> import("../pages/ItemCategories.js"));
 const Home = React.lazy(() => import("../pages/Home.js"));
 const Landing = React.lazy(() => import("../pages/Landing.js"));
-const CheckMail = React.lazy(()=> import ("../pages/CheckMail.js"))
-const ForgetPassword = React.lazy(()=> import ("../pages/ForgetPassword.js"))
+const CheckMail = React.lazy(() => import("../pages/CheckMail.js"));
+const ForgetPassword = React.lazy(() => import("../pages/ForgetPassword.js"));
 
 function NavigationRoutes() {
   const routes = (
     <Routes>
- 
       <Route
         exact
         path="/home"
@@ -74,12 +73,11 @@ function NavigationRoutes() {
           </MainLayout>
         }
       ></Route>
-          <Route exact path="/" element={<Landing />}></Route>
+      <Route exact path="/" element={<Landing />}></Route>
 
       <Route exact path="/checkMail" element={<CheckMail />}></Route>
       <Route exact path="/forgetPassword" element={<ForgetPassword />}></Route>
-{/* //       <Route exact path="/login" element={<Login />}></Route> */}
-
+      {/* //       <Route exact path="/login" element={<Login />}></Route> */}
     </Routes>
   );
 
