@@ -110,7 +110,7 @@ const Stores = () => {
                 totalSubStores={data.totalSubStores}
                 numberOfPos={data.numberOfPos}
                 storeLocation={data.storeLocation}
-                storeIcon=<StoreLogo />
+                storeIcon={<StoreLogo/>}
                 btnText="View Store"
               />
             </Col>
