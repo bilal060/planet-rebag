@@ -46,6 +46,24 @@ const cardData = [
     scannedItems: "1209",
     status: "Active",
   },
+  {
+    userName: "Al Maya Group",
+    userId: "CF783457",
+    scannedItems: "1209",
+    status: "Active",
+  },
+  {
+    userName: "Carrefour",
+    userId: "CF783457",
+    scannedItems: "1209",
+    status: "Active",
+  },
+  {
+    userName: "Al Maya Group",
+    userId: "CF783457",
+    scannedItems: "1209",
+    status: "Active",
+  },
 ];
 
 const AppUserCardView = () => {

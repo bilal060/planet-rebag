@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import TotalCard from "../components/TotalCard";
-import BagIcon from "../assets/images/icons/dashboardicons/bag";
-import BottleIcon from "../assets/images/icons/dashboardicons/bottle";
-import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
+import "../assets/css/itemcategory.css";
+
 import Radios from "../components/Radios";
 import { Col, Form, Row, Table } from "react-bootstrap";
 import TotalItemsIcon from "../assets/images/icons/TotalItems";
+import BagIcon from "../assets/images/icons/dashboardicons/bag";
+import BottleIcon from "../assets/images/icons/dashboardicons/bottle";
+import TotalBottles from "../assets/images/icons/TotalBottles";
 import TotalStore from "../assets/images/icons/TotalStore";
 import TotalPrice from "../assets/images/icons/TotalPrice";
-import TotalUser from "../assets/images/icons/TotalUser";
 
-function Home() {
+function TransactionHistory() {
   const [category, setCategory] = useState("All");
 
   const radio = [
@@ -67,18 +68,18 @@ function Home() {
             <TotalCard
               icon={<TotalItemsIcon />}
               value="2392"
-              title="Total Items Returned"
+              title="Transactions History"
               classes="bg-light-green"
-              text="text-green"
+              text="font-weight-700 cut-text text-green"
             />
           </Col>
           <Col sm="12" md="12" lg="6" xl="3" className="p-0">
             <TotalCard
-              icon={<TotalUser />}
+              icon={<TotalBottles />}
               value="3492"
-              title="Total App Users"
+              title="Transactions History"
               classes="bg-light-blue"
-              text="text-blue"
+              text="font-weight-700 cut-text text-blue"
             />
           </Col>
           <Col sm="12" md="12" lg="6" xl="3" className="p-0">
@@ -87,7 +88,7 @@ function Home() {
               value="65"
               title="Total Stores"
               classes="bg-light-orange"
-              text="text-orange"
+              text="font-weight-700 cut-text text-orange"
             />
           </Col>
           <Col sm="12" md="12" lg="6" xl="3" className="p-0">
@@ -96,7 +97,7 @@ function Home() {
               value="AED 3492.50"
               title="Total Redeem Price"
               classes="bg-light-cyan"
-              text="text-cyan"
+              text="font-weight-700 cut-text text-cyan"
             />
           </Col>
         </Row>
@@ -179,4 +180,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default TransactionHistory;
