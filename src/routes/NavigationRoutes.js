@@ -17,6 +17,8 @@ const Login = React.lazy(() => import("../pages/Login.js"));
 const SubstoreLogin = React.lazy(() => import("../pages/SubstoreLogin.js"));
 const OtpMobile = React.lazy(() => import("../pages/OtpMobile.js"));
 const OtpMail = React.lazy(() => import("../pages/OtpMail.js"));
+const Confirmation = React.lazy(() => import("../pages/Confirmation.js"));
+const Adminlogin = React.lazy(() => import("../pages/Adminlogin.js"));
 
 function NavigationRoutes() {
   const routes = (
@@ -91,6 +93,8 @@ function NavigationRoutes() {
       <Route exact path="/substorelogin" element={<SubstoreLogin />}></Route>
       <Route exact path="/otpmobile" element={<OtpMobile />}></Route>
       <Route exact path="/otpmail" element={<OtpMail />}></Route>
+      <Route exact path="/confirmation" element={<Confirmation />}></Route>
+      <Route exact path="/adminlogin" element={<Adminlogin />}></Route>
     </Routes>
   );
 
