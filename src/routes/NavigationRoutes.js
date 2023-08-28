@@ -2,6 +2,8 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layout/MainLayout.js";
 import Stores from "../pages/Stores.js";
+const TransactionHistory = React.lazy(() => import("../pages/TransactionHistory.js"));
+
 const StoreDetail = React.lazy(() => import("../pages/StoreDetail.js"));
 const AppUserCardView = React.lazy(() => import("../pages/AppUserCardView.js"));
 const AppUserDetailView = React.lazy(() =>
@@ -78,7 +80,11 @@ function NavigationRoutes() {
       <Route
         exact
         path="/transaction-history"
-        element={<MainLayout></MainLayout>}
+        element={
+          <MainLayout>
+            <TransactionHistory />
+          </MainLayout>
+        }
       ></Route>
       <Route exact path="/requests" element={<MainLayout></MainLayout>}></Route>
       <Route exact path="/support" element={<MainLayout></MainLayout>}></Route>
