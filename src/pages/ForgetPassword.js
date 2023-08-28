@@ -1,39 +1,24 @@
 import React from "react";
-import "../assets/css/forgetpassword.css";
-import right_circle from "../assets/images/right-circle.svg";
-import left_circle from "../assets/images/left-circle.svg";
-import Logo from "../assets/images/Logo.svg" 
-import { Button } from "react-bootstrap";
+import "../assets/css/auth.css";
+import Logo from "../assets/images/Logo.svg";
+//import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import logo_rebag from "../assets/images/plant-rebag-logo.svg";
+import AuthFooter from "../components/auth_footer/AuthFooter";
+import AuthCircles from "../components/auth_circles/AuthCircles";
 
 function ForgetPassword() {
   return (
     <>
-      <div>
-        <img
-          src={left_circle}
-          alt=""
-          className="circle-container2 circle-left"
-        />
+      <div className="logo-hide-top">
+        <img src={Logo} alt="" className="logo-container logo" />
       </div>
-      <div>
-        <img
-          src={right_circle}
-          alt=""
-          className="circle-container1 circle-right"
-        />
-      </div>
-      <div>
-        <img
-          src={Logo}
-          alt=""
-          className="logo-container logo"
-        />
-      </div>
-
+      <AuthCircles />
       <div className="login-container">
-        {/* <h2 className="text-center">Login</h2> */}
         <div className="login-sub w-custom">
+          <div className="logo-image d-flex justify-content-center">
+            <img src={logo_rebag} alt="" className="img-fluid mb-2 logo-hide" />
+          </div>
           <span className="mb-5">
             <h3 className="d-flex justify-content-center green-text fw-bold mt-3">
               Forgot Password?
@@ -43,23 +28,28 @@ function ForgetPassword() {
               with instruction to reset your password.
             </span>
           </span>
-
           <div className="login-btn mt-5">
             <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label className="fw-bold">Email</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" />
-              </Form.Group>
+              <div className="form-group">
+                <label for="emailInput" className="font-16">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control emailInput"
+                  placeholder="@ Enter your email"
+                />
+              </div>
+              <div className="login-btn mt-3">
+                <button className="guest-btn btn-lg btn-block">
+                  Reset Password
+                </button>
+              </div>
             </Form>
-            <Button className="bg-primary-green text-white border border-success w-100 mt-3">
-              Login
-            </Button>
           </div>
         </div>
       </div>
+      <AuthFooter />
     </>
   );
 }
