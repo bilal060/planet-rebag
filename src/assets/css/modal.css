@@ -1,0 +1,20 @@
+.modal-dialog {
+    margin: 0 auto !important;
+    width: 398px;
+
+}
+
+.modal-dialog .modal-content {
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--white, #FFF);
+    box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.05);
+}
+
+:where(.modal-header, .modal-footer) {
+    border: 0 !important;
+}
+
+:where(.modal-header, .modal-body, .modal-footer) {
+    padding: 16px 24px 24px 24px !important;
+}

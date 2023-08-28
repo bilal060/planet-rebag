@@ -1,0 +1,67 @@
+.userimage {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 48px;
+    border: 1px solid var(--primary-green, #79AA00);
+}
+
+.w-max-content {
+    width: max-content !important;
+}
+
+
+.table-main {
+    overflow: auto;
+    border-radius: 8px;
+    border: 1px solid #EEE;
+}
+
+.table-design {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--white, #FFF);
+    box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.05);
+}
+
+table.table-design>thead {
+    border-radius: 8px 8px 0px 0px;
+    background: #EEE;
+}
+
+table.table-design :where(th, td) {
+    height: 56px !important;
+    color: var(--title-text, #1E252B);
+    font-size: 16px;
+    font-style: normal;
+    line-height: 100%;
+    padding: 21px 25px 21px 32px !important;
+    border: 0 !important;
+    white-space: nowrap;
+}
+
+table.table-design :where(th) {
+    font-weight: 700 !important;
+    background: #EEE !important;
+}
+
+table.table-design tbody tr:nth-child(even) td {
+    background: #F8F8F8 !important;
+}
+
+table.table-design tbody tr:nth-child(odd) td {
+    background-color: white !important;
+    --bs-table-striped-bg: white !important;
+}
+
+.hero-section-width {
+    width: max-content;
+}
+
+@media screen and (max-width:991px) {
+    .hero-section-width {
+        width: 100% !important;
+    }
+}
