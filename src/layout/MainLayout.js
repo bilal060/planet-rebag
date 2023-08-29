@@ -3,6 +3,7 @@ import SideBarNav from "../shared/SideBarNav";
 import "../assets/css/layout.css";
 import userimage from "../assets/images/icons/dashboardicons/userimage.png";
 import { useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function MainLayout({ children }) {
   const location = useLocation();
@@ -38,5 +39,8 @@ function MainLayout({ children }) {
     </div>
   );
 }
+MainLayout.propTypes = {
+  children: PropTypes.any, // or PropTypes.node
+};
 
 export default MainLayout;
