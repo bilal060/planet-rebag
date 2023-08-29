@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import AuthCircles from "../components/auth_circles/AuthCircles";
 import AuthFooter from "../components/auth_footer/AuthFooter";
 import "../assets/css/auth.css";
 import Logo from "../assets/images/Logo.svg";
-import EyeIcon from "../assets/images/EyeIcon";
-import EyeiconClose from "../assets/images/EyeiconClose";
-const Signup = () => {
+import EyeIcon from "../../assets/images/EyeIcon.js";
+import EyeiconClose from "../../assets/images/EyeiconClose";
+const TempPassword = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -19,14 +18,9 @@ const Signup = () => {
 
   return (
     <>
-      <div>
-        <img src={Logo} alt="" className="logo-container logo" />
-      </div>
-      <AuthCircles />
       <div className="login-container">
         <div className="login-sub text-center flex-column">
           <img src={Logo} alt="" className="d-sm-none d-block mt-5 pt-5" />
-
           <div className="auth-responsive">
             <h3 className="font-32 big-text-color mb-3">Create New Account</h3>
             <span className="font-16-400 small-text-color">
@@ -120,11 +114,8 @@ const Signup = () => {
           </div>
         </div>
       </div>
-      <div className="d-md-block d-none">
-        <AuthFooter />
-      </div>
     </>
   );
 };
 
-export default Signup;
+export default TempPassword;

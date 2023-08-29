@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import AccountSettingSidebar from "../components/accountSetting/Sidebar";
 import MainLayout from "./MainLayout";
 import { Card, Col, Container, Row } from "react-bootstrap";
@@ -23,5 +24,7 @@ const AccountSetting = ({ children }) => {
     </div>
   );
 };
-
+AccountSetting.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default AccountSetting;

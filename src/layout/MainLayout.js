@@ -40,7 +40,7 @@ function MainLayout({ children }) {
   );
 }
 MainLayout.propTypes = {
-  children: PropTypes.any, // or PropTypes.node
+  children: PropTypes.any,
 };
 
 export default MainLayout;
