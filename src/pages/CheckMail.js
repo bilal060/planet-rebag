@@ -29,7 +29,7 @@ function CheckMail() {
               Please check your mail, and follow the instructions.
             </span>
           </span>
-          <div className="login-btn mt-3">
+          <div className="login-btn mt-5">
             <button className="guest-btn btn-lg btn-block">Login</button>
           </div>
         </div>

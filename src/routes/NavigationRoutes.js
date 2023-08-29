@@ -5,6 +5,7 @@ import Stores from "../pages/Stores.js";
 const AccountNewPassword =React.lazy(()=> import("../components/accountSetting/ChangePassword.js")) ;
 const AccountSettingSidebar =React.lazy(()=> import("../components/accountSetting/Sidebar.js")) ;
 const AccountSetting =React.lazy(()=> import("../layout/AccountSettingLayout.js")) ;
+const TransactionHistory = React.lazy(() => import("../pages/TransactionHistory.js"));
 const StoreDetail = React.lazy(() => import("../pages/StoreDetail.js"));
 const AppUserCardView = React.lazy(() => import("../pages/AppUserCardView.js"));
 const AppUserDetailView = React.lazy(() =>
@@ -20,6 +21,8 @@ const Login = React.lazy(() => import("../pages/Login.js"));
 const SubstoreLogin = React.lazy(() => import("../pages/SubstoreLogin.js"));
 const OtpMobile = React.lazy(() => import("../pages/OtpMobile.js"));
 const OtpMail = React.lazy(() => import("../pages/OtpMail.js"));
+const Confirmation = React.lazy(() => import("../pages/Confirmation.js"));
+const Adminlogin = React.lazy(() => import("../pages/Adminlogin.js"));
 
 function NavigationRoutes() {
   const routes = (
@@ -81,7 +84,11 @@ function NavigationRoutes() {
       <Route
         exact
         path="/transaction-history"
-        element={<MainLayout></MainLayout>}
+        element={
+          <MainLayout>
+            <TransactionHistory />
+          </MainLayout>
+        }
       ></Route>
       <Route
         exact
@@ -103,7 +110,8 @@ function NavigationRoutes() {
       <Route exact path="/substorelogin" element={<SubstoreLogin />}></Route>
       <Route exact path="/otpmobile" element={<OtpMobile />}></Route>
       <Route exact path="/otpmail" element={<OtpMail />}></Route>
-      
+      <Route exact path="/confirmation" element={<Confirmation />}></Route>
+      <Route exact path="/adminlogin" element={<Adminlogin />}></Route>
     </Routes>
   );
 

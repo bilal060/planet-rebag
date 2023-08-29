@@ -1,32 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import AuthCircles from "../components/auth_circles/AuthCircles";
 import AuthFooter from "../components/auth_footer/AuthFooter";
 import Logo from "../assets/images/Logo.svg";
 import "../assets/css/auth.css";
 import logo_rebag from "../assets/images/plant-rebag-logo.svg";
 import Form from "react-bootstrap/Form";
+import Otpinput from "../components/Otpinput";
 const OtpMobile = () => {
-  const [otp, setOtp] = useState(["", "", "", ""]);
-  const mykey = "0123456789".split("");
-
-  const handleInputChange = (event, index) => {
-    const key = event.key;
-    const updatedOtp = [...otp];
-
-    if (event.keyCode === 8 && index > 0) {
-      // Handle backspace
-      updatedOtp[index - 1] = "";
-    } else if (index < 3 && mykey.indexOf(key) !== -1) {
-      // Move to next input
-      updatedOtp[index + 1] = "";
-    }
-
-    updatedOtp[index] = key;
-    setOtp(updatedOtp);
-  };
-
-  const finalKey = otp.join("");
-  const isOtpValid = finalKey.length === 4;
   return (
     <>
       <div className="logo-hide-top">
@@ -49,31 +29,13 @@ const OtpMobile = () => {
           <div className="login-btn mt-5">
             <Form>
               <div className="form-group">
-                <label for="emailInput" className="font-16 text-center">
-                  Enter OTP
-                </label>
-                {/* <input
-                  type="email"
-                  className="form-control emailInput"
-                  placeholder="@ Enter your email"
-                /> */}
-                <div className="otp-input-fields">
-                  {otp.map((digit, index) => (
-                    <input
-                      key={index}
-                      type="text"
-                      className={`otp__digit otp__field__${index + 1}`}
-                      value={digit}
-                      maxLength={1}
-                      onKeyDown={(event) => handleInputChange(event, index)}
-                      onChange={() => {}}
-                    />
-                  ))}
+                <div className="label-inputs-center">
+                  <label for="emailInput" className="font-16 text-otp">
+                    Enter OTP
+                  </label>
                 </div>
-                <div className="result">
-                  <p id="_otp" className={isOtpValid ? "_ok" : "_notok"}>
-                    {finalKey}
-                  </p>
+                <div className="otp-input mt-3">
+                  <Otpinput length={4}/>
                 </div>
               </div>
               <div className="login-btn mt-3">

@@ -17,7 +17,7 @@ const cardData = [
     storeLocation: "Al Ain, Abu Dhabi",
   },
   {
-    storeName: "Al Maya Group",
+    storeName: "Carrefour",
     storeId: "CF783457",
     itemsReturned: "1209",
     totalRedeemPrice: "AED 5639.00",
@@ -35,7 +35,7 @@ const cardData = [
     storeLocation: "Al Ain, Abu Dhabi",
   },
   {
-    storeName: "Al Maya Group",
+    storeName: "Carrefour",
     storeId: "CF783457",
     itemsReturned: "1209",
     totalRedeemPrice: "AED 5639.00",
@@ -53,7 +53,7 @@ const cardData = [
     storeLocation: "Al Ain, Abu Dhabi",
   },
   {
-    storeName: "Al Maya Group",
+    storeName: "Carrefour",
     storeId: "CF783457",
     itemsReturned: "1209",
     totalRedeemPrice: "AED 5639.00",
@@ -110,7 +110,7 @@ const Stores = () => {
                 totalSubStores={data.totalSubStores}
                 numberOfPos={data.numberOfPos}
                 storeLocation={data.storeLocation}
-                storeIcon={<StoreLogo/>}
+                storeIcon={<StoreLogo />}
                 btnText="View Store"
               />
             </Col>
@@ -141,7 +141,7 @@ const Stores = () => {
                 const formattedLabel =
                   label.charAt(0).toUpperCase() + label.slice(1);
                 return (
-                  <Col lg="6" className="col" key={index}>
+                  <Col lg="6" className="" key={index}>
                     <Form.Group className="mb-3" controlId={key}>
                       <Form.Label className="mb-2 text-capitalize font-weight-600">
                         {formattedLabel}
@@ -187,7 +187,7 @@ const Stores = () => {
         </Modal.Body>
         <Modal.Footer className="mt-5">
           <Row className="w-100">
-            <Col lg="6">
+            <Col lg="6" className="mb-lg-0 mb-3">
               <button
                 className="w-100 green-btn-outline"
                 onClick={() => setModalShow(false)}
