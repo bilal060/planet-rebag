@@ -2,8 +2,10 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layout/MainLayout.js";
 import Stores from "../pages/Stores.js";
+const AccountNewPassword =React.lazy(()=> import("../components/accountSetting/ChangePassword.js")) ;
+const AccountSettingSidebar =React.lazy(()=> import("../components/accountSetting/Sidebar.js")) ;
+const AccountSetting =React.lazy(()=> import("../layout/AccountSettingLayout.js")) ;
 const TransactionHistory = React.lazy(() => import("../pages/TransactionHistory.js"));
-
 const StoreDetail = React.lazy(() => import("../pages/StoreDetail.js"));
 const AppUserCardView = React.lazy(() => import("../pages/AppUserCardView.js"));
 const AppUserDetailView = React.lazy(() =>
@@ -86,6 +88,15 @@ function NavigationRoutes() {
           <MainLayout>
             <TransactionHistory />
           </MainLayout>
+        }
+      ></Route>
+      <Route
+        exact
+        path="/settings/ChangePassword"
+        element={
+           <AccountSetting>
+               <AccountNewPassword/>
+            </AccountSetting>
         }
       ></Route>
       <Route exact path="/requests" element={<MainLayout></MainLayout>}></Route>
