@@ -1,17 +1,19 @@
 .field-container {
-  border: 1px solid #e7e6e9;
-  border-radius: 8px;
-  background-color: #fff !important;
+  border-radius: 12px;
+  background: #F8F8F8 !important;
   margin-bottom: 16px !important;
 }
 
+input[type= "password"]::placeholder{
+  color: #D9D9D9 !important;
+}
 .field-container>div {
   height: 56px;
 }
 
 .custom-field {
   border: none !important;
-  background-color: #fff !important;
+  background: #F8F8F8 !important;
 }
 
 .mobile {
@@ -20,7 +22,6 @@
 }
 
 .dotted {
-  border: 1px dotted #e7e6e9 !important;
-  background-color: #f1f6f7 !important;
+  background: #F8F8F8 !important;
   cursor: pointer;
 }

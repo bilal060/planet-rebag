@@ -2,6 +2,9 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layout/MainLayout.js";
 import Stores from "../pages/Stores.js";
+const AccountPrivacyPolicy =React.lazy(()=> import("../components/accountSetting/PrivacyPolicy.js")) ;
+const AccountFaqs =React.lazy(()=> import("../components/accountSetting/Faqs.js")) ;
+const ContactUs =React.lazy(()=> import("../components/accountSetting/ContactUs.js")) ;
 const AccountNewPassword =React.lazy(()=> import("../components/accountSetting/ChangePassword.js")) ;
 const AccountSettingSidebar =React.lazy(()=> import("../components/accountSetting/Sidebar.js")) ;
 const AccountSetting =React.lazy(()=> import("../layout/AccountSettingLayout.js")) ;
@@ -99,8 +102,37 @@ function NavigationRoutes() {
             </AccountSetting>
         }
       ></Route>
+       <Route
+        exact
+        path="/settings/Contact"
+        element={
+           <AccountSetting>
+               <ContactUs/>
+            </AccountSetting>
+        }
+      ></Route>
+       <Route
+        exact
+        path="/settings/Faqs"
+        element={
+           <AccountSetting>
+               <AccountFaqs/>
+            </AccountSetting>
+        }
+      ></Route>
+       <Route
+        exact
+        path="/settings/PrivacyPolicy"
+        element={
+           <AccountSetting>
+               <AccountPrivacyPolicy/>
+            </AccountSetting>
+        }
+      ></Route>
       <Route exact path="/requests" element={<MainLayout></MainLayout>}></Route>
-      <Route exact path="/support" element={<MainLayout></MainLayout>}></Route>
+      <Route exact path="/Settings" element={ <AccountSetting>
+               <AccountNewPassword/>
+            </AccountSetting>}></Route>
       <Route exact path="/" element={<Landing />}></Route>
 
       <Route exact path="/checkMail" element={<CheckMail />}></Route>

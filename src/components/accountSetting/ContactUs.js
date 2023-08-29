@@ -3,7 +3,9 @@ import { ErrorMessage, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Button, Col, Image, Row } from "react-bootstrap";
 import TextField from "../../shared/TextField";
-// import PassIcon from '../../assets/images/icons/lock.png';
+import Whatsapp1 from '../../assets/images/icons/whatsapp';
+import Insta from '../../assets/images/icons/rishtagram';
+import Website from '../../assets/images/icons/website';
 import EyeIcon from '../../assets/images/EyeIcon';
 // import CloseEye from '../../assets/images/icons/closeeye.png';
 import { useDispatch, useSelector } from "react-redux";
@@ -22,7 +24,7 @@ export const newPasswordValidationSchema = Yup.object().shape({
   }),
 });
 
-const ChangeAccountPassword = () => {
+const ContactUs = () => {
 
   const dispatch = useDispatch();
 
@@ -49,7 +51,7 @@ const ChangeAccountPassword = () => {
 
   return (
     <div>
-      <h3 className="font-24 font-weight-700 mb-3">Change Password</h3>
+      <h3 className="font-24 font-weight-700 mb-3">Contact Us</h3>
       <Formik
         initialValues={initialValues}
         validationSchema={newPasswordValidationSchema}
@@ -58,24 +60,33 @@ const ChangeAccountPassword = () => {
         {({ values, touched, errors, handleChange, handleBlur }) => (
           <Form action="" className="text-light-black">
             <Row className="align-items-start pb-2 gap-sm-0">
-              <Col sm="12" className="mb-sm-2 p-0 m-0">
+              <Col sm="6" className=" p-0 m-0">
               <div className="d-flex flex-column full-name custom-w">
-                <label className="font-16 font-weight-700 mb-2 mt-5">Current Password</label>
                 <TextField
-                  righticon={
+                 icon={
                     <Image
                       fluid
-                      className="field-righticon"
-                      src={<EyeIcon/>}
+                      className="field-icon"
+                      src={<Whatsapp1/>}
                       loading="lazy"
                       width={20}
                       height={20}
-                      onClick={() => { setEye(!eye) }}
                     />
                   }
-                  placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                //   righticon={
+                //     <Image
+                //       fluid
+                //       className="field-righticon"
+                //       src={<EyeIcon/>}
+                //       loading="lazy"
+                //       width={20}
+                //       height={20}
+                //       onClick={() => { setEye(!eye) }}
+                //     />
+                //   }
+                  placeholder="https://wa.me/03167422717?text="
                   name="oldPassword"
-                  type={eye ? "text" : "password"}
+                  type="text"
                 />
                 <ErrorMessage
                   component="div"
@@ -84,25 +95,33 @@ const ChangeAccountPassword = () => {
                 />
                 </div>
               </Col>
-
-              <Col sm="6" className="ps-0">
-              <label className="font-16 font-weight-700 mb-2">New Password</label>
+              <Col sm="6" className="pe-0">
 
                 <TextField
-                  righticon={
+                 icon={
                     <Image
                       fluid
-                      className="field-righticon"
-                      src={<EyeIcon/>}
+                      className="field-icon"
+                      src={<Insta/>}
                       loading="lazy"
                       width={20}
                       height={20}
-                      onClick={() => { setEye1(!eye1) }}
                     />
                   }
-                  placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                //   righticon={
+                //     <Image
+                //       fluid
+                //       className="field-righticon"
+                //       src={<EyeIcon/>}
+                //       loading="lazy"
+                //       width={20}
+                //       height={20}
+                //       onClick={() => { setEye1(!eye1) }}
+                //     />
+                //   }
+                  placeholder="https://msng.link/o?plant rebag=ig"
                   name="newPassword"
-                  type={eye1 ? "text" : "password"}
+                  type="text"
                 />
                 <ErrorMessage
                   component="div"
@@ -112,23 +131,31 @@ const ChangeAccountPassword = () => {
               </Col>
               <Col sm="6" className="p-0 m-0">
               <div className="d-flex flex-column full-name custom-w">
-              <label className="font-16 font-weight-700 mb-2">Confirm New Password</label>
-
                 <TextField 
-                  righticon={
+                 icon={
                     <Image
                       fluid
-                      className="field-righticon"
-                      src={<EyeIcon/>}
+                      className="field-icon"
+                      src={<Website/>}
                       loading="lazy"
                       width={20}
                       height={20}
-                      onClick={() => { setEye2(!eye2) }}
                     />
                   }
-                  placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                //   righticon={
+                //     <Image
+                //       fluid
+                //       className="field-righticon"
+                //       src={<EyeIcon/>}
+                //       loading="lazy"
+                //       width={20}
+                //       height={20}
+                //       onClick={() => { setEye2(!eye2) }}
+                //     />
+                //   }
+                  placeholder="Info@planetrebag.com"
                   name="confirmPassword"
-                  type={eye2 ? "text" : "password"}
+                  type="text"
                 />
                 <ErrorMessage
                   component="div"
@@ -138,14 +165,14 @@ const ChangeAccountPassword = () => {
                 </div>
               </Col>
             </Row>
-            <Row className="justify-content-end mt-4 gap-sm-0 gap-3">
+            {/* <Row className="justify-content-end mt-4 gap-sm-0 gap-3">
               
               <Col md="3" sm="4">
                 <Button type="submit" className="btn-green w-100 py-75">
                   Save Change
                 </Button>
               </Col>
-            </Row>
+            </Row> */}
           </Form>
         )}
       </Formik>
@@ -153,4 +180,4 @@ const ChangeAccountPassword = () => {
   );
 };
 
-export default ChangeAccountPassword;
+export default ContactUs;
