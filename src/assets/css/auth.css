@@ -23,7 +23,7 @@ body {
   font-weight: 400;
 }
 .font-32 {
-  font-size: 32px;
+  font-size: 32px !important;
   font-weight: 700;
   line-height: 32px;
 }
@@ -201,19 +201,19 @@ body {
   line-height: 16px;
   background-color: rgba(248, 248, 248, 1);
   border: none;
-  border-radius: 12px;
+  border-radius: 12px !important;
   padding: 10px;
   margin-bottom: 20px;
   font-weight: 400;
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  -ms-border-radius: 12px;
-  -o-border-radius: 12px;
+  -webkit-border-radius: 12px !important;
+  -moz-border-radius: 12px !important;
+  -ms-border-radius: 12px !important;
+  -o-border-radius: 12px !important;
 }
 @media (max-width: 767px) {
   .emailInput {
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    height: auto !important;
     padding: 8px;
     font-size: 14px;
     line-height: 14px;
@@ -248,79 +248,44 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
-
-.otp-input-fields {
-  margin: auto;
-  background-color: white;
-  box-shadow: 0px 0px 8px 0px #02025044;
-  max-width: 400px;
-  width: auto;
+.label-inputs-center {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  padding: 40px;
-
-  input {
-    height: 40px;
-    width: 40px;
-    background-color: transparent;
-    border-radius: 4px;
-    border: 1px solid #2f8f1f;
-    text-align: center;
-    outline: none;
-    font-size: 16px;
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    /* Firefox */
-    &[type="number"] {
-      -moz-appearance: textfield;
-    }
-    &:focus {
-      border-width: 2px;
-      border-color: darken(#2f8f1f, 5%);
-      font-size: 20px;
-    }
+}
+.label-inputs-start {
+  display: flex;
+  justify-content: start;
+}
+.input-group-text {
+  position: absolute;
+  right: 0;
+  top: 13px;
+  border: 0;
+  z-index: 1001;
+  background: transparent;
+}
+.password-input {
+  color: #d9d9d9 !important;
+}
+@media screen and (max-width: 786px) {
+  .input-group-text {
+    position: absolute;
+    right: 0;
+    top: 3px !important;
+    border: 0;
+    z-index: 1001;
+    background: transparent;
   }
 }
-
-.result {
-  max-width: 400px;
-  margin: auto;
-  padding: 24px;
-  text-align: center;
-  p {
-    font-size: 24px;
-    font-family: "Antonio", sans-serif;
-    opacity: 1;
-    transition: color 0.5s ease;
-    &._ok {
-      color: green;
-    }
-    &._notok {
-      color: red;
-      border-radius: 3px;
-    }
-  }
+.radio-btn {
+  display: flex;
+  justify-content: space-between;
+  text-align: start;
+  width: 100%;
 }
-.title {
-  max-width: 400px;
-  margin: auto;
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-  h3 {
-    font-weight: bold;
-  }
-  p {
-    font-size: 12px;
-    color: #118a44;
-    &.msg {
-      color: initial;
-      text-align: initial;
-      font-weight: bold;
-    }
-  }
+
+.mobile-radio-btn,
+.email-radio-btn {
+  width: 50%;
+  box-sizing: border-box;
 }
