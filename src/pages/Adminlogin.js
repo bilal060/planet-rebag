@@ -5,7 +5,7 @@ import "../assets/css/auth.css";
 import Logo from "../assets/images/Logo.svg";
 import EyeIcon from "../assets/images/EyeIcon";
 import EyeiconClose from "../assets/images/EyeiconClose";
-const Login = () => {
+const Adminlogin = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -30,36 +30,6 @@ const Login = () => {
             Login to your account.
           </span>
           <form>
-            <div className="form-group mt-5">
-              <div className="label-inputs-start">
-                <label for="emailInput" className="font-16">
-                  Login with
-                </label>
-              </div>
-              <div className="radio-btn mt-3">
-                <div className="mobile-radio-btn">
-                  <label>
-                    <input
-                      type="radio"
-                      class="input-radio mobile-radio ps-2"
-                      name="login_email"
-                    />
-                    Email
-                  </label>
-                </div>
-                <div className="mobile-radio-btn">
-                  <label>
-                    <input
-                      type="radio"
-                      class="input-radio email-radio ps-2"
-                      checked
-                      name="login_mobile"
-                    />
-                    Mobile Number
-                  </label>
-                </div>
-              </div>
-            </div>
             <div className="form-group mt-5">
               <div className="label-inputs-start">
                 <label for="emailInput" className="font-16">
@@ -108,4 +78,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Adminlogin;
