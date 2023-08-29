@@ -1,27 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import "../assets/css/landing.css";
-import right_circle from "../assets/images/right-circle.svg";
-import left_circle from "../assets/images/left-circle.svg";
+import "../assets/css/auth.css";
 import logo from "../assets/images/plant-rebag-logo.svg";
 import AuthFooter from "../components/auth_footer/AuthFooter";
+import AuthCircles from "../components/auth_circles/AuthCircles";
 const Landing = () => {
   return (
     <>
-      <div>
-        <img
-          src={left_circle}
-          alt=""
-          className="circle-container2 circle-left"
-        />
-      </div>
-      <div>
-        <img
-          src={right_circle}
-          alt=""
-          className="circle-container1 circle-right"
-        />
-      </div>
+      <AuthCircles />
       <div className="login-container">
         <div className="login-sub text-center">
           <div className="logo-image d-flex justify-content-center">
