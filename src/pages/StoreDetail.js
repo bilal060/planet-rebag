@@ -1,12 +1,12 @@
-import React from 'react'
-import StoreDetailCard from '../components/StoreDetailCard'
+import React from "react";
+import StoreDetailCard from "../components/StoreDetailCard";
 
 function StoreDetail() {
   return (
     <div>
-        <StoreDetailCard/>
+      <StoreDetailCard />
     </div>
-  )
+  );
 }
 
-export default StoreDetail
+export default StoreDetail;

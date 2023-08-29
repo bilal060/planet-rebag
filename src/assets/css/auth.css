@@ -308,6 +308,141 @@ body {
 
 .mobile-radio-btn,
 .email-radio-btn {
-  width: 50%;
+  flex: 1 2;
   box-sizing: border-box;
+}
+
+.radio-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.mobile-radio-btn label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: var(--title-text, #1e252b);
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+}
+
+.input-radio {
+  display: none;
+}
+
+.custom-radio {
+  width: 16px;
+  height: 16px;
+  background-color: #f8f8f8;
+  border: 1px solid var(--primary-green, #79aa00);
+  border-radius: 50%;
+  position: relative;
+}
+
+.custom-radio::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-green, #79aa00);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.input-radio:checked + .custom-radio::after {
+  opacity: 1;
+}
+
+.input-radio:checked + .custom-radio + .mobile-radio-btn label {
+  color: var(--title-text, #1e252b);
+}
+
+.mobile-radio-btn label {
+  color: #a3a3a3;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+}
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  display: none;
+}
+
+.remember-me input[type="checkbox"]:checked + label .checkmark {
+  display: block;
+}
+
+.remember-me label {
+  color: #777;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.label-text {
+  margin-left: 10px;
+}
+
+.forgot-password {
+  text-align: right;
+}
+
+.forgot-password a {
+  color: var(--primary-green, #79aa00);
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+  text-decoration: none;
+}
+.signup-link {
+  color: var(--title-text, #1e252b);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+}
+.signup-link a {
+  color: var(--primary-green, #79aa00);
+  font-weight: 700;
+  padding-left: 2px;
 }
