@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import TotalCard from "../components/TotalCard";
 import BagIcon from "../assets/images/icons/dashboardicons/bag";
 import BottleIcon from "../assets/images/icons/dashboardicons/bottle";
-import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
 import Radios from "../components/Radios";
 import { Col, Form, Row, Table } from "react-bootstrap";
 import TotalItemsIcon from "../assets/images/icons/TotalItems";

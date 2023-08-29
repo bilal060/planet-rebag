@@ -12,30 +12,37 @@ body {
   width: 100%;
   height: 100%;
 }
+
 .font-16 {
   font-size: 16px;
   font-weight: 700;
   line-height: 16px;
 }
+
 .font-16-400 {
   font-size: 16px;
   line-height: 16px;
   font-weight: 400;
 }
+
 .font-32 {
   font-size: 32px !important;
   font-weight: 700;
   line-height: 32px;
 }
+
 .big-text-color {
   color: rgba(82, 109, 0, 1);
 }
+
 .small-text-color {
   color: rgba(119, 119, 119, 1);
 }
+
 .regular-text-color {
   color: rgba(30, 37, 43, 1);
 }
+
 /* auth circles */
 
 .circle-container1 {
@@ -78,6 +85,7 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
 .login-button {
   width: 398px;
   max-width: 396px;
@@ -169,6 +177,7 @@ body {
 .bg-light-green {
   background-color: #79aa001a;
 }
+
 .bg-primary-green {
   background-color: #79aa00;
 }
@@ -186,6 +195,7 @@ body {
 .w-custom {
   width: 25rem;
 }
+
 .logo-container {
   position: absolute;
 }
@@ -194,6 +204,7 @@ body {
   left: 5% !important;
   top: 6% !important;
 }
+
 .emailInput {
   width: 398px;
   height: 56px;
@@ -210,6 +221,7 @@ body {
   -ms-border-radius: 12px !important;
   -o-border-radius: 12px !important;
 }
+
 @media (max-width: 767px) {
   .emailInput {
     width: 100% !important;
@@ -218,14 +230,17 @@ body {
     font-size: 14px;
     line-height: 14px;
   }
+
   .w-custom {
     width: 20rem;
   }
 }
+
 .logo-hide-top,
 .logo-hide {
   display: none;
 }
+
 @media screen and (min-width: 786px) {
   .logo-hide-top {
     display: block;
@@ -242,20 +257,24 @@ body {
 .password-input {
   position: relative;
 }
+
 .eye-icon {
   position: absolute;
   right: 50%;
   top: 50%;
   transform: translateY(-50%);
 }
+
 .label-inputs-center {
   display: flex;
   justify-content: center;
 }
+
 .label-inputs-start {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
+
 .input-group-text {
   position: absolute;
   right: 0;
@@ -264,9 +283,11 @@ body {
   z-index: 1001;
   background: transparent;
 }
+
 .password-input {
   color: #d9d9d9 !important;
 }
+
 @media screen and (max-width: 786px) {
   .input-group-text {
     position: absolute;
@@ -277,6 +298,7 @@ body {
     background: transparent;
   }
 }
+
 .radio-btn {
   display: flex;
   justify-content: space-between;

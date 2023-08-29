@@ -99,29 +99,7 @@ const ItemCategories = () => {
       time: "10:19 AM  |  23/07/2023",
     },
   ];
-  //   const tableData = [
-  //     {
-  //       id: "1",
-  //       itemType: "Bag",
-  //       redeemPrice: "AED 1.00",
-  //       bottleName: <AlainBottleIcon />,
-  //       time: "10:19 AM  |  23/07/2023",
-  //     },
-  //     {
-  //       id: "2",
-  //       itemType: "Bag",
-  //       redeemPrice: "AED 1.00",
-  //       bottleName: <MusafiBottleIcon />,
-  //       time: "10:19 AM  |  23/07/2023",
-  //     },
-  //     {
-  //       id: "3",
-  //       itemType: "Bag",
-  //       redeemPrice: "AED 1.00",
-  //       bottleName: <DubaiBottleIcon />,
-  //       time: "10:19 AM  |  23/07/2023",
-  //     },
-  //   ];
+
   const attachFile = (e) => {
     if (e.target.files) {
       let imageFile = e.target.files[0];

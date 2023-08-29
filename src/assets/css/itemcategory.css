@@ -10,7 +10,7 @@
     width: max-content !important;
 }
 
-
+/* 
 .table-main {
     overflow: auto;
     border-radius: 8px;
@@ -54,7 +54,7 @@ table.table-design tbody tr:nth-child(even) td {
 table.table-design tbody tr:nth-child(odd) td {
     background-color: white !important;
     --bs-table-striped-bg: white !important;
-}
+} */
 
 .hero-section-width {
     width: max-content;

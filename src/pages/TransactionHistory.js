@@ -10,6 +10,7 @@ import BottleIcon from "../assets/images/icons/dashboardicons/bottle";
 import TotalBottles from "../assets/images/icons/TotalBottles";
 import TotalStore from "../assets/images/icons/TotalStore";
 import TotalPrice from "../assets/images/icons/TotalPrice";
+import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
 
 function TransactionHistory() {
   const [category, setCategory] = useState("All");
@@ -33,27 +34,27 @@ function TransactionHistory() {
   const tableData = [
     {
       id: "CF783457",
-      returnedBag: "7",
-      returnedBottle: "7",
-      TotalQty: "14",
+      itemType: "Bag",
+      returnedQuantity: "7",
+      totalQty: "14",
       RedeemPrice: "AED 5.00",
       StoreLocation: "Al Ain, Abu Dhabi",
       time: "10:19 AM  |  23/07/2023",
     },
     {
       id: "CF783457",
-      returnedBag: "20",
-      returnedBottle: "20",
-      TotalQty: "40",
+      itemType: "Bottle",
+      returnedQuantity: "20",
+      totalQty: "40",
       RedeemPrice: "AED 5.00",
       StoreLocation: "Al Ain, Abu Dhabi",
       time: "10:19 AM  |  23/07/2023",
     },
     {
       id: "CF783457",
-      returnedBag: "13",
-      returnedBottle: "13",
-      TotalQty: "26",
+      itemType: "Bag",
+      returnedQuantity: "13",
+      totalQty: "26",
       RedeemPrice: "AED 5.00",
       StoreLocation: "Al Ain, Abu Dhabi",
       time: "10:19 AM  |  23/07/2023",
@@ -144,13 +145,12 @@ function TransactionHistory() {
         </Col>
       </Row>
 
-      <div className="table-main mt-3">
+      <div className="table-main mt-4">
         <Table className="table-design" striped hover>
           <thead>
             <tr>
-              <th>Session ID</th>
-              <th>Returned Bags</th>
-              <th>Returned Bottles</th>
+              <th>Item Type</th>
+              <th>Returned Qty</th>
               <th>Total Qty</th>
               <th>Redeem Price</th>
               <th>Store Location</th>
@@ -162,14 +162,15 @@ function TransactionHistory() {
             {(tableData || []).map((data, index) => {
               return (
                 <tr key={index}>
-                  <td>{data.id}</td>
-                  <td>{data.returnedBag}</td>
-                  <td>{data.returnedBottle}</td>
-                  <td>{data.TotalQty}</td>
+                  <td>{data.itemType}</td>
+                  <td>{data.returnedQuantity}</td>
+                  <td>{data.totalQty}</td>
                   <td>{data.RedeemPrice}</td>
                   <td>{data.StoreLocation}</td>
                   <td>{data.time}</td>
-                  <td>{/* <ThreeDotsIcon /> */}</td>
+                  <td>
+                    <ThreeDotsIcon />
+                  </td>
                 </tr>
               );
             })}
