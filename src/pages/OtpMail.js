@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import AuthCircles from "../components/auth_circles/AuthCircles";
 import AuthFooter from "../components/auth_footer/AuthFooter";
 import Logo from "../assets/images/Logo.svg";
@@ -30,7 +30,7 @@ const OtpMail = () => {
             <Form>
               <div className="form-group">
                 <div className="label-inputs-center">
-                  <label for="emailInput" className="font-16 text-otp">
+                  <label htmlFor="emailInput" className="font-16 text-otp">
                     Enter OTP
                   </label>
                 </div>

@@ -73,7 +73,7 @@ const Login = () => {
               <div className="form-group mt-5"></div>
               <div className="form-group mt-5">
                 <div className="label-inputs-start">
-                  <label for="emailInput" className="font-16">
+                  <label htmlFor="emailInput" className="font-16">
                     Email
                   </label>
                 </div>
@@ -108,12 +108,12 @@ const Login = () => {
                   </div>
                 </div>
               </div>
-              <div class="remember-forgot mt-3">
-                <div class="remember-me">
+              <div className="remember-forgot mt-3">
+                <div className="remember-me">
                   <input type="checkbox" id="remember" name="remember" />
-                  <label for="remember">
+                  <label htmlFor="remember">
                     <svg
-                      class="checkbox-icon"
+                      className="checkbox-icon"
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -124,7 +124,7 @@ const Login = () => {
                         fill="#CCCCCC"
                       />
                       <path
-                        class="checkmark"
+                        className="checkmark"
                         d="M6.86733 10.8639C6.70725 10.8639 6.55518 10.7999 6.44312 10.6879L4.17799 8.42388C3.94588 8.19188 3.94588 7.80788 4.17799 7.57588C4.41011 7.34388 4.7943 7.34388 5.02642 7.57588L6.86733 9.41588L10.9814 5.30388C11.2135 5.07188 11.5977 5.07188 11.8298 5.30388C12.0619 5.53588 12.0619 5.91988 11.8298 6.15188L7.29154 10.6879C7.17949 10.7999 7.02741 10.8639 6.86733 10.8639Z"
                         fill="#A3A3A3"
                       />
@@ -132,7 +132,7 @@ const Login = () => {
                     Remember me
                   </label>
                 </div>
-                <div class="forgot-password">
+                <div className="forgot-password">
                   <a href="#">Forgot Password?</a>
                 </div>
               </div>
@@ -155,7 +155,7 @@ const Login = () => {
               <div className="form-group mt-5"></div>
               <div className="form-group mt-5">
                 <div className="label-inputs-start">
-                  <label for="emailInput" className="font-16">
+                  <label htmlFor="emailInput" className="font-16">
                     Mobile Number
                   </label>
                 </div>
@@ -190,12 +190,12 @@ const Login = () => {
                   </div>
                 </div>
               </div>
-              <div class="remember-forgot mt-3">
-                <div class="remember-me">
+              <div className="remember-forgot mt-3">
+                <div className="remember-me">
                   <input type="checkbox" id="remember" name="remember" />
-                  <label for="remember">
+                  <label htmlFor="remember">
                     <svg
-                      class="checkbox-icon"
+                      className="checkbox-icon"
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -206,7 +206,7 @@ const Login = () => {
                         fill="#CCCCCC"
                       />
                       <path
-                        class="checkmark"
+                        className="checkmark"
                         d="M6.86733 10.8639C6.70725 10.8639 6.55518 10.7999 6.44312 10.6879L4.17799 8.42388C3.94588 8.19188 3.94588 7.80788 4.17799 7.57588C4.41011 7.34388 4.7943 7.34388 5.02642 7.57588L6.86733 9.41588L10.9814 5.30388C11.2135 5.07188 11.5977 5.07188 11.8298 5.30388C12.0619 5.53588 12.0619 5.91988 11.8298 6.15188L7.29154 10.6879C7.17949 10.7999 7.02741 10.8639 6.86733 10.8639Z"
                         fill="#A3A3A3"
                       />
@@ -214,7 +214,7 @@ const Login = () => {
                     Remember me
                   </label>
                 </div>
-                <div class="forgot-password">
+                <div className="forgot-password">
                   <a href="#">Forgot Password?</a>
                 </div>
               </div>

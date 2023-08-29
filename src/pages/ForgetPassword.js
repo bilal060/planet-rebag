@@ -31,7 +31,7 @@ function ForgetPassword() {
           <div className="login-btn mt-5">
             <Form>
               <div className="form-group">
-                <label for="emailInput" className="font-16">
+                <label htmlFor="emailInput" className="font-16">
                   Email
                 </label>
                 <input
