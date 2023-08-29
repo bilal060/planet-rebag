@@ -254,7 +254,7 @@ body {
 }
 .label-inputs-start {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .input-group-text {
   position: absolute;
@@ -280,7 +280,7 @@ body {
 .radio-btn {
   display: flex;
   justify-content: space-between;
-  text-align: start;
+  text-align: flex-start;
   width: 100%;
 }
 
