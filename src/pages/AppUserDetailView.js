@@ -107,7 +107,7 @@ function AppUserDetailView() {
           </Row>
         </div>
       </div>
-      <div className="d-flex align-items-center justify-content-between gap-5 ">
+      <div className="d-flex align-items-center justify-content-between gap-3 flex-wrap">
         <h4 className="fs-3">Transactions History </h4>
         <div className="d-flex gap-3">
           {radio.map((data, index) => {

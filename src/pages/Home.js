@@ -103,14 +103,14 @@ function Home() {
       </div>
 
       <Row className="justify-content-between pt-5">
-        <Col className="d-flex align-items-center gap-5 " lg="8" xl="8">
+        <Col className="p-0 d-flex align-items-center gap-5" lg="7" xl="8">
           <Row>
-            <Col xl="8">
+            <Col xl="8" className="mb-3 p-0">
               <h4 className="fs-3">Transactions History </h4>
             </Col>
 
-            <Col xl="4">
-              <div className="d-flex justify-content-center gap-3">
+            <Col xl="4 p-0">
+              <div className="d-flex justify-content-start gap-3">
                 {radio.map((data, index) => {
                   return (
                     <Radios
@@ -126,9 +126,9 @@ function Home() {
           </Row>
         </Col>
 
-        <Col className="">
-          <Form className="d-flex justify-content-start">
-            <Form.Label className="d-flex justify-content-end w-100 mt-2 gap-2 fw-bold">
+        <Col className="p-0">
+          <Form className="d-flex justify-content-start gap-2 flex-lg-row flex-column">
+            <Form.Label className="d-flex justify-content-lg-end mt-2 w-100 font-weight-600">
               Select Store:
             </Form.Label>
             <Form.Select
