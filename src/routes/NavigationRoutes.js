@@ -1,18 +1,17 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import MainLayout from "../layout/MainLayout.js";
 import Stores from "../pages/Stores.js";
 const AccountPrivacyPolicy =React.lazy(()=> import("../components/accountSetting/PrivacyPolicy.js")) ;
 const AccountFaqs =React.lazy(()=> import("../components/accountSetting/Faqs.js")) ;
 const ContactUs =React.lazy(()=> import("../components/accountSetting/ContactUs.js")) ;
 const AccountNewPassword =React.lazy(()=> import("../components/accountSetting/ChangePassword.js")) ;
 const AccountSettingSidebar =React.lazy(()=> import("../components/accountSetting/Sidebar.js")) ;
-const AccountSetting =React.lazy(()=> import("../layout/AccountSettingLayout.js")) ;
 const TransactionHistory = React.lazy(() => import("../pages/TransactionHistory.js"));
+
 const StoreDetail = React.lazy(() => import("../pages/StoreDetail.js"));
 const AppUserCardView = React.lazy(() => import("../pages/AppUserCardView.js"));
 const AppUserDetailView = React.lazy(() =>
-  import("../pages/AppUserDetailView.js")
+  import("../pages/AppUserDetailView.js"),
 );
 const ItemCategories = React.lazy(() => import("../pages/ItemCategories.js"));
 const Home = React.lazy(() => import("../pages/Home.js"));
@@ -33,74 +32,43 @@ function NavigationRoutes() {
       <Route
         exact
         path="/home"
-        element={
-          <MainLayout>
-            <Home />
-          </MainLayout>
-        }
+        element={<Home />}
       ></Route>
       <Route
         exact
         path="/stores"
-        element={
-          <MainLayout>
-            <Stores />
-          </MainLayout>
-        }
+        element={<Stores />}
       ></Route>
       <Route
         exact
         path="/stores-details"
-        element={
-          <MainLayout>
-            <StoreDetail />
-          </MainLayout>
-        }
+        element={<StoreDetail />}
       ></Route>
       <Route
         exact
         path="/users"
-        element={
-          <MainLayout>
-            <AppUserCardView />
-          </MainLayout>
-        }
+        element={<AppUserCardView />}
       ></Route>
       <Route
         exact
         path="/users/detail"
-        element={
-          <MainLayout>
-            <AppUserDetailView />
-          </MainLayout>
-        }
+        element={<AppUserDetailView />}
       ></Route>
       <Route
         exact
         path="/item-categories"
-        element={
-          <MainLayout>
-            <ItemCategories />
-          </MainLayout>
-        }
+        element={<ItemCategories />}
       ></Route>
       <Route
         exact
         path="/transaction-history"
-        element={
-          <MainLayout>
-            <TransactionHistory />
-          </MainLayout>
-        }
+        element={<TransactionHistory />}
       ></Route>
       <Route
         exact
         path="/settings/ChangePassword"
         element={
-           <AccountSetting>
-               <AccountNewPassword/>
-            </AccountSetting>
-        }
+               <AccountNewPassword/>        }
       ></Route>
        <Route
         exact
@@ -129,10 +97,12 @@ function NavigationRoutes() {
             </AccountSetting>
         }
       ></Route>
-      <Route exact path="/requests" element={<MainLayout></MainLayout>}></Route>
       <Route exact path="/Settings" element={ <AccountSetting>
                <AccountNewPassword/>
             </AccountSetting>}></Route>
+      <Route exact path="/requests" element={<></>}></Route>
+      <Route exact path="/support" element={<></>}></Route>
+
       <Route exact path="/" element={<Landing />}></Route>
 
       <Route exact path="/checkMail" element={<CheckMail />}></Route>

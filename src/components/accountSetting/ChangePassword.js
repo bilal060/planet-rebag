@@ -8,6 +8,8 @@ import EyeIcon from '../../assets/images/EyeIcon';
 // import CloseEye from '../../assets/images/icons/closeeye.png';
 import { useDispatch, useSelector } from "react-redux";
 // import { updateUserPassword } from "../../store/storeIndex";
+import withAccountSettingLayout from "../../layout/AccountSettingLayout";
+
 
 export const newPasswordValidationSchema = Yup.object().shape({
   oldPassword: Yup.string().required("Password is Required"),
@@ -153,4 +155,4 @@ const ChangeAccountPassword = () => {
   );
 };
 
-export default ChangeAccountPassword;
+export default withAccountSettingLayout(AccountNewPassword)

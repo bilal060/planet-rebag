@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import BagIcon from "../assets/images/icons/dashboardicons/bag";
 import BottleIcon from "../assets/images/icons/dashboardicons/bottle";
 import Radios from "../components/Radios";
-import { Col, Form, Image, Row, Table } from "react-bootstrap";
+import { Col, Image, Row, Table } from "react-bootstrap";
 import StoreLogo from "../assets/images/AppUserLogo.svg";
 import EditIcon from "../assets/images/icons/dashboardicons/editIcon";
+import withMainLayout from "../layout/MainLayout";
 
 function AppUserDetailView() {
   const [category, setCategory] = useState("All");
@@ -107,7 +108,7 @@ function AppUserDetailView() {
           </Row>
         </div>
       </div>
-      <div className="d-flex align-items-center justify-content-between gap-5 ">
+      <div className="d-flex align-items-center justify-content-between gap-3 flex-wrap">
         <h4 className="fs-3">Transactions History </h4>
         <div className="d-flex gap-3">
           {radio.map((data, index) => {
@@ -159,4 +160,4 @@ function AppUserDetailView() {
   );
 }
 
-export default AppUserDetailView;
+export default withMainLayout(AppUserDetailView);
