@@ -9,13 +9,14 @@ const initializeRefs = (length) =>
 
 const Otpinput = ({ length }) => {
   const [otp, setOTP] = useState(Array(length).fill(""));
+  setOTP(Array(length).fill(""));
   const inputRefs = useRef(initializeRefs(length));
 
-  const handleChange = (e, index) => {
+  const handleChange = () => {
     // ... your handleChange logic
   };
 
-  const handleKeyDown = (e, index) => {
+  const handleKeyDown = () => {
     // ... your handleKeyDown logic
   };
 

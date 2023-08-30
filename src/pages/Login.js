@@ -5,6 +5,7 @@ import "../assets/css/auth.css";
 import Logo from "../assets/images/Logo.svg";
 import EyeIcon from "../assets/images/EyeIcon";
 import EyeiconClose from "../assets/images/EyeiconClose";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -21,6 +22,12 @@ const Login = () => {
 
   const handleLoginOptionChange = (option) => {
     setSelectedLoginOption(option);
+  };
+
+  const navigate = useNavigate();
+
+  const direct = () => {
+    navigate("/signup");
   };
 
   return (
@@ -133,7 +140,13 @@ const Login = () => {
                   </label>
                 </div>
                 <div className="forgot-password">
-                  <a href="#">Forgot Password?</a>
+                  <a
+                    onClick={() => {
+                      navigate("/forgetPassword");
+                    }}
+                  >
+                    Forgot Password?
+                  </a>
                 </div>
               </div>
 
@@ -145,7 +158,7 @@ const Login = () => {
               <div className="account-signup mt-4">
                 <div className="signup-link">
                   <span>Don’t have an account?</span>
-                  <a href="#"> Sign up</a>
+                  <a onClick={direct}> Sign up</a>
                 </div>
               </div>
             </form>
