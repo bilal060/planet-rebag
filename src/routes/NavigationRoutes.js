@@ -20,12 +20,12 @@ const AccountSetting = React.lazy(() =>
   import("../layout/AccountSettingLayout.js"),
 );
 const TransactionHistory = React.lazy(() =>
-  import("../pages/TransactionHistory.js")
+  import("../pages/TransactionHistory.js"),
 );
 const StoreDetail = React.lazy(() => import("../pages/StoreDetail.js"));
 const AppUserCardView = React.lazy(() => import("../pages/AppUserCardView.js"));
 const AppUserDetailView = React.lazy(() =>
-  import("../pages/AppUserDetailView.js")
+  import("../pages/AppUserDetailView.js"),
 );
 
 const ItemCategories = React.lazy(() => import("../pages/ItemCategories.js"));
