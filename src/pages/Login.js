@@ -158,7 +158,7 @@ const Login = () => {
               <div className="account-signup mt-4">
                 <div className="signup-link">
                   <span>Don’t have an account?</span>
-                  <a onClick={direct}> Sign up</a>
+                  <a onClick={direct}>Sign up</a>
                 </div>
               </div>
             </form>
