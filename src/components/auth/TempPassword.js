@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import AuthFooter from "../components/auth_footer/AuthFooter";
-import "../assets/css/auth.css";
-import Logo from "../assets/images/Logo.svg";
+import AuthFooter from "../../components/auth_footer/AuthFooter";
+import "../../assets/css/auth.css";
+import Logo from "../../assets/images/Logo.svg";
 import EyeIcon from "../../assets/images/EyeIcon.js";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 const TempPassword = () => {

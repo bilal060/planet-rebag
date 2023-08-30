@@ -22,7 +22,7 @@ const Home = React.lazy(() => import("../pages/Home.js"));
 const Landing = React.lazy(() => import("../pages/Landing.js"));
 const CheckMail = React.lazy(() => import("../pages/CheckMail.js"));
 const ForgetPassword = React.lazy(() => import("../pages/ForgetPassword.js"));
-const Signup = React.lazy(() => import("../pages/TempPassword.js"));
+const Signup = React.lazy(() => import("../components/auth/TempPassword.js"));
 const Login = React.lazy(() => import("../pages/Login.js"));
 const SubstoreLogin = React.lazy(() => import("../pages/SubstoreLogin.js"));
 const OtpMobile = React.lazy(() => import("../pages/OtpMobile.js"));
