@@ -36,8 +36,7 @@ const AccountSettingSidebar = () => {
       <Card className="account-setting-card1 py-75 border-0 shadow1">
         {settingRoute.map((data, index) => {
           const isActive =
-            data.link === activeLink ||
-            location.pathname.includes(data.link);
+            data.link === activeLink || location.pathname.includes(data.link);
 
           return (
             <Link
@@ -52,7 +51,7 @@ const AccountSettingSidebar = () => {
           );
         })}
         <Link className="logout" to="/login">
-           Log Out
+          Log Out
         </Link>
       </Card>
     </>
