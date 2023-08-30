@@ -43,68 +43,16 @@ const Adminlogin = React.lazy(() => import("../pages/Adminlogin.js"));
 function NavigationRoutes() {
   const routes = (
     <Routes>
-      <Route
-        exact
-        path="/home"
-        element={
-          <MainLayout>
-            <Home />
-          </MainLayout>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/stores"
-        element={
-          <MainLayout>
-            <Stores />
-          </MainLayout>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/stores-details"
-        element={
-          <MainLayout>
-            <StoreDetail />
-          </MainLayout>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/users"
-        element={
-          <MainLayout>
-            <AppUserCardView />
-          </MainLayout>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/users/detail"
-        element={
-          <MainLayout>
-            <AppUserDetailView />
-          </MainLayout>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/item-categories"
-        element={
-          <MainLayout>
-            <ItemCategories />
-          </MainLayout>
-        }
-      ></Route>
+      <Route exact path="/home" element={<Home />}></Route>
+      <Route exact path="/stores" element={<Stores />}></Route>
+      <Route exact path="/stores-details" element={<StoreDetail />}></Route>
+      <Route exact path="/users" element={<AppUserCardView />}></Route>
+      <Route exact path="/users/detail" element={<AppUserDetailView />}></Route>
+      <Route exact path="/item-categories" element={<ItemCategories />}></Route>
       <Route
         exact
         path="/transaction-history"
-        element={
-          <MainLayout>
-            <TransactionHistory />
-          </MainLayout>
-        }
+        element={<TransactionHistory />}
       ></Route>
       <Route
         exact
@@ -151,17 +99,13 @@ function NavigationRoutes() {
           </AccountSetting>
         }
       ></Route>
-
       <Route
         exact
-        path="/requests"
-        element={
-          <MainLayout>
-            <Requests />
-          </MainLayout>
-        }
+        path="/settings/ChangePassword"
+        element={<AccountNewPassword />}
       ></Route>
-      <Route exact path="/support" element={<MainLayout></MainLayout>}></Route>
+      <Route exact path="/requests" element={<></>}></Route>
+      <Route exact path="/support" element={<></>}></Route>
       <Route exact path="/" element={<Landing />}></Route>
 
       <Route exact path="/checkMail" element={<CheckMail />}></Route>

@@ -5,6 +5,7 @@ import ActiveUserIcon from "../assets/images/icons/dashboardicons/activeUser";
 import Radios from "../components/Radios";
 import UserIcon from "../assets/images/icons/userIcon";
 import UsersCard from "../components/UsersCard";
+import withMainLayout from "../layout/MainLayout";
 const cardData = [
   {
     userName: "Carrefour",
@@ -126,4 +127,4 @@ const AppUserCardView = () => {
   );
 };
 
-export default AppUserCardView;
+export default withMainLayout(AppUserCardView);
