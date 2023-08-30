@@ -1,9 +1,18 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import StoreLogo from "../assets/images/icons/dashboardicons/storeLogo";
 import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
-import { Col, Form, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+
+UsersCard.propTypes = {
+  userName: PropTypes.any, 
+  userId: PropTypes.any, 
+  scannedItems: PropTypes.any, 
+  status: PropTypes.any, 
+  btnText: PropTypes.any, 
+  storeIcon: PropTypes.any,
+};
 
 const UsersCard = (props) => {
   const { userName, userId, scannedItems, status, btnText, storeIcon } = props;

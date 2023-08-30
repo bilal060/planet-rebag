@@ -1,7 +1,11 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useRef } from "react";
-//import "./OTPIInput.css"; // Create this CSS file for styling
 import "../assets/css/otp.css";
+import PropTypes from "prop-types";
+
+Otpinput.propTypes = {
+  length: PropTypes.any, // or PropTypes.node
+};
+
 const Otpinput = ({ length }) => {
   const [otp, setOTP] = useState(Array(length).fill(""));
   const inputRefs = Array(length)

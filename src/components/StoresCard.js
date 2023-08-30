@@ -1,10 +1,22 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import StoreLogo from "../assets/images/icons/dashboardicons/storeLogo";
 import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
 import { Col, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
+StoresCard.propTypes = {
+  children: PropTypes.any,
+  storeName: PropTypes.any,
+  storeId: PropTypes.any,
+  itemsReturned: PropTypes.any,
+  totalRedeemPrice: PropTypes.any,
+  totalSubStores: PropTypes.any,
+  numberOfPos: PropTypes.any,
+  storeLocation: PropTypes.any,
+  btnText: PropTypes.any,
+  storeIcon: PropTypes.any,
+};
 const StoresCard = (props) => {
   const {
     storeName,
@@ -28,9 +40,9 @@ const StoresCard = (props) => {
             </div>
             <div className="d-flex align-items-center gap-3">
               <Link to="/stores-details">
-              <button className="green-btn height-32px font-weight-600 rounded-8px py-2 px-3">
-                {btnText}
-              </button>
+                <button className="green-btn height-32px font-weight-600 rounded-8px py-2 px-3">
+                  {btnText}
+                </button>
               </Link>
               <ThreeDotsIcon />
             </div>

@@ -1,6 +1,14 @@
 import React from "react";
-import { Col, Image, Row } from "react-bootstrap";
 import "../assets/css/totalcard.css";
+import PropTypes from "prop-types";
+
+TotalCard.propTypes = {
+  classes: PropTypes.any, 
+  icon: PropTypes.any, 
+  value: PropTypes.any, 
+  text: PropTypes.any, 
+  title: PropTypes.any,
+};
 
 function TotalCard(props) {
   const { classes, icon, value, text, title } = props;

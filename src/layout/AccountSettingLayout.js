@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-=======
 import MainLayout from "./MainLayout";
 import AccountSettingSidebar from "../components/accountSetting/Sidebar";
 import { Card, Col, Container, Row } from "react-bootstrap";
