@@ -1,12 +1,23 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Stores from "../pages/Stores.js";
+const MainLayout = React.lazy(() => import("../layout/MainLayout.js"));
+const Stores = React.lazy(() => import("../pages/Stores.js"));
+const Requests = React.lazy(() => import("../pages/Requests.js"));
+const AccountPrivacyPolicy = React.lazy(() =>
+  import("../components/accountSetting/PrivacyPolicy.js"),
+);
+const AccountFaqs = React.lazy(() =>
+  import("../components/accountSetting/Faqs.js"),
+);
+const ContactUs = React.lazy(() =>
+  import("../components/accountSetting/ContactUs.js"),
+);
 const AccountNewPassword = React.lazy(() =>
   import("../components/accountSetting/ChangePassword.js"),
 );
-// const AccountSettingSidebar = React.lazy(() =>
-//   import("../components/accountSetting/Sidebar.js"),
-// );
+const AccountSetting = React.lazy(() =>
+  import("../layout/AccountSettingLayout.js"),
+);
 const TransactionHistory = React.lazy(() =>
   import("../pages/TransactionHistory.js"),
 );
@@ -15,6 +26,7 @@ const AppUserCardView = React.lazy(() => import("../pages/AppUserCardView.js"));
 const AppUserDetailView = React.lazy(() =>
   import("../pages/AppUserDetailView.js"),
 );
+
 const ItemCategories = React.lazy(() => import("../pages/ItemCategories.js"));
 const Home = React.lazy(() => import("../pages/Home.js"));
 const Landing = React.lazy(() => import("../pages/Landing.js"));
@@ -41,6 +53,51 @@ function NavigationRoutes() {
         exact
         path="/transaction-history"
         element={<TransactionHistory />}
+      ></Route>
+      <Route
+        exact
+        path="/settings/ChangePassword"
+        element={
+          <AccountSetting>
+            <AccountNewPassword />
+          </AccountSetting>
+        }
+      ></Route>
+      <Route
+        exact
+        path="/settings/Contact"
+        element={
+          <AccountSetting>
+            <ContactUs />
+          </AccountSetting>
+        }
+      ></Route>
+      <Route
+        exact
+        path="/settings/Faqs"
+        element={
+          <AccountSetting>
+            <AccountFaqs />
+          </AccountSetting>
+        }
+      ></Route>
+      <Route
+        exact
+        path="/settings/PrivacyPolicy"
+        element={
+          <AccountSetting>
+            <AccountPrivacyPolicy />
+          </AccountSetting>
+        }
+      ></Route>
+      <Route
+        exact
+        path="/settings"
+        element={
+          <AccountSetting>
+            <h1>afaq</h1>
+          </AccountSetting>
+        }
       ></Route>
       <Route
         exact
