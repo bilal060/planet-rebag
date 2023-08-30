@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 // import { updateUserAccount } from "../../store/storeIndex";
 import "../../assets/css/account-settings.css"
 import TextField from "../../shared/TextField";
+import withAccountSettingLayout from "../../layout/AccountSettingLayout";
 
 
 export const newPasswordValidationSchema = Yup.object().shape({
@@ -209,4 +210,4 @@ const AccountNewPassword = () => {
   );
 };
 
-export default AccountNewPassword;
+export default withAccountSettingLayout(AccountNewPassword)

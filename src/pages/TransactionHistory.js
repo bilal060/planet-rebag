@@ -10,6 +10,7 @@ import BottleIcon from "../assets/images/icons/dashboardicons/bottle";
 import TotalBottles from "../assets/images/icons/TotalBottles";
 import TotalStore from "../assets/images/icons/TotalStore";
 import TotalPrice from "../assets/images/icons/TotalPrice";
+import withMainLayout from "../layout/MainLayout";
 import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
 
 function TransactionHistory() {
@@ -181,4 +182,4 @@ function TransactionHistory() {
   );
 }
 
-export default TransactionHistory;
+export default withMainLayout(TransactionHistory);
