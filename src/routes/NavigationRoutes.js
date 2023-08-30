@@ -3,12 +3,12 @@ import { Route, Routes } from "react-router-dom";
 const MainLayout = React.lazy(() => import("../layout/MainLayout.js"));
 const Stores = React.lazy(() => import("../pages/Stores.js"));
 const Requests = React.lazy(() => import("../pages/Requests.js"));
-const AccountNewPassword = React.lazy(() =>
-  import("../components/accountSetting/ChangePassword.js"),
-);
-const AccountSetting = React.lazy(() =>
-  import("../layout/AccountSettingLayout.js"),
-);
+const AccountPrivacyPolicy =React.lazy(()=> import("../components/accountSetting/PrivacyPolicy.js")) ;
+const AccountFaqs =React.lazy(()=> import("../components/accountSetting/Faqs.js")) ;
+const ContactUs =React.lazy(()=> import("../components/accountSetting/ContactUs.js")) ;
+const AccountNewPassword =React.lazy(()=> import("../components/accountSetting/ChangePassword.js")) ;
+const AccountSettingSidebar =React.lazy(()=> import("../components/accountSetting/Sidebar.js")) ;
+const AccountSetting =React.lazy(()=> import("../layout/AccountSettingLayout.js")) ;
 const TransactionHistory = React.lazy(() =>
   import("../pages/TransactionHistory.js"),
 );
@@ -96,15 +96,47 @@ function NavigationRoutes() {
           </MainLayout>
         }
       ></Route>
-      <Route
+ <Route
         exact
         path="/settings/ChangePassword"
         element={
-          <AccountSetting>
-            <AccountNewPassword />
-          </AccountSetting>
+           <AccountSetting>
+               <AccountNewPassword/>
+            </AccountSetting>
         }
       ></Route>
+       <Route
+        exact
+        path="/settings/Contact"
+        element={
+           <AccountSetting>
+               <ContactUs/>
+            </AccountSetting>
+        }
+      ></Route>
+       <Route
+        exact
+        path="/settings/Faqs"
+        element={
+           <AccountSetting>
+               <AccountFaqs/>
+            </AccountSetting>
+        }
+      ></Route>
+       <Route
+        exact
+        path="/settings/PrivacyPolicy"
+        element={
+           <AccountSetting>
+               <AccountPrivacyPolicy/>
+            </AccountSetting>
+        }
+      ></Route>
+      <Route exact path="/requests" element={<MainLayout></MainLayout>}></Route>
+      <Route exact path="sSettings" element={ <AccountSetting>
+               <AccountNewPassword/>
+            </AccountSetting>}></Route>
+
       <Route
         exact
         path="/requests"

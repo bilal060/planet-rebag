@@ -79,7 +79,7 @@ const SidebarNav = () => {
             <span className="menu-text">Requests</span>
           </MenuItem>
         </NavLink>
-        <NavLink to="/Settings" className="menu-item-link footer">
+        <NavLink to="/settings" className="menu-item-link footer">
           <MenuItem>
             <span className="menu-icon">
               <SettingsIcon />
