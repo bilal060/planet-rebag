@@ -3,12 +3,6 @@ import "../assets/css/radio.css";
 import { Form } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-Radios.propTypes = {
-  data: PropTypes.any,
-  setCategory: PropTypes.any,
-  category: PropTypes.any 
-};
-
 const Radios = ({ data, setCategory, category }) => {
   return (
     <div className="radios" key={data.index}>
@@ -37,6 +31,12 @@ const Radios = ({ data, setCategory, category }) => {
       </div>
     </div>
   );
+};
+
+Radios.propTypes = {
+  data: PropTypes.any,
+  setCategory: PropTypes.any,
+  category: PropTypes.any,
 };
 
 export default Radios;

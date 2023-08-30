@@ -9,7 +9,6 @@ import { Form } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import UploadIcon from "../assets/images/icons/dashboardicons/uploadIcon";
 import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
-import withMainLayout from "../layout/MainLayout";
 
 const ItemCategories = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -244,4 +243,4 @@ const ItemCategories = () => {
   );
 };
 
-export default withMainLayout(ItemCategories);
+export default ItemCategories;

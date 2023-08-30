@@ -5,7 +5,6 @@ import Radios from "../components/Radios";
 import { Col, Image, Row, Table } from "react-bootstrap";
 import StoreLogo from "../assets/images/AppUserLogo.svg";
 import EditIcon from "../assets/images/icons/dashboardicons/editIcon";
-import withMainLayout from "../layout/MainLayout";
 
 function AppUserDetailView() {
   const [category, setCategory] = useState("All");
@@ -160,4 +159,4 @@ function AppUserDetailView() {
   );
 }
 
-export default withMainLayout(AppUserDetailView);
+export default AppUserDetailView;

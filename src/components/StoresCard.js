@@ -5,18 +5,6 @@ import { Col, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-StoresCard.propTypes = {
-  children: PropTypes.any,
-  storeName: PropTypes.any,
-  storeId: PropTypes.any,
-  itemsReturned: PropTypes.any,
-  totalRedeemPrice: PropTypes.any,
-  totalSubStores: PropTypes.any,
-  numberOfPos: PropTypes.any,
-  storeLocation: PropTypes.any,
-  btnText: PropTypes.any,
-  storeIcon: PropTypes.any,
-};
 const StoresCard = (props) => {
   const {
     storeName,
@@ -97,4 +85,16 @@ const StoresCard = (props) => {
   );
 };
 
+StoresCard.propTypes = {
+  children: PropTypes.any,
+  storeName: PropTypes.any,
+  storeId: PropTypes.any,
+  itemsReturned: PropTypes.any,
+  totalRedeemPrice: PropTypes.any,
+  totalSubStores: PropTypes.any,
+  numberOfPos: PropTypes.any,
+  storeLocation: PropTypes.any,
+  btnText: PropTypes.any,
+  storeIcon: PropTypes.any,
+};
 export default StoresCard;

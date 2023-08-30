@@ -5,7 +5,6 @@ import StoresCard from "../components/StoresCard";
 import { Col, Form, Modal, Row } from "react-bootstrap";
 import UploadIcon from "../assets/images/icons/dashboardicons/uploadIcon";
 import StoreLogo from "../assets/images/icons/dashboardicons/storeLogo";
-import withMainLayout from "../layout/MainLayout";
 
 const cardData = [
   {
@@ -211,4 +210,4 @@ const Stores = () => {
   );
 };
 
-export default withMainLayout(Stores);
+export default Stores;

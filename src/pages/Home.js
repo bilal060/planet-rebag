@@ -8,9 +8,8 @@ import TotalItemsIcon from "../assets/images/icons/TotalItems";
 import TotalStore from "../assets/images/icons/TotalStore";
 import TotalPrice from "../assets/images/icons/TotalPrice";
 import TotalUser from "../assets/images/icons/TotalUser";
-import withMainLayout from "../layout/MainLayout";
 
-function Home() {
+const Home = () => {
   const [category, setCategory] = useState("All");
 
   const radio = [
@@ -177,6 +176,6 @@ function Home() {
       </div>
     </div>
   );
-}
+};
 
-export default withMainLayout(Home);
+export default Home;

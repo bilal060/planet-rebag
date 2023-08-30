@@ -5,15 +5,6 @@ import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
-UsersCard.propTypes = {
-  userName: PropTypes.any, 
-  userId: PropTypes.any, 
-  scannedItems: PropTypes.any, 
-  status: PropTypes.any, 
-  btnText: PropTypes.any, 
-  storeIcon: PropTypes.any,
-};
-
 const UsersCard = (props) => {
   const { userName, userId, scannedItems, status, btnText, storeIcon } = props;
   const navigate = useNavigate();
@@ -65,6 +56,14 @@ const UsersCard = (props) => {
       </Card>
     </>
   );
+};
+UsersCard.propTypes = {
+  userName: PropTypes.any,
+  userId: PropTypes.any,
+  scannedItems: PropTypes.any,
+  status: PropTypes.any,
+  btnText: PropTypes.any,
+  storeIcon: PropTypes.any,
 };
 
 export default UsersCard;
