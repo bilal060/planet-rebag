@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { ErrorMessage, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { Button, Col, Image, Row } from "react-bootstrap";
+import { Col, Image, Row } from "react-bootstrap";
 import TextField from "../../shared/TextField";
-import Whatsapp1 from '../../assets/images/icons/whatsapp';
-import Insta from '../../assets/images/icons/rishtagram';
-import Website from '../../assets/images/icons/website';
-import EyeIcon from '../../assets/images/EyeIcon';
-// import CloseEye from '../../assets/images/icons/closeeye.png';
-import { useDispatch, useSelector } from "react-redux";
-// import { updateUserPassword } from "../../store/storeIndex";
+import Whatsapp1 from "../../assets/images/icons/whatsapp";
+import Insta from "../../assets/images/icons/rishtagram";
+import Website from "../../assets/images/icons/website";
 
 export const newPasswordValidationSchema = Yup.object().shape({
   oldPassword: Yup.string().required("Password is Required"),
@@ -25,29 +21,11 @@ export const newPasswordValidationSchema = Yup.object().shape({
 });
 
 const ContactUs = () => {
-
-  const dispatch = useDispatch();
-
-  const token = useSelector(state => state.user.token);
-
-  const submitHandler = (values) => {
-    const data = {
-      passwordCurrent: values.oldPassword,
-      password: values.newPassword,
-      passwordConfirm: values.confirmPassword
-    };
-    // dispatch(updateUserPassword(data, token));
-  };
-
   const initialValues = {
     oldPassword: "",
     newPassword: "",
     confirmPassword: "",
   };
-
-  const [eye, setEye] = useState(false);
-  const [eye1, setEye1] = useState(false);
-  const [eye2, setEye2] = useState(false);
 
   return (
     <div>
@@ -55,70 +33,68 @@ const ContactUs = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={newPasswordValidationSchema}
-        onSubmit={submitHandler}
       >
-        {({ values, touched, errors, handleChange, handleBlur }) => (
+        {() => (
           <Form action="" className="text-light-black">
             <Row className="align-items-start pb-2 gap-sm-0">
               <Col sm="6" className=" p-0 m-0">
-              <div className="d-flex flex-column full-name custom-w">
-                <TextField
-                 icon={
-                    <Image
-                      fluid
-                      className="field-icon"
-                      src={<Whatsapp1/>}
-                      loading="lazy"
-                      width={20}
-                      height={20}
-                    />
-                  }
-                //   righticon={
-                //     <Image
-                //       fluid
-                //       className="field-righticon"
-                //       src={<EyeIcon/>}
-                //       loading="lazy"
-                //       width={20}
-                //       height={20}
-                //       onClick={() => { setEye(!eye) }}
-                //     />
-                //   }
-                  placeholder="https://wa.me/03167422717?text="
-                  name="oldPassword"
-                  type="text"
-                />
-                <ErrorMessage
-                  component="div"
-                  name="oldPassword"
-                  className="invalid-feedback"
-                />
+                <div className="d-flex flex-column full-name custom-w">
+                  <TextField
+                    icon={
+                      <Image
+                        fluid
+                        className="field-icon"
+                        src={<Whatsapp1 />}
+                        loading="lazy"
+                        width={20}
+                        height={20}
+                      />
+                    }
+                    //   righticon={
+                    //     <Image
+                    //       fluid
+                    //       className="field-righticon"
+                    //       src={<EyeIcon/>}
+                    //       loading="lazy"
+                    //       width={20}
+                    //       height={20}
+                    //       onClick={() => { setEye(!eye) }}
+                    //     />
+                    //   }
+                    placeholder="https://wa.me/03167422717?text="
+                    name="oldPassword"
+                    type="text"
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="oldPassword"
+                    className="invalid-feedback"
+                  />
                 </div>
               </Col>
               <Col sm="6" className="pe-0">
-
                 <TextField
-                 icon={
+                  icon={
                     <Image
                       fluid
                       className="field-icon"
-                      src={<Insta/>}
+                      src={<Insta />}
                       loading="lazy"
                       width={20}
                       height={20}
                     />
                   }
-                //   righticon={
-                //     <Image
-                //       fluid
-                //       className="field-righticon"
-                //       src={<EyeIcon/>}
-                //       loading="lazy"
-                //       width={20}
-                //       height={20}
-                //       onClick={() => { setEye1(!eye1) }}
-                //     />
-                //   }
+                  //   righticon={
+                  //     <Image
+                  //       fluid
+                  //       className="field-righticon"
+                  //       src={<EyeIcon/>}
+                  //       loading="lazy"
+                  //       width={20}
+                  //       height={20}
+                  //       onClick={() => { setEye1(!eye1) }}
+                  //     />
+                  //   }
                   placeholder="https://msng.link/o?plant rebag=ig"
                   name="newPassword"
                   type="text"
@@ -130,38 +106,38 @@ const ContactUs = () => {
                 />
               </Col>
               <Col sm="6" className="p-0 m-0">
-              <div className="d-flex flex-column full-name custom-w">
-                <TextField 
-                 icon={
-                    <Image
-                      fluid
-                      className="field-icon"
-                      src={<Website/>}
-                      loading="lazy"
-                      width={20}
-                      height={20}
-                    />
-                  }
-                //   righticon={
-                //     <Image
-                //       fluid
-                //       className="field-righticon"
-                //       src={<EyeIcon/>}
-                //       loading="lazy"
-                //       width={20}
-                //       height={20}
-                //       onClick={() => { setEye2(!eye2) }}
-                //     />
-                //   }
-                  placeholder="Info@planetrebag.com"
-                  name="confirmPassword"
-                  type="text"
-                />
-                <ErrorMessage
-                  component="div"
-                  name="confirmPassword"
-                  className="invalid-feedback"
-                />
+                <div className="d-flex flex-column full-name custom-w">
+                  <TextField
+                    icon={
+                      <Image
+                        fluid
+                        className="field-icon"
+                        src={<Website />}
+                        loading="lazy"
+                        width={20}
+                        height={20}
+                      />
+                    }
+                    //   righticon={
+                    //     <Image
+                    //       fluid
+                    //       className="field-righticon"
+                    //       src={<EyeIcon/>}
+                    //       loading="lazy"
+                    //       width={20}
+                    //       height={20}
+                    //       onClick={() => { setEye2(!eye2) }}
+                    //     />
+                    //   }
+                    placeholder="Info@planetrebag.com"
+                    name="confirmPassword"
+                    type="text"
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="confirmPassword"
+                    className="invalid-feedback"
+                  />
                 </div>
               </Col>
             </Row>
