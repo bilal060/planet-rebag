@@ -147,3 +147,4 @@ const ChangeAccountPassword = () => {
 };
 
 export default withAccountSettingLayout(ChangeAccountPassword);
+
