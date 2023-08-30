@@ -6,14 +6,14 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const UsersCard = (props) => {
-  const { userName, userId, scannedItems, status, btnText, storeIcon } = props;
+  const { userName, userId, scannedItems, status, btnText, icon } = props;
   const navigate = useNavigate();
   return (
     <>
       <Card className="store-card">
         <Card.Header className="px-4 py-2">
           <div className="d-flex align-items-center justify-content-between gap-3">
-            <div className="store-logo">{storeIcon}</div>
+            <div className="store-logo">{icon}</div>
             <div className="d-flex align-items-center gap-3">
               <button
                 onClick={() => navigate("/users/detail")}
@@ -63,7 +63,7 @@ UsersCard.propTypes = {
   scannedItems: PropTypes.any,
   status: PropTypes.any,
   btnText: PropTypes.any,
-  storeIcon: PropTypes.any,
+  icon: PropTypes.any,
 };
 
 export default UsersCard;
