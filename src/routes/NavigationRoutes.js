@@ -5,22 +5,19 @@ const AuthLayout = React.lazy(() => import("../layout/AuthLayout.js"));
 const Stores = React.lazy(() => import("../pages/Stores.js"));
 const Requests = React.lazy(() => import("../pages/Requests.js"));
 const AccountPrivacyPolicy = React.lazy(() =>
-  import("../components/accountSetting/PrivacyPolicy.js")
+  import("../components/accountSetting/PrivacyPolicy.js"),
 );
 const AccountFaqs = React.lazy(() =>
-  import("../components/accountSetting/Faqs.js")
+  import("../components/accountSetting/Faqs.js"),
 );
 const ContactUs = React.lazy(() =>
-  import("../components/accountSetting/ContactUs.js")
+  import("../components/accountSetting/ContactUs.js"),
 );
 const AccountNewPassword = React.lazy(() =>
-  import("../components/accountSetting/ChangePassword.js")
+  import("../components/accountSetting/ChangePassword.js"),
 );
-// const AccountSettingSidebar = React.lazy(() =>
-//   import("../components/accountSetting/Sidebar.js"),
-// );
 const AccountSetting = React.lazy(() =>
-  import("../layout/AccountSettingLayout.js")
+  import("../layout/AccountSettingLayout.js"),
 );
 const TransactionHistory = React.lazy(() =>
   import("../pages/TransactionHistory.js")
@@ -30,6 +27,7 @@ const AppUserCardView = React.lazy(() => import("../pages/AppUserCardView.js"));
 const AppUserDetailView = React.lazy(() =>
   import("../pages/AppUserDetailView.js")
 );
+
 const ItemCategories = React.lazy(() => import("../pages/ItemCategories.js"));
 const Home = React.lazy(() => import("../pages/Home.js"));
 const Landing = React.lazy(() => import("../pages/Landing.js"));
@@ -46,58 +44,60 @@ const Adminlogin = React.lazy(() => import("../pages/Adminlogin.js"));
 function NavigationRoutes() {
   const routes = (
     <Routes>
+      <Route exact path="/home" element={<Home />}></Route>
+      <Route exact path="/stores" element={<Stores />}></Route>
+      <Route exact path="/stores-details" element={<StoreDetail />}></Route>
+      <Route exact path="/users" element={<AppUserCardView />}></Route>
+      <Route exact path="/users/detail" element={<AppUserDetailView />}></Route>
+      <Route exact path="/item-categories" element={<ItemCategories />}></Route>
       <Route
         exact
-        path="/home"
+        path="/transaction-history"
+        element={<TransactionHistory />}
+      ></Route>
+      <Route
+        exact
+        path="/settings/ChangePassword"
         element={
-          <MainLayout>
-            <Home />
-          </MainLayout>
+          <AccountSetting>
+            <AccountNewPassword />
+          </AccountSetting>
         }
       ></Route>
       <Route
         exact
-        path="/stores"
+        path="/settings/Contact"
         element={
-          <MainLayout>
-            <Stores />
-          </MainLayout>
+          <AccountSetting>
+            <ContactUs />
+          </AccountSetting>
         }
       ></Route>
       <Route
         exact
-        path="/stores-details"
+        path="/settings/Faqs"
         element={
-          <MainLayout>
-            <StoreDetail />
-          </MainLayout>
+          <AccountSetting>
+            <AccountFaqs />
+          </AccountSetting>
         }
       ></Route>
       <Route
         exact
-        path="/users"
+        path="/settings/PrivacyPolicy"
         element={
-          <MainLayout>
-            <AppUserCardView />
-          </MainLayout>
+          <AccountSetting>
+            <AccountPrivacyPolicy />
+          </AccountSetting>
         }
       ></Route>
       <Route
         exact
-        path="/users/detail"
+        path="/settings"
         element={
-          <MainLayout>
-            <AppUserDetailView />
-          </MainLayout>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/item-categories"
-        element={
-          <MainLayout>
-            <ItemCategories />
-          </MainLayout>
+          <AccountSetting>
+            <h1>afaq</h1>
+          </AccountSetting>
         }
       ></Route>
       <Route
@@ -165,7 +165,8 @@ function NavigationRoutes() {
           </MainLayout>
         }
       ></Route>
-      <Route exact path="/support" element={<MainLayout></MainLayout>}></Route>
+      <Route exact path="/requests" element={<></>}></Route>
+      <Route exact path="/support" element={<></>}></Route>
       <Route exact path="/" element={<Landing />}></Route>
 
       <Route exact path="/checkMail" element={<CheckMail />}></Route>
