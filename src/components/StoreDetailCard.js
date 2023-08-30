@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Col, Form, Image, Row, Table } from "react-bootstrap";
 import StoreLogo from "../assets/images/StoreLogo.svg";
-import "../assets/css/detailcard.css"
+import "../assets/css/detailcard.css";
 import Radios from "./Radios";
 import BagIcon from "../assets/images/icons/dashboardicons/bag";
 import BottleIcon from "../assets/images/icons/dashboardicons/bottle";
 
 function StoreDetailCard() {
   const [category, setCategory] = useState("All");
-
 
   const radio = [
     {
@@ -124,7 +123,6 @@ function StoreDetailCard() {
                 })}
               </div>
             </Col>
-
           </Row>
         </Col>
 
@@ -177,7 +175,6 @@ function StoreDetailCard() {
           </tbody>
         </Table>
       </div>
-
     </div>
   );
 }
