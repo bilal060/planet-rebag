@@ -112,7 +112,7 @@
     color: var(--grey) !important;
     text-decoration: none !important;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 100%;
 
     display: flex;
@@ -153,15 +153,18 @@
 }
 
 .account-setting .link.active {
-  background: #f0f6ff;
-  border-radius: 8px;
-  padding: 11px 17px !important;
-  color: var(--primary) !important;
-  font-weight: 700;
+  background: rgba(121, 170, 0, 0.10) !important;
+  padding: 15px 15px !important;
+  color: var(--primary-green, #79AA00) !important;
+font-family: SF Pro Display;
+font-size: 16px !important;
+font-style: normal;
+font-weight: 700 !important;
+line-height: 100%; /* 16px */
 }
 
 .account-setting .link.active svg path {
-  fill: var(--primary) !important;
+  fill: var(--primary-green) !important;
 }
 
 /* privacy policy */
@@ -292,6 +295,9 @@ input[type="password"] {
   /* background-repeat: no-repeat; */
   /* padding: 12px 20px 12px 40px; */
 }
+input[placeholder="●●●●●●●●"]{
+  color: #D9D9D9 !important;
+}
 
 select.language {
   background-color: white;
@@ -352,3 +358,20 @@ select {
   }
 }
 
+.shadow1{
+  box-shadow: 0px 3px 20px 0px rgba(0, 0, 0, 0.05) !important;
+
+}
+
+.logout{
+  border-top: 1px solid #E8E8E8 !important;
+  color: #EE5757 !important ;
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 11px 17px !important;
+  gap: 14px;
+}
