@@ -37,6 +37,7 @@ const withMainLayout = (WrappedComponent) => {
             </div>
             <WrappedComponent {...props} />
           </div>
+
         </main>
       </div>
     );
