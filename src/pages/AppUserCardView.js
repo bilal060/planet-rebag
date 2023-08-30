@@ -8,54 +8,63 @@ import UsersCard from "../components/UsersCard";
 const cardData = [
   {
     userName: "Carrefour",
+    icon: <UserIcon />,
     userId: "CF783457",
     scannedItems: "1209",
     status: "Active",
   },
   {
     userName: "Al Maya Group",
+    icon: <UserIcon />,
     userId: "CF783457",
     scannedItems: "1209",
     status: "Active",
   },
   {
     userName: "Carrefour",
+    icon: <UserIcon />,
     userId: "CF783457",
     scannedItems: "1209",
     status: "Active",
   },
   {
     userName: "Al Maya Group",
+    icon: <UserIcon />,
     userId: "CF783457",
     scannedItems: "1209",
     status: "Active",
   },
   {
     userName: "Carrefour",
+    icon: <UserIcon />,
     userId: "CF783457",
     scannedItems: "1209",
     status: "Active",
   },
   {
     userName: "Al Maya Group",
+    icon: <UserIcon />,
     userId: "CF783457",
     scannedItems: "1209",
     status: "Active",
   },
   {
     userName: "Al Maya Group",
+    icon: <UserIcon />,
     userId: "CF783457",
     scannedItems: "1209",
     status: "Active",
   },
   {
     userName: "Carrefour",
+    icon: <UserIcon />,
     userId: "CF783457",
     scannedItems: "1209",
     status: "Active",
   },
   {
     userName: "Al Maya Group",
+    icon: <UserIcon />,
     userId: "CF783457",
     scannedItems: "1209",
     status: "Active",
@@ -107,7 +116,7 @@ const AppUserCardView = () => {
                 scannedItems={data.scannedItems}
                 status={data.status}
                 btnText="View Profile"
-                storeIcon={UserIcon}
+                icon={<UserIcon />}
               />
             </Col>
           );
