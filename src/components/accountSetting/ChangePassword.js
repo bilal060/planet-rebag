@@ -155,4 +155,4 @@ const ChangeAccountPassword = () => {
   );
 };
 
-export default withAccountSettingLayout(AccountNewPassword)
+export default withAccountSettingLayout(ChangeAccountPassword)
