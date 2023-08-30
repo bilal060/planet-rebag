@@ -3,6 +3,7 @@ import SideBarNav from "../shared/SideBarNav";
 import "../assets/css/layout.css";
 import userimage from "../assets/images/icons/dashboardicons/userimage.png";
 import { useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const withMainLayout = (WrappedComponent) => {
   return function MainLayoutHOC(props) {

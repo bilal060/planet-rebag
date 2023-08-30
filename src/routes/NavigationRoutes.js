@@ -4,10 +4,11 @@ import Stores from "../pages/Stores.js";
 const AccountNewPassword =React.lazy(()=> import("../components/accountSetting/ChangePassword.js")) ;
 const AccountSettingSidebar =React.lazy(()=> import("../components/accountSetting/Sidebar.js")) ;
 const TransactionHistory = React.lazy(() => import("../pages/TransactionHistory.js"));
+
 const StoreDetail = React.lazy(() => import("../pages/StoreDetail.js"));
 const AppUserCardView = React.lazy(() => import("../pages/AppUserCardView.js"));
 const AppUserDetailView = React.lazy(() =>
-  import("../pages/AppUserDetailView.js")
+  import("../pages/AppUserDetailView.js"),
 );
 const ItemCategories = React.lazy(() => import("../pages/ItemCategories.js"));
 const Home = React.lazy(() => import("../pages/Home.js"));
@@ -68,6 +69,7 @@ function NavigationRoutes() {
       ></Route>
       <Route exact path="/requests" element={<></>}></Route>
       <Route exact path="/support" element={<></>}></Route>
+
       <Route exact path="/" element={<Landing />}></Route>
 
       <Route exact path="/checkMail" element={<CheckMail />}></Route>

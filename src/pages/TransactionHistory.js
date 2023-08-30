@@ -11,6 +11,7 @@ import TotalBottles from "../assets/images/icons/TotalBottles";
 import TotalStore from "../assets/images/icons/TotalStore";
 import TotalPrice from "../assets/images/icons/TotalPrice";
 import withMainLayout from "../layout/MainLayout";
+import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
 
 function TransactionHistory() {
   const [category, setCategory] = useState("All");
@@ -34,27 +35,27 @@ function TransactionHistory() {
   const tableData = [
     {
       id: "CF783457",
-      returnedBag: "7",
-      returnedBottle: "7",
-      TotalQty: "14",
+      itemType: "Bag",
+      returnedQuantity: "7",
+      totalQty: "14",
       RedeemPrice: "AED 5.00",
       StoreLocation: "Al Ain, Abu Dhabi",
       time: "10:19 AM  |  23/07/2023",
     },
     {
       id: "CF783457",
-      returnedBag: "20",
-      returnedBottle: "20",
-      TotalQty: "40",
+      itemType: "Bottle",
+      returnedQuantity: "20",
+      totalQty: "40",
       RedeemPrice: "AED 5.00",
       StoreLocation: "Al Ain, Abu Dhabi",
       time: "10:19 AM  |  23/07/2023",
     },
     {
       id: "CF783457",
-      returnedBag: "13",
-      returnedBottle: "13",
-      TotalQty: "26",
+      itemType: "Bag",
+      returnedQuantity: "13",
+      totalQty: "26",
       RedeemPrice: "AED 5.00",
       StoreLocation: "Al Ain, Abu Dhabi",
       time: "10:19 AM  |  23/07/2023",
@@ -105,14 +106,14 @@ function TransactionHistory() {
       </div>
 
       <Row className="justify-content-between pt-5">
-        <Col className="d-flex align-items-center gap-5 " lg="8" xl="8">
+        <Col className="p-0 d-flex align-items-center gap-5" lg="7" xl="8">
           <Row>
-            <Col xl="8">
+            <Col xl="8" className="mb-3 p-0">
               <h4 className="fs-3">Transactions History </h4>
             </Col>
 
-            <Col xl="4">
-              <div className="d-flex justify-content-center gap-3">
+            <Col xl="4 p-0">
+              <div className="d-flex justify-content-start gap-3">
                 {radio.map((data, index) => {
                   return (
                     <Radios
@@ -128,9 +129,9 @@ function TransactionHistory() {
           </Row>
         </Col>
 
-        <Col className="">
-          <Form className="d-flex justify-content-start">
-            <Form.Label className="d-flex justify-content-end w-100 mt-2 gap-2 fw-bold">
+        <Col className="p-0">
+          <Form className="d-flex justify-content-start gap-2 flex-lg-row flex-column">
+            <Form.Label className="d-flex justify-content-lg-end mt-2 w-100 font-weight-600">
               Select Store:
             </Form.Label>
             <Form.Select
@@ -145,13 +146,12 @@ function TransactionHistory() {
         </Col>
       </Row>
 
-      <div className="table-main mt-3">
+      <div className="table-main mt-4">
         <Table className="table-design" striped hover>
           <thead>
             <tr>
-              <th>Session ID</th>
-              <th>Returned Bags</th>
-              <th>Returned Bottles</th>
+              <th>Item Type</th>
+              <th>Returned Qty</th>
               <th>Total Qty</th>
               <th>Redeem Price</th>
               <th>Store Location</th>
@@ -163,14 +163,15 @@ function TransactionHistory() {
             {(tableData || []).map((data, index) => {
               return (
                 <tr key={index}>
-                  <td>{data.id}</td>
-                  <td>{data.returnedBag}</td>
-                  <td>{data.returnedBottle}</td>
-                  <td>{data.TotalQty}</td>
+                  <td>{data.itemType}</td>
+                  <td>{data.returnedQuantity}</td>
+                  <td>{data.totalQty}</td>
                   <td>{data.RedeemPrice}</td>
                   <td>{data.StoreLocation}</td>
                   <td>{data.time}</td>
-                  <td>{/* <ThreeDotsIcon /> */}</td>
+                  <td>
+                    <ThreeDotsIcon />
+                  </td>
                 </tr>
               );
             })}

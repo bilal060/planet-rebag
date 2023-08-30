@@ -32,7 +32,7 @@ const Adminlogin = () => {
           <form>
             <div className="form-group mt-5">
               <div className="label-inputs-start">
-                <label for="emailInput" className="font-16">
+                <label htmlFor="emailInput" className="font-16">
                   Email
                 </label>
               </div>

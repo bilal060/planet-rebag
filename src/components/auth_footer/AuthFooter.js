@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import whatsapp_icon from "../../assets/images/icons/login/whatsapp-icon.svg";
 import insta_icon from "../../assets/images/icons/login/insta-icon.svg";
@@ -7,8 +6,9 @@ const AuthFooter = () => {
   return (
     <>
       <footer className="footer">
-        <div className="footer-left ps-5">
-          All Rights Reserved. Copyright © 2023 Planet Re-Bag
+        <div className="footer-left ps-5 d-flex flex-column flex-sm-row gap-2">
+          <span> All Rights Reserved. Copyright © 2023</span>
+          <span>Planet Re-Bag</span>
         </div>
         <div className="footer-icons pe-5">
           <span className="icon-text pt-2 text-wrap">Contact Us</span>

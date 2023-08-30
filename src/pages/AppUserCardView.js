@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import "../assets/css/stores.css";
-import AddNewCategoryIcon from "../assets/images/icons/dashboardicons/addNewCategory";
-import StoresCard from "../components/StoresCard";
-import { Col, Form, Modal, Row } from "react-bootstrap";
-import UploadIcon from "../assets/images/icons/dashboardicons/uploadIcon";
+import { Col, Row } from "react-bootstrap";
 import ActiveUserIcon from "../assets/images/icons/dashboardicons/activeUser";
 import Radios from "../components/Radios";
 import UserIcon from "../assets/images/icons/userIcon";
