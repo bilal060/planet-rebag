@@ -31,7 +31,7 @@ if (isClient) {
 
   store = createStore(
     persistReducer(persistConfig, rootReducer),
-    compose(applyMiddleware(thunk), devtools)
+    compose(applyMiddleware(thunk), devtools),
   );
 
   store.__PERSISTOR = persistStore(store);
@@ -46,7 +46,7 @@ root.render(
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

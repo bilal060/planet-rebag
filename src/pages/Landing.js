@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import "../assets/css/auth.css";
 import logo from "../assets/images/plant-rebag-logo.svg";

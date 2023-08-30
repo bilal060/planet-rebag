@@ -1,6 +1,5 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
-// import searchIcon from "../../assets/images/icons/search.svg";
 
 const faqs = [
   {
@@ -72,16 +71,8 @@ const AccountFaqs = () => {
   return (
     <div>
       <h3 className="font-24 font-weight-800 mb-4 pb-3">
-      Frequently Asked Question 
+        Frequently Asked Question
       </h3>
-      {/* <div className="search mb-4">
-        <input
-          type="text"
-          placeholder="Search"
-          className="border-0 outline-none h-100 w-100 bg-transparent text-[16px]"
-        />
-        <img src="" alt="" />
-      </div> */}
       <Accordion defaultActiveKey="0">
         {faqs.map((data, index) => {
           return (
