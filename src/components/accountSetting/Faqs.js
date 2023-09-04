@@ -1,5 +1,6 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
+import withAccountSettingLayout from "../../layout/AccountSettingLayout";
 
 const faqs = [
   {
@@ -87,4 +88,4 @@ const AccountFaqs = () => {
   );
 };
 
-export default AccountFaqs;
+export default withAccountSettingLayout(AccountFaqs);

@@ -1,4 +1,5 @@
 import React from "react";
+import withAccountSettingLayout from "../../layout/AccountSettingLayout";
 
 const AccountPrivacyPolicy = () => {
   return (
@@ -91,4 +92,4 @@ const AccountPrivacyPolicy = () => {
   );
 };
 
-export default AccountPrivacyPolicy;
+export default withAccountSettingLayout(AccountPrivacyPolicy);

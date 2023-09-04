@@ -6,6 +6,7 @@ import TextField from "../../shared/TextField";
 import Whatsapp1 from "../../assets/images/icons/whatsapp";
 import Insta from "../../assets/images/icons/rishtagram";
 import Website from "../../assets/images/icons/website";
+import withAccountSettingLayout from "../../layout/AccountSettingLayout";
 
 export const newPasswordValidationSchema = Yup.object().shape({
   oldPassword: Yup.string().required("Password is Required"),
@@ -156,4 +157,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default withAccountSettingLayout(ContactUs);
