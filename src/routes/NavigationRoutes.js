@@ -84,7 +84,6 @@ function NavigationRoutes() {
         path="/settings/PrivacyPolicy"
         element={<AccountPrivacyPolicy />}
       ></Route>
-      <Route exact path="/Settings" element={<AccountNewPassword />}></Route>
     </Routes>
   );
 

@@ -43,6 +43,7 @@ a {
   font-size: 18px !important;
   line-height: 100%;
 }
+
 .font-16 {
   font-size: 16px;
   line-height: 100%;
@@ -69,10 +70,12 @@ a {
   font-weight: 800;
 }
 
-
+small.pt-2 {
+  margin-top: 12px !important;
+}
 
 /* btn green */
-.btn-green{
+.btn-green {
   background: var(--primary-green, #79AA00) !important;
   border: none !important;
   border-radius: 12px !important;
@@ -82,29 +85,30 @@ a {
 
 /* padding */
 .py-75 {
-  padding-top: 0.75rem!important;
-  padding-bottom: 0.75rem!important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
 }
 
-.privacy-policy > p{
-color: #707070 !important;
+.privacy-policy>p {
+  color: #707070 !important;
 }
 
 
-.accordion{
+.accordion {
   gap: 20px;
   display: grid;
 
 }
-.accordion-header{
+
+.accordion-header {
   border-radius: 8px;
   background: #F8F8F8;
-  padding: 0px 20px;
+  padding: 0px 24px;
 }
-.accordion-collapse{
+
+.accordion-collapse {
   border-radius: 8px;
   background: rgb(248, 248, 248);
   padding: 0px 20px;
   margin-top: 25px !important;
 }
-

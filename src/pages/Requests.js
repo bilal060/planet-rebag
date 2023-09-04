@@ -7,6 +7,7 @@ import MusafiBottleIcon from "../assets/images/icons/dashboardicons/musafiBottle
 import AlainBottleIcon from "../assets/images/icons/dashboardicons/alainBottle";
 import TickIcon from "../assets/images/icons/dashboardicons/tickIcon";
 import CrossIcon from "../assets/images/icons/dashboardicons/crossIcon";
+import withMainLayout from "../layout/MainLayout";
 
 const tableData = [
   {
@@ -156,4 +157,4 @@ function Requests() {
   );
 }
 
-export default Requests;
+export default withMainLayout(Requests);

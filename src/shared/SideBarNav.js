@@ -79,7 +79,12 @@ const SidebarNav = () => {
             <span className="menu-text">Requests</span>
           </MenuItem>
         </NavLink>
-        <NavLink to="/settings" className="menu-item-link footer">
+        <NavLink
+          to="/settings/ChangePassword"
+          className={`menu-item-link footer ${
+            location.pathname.includes("/settings") ? "active" : ""
+          }`}
+        >
           <MenuItem>
             <span className="menu-icon">
               <SettingsIcon />
