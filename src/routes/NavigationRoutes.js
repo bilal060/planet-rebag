@@ -1,9 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Stores from "../pages/Stores.js";
-// const AccountSettingSidebar = React.lazy(() =>
-//   import("../components/accountSetting/Sidebar.js"),
-// );
 const TransactionHistory = React.lazy(() =>
   import("../pages/TransactionHistory.js"),
 );
@@ -12,7 +9,6 @@ const AppUserCardView = React.lazy(() => import("../pages/AppUserCardView.js"));
 const AppUserDetailView = React.lazy(() =>
   import("../pages/AppUserDetailView.js"),
 );
-
 const ItemCategories = React.lazy(() => import("../pages/ItemCategories.js"));
 const Requests = React.lazy(() => import("../pages/Requests.js"));
 const Home = React.lazy(() => import("../pages/Home.js"));

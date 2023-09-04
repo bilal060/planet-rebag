@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+/* eslint-disable prettier/prettier */
+import React, { useState, useRef, useEffect } from "react";
 import "../assets/css/otp.css";
 import PropTypes from "prop-types";
 
@@ -9,16 +10,21 @@ const initializeRefs = (length) =>
 
 const Otpinput = ({ length }) => {
   const [otp, setOTP] = useState(Array(length).fill(""));
-  setOTP(Array(length).fill(""));
   const inputRefs = useRef(initializeRefs(length));
 
-  const handleChange = () => {
-    // ... your handleChange logic
+  useEffect(() => {
+    setOTP(Array(length).fill(""));
+  }, [length]);
+
+  const handleChange = (e, index) => {
+    const newOTP = [...otp];
+    newOTP[index] = e.target.value;
+    setOTP(newOTP);
   };
 
-  const handleKeyDown = () => {
-    // ... your handleKeyDown logic
-  };
+  // const handleKeyDown = (e, index) => {
+  // ... your handleKeyDown logic, you can move it here
+  // };
 
   return (
     <div className="otp-input-container">
@@ -30,7 +36,7 @@ const Otpinput = ({ length }) => {
           maxLength={1}
           value={digit}
           onChange={(e) => handleChange(e, index)}
-          onKeyDown={(e) => handleKeyDown(e, index)}
+        //onKeyDown={(e) => handleKeyDown(e, index)}
         />
       ))}
     </div>
@@ -38,7 +44,7 @@ const Otpinput = ({ length }) => {
 };
 
 Otpinput.propTypes = {
-  length: PropTypes.any,
+  length: PropTypes.number.isRequired,
 };
 
 export default Otpinput;

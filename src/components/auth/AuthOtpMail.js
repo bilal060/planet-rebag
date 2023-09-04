@@ -2,7 +2,7 @@ import React from "react";
 import logo_rebag from "../../assets/images/plant-rebag-logo.svg";
 import Form from "react-bootstrap/Form";
 import Otpinput from "../../components/Otpinput";
-const AuthOtpMobile = () => {
+const AuthOtpMail = () => {
   return (
     <>
       <div className="login-container">
@@ -15,7 +15,7 @@ const AuthOtpMobile = () => {
               Enter OTP
             </h3>
             <span className="logo-text d-flex justify-content-center mt-2">
-              A 4 digit code sent to +97101******789.
+              A 4 digit code sent to ada*****@gmail.com
             </span>
           </span>
           <div className="login-btn mt-5">
@@ -41,4 +41,4 @@ const AuthOtpMobile = () => {
   );
 };
 
-export default AuthOtpMobile;
+export default AuthOtpMail;
