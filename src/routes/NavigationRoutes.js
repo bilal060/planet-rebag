@@ -33,9 +33,6 @@ const ContactUs = React.lazy(() =>
 const AccountNewPassword = React.lazy(() =>
   import("../components/accountSetting/ChangePassword.js"),
 );
-const AccountSetting = React.lazy(() =>
-  import("../layout/AccountSettingLayout.js"),
-);
 const TransactionHistory = React.lazy(() =>
   import("../pages/TransactionHistory.js"),
 );
@@ -72,46 +69,16 @@ function NavigationRoutes() {
       <Route
         exact
         path="/settings/ChangePassword"
-        element={
-          <AccountSetting>{/* <AccountNewPassword /> */}</AccountSetting>
-        }
+        element={<AccountNewPassword />}
       ></Route>
-      <Route
-        exact
-        path="/settings/Contact"
-        element={
-          <AccountSetting>
-            <ContactUs />
-          </AccountSetting>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/settings/Faqs"
-        element={
-          <AccountSetting>
-            <AccountFaqs />
-          </AccountSetting>
-        }
-      ></Route>
+      <Route exact path="/settings/Contact" element={<ContactUs />}></Route>
+      <Route exact path="/settings/Faqs" element={<AccountFaqs />}></Route>
       <Route
         exact
         path="/settings/PrivacyPolicy"
-        element={
-          <AccountSetting>
-            <AccountPrivacyPolicy />
-          </AccountSetting>
-        }
+        element={<AccountPrivacyPolicy />}
       ></Route>
-      <Route
-        exact
-        path="/Settings"
-        element={
-          <AccountSetting>
-            <AccountNewPassword />
-          </AccountSetting>
-        }
-      ></Route>{" "}
+      <Route exact path="/Settings" element={<AccountNewPassword />}></Route>
     </Routes>
   );
 
