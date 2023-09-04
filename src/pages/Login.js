@@ -1,6 +1,7 @@
 import React from "react";
 import "../assets/css/auth.css";
 import Login from "../components/auth/Login";
+import withAuthLayout from "../layout/AuthLayout";
 
 const LoginPage = () => {
   return (
@@ -10,4 +11,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default withAuthLayout(LoginPage);
