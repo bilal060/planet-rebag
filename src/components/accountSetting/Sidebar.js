@@ -1,26 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
+import PrivacyPolicyIcon from "../../assets/images/icons/PrivacyPolicyIcon";
+import FAQsIcon from "../../assets/images/icons/FAQsIcon";
+import ContactUsIcon from "../../assets/images/icons/ContactUsIcon";
+import ChangePasswordIcon from "../../assets/images/icons/ChangePassword";
+import LogoutIcon from "../../assets/images/icons/Logout";
 
 const settingRoute = [
   {
     name: "Change Password",
-    img: "",
+    img: <ChangePasswordIcon />,
     link: "/settings/ChangePassword",
   },
   {
-    name: "ContactUs",
-    img: "",
+    name: "Contact Us",
+    img: <ContactUsIcon />,
     link: "/settings/Contact",
   },
   {
     name: "FAQs",
-    img: "",
+    img: <FAQsIcon />,
     link: "/settings/Faqs",
   },
   {
     name: "Privacy Policy",
-    img: "",
+    img: <PrivacyPolicyIcon />,
     link: "/settings/PrivacyPolicy",
   },
 ];
@@ -28,22 +33,17 @@ const settingRoute = [
 const AccountSettingSidebar = () => {
   const location = useLocation();
 
-  // Initialize active link state to the first element's link
-  const [activeLink, setActiveLink] = useState(settingRoute[0].link);
-
   return (
     <>
-      <Card className="account-setting-card1 py-75 border-0 shadow1">
+      <Card className="account-setting-card1 pt-3 border-0 shadow1">
         {settingRoute.map((data, index) => {
-          const isActive =
-            data.link === activeLink || location.pathname.includes(data.link);
-
           return (
             <Link
               key={index}
               to={data.link}
-              className={isActive ? "active link" : "link"}
-              onClick={() => setActiveLink(data.link)}
+              className={
+                data.link === location.pathname ? "active link" : "link"
+              }
             >
               {data.img}
               {data.name}
@@ -51,7 +51,7 @@ const AccountSettingSidebar = () => {
           );
         })}
         <Link className="logout" to="/login">
-          Log Out
+          <LogoutIcon /> Log Out
         </Link>
       </Card>
     </>
