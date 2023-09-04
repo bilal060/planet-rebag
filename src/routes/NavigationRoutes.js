@@ -1,24 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-const MainLayout = React.lazy(() => import("../layout/MainLayout.js"));
-const AuthLayout = React.lazy(() => import("../layout/AuthLayout.js"));
-const Stores = React.lazy(() => import("../pages/Stores.js"));
-const Requests = React.lazy(() => import("../pages/Requests.js"));
-const AccountPrivacyPolicy = React.lazy(() =>
-  import("../components/accountSetting/PrivacyPolicy.js"),
-);
-const AccountFaqs = React.lazy(() =>
-  import("../components/accountSetting/Faqs.js"),
-);
-const ContactUs = React.lazy(() =>
-  import("../components/accountSetting/ContactUs.js"),
-);
-const AccountNewPassword = React.lazy(() =>
-  import("../components/accountSetting/ChangePassword.js"),
-);
-const AccountSetting = React.lazy(() =>
-  import("../layout/AccountSettingLayout.js"),
-);
+import Stores from "../pages/Stores.js";
+// const AccountSettingSidebar = React.lazy(() =>
+//   import("../components/accountSetting/Sidebar.js"),
+// );
 const TransactionHistory = React.lazy(() =>
   import("../pages/TransactionHistory.js"),
 );
@@ -29,6 +14,7 @@ const AppUserDetailView = React.lazy(() =>
 );
 
 const ItemCategories = React.lazy(() => import("../pages/ItemCategories.js"));
+const Requests = React.lazy(() => import("../pages/Requests.js"));
 const Home = React.lazy(() => import("../pages/Home.js"));
 const Landing = React.lazy(() => import("../pages/Landing.js"));
 const CheckMail = React.lazy(() => import("../pages/CheckMail.js"));
@@ -40,6 +26,7 @@ const OtpMobile = React.lazy(() => import("../pages/OtpMobile.js"));
 const OtpMail = React.lazy(() => import("../pages/OtpMail.js"));
 const Confirmation = React.lazy(() => import("../pages/Confirmation.js"));
 const Adminlogin = React.lazy(() => import("../pages/Adminlogin.js"));
+const AuthLayout = React.lazy(() => import("../layout/AuthLayout.js"));
 
 function NavigationRoutes() {
   const routes = (
@@ -55,116 +42,7 @@ function NavigationRoutes() {
         path="/transaction-history"
         element={<TransactionHistory />}
       ></Route>
-      <Route
-        exact
-        path="/settings/ChangePassword"
-        element={
-          <AccountSetting>
-            <AccountNewPassword />
-          </AccountSetting>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/settings/Contact"
-        element={
-          <AccountSetting>
-            <ContactUs />
-          </AccountSetting>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/settings/Faqs"
-        element={
-          <AccountSetting>
-            <AccountFaqs />
-          </AccountSetting>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/settings/PrivacyPolicy"
-        element={
-          <AccountSetting>
-            <AccountPrivacyPolicy />
-          </AccountSetting>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/settings"
-        element={
-          <AccountSetting>
-            <h1>afaq</h1>
-          </AccountSetting>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/transaction-history"
-        element={
-          <MainLayout>
-            <TransactionHistory />
-          </MainLayout>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/settings/ChangePassword"
-        element={
-          <AccountSetting>
-            <AccountNewPassword />
-          </AccountSetting>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/settings/Contact"
-        element={
-          <AccountSetting>
-            <ContactUs />
-          </AccountSetting>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/settings/Faqs"
-        element={
-          <AccountSetting>
-            <AccountFaqs />
-          </AccountSetting>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/settings/PrivacyPolicy"
-        element={
-          <AccountSetting>
-            <AccountPrivacyPolicy />
-          </AccountSetting>
-        }
-      ></Route>
-      <Route exact path="/requests" element={<MainLayout></MainLayout>}></Route>
-      <Route
-        exact
-        path="sSettings"
-        element={
-          <AccountSetting>
-            <AccountNewPassword />
-          </AccountSetting>
-        }
-      ></Route>
-
-      <Route
-        exact
-        path="/requests"
-        element={
-          <MainLayout>
-            <Requests />
-          </MainLayout>
-        }
-      ></Route>
+      <Route exact path="/requests" element={<Requests />}></Route>
       <Route exact path="/requests" element={<></>}></Route>
       <Route exact path="/support" element={<></>}></Route>
       <Route exact path="/" element={<Landing />}></Route>
