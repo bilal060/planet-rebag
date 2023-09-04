@@ -1,6 +1,7 @@
 import React from "react";
 import "../assets/css/auth.css";
 import ForgetPassword from "../components/auth/ForgetPassword";
+import withAuthLayout from "../layout/AuthLayout";
 
 function ForgetPasswordPage() {
   return (
@@ -10,4 +11,4 @@ function ForgetPasswordPage() {
   );
 }
 
-export default ForgetPasswordPage;
+export default withAuthLayout(ForgetPasswordPage);
