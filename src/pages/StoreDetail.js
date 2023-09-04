@@ -1,6 +1,7 @@
 import React from "react";
 import StoreDetailCard from "../components/StoreDetailCard";
 
+import withMainLayout from "../layout/MainLayout";
 function StoreDetail() {
   return (
     <div>
@@ -9,4 +10,4 @@ function StoreDetail() {
   );
 }
 
-export default StoreDetail;
+export default withMainLayout(StoreDetail);

@@ -11,6 +11,7 @@ import TotalBottles from "../assets/images/icons/TotalBottles";
 import TotalStore from "../assets/images/icons/TotalStore";
 import TotalPrice from "../assets/images/icons/TotalPrice";
 import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
+import withMainLayout from "../layout/MainLayout";
 
 function TransactionHistory() {
   const [category, setCategory] = useState("All");
@@ -181,4 +182,4 @@ function TransactionHistory() {
   );
 }
 
-export default TransactionHistory;
+export default withMainLayout(TransactionHistory);
