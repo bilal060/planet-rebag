@@ -9,7 +9,11 @@ const withAuthLayout = (WrappedComponent) => {
     return (
       <>
         <div>
-          <img src={Logo} alt="" className="logo-container logo" />
+          <img
+            src={Logo}
+            alt=""
+            className="logo-container logo d-md-block d-none"
+          />
         </div>
         <AuthCircles />
         <WrappedComponent {...props} />
