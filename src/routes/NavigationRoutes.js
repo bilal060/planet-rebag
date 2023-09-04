@@ -19,14 +19,13 @@ const Home = React.lazy(() => import("../pages/Home.js"));
 const Landing = React.lazy(() => import("../pages/Landing.js"));
 const CheckMail = React.lazy(() => import("../pages/CheckMail.js"));
 const ForgetPassword = React.lazy(() => import("../pages/ForgetPassword.js"));
-const TempPassword = React.lazy(() => import("../pages/TempPassword.js"));
+const TempPasswordPage = React.lazy(() => import("../pages/TempPassword.js"));
 const Login = React.lazy(() => import("../pages/Login.js"));
 const SubstoreLogin = React.lazy(() => import("../pages/SubstoreLogin.js"));
 const OtpMobile = React.lazy(() => import("../pages/OtpMobile.js"));
 const OtpMail = React.lazy(() => import("../pages/OtpMail.js"));
 const Confirmation = React.lazy(() => import("../pages/Confirmation.js"));
 const Adminlogin = React.lazy(() => import("../pages/Adminlogin.js"));
-const AuthLayout = React.lazy(() => import("../layout/AuthLayout.js"));
 
 function NavigationRoutes() {
   const routes = (
@@ -43,21 +42,12 @@ function NavigationRoutes() {
         element={<TransactionHistory />}
       ></Route>
       <Route exact path="/requests" element={<Requests />}></Route>
-      <Route exact path="/requests" element={<></>}></Route>
       <Route exact path="/support" element={<></>}></Route>
       <Route exact path="/" element={<Landing />}></Route>
 
       <Route exact path="/checkMail" element={<CheckMail />}></Route>
       <Route exact path="/forgetPassword" element={<ForgetPassword />}></Route>
-      <Route
-        exact
-        path="/temppassword"
-        element={
-          <AuthLayout>
-            <TempPassword />
-          </AuthLayout>
-        }
-      ></Route>
+      <Route exact path="/temppassword" element={<TempPasswordPage />}></Route>
       <Route exact path="/login" element={<Login />}></Route>
       <Route exact path="/substorelogin" element={<SubstoreLogin />}></Route>
       <Route exact path="/otpmobile" element={<OtpMobile />}></Route>

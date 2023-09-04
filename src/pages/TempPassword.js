@@ -1,6 +1,7 @@
 import React from "react";
 import TempPassword from "../components/auth/TempPassword";
-const Signup = () => {
+import withAuthLayout from "../layout/AuthLayout";
+const TempPasswordPage = () => {
   return (
     <>
       <TempPassword />
@@ -8,4 +9,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default withAuthLayout(TempPasswordPage);
