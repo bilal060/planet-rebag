@@ -5,6 +5,7 @@ import { Button, Col, Image, Row } from "react-bootstrap";
 import TextField from "../../shared/TextField";
 import EyeIcon from "../../assets/images/EyeIcon";
 import withAccountSettingLayout from "../../layout/AccountSettingLayout";
+import withMainLayout from "../../layout/MainLayout";
 
 export const newPasswordValidationSchema = Yup.object().shape({
   oldPassword: Yup.string().required("Password is Required"),
@@ -146,4 +147,4 @@ const ChangeAccountPassword = () => {
   );
 };
 
-export default withAccountSettingLayout(ChangeAccountPassword);
+export default withMainLayout(withAccountSettingLayout(ChangeAccountPassword));

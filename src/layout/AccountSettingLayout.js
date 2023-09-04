@@ -2,7 +2,6 @@ import React from "react";
 import AccountSettingSidebar from "../components/accountSetting/Sidebar";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import "../assets/css/account-settings.css";
-import withMainLayout from "./MainLayout";
 
 const withAccountSettingLayout = (WrappedComponent) => {
   return function AccountSettingHOC(props) {
@@ -26,4 +25,4 @@ const withAccountSettingLayout = (WrappedComponent) => {
   };
 };
 
-export default withMainLayout(withAccountSettingLayout);
+export default withAccountSettingLayout;
