@@ -1,9 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Stores from "../pages/Stores.js";
-const AccountNewPassword = React.lazy(() =>
-  import("../components/accountSetting/ChangePassword.js"),
-);
 // const AccountSettingSidebar = React.lazy(() =>
 //   import("../components/accountSetting/Sidebar.js"),
 // );
@@ -15,7 +12,9 @@ const AppUserCardView = React.lazy(() => import("../pages/AppUserCardView.js"));
 const AppUserDetailView = React.lazy(() =>
   import("../pages/AppUserDetailView.js"),
 );
+
 const ItemCategories = React.lazy(() => import("../pages/ItemCategories.js"));
+const Requests = React.lazy(() => import("../pages/Requests.js"));
 const Home = React.lazy(() => import("../pages/Home.js"));
 const Landing = React.lazy(() => import("../pages/Landing.js"));
 const CheckMail = React.lazy(() => import("../pages/CheckMail.js"));
@@ -43,11 +42,7 @@ function NavigationRoutes() {
         path="/transaction-history"
         element={<TransactionHistory />}
       ></Route>
-      <Route
-        exact
-        path="/settings/ChangePassword"
-        element={<AccountNewPassword />}
-      ></Route>
+      <Route exact path="/requests" element={<Requests />}></Route>
       <Route exact path="/requests" element={<></>}></Route>
       <Route exact path="/support" element={<></>}></Route>
       <Route exact path="/" element={<Landing />}></Route>
