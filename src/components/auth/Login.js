@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import AuthCircles from "../../components/auth_circles/AuthCircles";
-import AuthFooter from "../../components/auth_footer/AuthFooter";
 import "../../assets/css/auth.css";
 import Logo from "../../assets/images/Logo.svg";
+import AuthFooter from "../../components/auth_footer/AuthFooter";
 import EyeIcon from "../../assets/images/EyeIcon";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +22,6 @@ const Login = () => {
   const handleLoginOptionChange = (option) => {
     setSelectedLoginOption(option);
   };
-
   const navigate = useNavigate();
 
   const direct = () => {
@@ -32,12 +30,9 @@ const Login = () => {
 
   return (
     <>
-      <div className="logo-hide-top">
-        <img src={Logo} alt="" className="logo-container logo" />
-      </div>
-      <AuthCircles />
       <div className="login-container">
         <div className="login-sub text-center">
+          <img src={Logo} alt="" className="logo-container logo" />
           <h3 className="font-32 big-text-color">Welcome back!</h3>
           <span className="font-16-400 small-text-color mt-2">
             Login to your account.
