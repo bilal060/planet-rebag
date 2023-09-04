@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import AuthCircles from "../../components/auth_circles/AuthCircles";
 import AuthFooter from "../../components/auth_footer/AuthFooter";
 import "../../assets/css/auth.css";
-import Logo from "../../assets/images/Logo.svg";
 import EyeIcon from "../../assets/images/EyeIcon";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../assets/images/Logo.svg";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -32,17 +31,15 @@ const Login = () => {
 
   return (
     <>
-      <div className="logo-hide-top">
-        <img src={Logo} alt="" className="logo-container logo" />
-      </div>
-      <AuthCircles />
       <div className="login-container">
-        <div className="login-sub text-center">
+        <div className="login-sub text-center flex-column">
+          <img src={Logo} alt="" className="d-sm-none d-block mt-5 pt-5" />
+
           <h3 className="font-32 big-text-color">Welcome back!</h3>
           <span className="font-16-400 small-text-color mt-2">
             Login to your account.
           </span>
-          <div className="label-inputs-start mt-5">
+          <div className="label-inputs-start mt-1">
             <label htmlFor="loginOption" className="font-16">
               Login with
             </label>
@@ -75,6 +72,7 @@ const Login = () => {
               </label>
             </div>
           </div>
+
           {selectedLoginOption === "email" && (
             <form className="email-login">
               <div className="form-group mt-5"></div>
@@ -247,6 +245,7 @@ const Login = () => {
           )}
         </div>
       </div>
+
       <AuthFooter />
     </>
   );
