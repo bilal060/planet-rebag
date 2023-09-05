@@ -9,13 +9,13 @@ const TextField = ({ righticon, icon, margin, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <React.Fragment>
-      <div className="mb-3">
+      <div className="mb-3 w-100">
         <div className={`field-container ${margin}`}>
           <div className="d-flex align-items-center">
             {icon}
 
             <input
-              className={`form-control custom-field shadow-none ${
+              className={`form-control custom-field shadow-none p-0 ${
                 meta.touched && meta.error && "is-invalid"
               } `}
               {...field}
@@ -25,11 +25,13 @@ const TextField = ({ righticon, icon, margin, ...props }) => {
             {righticon}
           </div>
         </div>
-        <ErrorMessage
-          component="small"
-          name={field.name}
-          className="text-danger fw-bold pt-2"
-        />
+        <div className="d-flex justify-content-start">
+          <ErrorMessage
+            component="small"
+            name={field.name}
+            className="text-danger fw-bold mt-1"
+          />
+        </div>
       </div>
     </React.Fragment>
   );
