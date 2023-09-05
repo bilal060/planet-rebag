@@ -2,8 +2,20 @@ import React, { useState } from "react";
 import "../assets/css/stores.css";
 import AddNewCategoryIcon from "../assets/images/icons/dashboardicons/addNewCategory";
 import StoresCard from "./StoresCard";
-import { Col, Form, Modal, Row } from "react-bootstrap";
+import { Col, Modal, Row } from "react-bootstrap";
 import StoreLogo from "../assets/images/icons/dashboardicons/storeLogo";
+import { ErrorMessage, Form, Formik } from "formik";
+import * as Yup from "yup";
+import EyeiconClose from "../assets/images/EyeiconClose";
+import EyeIcon from "../assets/images/EyeIcon";
+import TextField from "../shared/TextField";
+
+const addsubStoreValidationSchema = Yup.object().shape({
+  storeName: Yup.string().required("Store Name is Required"),
+  emailorMob: Yup.string().email().required("Email/Contact Number is Required"),
+  location: Yup.string().required("Location is Required"),
+  password: Yup.string().required("Password is Required"),
+});
 
 const cardData = [
   {
@@ -45,6 +57,17 @@ const cardData = [
 ];
 const Store = () => {
   const [modalShow, setModalShow] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const initialValues = {
+    storeName: "",
+    emailorMob: "",
+    location: "",
+    password: "",
+  };
   return (
     <div className="stores">
       <div className="d-flex align-items-center justify-content-between mb-4 ps-12 pe-12">
@@ -93,48 +116,97 @@ const Store = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label className="mb-2 text-capitalize font-weight-600">
-                Store Name
-              </Form.Label>
-              <Form.Control
-                className="inputstyle"
-                type="text"
-                placeholder="Enter store name"
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label className="mb-2 text-capitalize font-weight-600">
-                Email / Contact Number
-              </Form.Label>
-              <Form.Control
-                className="inputstyle"
-                type="text"
-                placeholder="Enter email / Contact Number"
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label className="mb-2 text-capitalize font-weight-600">
-                Store Location
-              </Form.Label>
-              <Form.Control
-                className="inputstyle"
-                type="text"
-                placeholder="Enter store location"
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label className="mb-2 text-capitalize font-weight-600">
-                Temporary Password
-              </Form.Label>
-              <Form.Control
-                className="inputstyle"
-                type="password"
-                placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-              />
-            </Form.Group>
-          </Form>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={addsubStoreValidationSchema}
+          >
+            {() => (
+              <Form>
+                <div className="form-group mb-3">
+                  <div className="label-inputs-start mb-2">
+                    <label htmlFor="emailInput" className="font-16">
+                      Store Name
+                    </label>
+                  </div>
+
+                  <TextField
+                    placeholder="Enter store name"
+                    name="storeName"
+                    type={"text"}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="storeName"
+                    className="invalid-feedback"
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <div className="label-inputs-start mb-2">
+                    <label htmlFor="emailInput" className="font-16">
+                      Email / Contact Number
+                    </label>
+                  </div>
+                  <TextField
+                    placeholder="Enter email / Contact Number"
+                    name="emailorMob"
+                    type={"text"}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="emailorMob"
+                    className="invalid-feedback"
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <div className="label-inputs-start mb-2">
+                    <label htmlFor="emailInput" className="font-16">
+                      Store Location
+                    </label>
+                  </div>
+                  <TextField
+                    placeholder="Enter store location"
+                    name="location"
+                    type={"text"}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="location"
+                    className="invalid-feedback"
+                  />
+                </div>
+                <div className="form-group mt-2">
+                  <div className="label-inputs-start">
+                    <label
+                      htmlFor="passwordInput"
+                      className="font-16 text-start"
+                    >
+                      Password
+                    </label>
+                  </div>
+                  <div className="input-group mt-2">
+                    <TextField
+                      righticon={
+                        <span
+                          onClick={togglePasswordVisibility}
+                          className="cr-p"
+                        >
+                          {showPassword ? <EyeiconClose /> : <EyeIcon />}
+                        </span>
+                      }
+                      placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                      name="password"
+                      type={showPassword ? "text" : "password"}
+                    />
+                    <ErrorMessage
+                      component="div"
+                      name="password"
+                      className="invalid-feedback"
+                    />
+                  </div>
+                </div>
+              </Form>
+            )}
+          </Formik>
         </Modal.Body>
         <Modal.Footer>
           <div className="d-flex flex-column w-100 gap-3">

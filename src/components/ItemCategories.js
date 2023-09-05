@@ -5,10 +5,18 @@ import Radios from "../components/Radios";
 import BagIcon from "../assets/images/icons/dashboardicons/bag";
 import BottleIcon from "../assets/images/icons/dashboardicons/bottle";
 import AddNewCategoryIcon from "../assets/images/icons/dashboardicons/addNewCategory";
-import { Form } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import UploadIcon from "../assets/images/icons/dashboardicons/uploadIcon";
 import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
+import TextField from "../shared/TextField";
+import { ErrorMessage, Form, Formik } from "formik";
+import * as Yup from "yup";
+
+const addsubStoreValidationSchema = Yup.object().shape({
+  categoryName: Yup.string().required("Category Name is Required"),
+  icon: Yup.string().required("Category Icon is Required"),
+});
+
 const ItemCategory = () => {
   const [modalShow, setModalShow] = useState(false);
   const [file, setFile] = useState(null);
@@ -98,6 +106,10 @@ const ItemCategory = () => {
       time: "10:19 AM  |  23/07/2023",
     },
   ];
+  const initialValues = {
+    categoryName: "",
+    icon: "",
+  };
 
   const attachFile = (e) => {
     if (e.target.files) {
@@ -186,43 +198,56 @@ const ItemCategory = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="mb-5">
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label className="mb-2">Category Name</Form.Label>
-              <Form.Control
-                onChange={(e) =>
-                  setAddCategory((prevState) => ({
-                    ...prevState,
-                    categoryName: e.target.value,
-                  }))
-                }
-                className="inputstyle"
-                type="text"
-                placeholder="Enter category name"
-              />
-            </Form.Group>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={addsubStoreValidationSchema}
+          >
+            {(touched, errors) => (
+              <Form>
+                <div className="form-group mb-3">
+                  <div className="label-inputs-start mb-2">
+                    <label htmlFor="emailInput" className="font-16">
+                      Category Name
+                    </label>
+                  </div>
 
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label className="mb-2">Upload Category Icon</Form.Label>
-              <Form.Label className="upload-files">
-                <div className="d-flex justify-content-center align-items-center h-100 w-100 gap-2">
-                  <UploadIcon />
-                  <p className="font-16 font-weight-500">
-                    {file === null ? "Upload File" : file}
-                  </p>
+                  <TextField
+                    placeholder="Enter store name"
+                    name="categoryName"
+                    type={"text"}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="categoryName"
+                    className="invalid-feedback"
+                  />
                 </div>
-                <Form.Control
-                  onChange={(e) => attachFile(e)}
-                  className="d-none"
-                  type="file"
-                  accept=".jpg, .jpeg, .png"
-                />
-              </Form.Label>
-            </Form.Group>
-          </Form>
+
+                <div className="mb-3">
+                  <label className="mb-2">Upload Category Icon</label>
+                  <label className="upload-files">
+                    <div className="d-flex justify-content-center align-items-center h-100 w-100 gap-2">
+                      <UploadIcon />
+                      <p className="font-16 font-weight-500">
+                        {file === null ? "Upload File" : file}
+                      </p>
+                    </div>
+                    <input
+                      onChange={(e) => attachFile(e)}
+                      className="d-none"
+                      type="file"
+                      accept=".jpg, .jpeg, .png"
+                    />
+                  </label>
+                  {touched && errors && !file && (
+                    <p className="invalid-feedback d-block mt-2 fw-bold text-start">
+                      Image is required
+                    </p>
+                  )}
+                </div>
+              </Form>
+            )}
+          </Formik>
         </Modal.Body>
         <Modal.Footer className="mt-5">
           <div className="d-flex flex-column w-100 gap-3">
