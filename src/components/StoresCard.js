@@ -27,7 +27,7 @@ const StoresCard = (props) => {
               <h3 className="fs-5 d-sm-block d-none">{storeName}</h3>
             </div>
             <div className="d-flex align-items-center gap-3">
-              <Link to="/stores-details">
+              <Link to="/stores/detail">
                 <button className="green-btn height-32px font-weight-600 rounded-8px py-2 px-3">
                   {btnText}
                 </button>

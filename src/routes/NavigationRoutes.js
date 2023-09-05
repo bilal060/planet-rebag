@@ -49,7 +49,7 @@ function NavigationRoutes() {
     <Routes>
       <Route exact path="/home" element={<Home />}></Route>
       <Route exact path="/stores" element={<Stores />}></Route>
-      <Route exact path="/stores-details" element={<StoreDetail />}></Route>
+      <Route exact path="/stores/detail" element={<StoreDetail />}></Route>
       <Route exact path="/users" element={<AppUserCardView />}></Route>
       <Route exact path="/users/detail" element={<AppUserDetailView />}></Route>
       <Route exact path="/item-categories" element={<ItemCategories />}></Route>
