@@ -6,7 +6,7 @@ const AuthFooter = () => {
   return (
     <>
       <footer className="footer">
-        <div className="footer-left ps-5 d-flex flex-column align-items-center flex-sm-row gap-2 text-center">
+        <div className="footer-left ps-5 d-flex flex-column align-items-center flex-md-row gap-2 text-center">
           <span> All Rights Reserved. Copyright © 2023</span>
           <span>Planet Re-Bag</span>
         </div>
