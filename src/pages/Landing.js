@@ -1,6 +1,7 @@
 import React from "react";
 import "../assets/css/auth.css";
 import Landing from "../components/Landing";
+import withAuthLayout from "../layout/AuthLayout";
 
 const LandingPage = () => {
   return (
@@ -10,4 +11,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default withAuthLayout(LandingPage);
