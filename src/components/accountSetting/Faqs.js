@@ -1,6 +1,7 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
 import withAccountSettingLayout from "../../layout/AccountSettingLayout";
+import withMainLayout from "../../layout/MainLayout";
 
 const faqs = [
   {
@@ -71,7 +72,7 @@ const faqs = [
 const AccountFaqs = () => {
   return (
     <div>
-      <h3 className="font-24 font-weight-800 mb-4 pb-3">
+      <h3 className="font-24 font-weight-700 mb-5">
         Frequently Asked Question
       </h3>
       <Accordion defaultActiveKey="0">
@@ -79,7 +80,10 @@ const AccountFaqs = () => {
           return (
             <Accordion.Item eventKey={data.id} key={index}>
               <Accordion.Header>{data.heading}</Accordion.Header>
-              <Accordion.Body className="px-0">{data.detail}</Accordion.Body>
+              <Accordion.Body className="px-0">
+                <h5 className="mb-4"> {data.heading}</h5>
+                {data.detail}
+              </Accordion.Body>
             </Accordion.Item>
           );
         })}
@@ -88,4 +92,4 @@ const AccountFaqs = () => {
   );
 };
 
-export default withAccountSettingLayout(AccountFaqs);
+export default withMainLayout(withAccountSettingLayout(AccountFaqs));

@@ -18,6 +18,8 @@ const ForgetPasswordPage = React.lazy(() =>
 );
 const TempPasswordPage = React.lazy(() => import("../pages/TempPassword.js"));
 const LoginPage = React.lazy(() => import("../pages/Login.js"));
+const SignupPage = React.lazy(() => import("../pages/Signup.js"));
+
 const SubstoreLogin = React.lazy(() => import("../pages/SubstoreLogin.js"));
 const OtpMobile = React.lazy(() => import("../pages/OtpMobile.js"));
 const OtpMail = React.lazy(() => import("../pages/OtpMail.js"));
@@ -67,6 +69,8 @@ function NavigationRoutes() {
       ></Route>
       <Route exact path="/temppassword" element={<TempPasswordPage />}></Route>
       <Route exact path="/login" element={<LoginPage />}></Route>
+      <Route exact path="/signup" element={<SignupPage />}></Route>
+
       <Route exact path="/substorelogin" element={<SubstoreLogin />}></Route>
       <Route exact path="/otpmobile" element={<OtpMobile />}></Route>
       <Route exact path="/otpmail" element={<OtpMail />}></Route>
@@ -84,7 +88,6 @@ function NavigationRoutes() {
         path="/settings/PrivacyPolicy"
         element={<AccountPrivacyPolicy />}
       ></Route>
-      <Route exact path="/Settings" element={<AccountNewPassword />}></Route>
     </Routes>
   );
 

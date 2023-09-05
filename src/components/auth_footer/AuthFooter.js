@@ -6,12 +6,12 @@ const AuthFooter = () => {
   return (
     <>
       <footer className="footer">
-        <div className="footer-left ps-5 d-flex flex-column flex-sm-row gap-2">
+        <div className="footer-left ps-5 d-flex flex-column align-items-center flex-sm-row gap-2 text-center">
           <span> All Rights Reserved. Copyright © 2023</span>
           <span>Planet Re-Bag</span>
         </div>
-        <div className="footer-icons pe-5">
-          <span className="icon-text pt-2 text-wrap">Contact Us</span>
+        <div className="footer-icons align-items-center pe-5">
+          <span className="icon-text text-wrap">Contact Us</span>
           <a href="">
             <img src={whatsapp_icon} alt="Facebook" />
           </a>

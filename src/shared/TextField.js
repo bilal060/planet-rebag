@@ -10,7 +10,7 @@ const TextField = ({ righticon, icon, margin, ...props }) => {
   return (
     <React.Fragment>
       <div className="mb-3">
-        <div className={`mb-2 field-container ${margin}`}>
+        <div className={`field-container ${margin}`}>
           <div className="d-flex align-items-center">
             {icon}
 
@@ -28,7 +28,7 @@ const TextField = ({ righticon, icon, margin, ...props }) => {
         <ErrorMessage
           component="small"
           name={field.name}
-          className="text-danger fw-bold"
+          className="text-danger fw-bold pt-2"
         />
       </div>
     </React.Fragment>
