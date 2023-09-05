@@ -14,7 +14,7 @@ import EyeiconClose from "../../assets/images/EyeiconClose";
 
 const signupValidationSchema = Yup.object().shape({
   fullName: Yup.string().required("Full Name is Required"),
-  email: Yup.string().required("Email is Required"),
+  email: Yup.string().email().required("Email is Required"),
   mobNo: Yup.string().required("Mobile Number is Required"),
   password: Yup.string().required("Password is Required"),
 });
