@@ -47,6 +47,14 @@ const SidebarNav = () => {
             <span className="menu-text">Stores</span>
           </MenuItem>
         </NavLink>
+        <NavLink to="/substores" className="menu-item-link">
+          <MenuItem>
+            <span className="menu-icon">
+              <StoreIcon />
+            </span>
+            <span className="menu-text">Sub Stores</span>
+          </MenuItem>
+        </NavLink>
         <NavLink to="/users" className="menu-item-link">
           <MenuItem>
             <span className="menu-icon">
@@ -90,6 +98,22 @@ const SidebarNav = () => {
               <SettingsIcon />
             </span>
             <span className="menu-text">Settings</span>
+          </MenuItem>
+        </NavLink>
+        <NavLink to="/redeemCategory1" className="menu-item-link">
+          <MenuItem>
+            <span className="menu-icon">
+              <AppUsersIcon />
+            </span>
+            <span className="menu-text">Redeemed Items Details</span>
+          </MenuItem>
+        </NavLink>
+        <NavLink to="/redeemCategory2" className="menu-item-link">
+          <MenuItem>
+            <span className="menu-icon">
+              <AppUsersIcon />
+            </span>
+            <span className="menu-text">Redeemed Items Details 2</span>
           </MenuItem>
         </NavLink>
       </Menu>

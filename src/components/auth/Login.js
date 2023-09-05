@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthFooter from "../../components/auth_footer/AuthFooter";
 import "../../assets/css/auth.css";
 import EyeIcon from "../../assets/images/EyeIcon";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/Logo.svg";
+import { getWindowDimensions } from "../../helpers/getWindowDimentions";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -29,9 +30,26 @@ const Login = () => {
     navigate("/signup");
   };
 
+  const [dimension, setDimension] = useState();
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const windowdimention = getWindowDimensions();
+      setDimension(windowdimention);
+    };
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.addEventListener("resize", handleWindowResize);
+    };
+  }, [window.innerHeight]);
   return (
     <>
-      <div className="login-container">
+      <div
+        className={`login-container ${
+          dimension?.height < 680
+            ? "justify-content-start py-sm-5"
+            : "justify-content-center"
+        }`}
+      >
         <div className="login-sub text-center flex-column">
           <img src={Logo} alt="" className="d-sm-none d-block mt-5 pt-5" />
 

@@ -1,17 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/css/auth.css";
 import Logo from "../assets/images/Logo.svg";
 import AuthFooter from "../components/auth_footer/AuthFooter";
 import logo from "../assets/images/plant-rebag-logo.svg";
 import { useNavigate } from "react-router-dom";
+import { getWindowDimensions } from "../helpers/getWindowDimentions";
 const Landing = () => {
   const navigate = useNavigate();
   const direct = () => {
     navigate("/login");
   };
+  const [dimension, setDimension] = useState();
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const windowdimention = getWindowDimensions();
+      setDimension(windowdimention);
+    };
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.addEventListener("resize", handleWindowResize);
+    };
+  }, [window.innerHeight]);
   return (
     <>
-      <div className="login-container">
+      <div
+        className={`login-container ${
+          dimension?.height < 840
+            ? "justify-content-start py-sm-5"
+            : "justify-content-center"
+        }`}
+      >
         <div className="login-sub text-center flex-column">
           <img src={Logo} alt="" className="d-sm-none d-block mt-5 pt-5" />
           <div className="auth-responsive">

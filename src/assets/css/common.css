@@ -211,3 +211,9 @@ table.table-design tbody tr:nth-child(odd) td {
     border-radius: 12px !important;
     width: 100% !important;
 }
+
+@media screen and (width>1200px) {
+    .w-xl-100 {
+        width: 100% !important;
+    }
+}

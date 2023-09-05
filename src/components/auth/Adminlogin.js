@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthFooter from "../../components/auth_footer/AuthFooter";
 import "../../assets/css/auth.css";
 import Logo from "../../assets/images/Logo.svg";
 import EyeIcon from "../../assets/images/EyeIcon";
 import EyeiconClose from "../../assets/images/EyeiconClose";
+import { getWindowDimensions } from "../../helpers/getWindowDimentions";
 
 const Adminlogin = () => {
   const [password, setPassword] = useState("");
@@ -16,10 +17,27 @@ const Adminlogin = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  const [dimension, setDimension] = useState();
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const windowdimention = getWindowDimensions();
+      setDimension(windowdimention);
+    };
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.addEventListener("resize", handleWindowResize);
+    };
+  }, [window.innerHeight]);
 
   return (
     <>
-      <div className="login-container">
+      <div
+        className={`login-container ${
+          dimension?.height < 840
+            ? "justify-content-start py-sm-5"
+            : "justify-content-center"
+        }`}
+      >
         <div className="login-sub text-center flex-column">
           <img src={Logo} alt="" className="d-sm-none d-block mt-5 pt-5" />
           <div className="auth-responsive">
