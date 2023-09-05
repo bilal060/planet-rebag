@@ -15,7 +15,7 @@ const loginValidationSchema = Yup.object().shape({
   mobNo: Yup.string().required("Mobile Number is Required"),
   password: Yup.string().required("Password is Required"),
 });
-const Login = () => {
+const SubStoreLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [selectedLoginOption, setSelectedLoginOption] = useState("email");
   const initialValues = {
@@ -34,9 +34,9 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  // const direct = () => {
-  //   navigate("/signup");
-  // };
+  const direct = () => {
+    navigate("/signup");
+  };
 
   return (
     <>
@@ -199,14 +199,14 @@ const Login = () => {
                     Login
                   </button>
                 </div>
-                {/* <div className="account-signup mt-4">
+                <div className="account-signup mt-4">
                   <div className="signup-link">
                     <span>Don’t have an account? </span>
                     <a onClick={direct} className="text-green">
                       Sign up
                     </a>
                   </div>
-                </div> */}
+                </div>
               </Form>
             )}
           </Formik>
@@ -218,4 +218,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SubStoreLogin;

@@ -1,14 +1,13 @@
 import React from "react";
-import AuthCircles from "../components/auth_circles/AuthCircles";
-import AuthFooter from "../components/auth_footer/AuthFooter";
 import "../assets/css/auth.css";
+import SubStoreLogin from "../components/auth/SubStoreLogin";
+import withAuthLayout from "../layout/AuthLayout";
 const SubstoreLogin = () => {
   return (
     <>
-      <AuthCircles />
-      <AuthFooter />
+      <SubStoreLogin />
     </>
   );
 };
 
-export default SubstoreLogin;
+export default withAuthLayout(SubstoreLogin);
