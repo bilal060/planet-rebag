@@ -1,6 +1,6 @@
 import React from "react";
-import "../../assets/css/auth.css";
 import Logo from "../../assets/images/Logo.svg";
+import "../../assets/css/auth.css";
 import AuthFooter from "../../components/auth_footer/AuthFooter";
 
 function ForgetPassword() {
@@ -17,16 +17,18 @@ function ForgetPassword() {
             </span>
             <form>
               <div className="form-group mt-sm-5 mt-4">
-                <label htmlFor="emailInput" className="font-16">
-                  Email
-                </label>
-              </div>
-              <div className="input-group mt-2">
-                <input
-                  type="email"
-                  className="form-control emailInput"
-                  placeholder="@ Enter your email"
-                />
+                <div className="label-inputs-start">
+                  <label htmlFor="emailInput" className="font-16 text-start">
+                    Email
+                  </label>
+                </div>
+                <div className="input-group mt-2">
+                  <input
+                    type="email"
+                    className="form-control emailInput"
+                    placeholder="@ Enter your email"
+                  />
+                </div>
               </div>
               <div className="login-btn mt-3">
                 <button className="guest-btn btn-lg btn-block">

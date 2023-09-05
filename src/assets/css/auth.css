@@ -69,6 +69,10 @@ body {
   overflow-y: auto;
 } */
 
+.login-sub {
+  width: 24.9rem;
+}
+
 @media (max-width: 768px) {
   .login-sub {
     border-radius: 16px !important;
