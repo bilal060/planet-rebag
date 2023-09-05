@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { ErrorMessage, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { Button, Col, Row } from "react-bootstrap";
 import TextField from "../../shared/TextField";
+import { Button, Col, Row } from "react-bootstrap";
 import EyeIcon from "../../assets/images/EyeIcon";
 import withAccountSettingLayout from "../../layout/AccountSettingLayout";
 import withMainLayout from "../../layout/MainLayout";

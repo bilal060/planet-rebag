@@ -74,8 +74,11 @@ input::placeholder {
 }
 
 .login-sub {
-  width: 24.9rem;
+  width: 100%;
+  max-width: 400px;
 }
+
+
 
 @media (max-width: 768px) {
   .login-sub {
@@ -85,7 +88,8 @@ input::placeholder {
     padding: 40px !important;
     z-index: 100 !important;
     border: 2px solid #9fc134 !important;
-    /* margin-top: 48px !important; */
+    margin: 48px 0 !important;
+    max-width: 500px !important;
   }
 
   .footer {
@@ -95,22 +99,26 @@ input::placeholder {
 }
 
 @media (max-width: 576px) {
-  .login-sub {
-    margin-top: 0px !important;
+
+  .auth-responsive {
+    width: 80%;
   }
 
   .login-sub {
+    margin-top: 0px !important;
+    max-width: unset !important;
     border-radius: 0px !important;
     background: rgba(0, 0, 0, 0.09) !important;
     backdrop-filter: blur(100px) !important;
     height: 100% !important;
     width: 100% !important;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 24px;
     border: 0 !important;
     overflow: auto;
+    margin: 0 !important;
   }
 
   /* .footer {
@@ -118,6 +126,13 @@ input::placeholder {
     background-color: transparent !important;
     width: auto !important;
   } */
+}
+
+@media (max-width: 480px) {
+  .auth-responsive {
+    width: 100% !important;
+  }
+
 }
 
 .login-container {
@@ -128,6 +143,7 @@ input::placeholder {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .login-button {
@@ -150,6 +166,10 @@ input::placeholder {
   .guest-btn {
     width: 100% !important;
     /* height: 100% !important; */
+  }
+
+  .login-container {
+    justify-content: flex-start;
   }
 }
 
@@ -251,7 +271,7 @@ input::placeholder {
 }
 
 .emailInput {
-  width: 398px;
+  /* width: 398px; */
   height: 56px;
   font-size: 16px;
   line-height: 16px;
@@ -346,17 +366,17 @@ input::placeholder {
 
 .radio-btn {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   text-align: flex-start;
+  gap: 45px !important;
   width: 100%;
 }
 
 .mobile-radio-btn,
 .email-radio-btn {
-  flex: 1 2;
   box-sizing: border-box;
   display: flex;
-  justify-content: center;
+  justify-content: start;
 }
 
 .radio-btn {

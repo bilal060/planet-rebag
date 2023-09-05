@@ -4,17 +4,38 @@ import "../../assets/css/auth.css";
 import Logo from "../../assets/images/Logo.svg";
 import EyeIcon from "../../assets/images/EyeIcon.js";
 import EyeiconClose from "../../assets/images/EyeiconClose";
+import { ErrorMessage, Form, Formik } from "formik";
+import * as Yup from "yup";
+import TextField from "../../shared/TextField";
+
+const newPasswordValidationSchema = Yup.object().shape({
+  tempPassword: Yup.string().required("Password is Required"),
+  newPassword: Yup.string()
+    .min(8, "Password minimum length should be 8")
+    .required("New Password is Required"),
+  confirmPassword: Yup.string().when(
+    ["newPassword", "tempPassword"],
+    (newPassword, schema) => {
+      return newPassword && newPassword.length > 0
+        ? schema
+            .oneOf(
+              [Yup.ref("newPassword")],
+              "Both passwords need to be the same",
+            )
+            .required("Password is Required")
+        : schema;
+    },
+  ),
+});
 const TempPassword = () => {
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+  const initialValues = {
+    tempPassword: "",
+    newPassword: "",
+    confirmPassword: "",
   };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  const [eye, setEye] = useState(false);
+  const [eye1, setEye1] = useState(false);
+  const [eye2, setEye2] = useState(false);
 
   return (
     <>
@@ -26,88 +47,101 @@ const TempPassword = () => {
             <span className="font-16-400 small-text-color">
               Using temporary password create your account
             </span>
-            <form>
-              <div className="form-group mt-sm-5 mt-4">
-                <div className="label-inputs-start">
-                  <label htmlFor="passwordInput" className="font-16 text-start">
-                    Temporary Password
-                  </label>
-                </div>
-                <div className="input-group mt-2">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    className="form-control font-32 password-input emailInput"
-                    id="passwordInput"
-                    value={password}
-                    onChange={handlePasswordChange}
-                  />
-                  <div className="input-group-append">
-                    <span
-                      className="input-group-text"
-                      onClick={togglePasswordVisibility}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {showPassword ? <EyeiconClose /> : <EyeIcon />}
-                    </span>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={newPasswordValidationSchema}
+            >
+              {() => (
+                <Form>
+                  <div className="form-group mt-sm-5 mt-4">
+                    <div className="label-inputs-start">
+                      <label
+                        htmlFor="passwordInput"
+                        className="font-16 text-start"
+                      >
+                        Temporary Password
+                      </label>
+                    </div>
+                    <div className="input-group mt-2">
+                      <TextField
+                        righticon={
+                          <span onClick={() => setEye(!eye)}>
+                            {eye ? <EyeiconClose /> : <EyeIcon />}
+                          </span>
+                        }
+                        placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                        name="tempPassword"
+                        type={eye ? "text" : "password"}
+                      />
+                      <ErrorMessage
+                        component="div"
+                        name="tempPassword"
+                        className="invalid-feedback"
+                      />
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="form-group mt-4">
-                <div className="label-inputs-start">
-                  <label htmlFor="passwordInput" className="font-16 text-start">
-                    New Password
-                  </label>
-                </div>
-                <div className="input-group mt-2">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    className="form-control emailInput font-32 password-input"
-                    id="passwordInput"
-                    value={password}
-                    onChange={handlePasswordChange}
-                  />
-                  <div className="input-group-append">
-                    <span
-                      className="input-group-text"
-                      onClick={togglePasswordVisibility}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {showPassword ? <EyeiconClose /> : <EyeIcon />}
-                    </span>
+                  <div className="form-group mt-4">
+                    <div className="label-inputs-start">
+                      <label
+                        htmlFor="passwordInput"
+                        className="font-16 text-start"
+                      >
+                        New Password
+                      </label>
+                    </div>
+                    <div className="input-group mt-2">
+                      <TextField
+                        righticon={
+                          <span onClick={() => setEye1(!eye1)}>
+                            {eye1 ? <EyeiconClose /> : <EyeIcon />}
+                          </span>
+                        }
+                        placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                        name="newPassword"
+                        type={eye1 ? "text" : "password"}
+                      />
+                      <ErrorMessage
+                        component="div"
+                        name="newPassword"
+                        className="invalid-feedback"
+                      />
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="form-group mt-2">
-                <div className="label-inputs-start">
-                  <label htmlFor="passwordInput" className="font-16 text-start">
-                    Confirm New Password
-                  </label>
-                </div>
-                <div className="input-group mt-2">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    className="form-control emailInput font-32 password-input"
-                    id="passwordInput"
-                    value={password}
-                    onChange={handlePasswordChange}
-                  />
-                  <div className="input-group-append">
-                    <span
-                      className="input-group-text"
-                      onClick={togglePasswordVisibility}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {showPassword ? <EyeiconClose /> : <EyeIcon />}
-                    </span>
+                  <div className="form-group mt-2">
+                    <div className="label-inputs-start">
+                      <label
+                        htmlFor="passwordInput"
+                        className="font-16 text-start"
+                      >
+                        Confirm New Password
+                      </label>
+                    </div>
+                    <div className="input-group mt-2">
+                      <TextField
+                        righticon={
+                          <span onClick={() => setEye2(!eye2)}>
+                            {eye2 ? <EyeiconClose /> : <EyeIcon />}
+                          </span>
+                        }
+                        placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                        name="confirmPassword"
+                        type={eye2 ? "text" : "password"}
+                      />
+                      <ErrorMessage
+                        component="div"
+                        name="confirmPassword"
+                        className="invalid-feedback"
+                      />
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div className="login-btn mt-3">
-                <button className="guest-btn btn-lg btn-block">
-                  Create Account
-                </button>
-              </div>
-            </form>
+                  <div className="login-btn mt-3">
+                    <button className="guest-btn btn-lg btn-block">
+                      Create Account
+                    </button>
+                  </div>
+                </Form>
+              )}
+            </Formik>
             <div className="d-md-none d-block">
               <AuthFooter />
             </div>

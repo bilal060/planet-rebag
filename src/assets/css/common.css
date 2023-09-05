@@ -14,6 +14,10 @@
     padding-right: 12px !important;
 }
 
+.text-green {
+    color: var(--primary-green);
+}
+
 .inputstyle {
     border-radius: 12px !important;
     background: #F8F8F8 !important;
@@ -189,4 +193,21 @@ table.table-design tbody tr:nth-child(odd) td {
     overflow: hidden;
     width: 100%;
     white-space: nowrap;
+}
+
+.custom-phone-dropdown-btn {
+    max-width: 100px;
+    border: 0;
+    outline: 0;
+    color: #A3A3A3;
+    font-size: 18px !important;
+    line-height: 100%;
+}
+
+.react-tel-input .form-control {
+    height: 56px !important;
+    padding: 0 16px !important;
+    background: #F8F8F8 !important;
+    border-radius: 12px !important;
+    width: 100% !important;
 }
