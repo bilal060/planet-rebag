@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthCircles from "../../components/auth_circles/AuthCircles";
 import AuthFooter from "../../components/auth_footer/AuthFooter";
 import "../../assets/css/auth.css";
@@ -11,6 +11,7 @@ import TextField from "../../shared/TextField";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import EyeiconClose from "../../assets/images/EyeiconClose";
+import { getWindowDimensions } from "../../helpers/getWindowDimentions";
 
 const signupValidationSchema = Yup.object().shape({
   fullName: Yup.string().required("Full Name is Required"),
@@ -42,6 +43,17 @@ const SignUp = () => {
   const direct = () => {
     navigate("/login");
   };
+  const [dimension, setDimension] = useState();
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const windowdimention = getWindowDimensions();
+      setDimension(windowdimention);
+    };
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.addEventListener("resize", handleWindowResize);
+    };
+  }, [window.innerHeight]);
 
   return (
     <>
@@ -49,7 +61,13 @@ const SignUp = () => {
         <img src={Logo} alt="" className="logo-container logo" />
       </div>
       <AuthCircles />
-      <div className="login-container">
+      <div
+        className={`login-container ${
+          dimension?.height < 840 || dimension?.width < 767
+            ? "justify-content-start py-sm-5"
+            : "justify-content-center"
+        }`}
+      >
         <div className="login-sub text-center flex-column">
           <div className="logo-image d-flex justify-content-center mb-sm-3">
             <img src={Logo} alt="" className="d-md-none d-block" />
@@ -211,7 +229,9 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <AuthFooter />
+      <div className="d-md-block d-none">
+        <AuthFooter />
+      </div>
     </>
   );
 };

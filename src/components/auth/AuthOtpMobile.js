@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo_rebag from "../../assets/images/Logo.svg";
 import Form from "react-bootstrap/Form";
 import Otpinput from "../../components/Otpinput";
 import AuthFooter from "../auth_footer/AuthFooter";
+import { getWindowDimensions } from "../../helpers/getWindowDimentions";
 const AuthOtpMobile = () => {
+  const [dimension, setDimension] = useState();
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const windowdimention = getWindowDimensions();
+      setDimension(windowdimention);
+    };
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.addEventListener("resize", handleWindowResize);
+    };
+  }, [window.innerHeight]);
   return (
     <>
-      <div className="login-container">
+      <div
+        className={`login-container ${
+          dimension?.height < 680
+            ? "justify-content-start py-sm-5"
+            : "justify-content-center"
+        }`}
+      >
         <div className="login-sub flex-column">
           <div className="logo-image d-flex justify-content-center">
             <img src={logo_rebag} alt="" className="img-fluid mb-2 logo-hide" />

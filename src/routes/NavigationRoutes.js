@@ -1,21 +1,16 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Stores from "../pages/Stores.js";
-// const AccountSettingSidebar = React.lazy(() =>
-//   import("../components/accountSetting/Sidebar.js"),
-// );
-
+import AppUserDetailView3 from "../components/appUser/AppUserDetailView3.js";
+import AppUserDetailView2 from "../components/appUser/AppUserDetailView2.js";
+import SubStores from "../pages/SubStores.js";
 const StoreDetail = React.lazy(() => import("../pages/StoreDetail.js"));
 const AppUserCardView = React.lazy(() => import("../pages/AppUserCardView.js"));
-
 const ItemCategories = React.lazy(() => import("../pages/ItemCategories.js"));
 const Requests = React.lazy(() => import("../pages/Requests.js"));
 const Home = React.lazy(() => import("../pages/Home.js"));
 const LandingPage = React.lazy(() => import("../pages/Landing.js"));
 const CheckMail = React.lazy(() => import("../pages/CheckMail.js"));
-const ForgetPasswordPage = React.lazy(() =>
-  import("../pages/ForgetPassword.js"),
-);
 const TempPasswordPage = React.lazy(() => import("../pages/TempPassword.js"));
 const LoginPage = React.lazy(() => import("../pages/Login.js"));
 const SignupPage = React.lazy(() => import("../pages/Signup.js"));
@@ -25,6 +20,9 @@ const OtpMobile = React.lazy(() => import("../pages/OtpMobile.js"));
 const OtpMail = React.lazy(() => import("../pages/OtpMail.js"));
 const Confirmation = React.lazy(() => import("../pages/Confirmation.js"));
 const AdminLoginPage = React.lazy(() => import("../pages/Adminlogin.js"));
+const ForgetPasswordPage = React.lazy(() =>
+  import("../pages/ForgetPassword.js"),
+);
 const AccountPrivacyPolicy = React.lazy(() =>
   import("../components/accountSetting/PrivacyPolicy.js"),
 );
@@ -49,9 +47,20 @@ function NavigationRoutes() {
     <Routes>
       <Route exact path="/home" element={<Home />}></Route>
       <Route exact path="/stores" element={<Stores />}></Route>
-      <Route exact path="/stores-details" element={<StoreDetail />}></Route>
+      <Route exact path="/substores" element={<SubStores />}></Route>
+      <Route exact path="/stores/detail" element={<StoreDetail />}></Route>
       <Route exact path="/users" element={<AppUserCardView />}></Route>
       <Route exact path="/users/detail" element={<AppUserDetailView />}></Route>
+      <Route
+        exact
+        path="/redeemCategory1"
+        element={<AppUserDetailView2 />}
+      ></Route>
+      <Route
+        exact
+        path="redeemCategory2"
+        element={<AppUserDetailView3 />}
+      ></Route>
       <Route exact path="/item-categories" element={<ItemCategories />}></Route>
       <Route
         exact

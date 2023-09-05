@@ -57,60 +57,68 @@ function StoreDetailCard() {
 
   return (
     <div>
-      <div className="bg-white p-4 custom-bg">
-        <Row>
-          <Col sm="2" md="2" lg="2" xl="2">
-            <span className="p- bg-greyDark">
-              <Image src={StoreLogo} />
-            </span>
-          </Col>
-          <Col>
-            <Row>
-              <Col>
-                <h6>Store Name</h6>
-                <span>Carrefour</span>
-              </Col>
-              <Col>
-                <h6>Store ID</h6>
-                <span>CF783457</span>
-              </Col>
-              <Col>
-                <h6>Total POS</h6>
-                <span>60</span>
-              </Col>
-              <Col>
-                <h6>Total Sub Stores</h6>
-                <span>26</span>
-              </Col>
-            </Row>
-            <Row className="mt-3">
-              <Col>
-                <h6>Items Returned</h6>
-                <span>1209</span>
-              </Col>
-              <Col>
-                <h6>Total Redeem Price</h6>
-                <span>AED 5639.00</span>
-              </Col>
-              <Col>
-                <h6>Store Location</h6>
-                <span>Al Ain, Abu Dhabi</span>
-              </Col>
-              <Col></Col>
-            </Row>
-          </Col>
-        </Row>
+      <div className="pb-2 mb-4">
+        <div className="bg-white p-4 custom-bg">
+          <Row className="align-items-center">
+            <Col xl="2" className="p-0 mb-xl-0 mb-3">
+              <span className="p- bg-greyDark">
+                <Image src={StoreLogo} />
+              </span>
+            </Col>
+            <Col xl="10" className="p-0">
+              <div className="d-flex justify-content-between align-items-start flex-wrap gap-4">
+                <div className="d-flex flex-column gap-4">
+                  <div>
+                    <h6>Store Name</h6>
+                    <span>Carrefour</span>
+                  </div>
+
+                  <div>
+                    <h6>Items Returned</h6>
+                    <span>1209</span>
+                  </div>
+                </div>
+                <div className="d-flex flex-column gap-4">
+                  <div>
+                    <h6>Store ID</h6>
+                    <span>CF783457</span>
+                  </div>
+                  <div>
+                    <h6>Total Redeem Price</h6>
+                    <span>AED 5639.00</span>
+                  </div>
+                </div>
+                <div className="d-flex flex-column gap-4">
+                  <div>
+                    <h6>Total POS</h6>
+                    <span>60</span>
+                  </div>
+                  <div>
+                    <h6>Store Location</h6>
+                    <span>Al Ain, Abu Dhabi</span>
+                  </div>
+                </div>
+                <div className="d-flex flex-column pe-lg-5">
+                  <div>
+                    <h6>Total Sub Stores</h6>
+                    <span>26</span>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
       </div>
 
       <Row className="justify-content-between pt-5">
-        <Col className="d-flex align-items-center gap-5 " lg="8" xl="8">
+        <Col className="p-0 d-flex align-items-center gap-5" lg="7" xl="8">
           <Row>
-            <Col xl="8">
+            <Col xl="8" className="mb-3 p-0">
               <h4 className="fs-3">Transactions History </h4>
             </Col>
 
-            <Col xl="4">
-              <div className="d-flex justify-content-center gap-3">
+            <Col xl="4 p-0">
+              <div className="d-flex justify-content-start gap-3">
                 {radio.map((data, index) => {
                   return (
                     <Radios
@@ -126,9 +134,9 @@ function StoreDetailCard() {
           </Row>
         </Col>
 
-        <Col className="">
-          <Form className="d-flex justify-content-start">
-            <Form.Label className="d-flex justify-content-center w-100 mt-2 gap-2 fw-bold">
+        <Col className="p-0">
+          <Form className="d-flex justify-content-start gap-2 flex-lg-row flex-column">
+            <Form.Label className="d-flex justify-content-lg-end mt-2 w-100 font-weight-600">
               Select Store:
             </Form.Label>
             <Form.Select

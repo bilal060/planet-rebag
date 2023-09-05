@@ -1,27 +1,26 @@
 import React, { useState } from "react";
 import BagIcon from "../../assets/images/icons/dashboardicons/bag";
 import BottleIcon from "../../assets/images/icons/dashboardicons/bottle";
-import Radios from "../../components/Radios";
+import Radios from "../Radios";
 import { Col, Image, Row, Table } from "react-bootstrap";
 import StoreLogo from "../../assets/images/AppUserLogo.svg";
-import EditIcon from "../../assets/images/icons/dashboardicons/editIcon";
+import withMainLayout from "../../layout/MainLayout";
 import ThreeDotsIcon from "../../assets/images/icons/dashboardicons/threeDots";
+import AlainBottleIcon from "../../assets/images/icons/dashboardicons/alainBottle";
+import DubaiBottleIcon from "../../assets/images/icons/dashboardicons/dubaiBottleIcon";
+import MusafiBottleIcon from "../../assets/images/icons/dashboardicons/musafiBottle";
 
-function AppUserDetailView() {
-  const [category, setCategory] = useState("All");
+function AppUserDetailView3() {
+  const [category, setCategory] = useState("Bag");
 
   const radio = [
     {
       id: "1",
-      text: "All",
-    },
-    {
-      id: "2",
       imgSrc: <BagIcon />,
       text: "Bag",
     },
     {
-      id: "3",
+      id: "2",
       imgSrc: <BottleIcon />,
       text: "Bottle",
     },
@@ -29,47 +28,50 @@ function AppUserDetailView() {
   const tableData = [
     {
       itemType: "Bag",
-      returnedQty: "7",
-      returnedBottle: "7",
-      TotalQty: "14/50",
-      RedeemPrice: "AED 5.00",
-      status: "Returned",
+      carrefourPrice: "AED 5.00",
+      lulluMartPrice: "AED 5.00",
+      almayaPrice: "AED 5.00",
+      bagName: <AlainBottleIcon />,
       time: "10:19 AM  |  23/07/2023",
     },
     {
       itemType: "Bottle",
-      returnedQty: "20",
-      returnedBottle: "20",
-      TotalQty: "40/50",
-      RedeemPrice: "AED 5.00",
-      status: "Added",
+      carrefourPrice: "AED 5.00",
+      lulluMartPrice: "AED 5.00",
+      almayaPrice: "AED 5.00",
+      bagName: <DubaiBottleIcon />,
       time: "10:19 AM  |  23/07/2023",
     },
     {
       itemType: "Bag",
-      returnedQty: "13",
-      returnedBottle: "13",
-      TotalQty: "26/50",
-      RedeemPrice: "AED 5.00",
-      status: "Returned",
+      carrefourPrice: "AED 5.00",
+      lulluMartPrice: "AED 5.00",
+      almayaPrice: "AED 5.00",
+      bagName: <MusafiBottleIcon />,
+      time: "10:19 AM  |  23/07/2023",
+    },
+    {
+      itemType: "Bag",
+      carrefourPrice: "AED 5.00",
+      lulluMartPrice: "AED 5.00",
+      almayaPrice: "AED 5.00",
+      bagName: <AlainBottleIcon />,
       time: "10:19 AM  |  23/07/2023",
     },
     {
       itemType: "Bottle",
-      returnedQty: "20",
-      returnedBottle: "20",
-      TotalQty: "40/50",
-      RedeemPrice: "AED 5.00",
-      status: "Added",
+      carrefourPrice: "AED 5.00",
+      lulluMartPrice: "AED 5.00",
+      almayaPrice: "AED 5.00",
+      bagName: <DubaiBottleIcon />,
       time: "10:19 AM  |  23/07/2023",
     },
     {
       itemType: "Bag",
-      returnedQty: "13",
-      returnedBottle: "13",
-      TotalQty: "26/50",
-      RedeemPrice: "AED 5.00",
-      status: "Returned",
+      carrefourPrice: "AED 5.00",
+      lulluMartPrice: "AED 5.00",
+      almayaPrice: "AED 5.00",
+      bagName: <MusafiBottleIcon />,
       time: "10:19 AM  |  23/07/2023",
     },
   ];
@@ -77,14 +79,11 @@ function AppUserDetailView() {
   return (
     <div>
       <div className="pb-2 mb-4">
-        <div className="bg-white p-4 custom-bg position-relative">
-          <div className="d-flex justify-content-end position-absolute end-1 top-1 cr-p">
-            <EditIcon />
-          </div>
+        <div className="bg-white p-4 custom-bg">
           <Row className="align-items-center">
-            <Col xl="2" className="p-0 mb-xl-0 mb-3">
-              <span className="p- bg-greyDark">
-                <Image src={StoreLogo} />
+            <Col xl="2" className="ps-0 mb-xl-0 mb-3">
+              <span className="w-100 bg-greyDark">
+                <Image src={StoreLogo} className="w-xl-100" />
               </span>
             </Col>
             <Col xl="10" className="p-0">
@@ -96,8 +95,8 @@ function AppUserDetailView() {
                   </div>
 
                   <div>
-                    <h6>Items Returned</h6>
-                    <span>Jakob Vetrovs</span>
+                    <h6>Items Scanned</h6>
+                    <span>7</span>
                   </div>
                 </div>
                 <div className="d-flex flex-column gap-4">
@@ -106,28 +105,23 @@ function AppUserDetailView() {
                     <span>CF783457</span>
                   </div>
                   <div>
-                    <h6>Pending Return Items</h6>
+                    <h6>Session ID</h6>
                     <span>CF783457</span>
                   </div>
                 </div>
-                <div className="d-flex flex-column gap-4">
-                  <div>
-                    <h6>Total Scanned Item</h6>
-                    <span>60</span>
-                  </div>
+                <div className="d-flex flex-column pe-lg-5 me-lg-5">
                   <div>
                     <h6>Status</h6>
-                    <span>60</span>
+                    <span>Scanned</span>
                   </div>
                 </div>
-                <div></div>
               </div>
             </Col>
           </Row>
         </div>
       </div>
       <div className="d-flex align-items-center justify-content-between gap-3 flex-wrap">
-        <h4 className="fs-3">Transactions History </h4>
+        <h4 className="fs-3">Redeemed Items Details</h4>
         <div className="d-flex gap-3">
           {radio.map((data, index) => {
             return (
@@ -147,10 +141,18 @@ function AppUserDetailView() {
           <thead>
             <tr>
               <th>Item Type</th>
-              <th>Returned Qty</th>
-              <th>Total Qty</th>
-              <th>Redeem Price</th>
-              <th>Status</th>
+              <th className="text-center">
+                Price <br /> (Carrefour)
+              </th>
+              <th className="text-center">
+                Price <br />
+                (Lulu Mart)
+              </th>
+              <th className="text-center">
+                Price
+                <br /> (Almaya)
+              </th>
+              <th>Bag Name</th>
               <th>Time & Date</th>
               <th></th>
             </tr>
@@ -160,10 +162,10 @@ function AppUserDetailView() {
               return (
                 <tr key={index}>
                   <td>{data.itemType}</td>
-                  <td>{data.returnedQty}</td>
-                  <td>{data.TotalQty}</td>
-                  <td>{data.RedeemPrice}</td>
-                  <td>{data.status}</td>
+                  <td>{data.carrefourPrice}</td>
+                  <td>{data.lulluMartPrice}</td>
+                  <td>{data.almayaPrice}</td>
+                  <td>{data.bagName}</td>
                   <td>{data.time}</td>
                   <td>
                     <ThreeDotsIcon />
@@ -178,4 +180,4 @@ function AppUserDetailView() {
   );
 }
 
-export default AppUserDetailView;
+export default withMainLayout(AppUserDetailView3);
