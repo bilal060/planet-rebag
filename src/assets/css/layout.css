@@ -26,3 +26,51 @@
     }
 
 }
+.bage-count{
+background-color: rgba(52, 134, 193, 0.1);
+border-radius: 8px;
+}
+.camera-count{
+background-color: rgba(159, 193, 52, 0.1);
+border-radius: 8px;
+}
+.bags-text{
+    color: rgba(52, 134, 193, 1);
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: 100%;
+}
+.camera-text{
+    color: #79AA00;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: 100%;
+}
+.label {
+  color:#1E252B;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+}
+.thanks-icon{
+    width: 154px;
+    height: 154px;
+}
+.tahnks-text{
+    color:  #526D00;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: 100%;
+}
+.iner-text{
+    color: #777;
+text-align: center;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px;
+}
