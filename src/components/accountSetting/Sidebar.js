@@ -5,9 +5,15 @@ import PrivacyPolicyIcon from "../../assets/images/icons/PrivacyPolicyIcon";
 import FAQsIcon from "../../assets/images/icons/FAQsIcon";
 import ContactUsIcon from "../../assets/images/icons/ContactUsIcon";
 import ChangePasswordIcon from "../../assets/images/icons/ChangePassword";
+import AddPriceIcon from "../../assets/images/icons/AddPriceIcon";
 import LogoutIcon from "../../assets/images/icons/Logout";
 
 const settingRoute = [
+  {
+    name: "Add Bag Price",
+    img: <AddPriceIcon />,
+    link: "/settings/addbagprice",
+  },
   {
     name: "Change Password",
     img: <ChangePasswordIcon />,

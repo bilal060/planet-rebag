@@ -35,6 +35,9 @@ const ContactUs = React.lazy(() =>
 const AccountNewPassword = React.lazy(() =>
   import("../components/accountSetting/ChangePassword.js"),
 );
+const AddBagPrice = React.lazy(() =>
+  import("../components/accountSetting/AddBagPrice.js"),
+);
 const TransactionHistory = React.lazy(() =>
   import("../pages/TransactionHistory.js"),
 );
@@ -89,6 +92,11 @@ function NavigationRoutes() {
         exact
         path="/settings/ChangePassword"
         element={<AccountNewPassword />}
+      ></Route>
+      <Route
+        exact
+        path="/settings/addbagprice"
+        element={<AddBagPrice />}
       ></Route>
       <Route exact path="/settings/Contact" element={<ContactUs />}></Route>
       <Route exact path="/settings/Faqs" element={<AccountFaqs />}></Route>

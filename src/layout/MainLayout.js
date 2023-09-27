@@ -17,11 +17,18 @@ const withMainLayout = (WrappedComponent) => {
     const navigate = useNavigate();
     const [modalShow, setModalShow] = useState(false);
     const [thankYouModalShow, setThankYouModalShow] = useState(false);
+    const [uniqueIDModalShow, setUniqueIDModalShow] = useState(false);
 
     const handleConfirmCount = () => {
       setModalShow(false);
+      setUniqueIDModalShow(true);
+    };
+
+    const handleUniqueIDSubmit = () => {
+      setUniqueIDModalShow(false);
       setThankYouModalShow(true);
     };
+
     return (
       <div className="main-layout">
         <SideBarNav />
@@ -100,6 +107,37 @@ const withMainLayout = (WrappedComponent) => {
                 <Modal.Footer className="mt-0">
                   <div className="d-flex flex-column w-100 gap-3">
                     <button className="green-btn" onClick={handleConfirmCount}>
+                      Confirm Count
+                    </button>
+                  </div>
+                </Modal.Footer>
+              </Modal>
+              <Modal
+                show={uniqueIDModalShow}
+                onHide={() => setUniqueIDModalShow(false)}
+                size="md"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title id="contained-modal-title-vcenter">
+                    Scan Code
+                  </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <div className="d-flex align-items-center justify-content-between">
+                    <div className="curency-icons d-flex">
+                      <span>icon</span>
+                    </div>
+                    <div className="times">Hello</div>
+                  </div>
+                </Modal.Body>
+                <Modal.Footer>
+                  <div className="d-flex flex-column w-100 gap-3">
+                    <button
+                      className="green-btn"
+                      onClick={handleUniqueIDSubmit}
+                    >
                       Confirm Count
                     </button>
                   </div>
