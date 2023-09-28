@@ -6,7 +6,7 @@ import EyeiconClose from "../../assets/images/EyeiconClose";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import TextField from "../../shared/TextField";
-import PhoneInput from "react-phone-input-2";
+//import PhoneInput from "react-phone-input-2";
 import Logo from "../../assets/images/Logo.svg";
 import "react-phone-input-2/lib/style.css";
 import { ErrorMessage, Form, Formik } from "formik";
@@ -16,7 +16,7 @@ const loginValidationSchema = Yup.object().shape({
   password: Yup.string().required("Password is Required"),
 });
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
-
+import { loginUser } from "../../API/API";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [selectedLoginOption, setSelectedLoginOption] = useState("email");
@@ -25,7 +25,19 @@ const Login = () => {
     mobNo: "",
     password: "",
   };
-  const [phone, setPhone] = useState();
+  // const loginData = {
+  //   email: "",
+  //   password: "",
+  // };
+  const handleLogin = async (values) => {
+    try {
+      const response = await loginUser(values.email, values.password);
+      console.log("Login Successful", response);
+    } catch (error) {
+      console.error("Login Error", error);
+    }
+  };
+  // const [phone, setPhone] = useState();
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -43,14 +55,16 @@ const Login = () => {
   const [dimension, setDimension] = useState();
   useEffect(() => {
     const handleWindowResize = () => {
-      const windowdimention = getWindowDimensions();
-      setDimension(windowdimention);
+      const windowDimension = getWindowDimensions();
+      setDimension(windowDimension);
     };
+
     window.addEventListener("resize", handleWindowResize);
+
     return () => {
-      window.addEventListener("resize", handleWindowResize);
+      window.removeEventListener("resize", handleWindowResize);
     };
-  }, [window.innerHeight]);
+  }, []);
   return (
     <>
       <div
@@ -76,7 +90,8 @@ const Login = () => {
             initialValues={initialValues}
             validationSchema={loginValidationSchema}
           >
-            {({ touched, errors }) => (
+            {/* {({ touched, errors }) => ( */}
+            {() => (
               <Form>
                 <div className="radio-btn mt-4">
                   <div className="mobile-radio-btn">
@@ -133,7 +148,7 @@ const Login = () => {
                         Mobile Number
                       </label>
                     </div>
-                    <div className="custom-phone-input auth-input d-flex align-items-center">
+                    {/* <div className="custom-phone-input auth-input d-flex align-items-center">
                       <PhoneInput
                         countrySelectProps={{ unicodeFlags: false }}
                         placeholder="Enter Phone Number"
@@ -149,7 +164,7 @@ const Login = () => {
                       <p className="invalid-feedback d-block mt-2 fw-bold text-start">
                         Phone is required
                       </p>
-                    )}
+                    )} */}
                   </div>
                 )}
                 <div className="form-group mt-2">
@@ -214,7 +229,11 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="login-btn mt-3">
-                  <button className="guest-btn btn-lg btn-block mt-2">
+                  <button
+                    className="guest-btn btn-lg btn-block mt-2"
+                    onClick={handleLogin}
+                    type="submit"
+                  >
                     Login
                   </button>
                 </div>

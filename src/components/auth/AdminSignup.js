@@ -12,11 +12,12 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
+import { registerUser } from "../../API/API";
 
 const signupValidationSchema = Yup.object().shape({
-  fullName: Yup.string().required("Full Name is Required"),
+  name: Yup.string().required("Full Name is Required"),
   email: Yup.string().email().required("Email is Required"),
-  mobNo: Yup.string().required("Mobile Number is Required"),
+  phone: Yup.string().required("Mobile Number is Required"),
   password: Yup.string().required("Password is Required"),
 });
 const SignUp = () => {
@@ -24,10 +25,26 @@ const SignUp = () => {
   const [selectedLoginOption, setSelectedLoginOption] = useState("email");
   const [phone, setPhone] = useState();
   const initialValues = {
-    fullName: "",
+    name: "",
     email: "",
-    mobNo: "",
+    phone: "",
     password: "",
+  };
+  const registrationData = {
+    role: "user",
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+  };
+
+  const handleRegistration = async () => {
+    try {
+      const response = await registerUser(registrationData);
+      console.log("Registration Successful", response);
+    } catch (error) {
+      console.error("Registration Error", error);
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -54,6 +71,17 @@ const SignUp = () => {
       window.addEventListener("resize", handleWindowResize);
     };
   }, [window.innerHeight]);
+
+  const handleSubmit = async (values) => {
+    console.log("helo");
+    try {
+      const response = await registerUser(values);
+      console.log("helo");
+      console.log("Registration successful:", response);
+    } catch (error) {
+      console.error("Registration error:", error);
+    }
+  };
 
   return (
     <>
@@ -85,6 +113,7 @@ const SignUp = () => {
             <Formik
               initialValues={initialValues}
               validationSchema={signupValidationSchema}
+              onSubmit={handleSubmit}
             >
               {({ touched, errors }) => (
                 <Form>
@@ -125,12 +154,12 @@ const SignUp = () => {
 
                     <TextField
                       placeholder="Enter your full name"
-                      name="fullName"
+                      name="name"
                       type={"text"}
                     />
                     <ErrorMessage
                       component="div"
-                      name="fullName"
+                      name="name"
                       className="invalid-feedback"
                     />
                   </div>
@@ -208,7 +237,11 @@ const SignUp = () => {
                   </div>
 
                   <div className="login-btn mt-3">
-                    <button className="guest-btn btn-lg btn-block mt-2">
+                    <button
+                      type="submit"
+                      className="guest-btn btn-lg btn-block mt-2"
+                      onClick={handleRegistration}
+                    >
                       Submit
                     </button>
                   </div>
