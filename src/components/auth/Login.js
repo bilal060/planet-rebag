@@ -12,7 +12,7 @@ import "react-phone-input-2/lib/style.css";
 import { ErrorMessage, Form, Formik } from "formik";
 const loginValidationSchema = Yup.object().shape({
   email: Yup.string().email().required("Email is Required"),
-  mobNo: Yup.string().required("Mobile Number is Required"),
+  mobNo: Yup.string().optional("Mobile Number is Required"),
   password: Yup.string().required("Password is Required"),
 });
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
@@ -89,6 +89,7 @@ const Login = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={loginValidationSchema}
+            onSubmit={handleLogin}
           >
             {/* {({ touched, errors }) => ( */}
             {() => (
@@ -230,9 +231,8 @@ const Login = () => {
                 </div>
                 <div className="login-btn mt-3">
                   <button
-                    className="guest-btn btn-lg btn-block mt-2"
-                    onClick={handleLogin}
                     type="submit"
+                    className="guest-btn btn-lg btn-block mt-2"
                   >
                     Login
                   </button>
