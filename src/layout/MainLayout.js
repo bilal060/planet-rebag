@@ -28,6 +28,7 @@ const withMainLayout = (WrappedComponent) => {
       setUniqueIDModalShow(false);
       setThankYouModalShow(true);
     };
+    const [subStoreModalShow, setSubStoreModalShow] = useState(false);
 
     return (
       <div className="main-layout">
@@ -56,8 +57,65 @@ const withMainLayout = (WrappedComponent) => {
                       Register Bag
                     </span>
                   </button>
+                  <button
+                    className="green-btn w-max-content d-flex"
+                    onClick={() => setSubStoreModalShow(true)}
+                  >
+                    <AddIcon />
+                    <span className="d-sm-block font-weight-600 d-none">
+                      SubStore Modal (customer unique id)
+                    </span>
+                  </button>
                 </>
               )}
+
+              <Modal
+                show={subStoreModalShow}
+                onHide={() => setSubStoreModalShow(false)}
+                size="md"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title id="contained-modal-title-vcenter">
+                    Scan Code
+                  </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="mb-3">
+                  {/* <form action="">
+                    <div className="d-flex flex-column gap-2">
+                      <label htmlFor="">Category Name</label>
+                      <input
+                        className="inputstyle border-0"
+                        type="text"
+                        placeholder="Enter category name"
+                      />
+                    </div>
+                  </form> */}
+                </Modal.Body>
+                <Modal.Footer className="mt-5">
+                  <div className="d-flex w-100 gap-2 justify-content-around">
+                    <div className="w-60">
+                      <span className="font-weight-bold font-14">
+                        Customer Unique ID
+                      </span>
+                      <input
+                        className="inputstyle border-0"
+                        type="text"
+                        placeholder="Enter customer unique id"
+                      />
+                    </div>
+                    <div className="w-40 text-u">
+                      <button
+                        className="green-btn"
+                        onClick={() => setSubStoreModalShow(false)}
+                      >
+                        Confirm Count
+                      </button>
+                    </div>
+                  </div>
+                </Modal.Footer>
+              </Modal>
 
               {location.pathname.includes("detail") && (
                 <button
