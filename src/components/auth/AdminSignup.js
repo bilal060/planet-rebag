@@ -13,11 +13,13 @@ import "react-phone-input-2/lib/style.css";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
 import { registerUser } from "../../API/API";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const signupValidationSchema = Yup.object().shape({
   name: Yup.string().required("Full Name is Required"),
   email: Yup.string().email().required("Email is Required"),
-  phone: Yup.string().required("Mobile Number is Required"),
+  phone: Yup.string().optional("Mobile Number is Required"),
   password: Yup.string().required("Password is Required"),
 });
 const SignUp = () => {
@@ -38,15 +40,39 @@ const SignUp = () => {
     password: "",
   };
 
-  const handleRegistration = async () => {
+  // const handleRegistration = async (values) => {
+  //   try {
+  //     registrationData.name = values.name;
+  //     registrationData.email = values.email;
+  //     registrationData.phone = values.phone;
+  //     registrationData.password = values.password;
+  //     const response = await registerUser(registrationData);
+  //     console.log("Registration Successful", response);
+  //   } catch (error) {
+  //     console.error("Registration Error", error);
+  //   }
+  // };
+  const handleRegistration = async (values) => {
     try {
-      const response = await registerUser(registrationData);
-      console.log("Registration Successful", response);
+      registrationData.name = values.name;
+      registrationData.password = values.password;
+
+      if (selectedLoginOption === "email") {
+        registrationData.email = values.email;
+        const response = await registerUser(registrationData);
+        console.log("Email Registration Successful", response);
+        navigate("/otpmail");
+      } else if (selectedLoginOption === "mobile") {
+        registrationData.phone = values.phone;
+        const response = await registerUser(registrationData);
+        console.log("Mobile Registration Successful", response);
+        navigate("/otpmobile");
+      }
     } catch (error) {
       console.error("Registration Error", error);
+      toast.error("Registration Error. Please try again.");
     }
   };
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -71,17 +97,6 @@ const SignUp = () => {
       window.addEventListener("resize", handleWindowResize);
     };
   }, [window.innerHeight]);
-
-  const handleSubmit = async (values) => {
-    console.log("helo");
-    try {
-      const response = await registerUser(values);
-      console.log("helo");
-      console.log("Registration successful:", response);
-    } catch (error) {
-      console.error("Registration error:", error);
-    }
-  };
 
   return (
     <>
@@ -113,7 +128,7 @@ const SignUp = () => {
             <Formik
               initialValues={initialValues}
               validationSchema={signupValidationSchema}
-              onSubmit={handleSubmit}
+              onSubmit={handleRegistration}
             >
               {({ touched, errors }) => (
                 <Form>
@@ -240,7 +255,6 @@ const SignUp = () => {
                     <button
                       type="submit"
                       className="guest-btn btn-lg btn-block mt-2"
-                      onClick={handleRegistration}
                     >
                       Submit
                     </button>

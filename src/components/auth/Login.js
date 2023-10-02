@@ -11,7 +11,7 @@ import Logo from "../../assets/images/Logo.svg";
 import "react-phone-input-2/lib/style.css";
 import { ErrorMessage, Form, Formik } from "formik";
 const loginValidationSchema = Yup.object().shape({
-  email: Yup.string().email().required("Email is Required"),
+  email: Yup.string().email().optional("Email is Required"),
   mobNo: Yup.string().optional("Mobile Number is Required"),
   password: Yup.string().required("Password is Required"),
 });
