@@ -12,8 +12,10 @@ import thunk from "redux-thunk";
 
 const { persistStore, persistReducer } = require("redux-persist");
 
+import UserReducer from "./store/user/reducers/UserReducer";
+
 const rootReducer = combineReducers({
-  key: "value",
+  user: UserReducer,
 });
 
 let devtools, store;
@@ -25,7 +27,7 @@ if (isClient) {
 
   const storage = require("redux-persist/lib/storage").default;
   const persistConfig = {
-    key: "instant-space",
+    key: "planet-rebag",
     storage,
   };
 
