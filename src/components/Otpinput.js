@@ -22,10 +22,6 @@ const Otpinput = ({ length }) => {
     setOTP(newOTP);
   };
 
-  // const handleKeyDown = (e, index) => {
-  // ... your handleKeyDown logic, you can move it here
-  // };
-
   return (
     <div className="otp-input-container">
       {otp.map((digit, index) => (
@@ -36,7 +32,6 @@ const Otpinput = ({ length }) => {
           maxLength={1}
           value={digit}
           onChange={(e) => handleChange(e, index)}
-        //onKeyDown={(e) => handleKeyDown(e, index)}
         />
       ))}
     </div>

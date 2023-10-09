@@ -39,19 +39,6 @@ const SignUp = () => {
     phone: "",
     password: "",
   };
-
-  // const handleRegistration = async (values) => {
-  //   try {
-  //     registrationData.name = values.name;
-  //     registrationData.email = values.email;
-  //     registrationData.phone = values.phone;
-  //     registrationData.password = values.password;
-  //     const response = await registerUser(registrationData);
-  //     console.log("Registration Successful", response);
-  //   } catch (error) {
-  //     console.error("Registration Error", error);
-  //   }
-  // };
   const handleRegistration = async (values) => {
     try {
       registrationData.name = values.name;

@@ -29,10 +29,7 @@ const AuthOtpMail = () => {
         <div className="login-sub text-center flex-column">
           <div className="logo-image d-flex justify-content-center">
             <img src={Logo} alt="" className="img-fluid mb-2 logo-hide" />
-          </div>{" "}
-          {/* <div className="logo-image d-flex justify-content-center">
-            <img src={logo_rebag} alt="" className="img-fluid mb-2 logo-hide" />
-          </div> */}
+          </div>
           <div className="auth-responsive">
             <span className="mb-5">
               <h3 className="d-flex justify-content-center green-text fw-bold mt-3">
