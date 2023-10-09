@@ -5,6 +5,7 @@ import EyeIcon from "../../assets/images/EyeIcon";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
 import TextField from "../../shared/TextField";
 //import PhoneInput from "react-phone-input-2";
 import Logo from "../../assets/images/Logo.svg";
@@ -16,8 +17,10 @@ const loginValidationSchema = Yup.object().shape({
   password: Yup.string().required("Password is Required"),
 });
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
-import { loginUser } from "../../API/API";
+//import { loginUser } from "../../API/API";
+import { userLogin } from "../../store/user/actions/actionCreators";
 const Login = () => {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [selectedLoginOption, setSelectedLoginOption] = useState("email");
   const initialValues = {
@@ -25,18 +28,14 @@ const Login = () => {
     mobNo: "",
     password: "",
   };
-  // const loginData = {
-  //   email: "",
-  //   password: "",
+  // const handleLogin = async (values) => {
+  //   try {
+  //     const response = await loginUser(values.email, values.password);
+  //     console.log("Login Successful", response);
+  //   } catch (error) {
+  //     console.error("Login Error", error);
+  //   }
   // };
-  const handleLogin = async (values) => {
-    try {
-      const response = await loginUser(values.email, values.password);
-      console.log("Login Successful", response);
-    } catch (error) {
-      console.error("Login Error", error);
-    }
-  };
   // const [phone, setPhone] = useState();
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -65,6 +64,14 @@ const Login = () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
+
+  const loginHandler = (values) => {
+    const data = {
+      email: values.email,
+      password: values.password,
+    };
+    dispatch(userLogin(data, navigate));
+  };
   return (
     <>
       <div
@@ -89,7 +96,7 @@ const Login = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={loginValidationSchema}
-            onSubmit={handleLogin}
+            onSubmit={loginHandler}
           >
             {/* {({ touched, errors }) => ( */}
             {() => (
