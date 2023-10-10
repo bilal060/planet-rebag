@@ -5,8 +5,16 @@ import Logo from "../../assets/images/Logo.svg";
 import Form from "react-bootstrap/Form";
 import Otpinput from "../../components/Otpinput";
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { verifyToken } from "../../store/storeIndex";
+import Toast from "../../shared/Toast";
 const AuthOtpMail = () => {
   const [dimension, setDimension] = useState();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [otp, setOTP] = useState(Array(4).fill(""));
+  let [searchParams] = useSearchParams();
   useEffect(() => {
     const handleWindowResize = () => {
       const windowdimention = getWindowDimensions();
@@ -17,6 +25,19 @@ const AuthOtpMail = () => {
       window.addEventListener("resize", handleWindowResize);
     };
   }, [window.innerHeight]);
+
+  const submithandler = (event) => {
+    event.preventDefault();
+    if (otp.length > 0) {
+      const data = {
+        email: searchParams.get("email"),
+        otp: otp.join(""),
+      };
+      dispatch(verifyToken(data, navigate));
+    } else {
+      Toast.error("OTP is required");
+    }
+  };
   return (
     <>
       <div
@@ -48,11 +69,17 @@ const AuthOtpMail = () => {
                     </label>
                   </div>
                   <div className="otp-input mt-3">
-                    <Otpinput length={4} />
+                    <Otpinput length={4} setOTP={setOTP} otp={otp} />
                   </div>
                 </div>
                 <div className="login-btn mt-3">
-                  <button className="guest-btn btn-lg btn-block">Verify</button>
+                  <button
+                    type="submit"
+                    onClick={submithandler}
+                    className="guest-btn btn-lg btn-block"
+                  >
+                    Verify
+                  </button>
                 </div>
               </Form>
             </div>

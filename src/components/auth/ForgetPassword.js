@@ -6,15 +6,26 @@ import { ErrorMessage, Form, Formik } from "formik";
 import * as Yup from "yup";
 import TextField from "../../shared/TextField";
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
+import { useDispatch } from "react-redux";
+import { forgetPassword } from "../../store/storeIndex";
 
 const forgotPasswordValidationSchema = Yup.object().shape({
   email: Yup.string().email().required("Email is Required"),
 });
 
 function ForgetPassword() {
+  const dispatch = useDispatch();
   const initialValues = {
     email: "",
   };
+
+  const forgetHandler = (values) => {
+    const data = {
+      email: values.email,
+    };
+    dispatch(forgetPassword(data));
+  };
+
   const [dimension, setDimension] = useState();
   useEffect(() => {
     const handleWindowResize = () => {
@@ -23,7 +34,7 @@ function ForgetPassword() {
     };
     window.addEventListener("resize", handleWindowResize);
     return () => {
-      window.addEventListener("resize", handleWindowResize);
+      window.removeEventListener("resize", handleWindowResize);
     };
   }, [window.innerHeight]);
   return (
@@ -46,6 +57,7 @@ function ForgetPassword() {
             <Formik
               initialValues={initialValues}
               validationSchema={forgotPasswordValidationSchema}
+              onSubmit={forgetHandler}
             >
               {() => (
                 <Form>

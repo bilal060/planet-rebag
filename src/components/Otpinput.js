@@ -1,15 +1,14 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable prettier/prettier */
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import "../assets/css/otp.css";
-import PropTypes from "prop-types";
 
 const initializeRefs = (length) =>
   Array(length)
     .fill(null)
     .map(() => useRef(null));
 
-const Otpinput = ({ length }) => {
-  const [otp, setOTP] = useState(Array(length).fill(""));
+const Otpinput = ({ length, otp, setOTP }) => {
   const inputRefs = useRef(initializeRefs(length));
 
   useEffect(() => {
@@ -38,8 +37,8 @@ const Otpinput = ({ length }) => {
   );
 };
 
-Otpinput.propTypes = {
-  length: PropTypes.number.isRequired,
-};
+// Otpinput.propTypes = {
+//   length: PropTypes.number.isRequired,
+// };
 
 export default Otpinput;

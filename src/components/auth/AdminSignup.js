@@ -14,6 +14,8 @@ import EyeiconClose from "../../assets/images/EyeiconClose";
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
 import { registerUser } from "../../API/API";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { userSignup } from "../../store/storeIndex";
 import "react-toastify/dist/ReactToastify.css";
 
 const signupValidationSchema = Yup.object().shape({
@@ -23,6 +25,9 @@ const signupValidationSchema = Yup.object().shape({
   password: Yup.string().required("Password is Required"),
 });
 const SignUp = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [selectedLoginOption, setSelectedLoginOption] = useState("email");
   const [phone, setPhone] = useState();
@@ -45,10 +50,16 @@ const SignUp = () => {
       registrationData.password = values.password;
 
       if (selectedLoginOption === "email") {
-        registrationData.email = values.email;
-        const response = await registerUser(registrationData);
-        console.log("Email Registration Successful", response);
-        navigate("/otpmail");
+        const data = {
+          name: values.name,
+          email: values.email,
+          password: values.password,
+        };
+        dispatch(userSignup(data, navigate));
+        // registrationData.email = values.email;
+        // const response = await registerUser(registrationData);
+        // console.log("Email Registration Successful", response);
+        // navigate("/otpmail");
       } else if (selectedLoginOption === "mobile") {
         registrationData.phone = values.phone;
         const response = await registerUser(registrationData);
@@ -67,8 +78,6 @@ const SignUp = () => {
   const handleLoginOptionChange = (option) => {
     setSelectedLoginOption(option);
   };
-
-  const navigate = useNavigate();
 
   const direct = () => {
     navigate("/login");

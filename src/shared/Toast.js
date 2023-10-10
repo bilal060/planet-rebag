@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import { toast } from "react-toast-notification";
 
 const success = (message) => {
   if (message) {
