@@ -33,6 +33,21 @@ export const forgetPassword = (data) => (dispatch) => {
     });
 };
 
+export const resetNewPassword = (data, navigate) => (dispatch) => {
+  Axios.patch("user/resetpassword", data, { withCredentials: true })
+    .then((response) => {
+      dispatch({
+        type: actionTypes.USER_LOGIN,
+        payload: response.data.user,
+      });
+      navigate("/confirmation");
+      Toast.success(response.data.message);
+    })
+    .catch((error) => {
+      Toast.error(error.response.data.message);
+    });
+};
+
 export const userSignup = (data, navigation) => {
   Axios.post("user/register", data)
     .then((response) => {

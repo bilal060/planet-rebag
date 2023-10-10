@@ -4,4 +4,5 @@ export {
   userSignup,
   verifyToken,
   forgetPassword,
+  resetNewPassword,
 } from "./user/actions/actionCreators";
