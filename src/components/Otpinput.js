@@ -1,15 +1,14 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable prettier/prettier */
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import "../assets/css/otp.css";
-import PropTypes from "prop-types";
 
 const initializeRefs = (length) =>
   Array(length)
     .fill(null)
     .map(() => useRef(null));
 
-const Otpinput = ({ length }) => {
-  const [otp, setOTP] = useState(Array(length).fill(""));
+const Otpinput = ({ length, otp, setOTP }) => {
   const inputRefs = useRef(initializeRefs(length));
 
   useEffect(() => {
@@ -22,10 +21,6 @@ const Otpinput = ({ length }) => {
     setOTP(newOTP);
   };
 
-  // const handleKeyDown = (e, index) => {
-  // ... your handleKeyDown logic, you can move it here
-  // };
-
   return (
     <div className="otp-input-container">
       {otp.map((digit, index) => (
@@ -36,15 +31,14 @@ const Otpinput = ({ length }) => {
           maxLength={1}
           value={digit}
           onChange={(e) => handleChange(e, index)}
-        //onKeyDown={(e) => handleKeyDown(e, index)}
         />
       ))}
     </div>
   );
 };
 
-Otpinput.propTypes = {
-  length: PropTypes.number.isRequired,
-};
+// Otpinput.propTypes = {
+//   length: PropTypes.number.isRequired,
+// };
 
 export default Otpinput;

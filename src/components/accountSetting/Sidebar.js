@@ -1,12 +1,14 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PrivacyPolicyIcon from "../../assets/images/icons/PrivacyPolicyIcon";
 import FAQsIcon from "../../assets/images/icons/FAQsIcon";
 import ContactUsIcon from "../../assets/images/icons/ContactUsIcon";
 import ChangePasswordIcon from "../../assets/images/icons/ChangePassword";
 import AddPriceIcon from "../../assets/images/icons/AddPriceIcon";
 import LogoutIcon from "../../assets/images/icons/Logout";
+import { useDispatch } from "react-redux";
+import { userLogout } from "../../store/storeIndex";
 
 const settingRoute = [
   {
@@ -38,6 +40,8 @@ const settingRoute = [
 
 const AccountSettingSidebar = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -56,9 +60,9 @@ const AccountSettingSidebar = () => {
             </Link>
           );
         })}
-        <Link className="logout" to="/login">
+        <div className="logout" onClick={() => dispatch(userLogout(navigate))}>
           <LogoutIcon /> Log Out
-        </Link>
+        </div>
       </Card>
     </>
   );

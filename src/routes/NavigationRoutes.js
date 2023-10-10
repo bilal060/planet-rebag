@@ -44,10 +44,17 @@ const TransactionHistory = React.lazy(() =>
 const AppUserDetailView = React.lazy(() =>
   import("../pages/AppUserDetailView.js"),
 );
+const USER_ROLES = {
+  ADMIN: "admin",
+  USER: "user",
+};
 
 function NavigationRoutes() {
-  const routes = (
+  const userRole = "user";
+  const adminRoutes = (
     <Routes>
+      <Route exact path="/" element={<LandingPage />}></Route>
+      <Route exact path="/adminlogin" element={<AdminLoginPage />}></Route>
       <Route exact path="/home" element={<Home />}></Route>
       <Route exact path="/stores" element={<Stores />}></Route>
       <Route exact path="/substores" element={<SubStores />}></Route>
@@ -70,9 +77,33 @@ function NavigationRoutes() {
         path="/transaction-history"
         element={<TransactionHistory />}
       ></Route>
+      <Route
+        exact
+        path="/settings/addbagprice"
+        element={<AddBagPrice />}
+      ></Route>
+      <Route exact path="/settings/Contact" element={<ContactUs />}></Route>
+      <Route exact path="/settings/Faqs" element={<AccountFaqs />}></Route>
+      <Route
+        exact
+        path="/settings/PrivacyPolicy"
+        element={<AccountPrivacyPolicy />}
+      ></Route>
+    </Routes>
+  );
+  const userRoutes = (
+    <Routes>
+      <Route exact path="/" element={<LandingPage />}></Route>
+      <Route exact path="/home" element={<Home />}></Route>
+      <Route exact path="/users/detail" element={<AppUserDetailView />}></Route>
+      <Route
+        exact
+        path="/transaction-history"
+        element={<TransactionHistory />}
+      ></Route>
+
       <Route exact path="/requests" element={<Requests />}></Route>
       <Route exact path="/support" element={<></>}></Route>
-      <Route exact path="/" element={<LandingPage />}></Route>
       <Route exact path="/checkMail" element={<CheckMail />}></Route>
       <Route
         exact
@@ -87,7 +118,6 @@ function NavigationRoutes() {
       <Route exact path="/otpmobile" element={<OtpMobile />}></Route>
       <Route exact path="/otpmail" element={<OtpMail />}></Route>
       <Route exact path="/confirmation" element={<Confirmation />}></Route>
-      <Route exact path="/adminlogin" element={<AdminLoginPage />}></Route>
       <Route
         exact
         path="/settings/ChangePassword"
@@ -107,8 +137,10 @@ function NavigationRoutes() {
       ></Route>
     </Routes>
   );
+  const routesToRender =
+    userRole === USER_ROLES.ADMIN ? adminRoutes : userRoutes;
 
-  return routes;
+  return routesToRender;
 }
 
 export default NavigationRoutes;

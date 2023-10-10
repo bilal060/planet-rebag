@@ -3,8 +3,10 @@ import congratulations_icon from "../../assets/images/congratulations.svg";
 import Logo from "../../assets/images/Logo.svg";
 import AuthFooter from "../../components/auth_footer/AuthFooter";
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
+import { useNavigate } from "react-router-dom";
 const AuthConfirmation = () => {
   const [dimension, setDimension] = useState();
+  const navigate = useNavigate();
   useEffect(() => {
     const handleWindowResize = () => {
       const windowdimention = getWindowDimensions();
@@ -39,7 +41,12 @@ const AuthConfirmation = () => {
               </span>
             </span>
             <div className="login-btn mt-5">
-              <button className="guest-btn btn-lg btn-block">Done</button>
+              <button
+                onClick={() => navigate("/home")}
+                className="guest-btn btn-lg btn-block"
+              >
+                Done
+              </button>
             </div>
             <div className="d-md-none d-block">
               <AuthFooter />
