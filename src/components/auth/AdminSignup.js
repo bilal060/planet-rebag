@@ -12,8 +12,6 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
-import { registerUser } from "../../API/API";
-import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { userSignup } from "../../store/storeIndex";
 import "react-toastify/dist/ReactToastify.css";
@@ -37,38 +35,22 @@ const SignUp = () => {
     phone: "",
     password: "",
   };
-  const registrationData = {
-    role: "user",
-    name: "",
-    email: "",
-    phone: "",
-    password: "",
-  };
   const handleRegistration = async (values) => {
-    try {
-      registrationData.name = values.name;
-      registrationData.password = values.password;
-
-      if (selectedLoginOption === "email") {
-        const data = {
-          name: values.name,
-          email: values.email,
-          password: values.password,
-        };
-        dispatch(userSignup(data, navigate));
-        // registrationData.email = values.email;
-        // const response = await registerUser(registrationData);
-        // console.log("Email Registration Successful", response);
-        // navigate("/otpmail");
-      } else if (selectedLoginOption === "mobile") {
-        registrationData.phone = values.phone;
-        const response = await registerUser(registrationData);
-        console.log("Mobile Registration Successful", response);
-        navigate("/otpmobile");
-      }
-    } catch (error) {
-      console.error("Registration Error", error);
-      toast.error("Registration Error. Please try again.");
+    console.log("Working");
+    if (selectedLoginOption === "email") {
+      const data = {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      };
+      dispatch(userSignup(data, navigate));
+    } else if (selectedLoginOption === "mobile") {
+      const data = {
+        phone: values.phone,
+        email: values.email,
+        password: values.password,
+      };
+      dispatch(userSignup(data, navigate));
     }
   };
   const togglePasswordVisibility = () => {

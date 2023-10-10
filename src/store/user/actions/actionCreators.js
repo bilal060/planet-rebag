@@ -3,11 +3,6 @@ import * as actionTypes from "./actionTypes";
 import Toast from "../../../shared/Toast";
 import Axios from "../../../axios/Axios";
 
-// export const loginUser = async (email, password) => {
-//   const response = await Axios.post("user/login", { email, password });
-//   return response.data;
-// };
-
 export const userLogin = (data, navigation) => (dispatch) => {
   Axios.post("user/login", data, { withCredentials: true })
     .then((response) => {
@@ -49,6 +44,7 @@ export const resetNewPassword = (data, navigate) => (dispatch) => {
 };
 
 export const userSignup = (data, navigation) => {
+  console.log(data);
   Axios.post("user/register", data)
     .then((response) => {
       if (data.email) {
@@ -59,7 +55,6 @@ export const userSignup = (data, navigation) => {
       Toast.success(response.data.message);
     })
     .catch((error) => {
-      console.error("Signup Error", error);
       Toast.error(error.response.data.message);
     });
 };

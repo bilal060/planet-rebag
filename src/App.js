@@ -5,12 +5,13 @@ import { BrowserRouter as Router } from "react-router-dom";
 import NavigationRoutes from "./routes/NavigationRoutes";
 import ErrorBoundary from "./shared/ErrorBoundary";
 import ErrorBoundaryAlert from "./shared/ErrorBoundaryAlert";
+import Loading from "./shared/Loading";
 import { Suspense } from "react";
 
 function App() {
   return (
     <ErrorBoundary fallback={<ErrorBoundaryAlert />}>
-      <Suspense fallback="Loading...">
+      <Suspense fallback={<Loading />}>
         <Router>
           <NavigationRoutes />
         </Router>
