@@ -4,7 +4,7 @@ import "../assets/css/layout.css";
 import userimage from "../assets/images/icons/dashboardicons/userimage.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import BackIcon from "../assets/images/icons/BackIcon";
-import AddIcon from "../assets/images/icons/AddIcon";
+// import AddIcon from "../assets/images/icons/AddIcon";
 import { Modal } from "react-bootstrap";
 import bags from "../assets/images/bags.svg";
 import camera from "../assets/images/camera.svg";
@@ -48,7 +48,7 @@ const withMainLayout = (WrappedComponent) => {
                   <div>
                     <h1>Welcome, Tony!</h1>
                   </div>
-                  <button
+                  {/* <button
                     className="green-btn w-max-content d-flex"
                     onClick={() => setModalShow(true)}
                   >
@@ -56,8 +56,8 @@ const withMainLayout = (WrappedComponent) => {
                     <span className="d-sm-block font-weight-600 d-none">
                       Register Bag
                     </span>
-                  </button>
-                  <button
+                  </button> 
+                   <button
                     className="green-btn w-max-content d-flex"
                     onClick={() => setSubStoreModalShow(true)}
                   >
@@ -65,7 +65,7 @@ const withMainLayout = (WrappedComponent) => {
                     <span className="d-sm-block font-weight-600 d-none">
                       SubStore Modal (customer unique id)
                     </span>
-                  </button>
+                  </button> */}
                 </>
               )}
 
