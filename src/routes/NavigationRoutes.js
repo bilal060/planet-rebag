@@ -12,6 +12,7 @@ const Home = React.lazy(() => import("../pages/Home.js"));
 const LandingPage = React.lazy(() => import("../pages/Landing.js"));
 const CheckMail = React.lazy(() => import("../pages/CheckMail.js"));
 const TempPasswordPage = React.lazy(() => import("../pages/TempPassword.js"));
+const NewPasswordPage = React.lazy(() => import("../pages/NewPassword.js"));
 const LoginPage = React.lazy(() => import("../pages/Login.js"));
 const SignupPage = React.lazy(() => import("../pages/Signup.js"));
 
@@ -50,7 +51,7 @@ const USER_ROLES = {
 };
 
 function NavigationRoutes() {
-  const userRole = "user";
+  const userRole = "admin";
   const adminRoutes = (
     <Routes>
       <Route exact path="/" element={<LandingPage />}></Route>
@@ -111,6 +112,7 @@ function NavigationRoutes() {
         element={<ForgetPasswordPage />}
       ></Route>
       <Route exact path="/temppassword" element={<TempPasswordPage />}></Route>
+      <Route exact path="/newpassword" element={<NewPasswordPage />}></Route>
       <Route exact path="/login" element={<LoginPage />}></Route>
       <Route exact path="/signup" element={<SignupPage />}></Route>
 

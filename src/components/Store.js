@@ -2,10 +2,20 @@ import React, { useState } from "react";
 import "../assets/css/stores.css";
 import AddNewCategoryIcon from "../assets/images/icons/dashboardicons/addNewCategory";
 import StoresCard from "../components/StoresCard";
-import { Col, Form, Modal, Row } from "react-bootstrap";
-import UploadIcon from "../assets/images/icons/dashboardicons/uploadIcon";
+import { Col, Modal, Row } from "react-bootstrap";
+import * as Yup from "yup";
+import { ErrorMessage, Form, Formik } from "formik";
+import TextField from "../shared/TextField";
+import EyeIcon from "../assets/images/EyeIcon";
+import EyeiconClose from "../assets/images/EyeiconClose";
+//import UploadIcon from "../assets/images/icons/dashboardicons/uploadIcon";
 import StoreLogo from "../assets/images/icons/dashboardicons/storeLogo";
-
+const signupValidationSchema = Yup.object().shape({
+  name: Yup.string().required("Full Name is Required"),
+  email: Yup.string().email().required("Email is Required"),
+  phone: Yup.string().optional("Mobile Number is Required"),
+  password: Yup.string().required("Password is Required"),
+});
 const cardData = [
   {
     storeName: "Carrefour",
@@ -64,31 +74,50 @@ const cardData = [
 ];
 const Store = () => {
   const [modalShow, setModalShow] = useState(false);
-  const [file, setFile] = useState(null);
-  const [addCategory, setAddCategory] = useState({
+  const [showPassword, setShowPassword] = useState(false);
+  const initialValues = {
     storeName: "",
-    storeId: "",
-    itemsReturned: "",
-    totalRedeemPrice: "",
-    totalSubStores: "",
-    numberOfPos: "",
-    storeLocation: "",
-  });
+    storeEmail: "",
+    phone: "",
+    password: "",
+    storeType: "gasStation",
+    ownBottlesQty: "",
+    otherBottlesQty: "",
+    ownBagsQty: "",
+    otherBagsQty: "",
+    ownBagsPrice: "",
+    otherBagsPrice: "",
+    ownBottlesPrice: "",
+    otherBottlesPrice: "",
+  };
+  // const [file, setFile] = useState(null);
+  // const [addCategory, setAddCategory] = useState({
+  //   storeName: "",
+  //   storeId: "",
+  //   itemsReturned: "",
+  //   totalRedeemPrice: "",
+  //   totalSubStores: "",
+  //   numberOfPos: "",
+  //   storeLocation: "",
+  // });
 
-  const attachFile = (e) => {
-    if (e.target.files) {
-      let imageFile = e.target.files[0];
-      //   setAddCategory((prevState) => ({
-      //     ...prevState,
-      //     photo: Array.from(e.target.files),
-      //   }));
-      setFile(imageFile?.name);
-    }
+  // const attachFile = (e) => {
+  //   if (e.target.files) {
+  //     let imageFile = e.target.files[0];
+  //     //   setAddCategory((prevState) => ({
+  //     //     ...prevState,
+  //     //     photo: Array.from(e.target.files),
+  //     //   }));
+  //     setFile(imageFile?.name);
+  //   }
+  // };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
   return (
     <div className="stores">
       <div className="d-flex align-items-center justify-content-between mb-4 ps-12 pe-12">
-        <h4 className="fs-3 ">All Stores </h4>
+        <h4 className="fs-3 ">All Stores</h4>
         <button
           className="green-btn-outline d-flex"
           onClick={() => setModalShow(true)}
@@ -133,8 +162,7 @@ const Store = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Row>
+          {/* <Row>
               {Object.keys(addCategory).map((key, index) => {
                 const label = key.replace(/([a-z])([A-Z])/g, "$1 $2");
                 const formattedLabel =
@@ -160,9 +188,9 @@ const Store = () => {
                   </Col>
                 );
               })}
-            </Row>
+            </Row> */}
 
-            <Form.Group
+          {/* <Form.Group
               className="mb-3 ps-12 pe-12"
               controlId="exampleForm.ControlTextarea1"
             >
@@ -181,8 +209,80 @@ const Store = () => {
                   accept=".jpg, .jpeg, .png"
                 />
               </Form.Label>
-            </Form.Group>
-          </Form>
+            </Form.Group> */}
+          <Formik
+            initialValues={initialValues}
+            validationSchema={signupValidationSchema}
+            // onSubmit={handleRegistration}
+          >
+            {() => (
+              <Form>
+                <div className="form-group mt-5 mb-3">
+                  <div className="label-inputs-start mb-2">
+                    <label htmlFor="emailInput" className="font-16">
+                      Store Name
+                    </label>
+                  </div>
+
+                  <TextField
+                    placeholder="Enter your store name"
+                    name="name"
+                    type={"text"}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="name"
+                    className="invalid-feedback"
+                  />
+                </div>
+                <div className="form-group mt-5 mb-3">
+                  <div className="label-inputs-start mb-2">
+                    <label htmlFor="emailInput" className="font-16">
+                      Store email
+                    </label>
+                  </div>
+
+                  <TextField
+                    placeholder="Enter your Email"
+                    name="email"
+                    type={"email"}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="name"
+                    className="invalid-feedback"
+                  />
+                </div>
+                <div className="form-group mt-2">
+                  <div className="label-inputs-start">
+                    <label
+                      htmlFor="passwordInput"
+                      className="font-16 text-start"
+                    >
+                      Password
+                    </label>
+                  </div>
+                  <div className="input-group mt-2">
+                    <TextField
+                      righticon={
+                        <span onClick={togglePasswordVisibility}>
+                          {showPassword ? <EyeiconClose /> : <EyeIcon />}
+                        </span>
+                      }
+                      placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                      name="password"
+                      type={showPassword ? "text" : "password"}
+                    />
+                    <ErrorMessage
+                      component="div"
+                      name="password"
+                      className="invalid-feedback"
+                    />
+                  </div>
+                </div>
+              </Form>
+            )}
+          </Formik>
         </Modal.Body>
         <Modal.Footer className="mt-5">
           <Row className="w-100">
