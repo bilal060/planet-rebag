@@ -7,6 +7,9 @@ import EyeiconClose from "../../assets/images/EyeiconClose";
 import { ErrorMessage, Form, Formik } from "formik";
 import * as Yup from "yup";
 import TextField from "../../shared/TextField";
+import { userLogin } from "../../store/user/actions/actionCreators";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const adminLoginValidationSchema = Yup.object().shape({
   email: Yup.string().email().required("Email is Required"),
@@ -15,6 +18,7 @@ const adminLoginValidationSchema = Yup.object().shape({
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
 
 const Adminlogin = () => {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {
@@ -36,7 +40,16 @@ const Adminlogin = () => {
       window.addEventListener("resize", handleWindowResize);
     };
   }, [window.innerHeight]);
+  const navigate = useNavigate();
 
+  const loginHandler = (values) => {
+    const data = {
+      email: values.email,
+      password: values.password,
+      //role: "superAdminUser",
+    };
+    dispatch(userLogin(data, navigate));
+  };
   return (
     <>
       <div
@@ -56,6 +69,7 @@ const Adminlogin = () => {
             <Formik
               initialValues={initialValues}
               validationSchema={adminLoginValidationSchema}
+              onSubmit={loginHandler}
             >
               {() => (
                 <Form>
