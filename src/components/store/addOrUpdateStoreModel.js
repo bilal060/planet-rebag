@@ -8,26 +8,31 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import TextField from "../../shared/TextField";
 //import UploadIcon from "../../assets/images/icons/dashboardicons/uploadIcon";
 // import { addStore } from "../../../store/user/actions/actionCreators";
-import { addStore } from "../../store/user/actions/actionCreators";
+// import { addStore } from "../../store/user/actions/actionCreators";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import EyeIcon from "../../assets/images/EyeIcon";
-// const signupValidationSchema = Yup.object().shape({
-//   storeName: Yup.string().required("Full Name is Required"),
-//   storeEmail: Yup.string().email().required("Email is Required"),
-//   password: Yup.string().required("Password is Required"),
-//   maiDubaiBagsPrice: Yup.number().required("Mai Dubai Bags Price is Required"),
-//   maiDubaiBottlesPrice: Yup.number().required(
-//     "Mai Dubai Bottles Price is Required",
-//   ),
-//   ownBagsPrice: Yup.number().required("Own Bags Price is Required"),
-//   otherBagsPrice: Yup.number().required("Other Bags Price is Required"),
-//   ownBottlesPrice: Yup.number().required("Own Bottles Price is Required"),
-//   storeType: Yup.string().required("storeType is Required"),
-//   hasBags: Yup.bool().required("This Field is Required"),
-// });
+import * as Yup from "yup";
+import { addStore } from "../../store/user/actions/actionCreators";
+import Toast from "../../shared/Toast";
+
+const signupValidationSchema = Yup.object().shape({
+  storeName: Yup.string().required("Store Name is Required"),
+  storeEmail: Yup.string().email().required("Email is Required"),
+  password: Yup.string().required("Password is Required"),
+  ownBagsPrice: Yup.number().required("Own Bags Price is Required"),
+  otherBagsPrice: Yup.number().required("Other Bags Price is Required"),
+  otherBottlesPrice: Yup.number().required("Other Bottles Price is Required"),
+  maiDubaiBottlesPrice: Yup.number().required(
+    "Mai Dubai Bottles Price is Required",
+  ),
+  storeType: Yup.string().required("Store Type is Required"),
+  hasBottles: Yup.boolean(),
+  ownBottlesPrice: Yup.number().required("Own Bottles Price is required"),
+});
 
 const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
   const [showPassword, setShowPassword] = useState(false);
+
   const initialValues = {
     storeName: "",
     storeEmail: "",
@@ -35,8 +40,10 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
     storeType: "gasStation",
     ownBagsPrice: "",
     otherBagsPrice: "",
-    ownBottlesPrice: "",
     otherBottlesPrice: "",
+    maiDubaiBottlesPrice: "",
+    hasBottles: false,
+    ownBottlesPrice: "",
   };
 
   const togglePasswordVisibility = () => {
@@ -44,27 +51,22 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
   };
 
   const handleAddStore = async (values) => {
-    console.log("check", values);
     const formData = {
       storeName: values.storeName,
       storeEmail: values.storeEmail,
-      // phone: values.phone,
       password: values.password,
       storeType: values.storeType,
-      ownBottlesQty: values.ownBottlesQty,
-      otherBottlesQty: values.otherBottlesQty,
-      ownBagsQty: values.ownBagsQty,
-      otherBagsQty: values.otherBagsQty,
       ownBagsPrice: values.ownBagsPrice,
       otherBagsPrice: values.otherBagsPrice,
-      ownBottlesPrice: values.ownBottlesPrice,
       otherBottlesPrice: values.otherBottlesPrice,
+      maiDubaiBottlesPrice: values.maiDubaiBottlesPrice,
+      hasBottles: values.hasBottles,
+      ownBottlesPrice: values.ownBottlesPrice,
     };
-    console.log(formData);
     addStore(formData)
-      .then((response) => {
-        // Toast.success(response.data.message);
-        console.log(response, "response");
+      .then(() => {
+        Toast.success("Store Added Successfully");
+        setModalShow(false);
       })
       .catch((err) => {
         console.log(err, "err");
@@ -89,60 +91,12 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* <Row>
-              {Object.keys(addCategory).map((key, index) => {
-                const label = key.replace(/([a-z])([A-Z])/g, "$1 $2");
-                const formattedLabel =
-                  label.charAt(0).toUpperCase() + label.slice(1);
-                return (
-                  <Col lg="6" className="" key={index}>
-                    <Form.Group className="mb-3" controlId={key}>
-                      <Form.Label className="mb-2 text-capitalize font-weight-600">
-                        {formattedLabel}
-                      </Form.Label>
-                      <Form.Control
-                        onChange={(e) =>
-                          setAddCategory((prevState) => ({
-                            ...prevState,
-                            [key]: e.target.value,
-                          }))
-                        }
-                        className="inputstyle"
-                        type="text"
-                        placeholder={`Enter ${formattedLabel}`}
-                      />
-                    </Form.Group>
-                  </Col>
-                );
-              })}
-            </Row> */}
-
-          {/* <Form.Group
-              className="mb-3 ps-12 pe-12"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label className="mb-2">Upload Category Icon</Form.Label>
-              <Form.Label className="upload-files">
-                <div className="d-flex justify-content-center align-items-center h-100 w-100 gap-2">
-                  <UploadIcon />
-                  <p className="font-16 font-weight-500">
-                    {file === null ? "Upload File" : file}
-                  </p>
-                </div>
-                <Form.Control
-                  onChange={(e) => attachFile(e)}
-                  className="d-none"
-                  type="file"
-                  accept=".jpg, .jpeg, .png"
-                />
-              </Form.Label>
-            </Form.Group> */}
           <Formik
             initialValues={initialValues}
-            // validationSchema={signupValidationSchema}
+            validationSchema={signupValidationSchema}
             onSubmit={handleAddStore}
           >
-            {() => (
+            {({ values }) => (
               <Form>
                 <div className="form-group mt-5 mb-3">
                   <div className="label-inputs-start mb-2">
@@ -264,24 +218,6 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                 <div className="form-group  mb-3">
                   <div className="label-inputs-start mb-2">
                     <label htmlFor="otherBottlesPrice" className="font-16">
-                      Mai Dubai Bags Price
-                    </label>
-                  </div>
-
-                  <TextField
-                    placeholder="Enter your Mai Dubai Bags Price"
-                    name="maiDubaiBagsPrice"
-                    type={"number"}
-                  />
-                  <ErrorMessage
-                    component="div"
-                    name="name"
-                    className="invalid-feedback"
-                  />
-                </div>
-                <div className="form-group  mb-3">
-                  <div className="label-inputs-start mb-2">
-                    <label htmlFor="otherBottlesPrice" className="font-16">
                       Mai Dubai Bottles Price
                     </label>
                   </div>
@@ -297,45 +233,54 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                     className="invalid-feedback"
                   />
                 </div>
-                <div className="form-group  mb-3">
-                  <div className="label-inputs-start mb-2">
-                    <label htmlFor="otherBottlesPrice" className="font-16">
-                      Has Bags
+                <div className="form-group mb-3">
+                  <div className="label-inputs-start mb-2 d-flex align-content-center">
+                    <label htmlFor="hasBottles" className="font-16">
+                      Has Bottles
                     </label>
+                    <Field
+                      className="mx-1"
+                      type="checkbox"
+                      name="hasBottles" // Match this name to the formik field name
+                      checked={values.hasBottles}
+                    />
                   </div>
-
-                  <Field
-                    placeholder="Enter your Other Bottles Price"
-                    name="hasBags"
-                    type={"checkbox"}
-                  />
-                  <ErrorMessage
-                    component="div"
-                    name="name"
-                    className="invalid-feedback"
-                  />
                 </div>
+                {values.hasBottles && (
+                  <div className="form-group mb-3">
+                    <div className="label-inputs-start mb-2">
+                      <label htmlFor="ownBottlesPrice" className="font-16">
+                        Own Bottles Price
+                      </label>
+                    </div>
+                    <TextField
+                      placeholder="Enter your Own Bottles Price"
+                      name="ownBottlesPrice"
+                      type="number"
+                    />
+                    <ErrorMessage
+                      component="div"
+                      name="ownBottlesPrice"
+                      className="invalid-feedback"
+                    />
+                  </div>
+                )}
                 <div className="form-group mb-3">
                   <div className="label-inputs-start mb-2">
-                    <label htmlFor="option" className="font-16">
+                    <label htmlFor="storeType" className="font-16">
                       Store Type
                     </label>
                   </div>
-
-                  <select
-                    className="form-select"
-                    type={"select"}
-                    value="StoreType"
+                  <Field
+                    as="select" // Use "as" prop to render a select input
+                    name="storeType" // Match this name to the Formik field name
+                    className="form-select" // Add any necessary classes
                   >
-                    <option>Gas Station</option>
-                  </select>
-
-                  <ErrorMessage
-                    component="div"
-                    name="name"
-                    className="invalid-feedback"
-                  />
+                    <option value="superMart">Super Mart</option>
+                    <option value="gasStation">Gas Station</option>
+                  </Field>
                 </div>
+
                 <Row className="w-100">
                   <Col lg="6" className="mb-lg-0 mb-3">
                     <button

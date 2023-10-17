@@ -14,7 +14,7 @@ const Store = () => {
 
   useEffect(() => {
     dispatch(fetchStoreData());
-  }, [dispatch]);
+  }, [dispatch, modalShow]);
 
   return (
     <div className="stores">
