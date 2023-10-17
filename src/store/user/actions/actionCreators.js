@@ -4,7 +4,7 @@ import Toast from "../../../shared/Toast";
 import Axios from "../../../axios/Axios";
 
 export const userLogin = (data, navigation) => (dispatch) => {
-  Axios.post("user/login", data, { withCredentials: true })
+  Axios.post("user/login", data)
     .then((response) => {
       dispatch({
         type: actionTypes.USER_LOGIN,
@@ -29,7 +29,7 @@ export const forgetPassword = (data) => (dispatch) => {
 };
 
 export const resetNewPassword = (data, navigate) => (dispatch) => {
-  Axios.patch("user/resetpassword", data, { withCredentials: true })
+  Axios.patch("user/resetpassword", data)
     .then((response) => {
       dispatch({
         type: actionTypes.USER_LOGIN,
@@ -60,7 +60,7 @@ export const userSignup = (data, navigation) => {
 };
 
 export const verifyToken = (data, navigate) => (dispatch) => {
-  Axios.post("user/verify-otp", data, { withCredentials: true })
+  Axios.post("user/verify-otp", data)
     .then((response) => {
       dispatch({
         type: actionTypes.USER_LOGIN,
