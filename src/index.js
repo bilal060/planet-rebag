@@ -13,9 +13,11 @@ import thunk from "redux-thunk";
 const { persistStore, persistReducer } = require("redux-persist");
 
 import UserReducer from "./store/user/reducers/UserReducer";
+import storeReducer from "./store/store/reducers/StoreReducer";
 
 const rootReducer = combineReducers({
   user: UserReducer,
+  store: storeReducer,
 });
 
 let devtools, store;
