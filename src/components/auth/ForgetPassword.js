@@ -8,6 +8,8 @@ import TextField from "../../shared/TextField";
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
 import { useDispatch } from "react-redux";
 import { forgetPassword } from "../../store/storeIndex";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const forgotPasswordValidationSchema = Yup.object().shape({
   email: Yup.string().email().required("Email is Required"),
@@ -17,16 +19,19 @@ function ForgetPassword() {
   const dispatch = useDispatch();
   const initialValues = {
     email: "",
+    phone: "",
   };
-
   const forgetHandler = (values) => {
     const data = {
       email: values.email,
+      phone: values.phone,
     };
     dispatch(forgetPassword(data));
   };
-
+  const [phone, setPhone] = useState();
   const [dimension, setDimension] = useState();
+  const [selectedLoginOption, setSelectedLoginOption] = useState("email");
+
   useEffect(() => {
     const handleWindowResize = () => {
       const windowdimention = getWindowDimensions();
@@ -37,6 +42,9 @@ function ForgetPassword() {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, [window.innerHeight]);
+  const handleLoginOptionChange = (option) => {
+    setSelectedLoginOption(option);
+  };
   return (
     <>
       <div
@@ -59,27 +67,81 @@ function ForgetPassword() {
               validationSchema={forgotPasswordValidationSchema}
               onSubmit={forgetHandler}
             >
-              {() => (
+              {(touched, errors) => (
                 <Form>
-                  <div className="radio-btn mt-4"></div>
-                  <div className="form-group mb-3">
-                    <div className="label-inputs-start mb-2">
-                      <label htmlFor="emailInput" className="font-16">
+                  <div className="radio-btn mt-4">
+                    <div className="mobile-radio-btn">
+                      <label>
+                        <input
+                          type="radio"
+                          className="input-radio mobile-radio ps-2"
+                          name="login_option"
+                          checked={selectedLoginOption === "email"}
+                          onChange={() => handleLoginOptionChange("email")}
+                        />
+                        <span className="custom-radio"></span>
                         Email
                       </label>
                     </div>
-                    <TextField
-                      placeholder="@ Enter your email"
-                      name="email"
-                      type={"email"}
-                    />
-                    <ErrorMessage
-                      component="div"
-                      name="email"
-                      className="invalid-feedback"
-                    />
+                    <div className="mobile-radio-btn">
+                      <label>
+                        <input
+                          type="radio"
+                          className="input-radio mobile-radio ps-2"
+                          name="login_option"
+                          checked={selectedLoginOption === "mobile"}
+                          onChange={() => handleLoginOptionChange("mobile")}
+                        />
+                        <span className="custom-radio"></span>
+                        Mobile Number
+                      </label>
+                    </div>
                   </div>
-
+                  {selectedLoginOption === "email" && (
+                    <div className="form-group mb-3 mt-5">
+                      <div className="label-inputs-start mb-2">
+                        <label htmlFor="emailInput" className="font-16">
+                          Email
+                        </label>
+                      </div>
+                      <TextField
+                        placeholder="@ Enter your email"
+                        name="email"
+                        type={"email"}
+                      />
+                      <ErrorMessage
+                        component="div"
+                        name="email"
+                        className="invalid-feedback"
+                      />
+                    </div>
+                  )}
+                  {selectedLoginOption === "mobile" && (
+                    <div className="form-group mb-3 mt-5">
+                      <div className="label-inputs-start mb-2">
+                        <label htmlFor="emailInput" className="font-16">
+                          Mobile Number
+                        </label>
+                      </div>
+                      <div className="custom-phone-input auth-input d-flex align-items-center">
+                        <PhoneInput
+                          countrySelectProps={{ unicodeFlags: false }}
+                          placeholder="Enter Phone Number"
+                          onChange={(phone) => setPhone(phone)}
+                          inputProps={{
+                            name: "phone",
+                          }}
+                          buttonClass="d-none"
+                          inputClass="bg-transparent outline-0 p-0 m-0 border-0 shadow-none custom-phone-input-1 font-18-100"
+                        />
+                      </div>
+                      {touched && errors && !phone && (
+                        <p className="invalid-feedback d-block mt-2 fw-bold text-start">
+                          Phone is required
+                        </p>
+                      )}
+                    </div>
+                  )}
                   <div className="login-btn mt-3">
                     <button className="guest-btn btn-lg btn-block mt-2">
                       Reset Password
