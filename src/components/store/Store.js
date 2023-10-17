@@ -1,67 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../assets/css/stores.css";
 import AddNewCategoryIcon from "../../assets/images/icons/dashboardicons/addNewCategory";
 import AddOrUpdateStoreModel from "./addOrUpdateStoreModel";
 import ViewStores from "./viewStores";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchStoreData } from "../../store/store/actions/actionCreators";
 
-const cardData = [
-  {
-    storeName: "Carrefour",
-    storeId: "CF783457",
-    itemsReturned: "1209",
-    totalRedeemPrice: "AED 5639.00",
-    totalSubStores: "16",
-    numberOfPos: "60",
-    storeLocation: "Al Ain, Abu Dhabi",
-  },
-  {
-    storeName: "Carrefour",
-    storeId: "CF783457",
-    itemsReturned: "1209",
-    totalRedeemPrice: "AED 5639.00",
-    totalSubStores: "16",
-    numberOfPos: "60",
-    storeLocation: "Al Ain, Abu Dhabi",
-  },
-  {
-    storeName: "Carrefour",
-    storeId: "CF783457",
-    itemsReturned: "1209",
-    totalRedeemPrice: "AED 5639.00",
-    totalSubStores: "16",
-    numberOfPos: "60",
-    storeLocation: "Al Ain, Abu Dhabi",
-  },
-  {
-    storeName: "Carrefour",
-    storeId: "CF783457",
-    itemsReturned: "1209",
-    totalRedeemPrice: "AED 5639.00",
-    totalSubStores: "16",
-    numberOfPos: "60",
-    storeLocation: "Al Ain, Abu Dhabi",
-  },
-  {
-    storeName: "Carrefour",
-    storeId: "CF783457",
-    itemsReturned: "1209",
-    totalRedeemPrice: "AED 5639.00",
-    totalSubStores: "16",
-    numberOfPos: "60",
-    storeLocation: "Al Ain, Abu Dhabi",
-  },
-  {
-    storeName: "Carrefour",
-    storeId: "CF783457",
-    itemsReturned: "1209",
-    totalRedeemPrice: "AED 5639.00",
-    totalSubStores: "16",
-    numberOfPos: "60",
-    storeLocation: "Al Ain, Abu Dhabi",
-  },
-];
 const Store = () => {
+  const dispatch = useDispatch();
+  const storeData = useSelector((state) => state.store.storeData);
+
   const [modalShow, setModalShow] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchStoreData());
+  }, [dispatch]);
 
   return (
     <div className="stores">
@@ -75,7 +28,7 @@ const Store = () => {
           <span className="d-sm-block d-none">Add New Store</span>
         </button>
       </div>
-      <ViewStores stores={cardData} />
+      <ViewStores stores={storeData} />
 
       <AddOrUpdateStoreModel
         setModalShow={setModalShow}
