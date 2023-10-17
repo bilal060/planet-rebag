@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/css/stores.css";
 import AddNewCategoryIcon from "../assets/images/icons/dashboardicons/addNewCategory";
 import StoresCard from "../components/StoresCard";
@@ -12,6 +12,7 @@ import EyeiconClose from "../assets/images/EyeiconClose";
 import StoreLogo from "../assets/images/icons/dashboardicons/storeLogo";
 import { addStore } from "../store/user/actions/actionCreators";
 import { useSelector } from "react-redux";
+import Axios from "../axios/Axios";
 // const signupValidationSchema = Yup.object().shape({
 //   storeName: Yup.string().required("Full Name is Required"),
 //   storeEmail: Yup.string().email().required("Email is Required"),
@@ -82,6 +83,7 @@ const cardData = [
     storeLocation: "Al Ain, Abu Dhabi",
   },
 ];
+const getData = [];
 const Store = () => {
   const [modalShow, setModalShow] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -119,6 +121,16 @@ const Store = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const handleGetStore = async () => {
+    const response = await Axios.get("store");
+    getData.push(response.data);
+    console.log("helo");
+    console.log(response.data.data);
+  };
+  useEffect(() => {
+    handleGetStore();
+  }, []);
 
   const handleAddStore = async (values) => {
     console.log("check", values);
@@ -160,6 +172,11 @@ const Store = () => {
           <AddNewCategoryIcon />
           <span className="d-sm-block d-none">Add New Store</span>
         </button>
+      </div>
+      <div>
+        {getData.map((data) => {
+          <div>{data}</div>;
+        })}
       </div>
       <Row className="m-0 stores-cards">
         {cardData.map((data, index) => {
