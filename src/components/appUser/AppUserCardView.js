@@ -1,78 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../assets/css/stores.css";
-import { Col, Row } from "react-bootstrap";
 import ActiveUserIcon from "../../assets/images/icons/dashboardicons/activeUser";
 import Radios from "../../components/Radios";
-import UserIcon from "../../assets/images/icons/userIcon";
-import UsersCard from "../../components/UsersCard";
-
-const cardData = [
-  {
-    userName: "Carrefour",
-    icon: <UserIcon />,
-    userId: "CF783457",
-    scannedItems: "1209",
-    status: "Active",
-  },
-  {
-    userName: "Al Maya Group",
-    icon: <UserIcon />,
-    userId: "CF783457",
-    scannedItems: "1209",
-    status: "Active",
-  },
-  {
-    userName: "Carrefour",
-    icon: <UserIcon />,
-    userId: "CF783457",
-    scannedItems: "1209",
-    status: "Active",
-  },
-  {
-    userName: "Al Maya Group",
-    icon: <UserIcon />,
-    userId: "CF783457",
-    scannedItems: "1209",
-    status: "Active",
-  },
-  {
-    userName: "Carrefour",
-    icon: <UserIcon />,
-    userId: "CF783457",
-    scannedItems: "1209",
-    status: "Active",
-  },
-  {
-    userName: "Al Maya Group",
-    icon: <UserIcon />,
-    userId: "CF783457",
-    scannedItems: "1209",
-    status: "Active",
-  },
-  {
-    userName: "Al Maya Group",
-    icon: <UserIcon />,
-    userId: "CF783457",
-    scannedItems: "1209",
-    status: "Active",
-  },
-  {
-    userName: "Carrefour",
-    icon: <UserIcon />,
-    userId: "CF783457",
-    scannedItems: "1209",
-    status: "Active",
-  },
-  {
-    userName: "Al Maya Group",
-    icon: <UserIcon />,
-    userId: "CF783457",
-    scannedItems: "1209",
-    status: "Active",
-  },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserData } from "../../store/user/actions/actionCreators";
+import AppViewUser from "./AppViewUser";
 
 const AppUserCardView = () => {
+  const dispatch = useDispatch();
+  const UserData = useSelector((state) => state?.user?.getUsers);
+
+  useEffect(() => {
+    dispatch(fetchUserData());
+  }, [dispatch]);
+
   const [category, setCategory] = useState("All");
   const radio = [
     {
@@ -107,22 +48,7 @@ const AppUserCardView = () => {
           })}
         </div>
       </div>
-      <Row className="m-0 stores-cards">
-        {cardData.map((data, index) => {
-          return (
-            <Col xl="4" lg="6" md="12" className="mb-4 col" key={index}>
-              <UsersCard
-                userName={data.userName}
-                userId={data.userId}
-                scannedItems={data.scannedItems}
-                status={data.status}
-                btnText="View Profile"
-                icon={<UserIcon />}
-              />
-            </Col>
-          );
-        })}
-      </Row>
+      <AppViewUser UserData={UserData || []} />
     </div>
   );
 };

@@ -91,3 +91,15 @@ export const addStore = async (formData) => {
   }
   /* eslint-enable no-async-promise-executor */
 };
+export const fetchUserData = () => (dispatch) => {
+  Axios.get(`user`, { withCredentials: true })
+    .then((response) => {
+      dispatch({
+        type: actionTypes.FETCH_USER_DATA_SUCCESS,
+        payload: response?.data?.data,
+      });
+    })
+    .catch((error) => {
+      Toast.error(error?.response?.data?.message);
+    });
+};
