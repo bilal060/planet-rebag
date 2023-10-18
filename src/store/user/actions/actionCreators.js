@@ -92,9 +92,11 @@ export const addStore = async (formData) => {
   /* eslint-enable no-async-promise-executor */
 };
 export const fetchUserData =
-  (page = 1) =>
+  (page = 1, category) =>
   (dispatch) => {
-    Axios.get(`user?page=${page}`, { withCredentials: true })
+    Axios.get(`user?page=${page}&category=${category}`, {
+      withCredentials: true,
+    })
       .then((response) => {
         console.log(response);
         dispatch({

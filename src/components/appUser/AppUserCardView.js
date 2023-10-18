@@ -74,16 +74,14 @@ import AppViewUser from "./AppViewUser";
 // ];
 
 const AppUserCardView = () => {
+  const [category, setCategory] = useState("All");
   const dispatch = useDispatch();
   const UserData = useSelector((state) => state?.user?.getUsers);
   // const [page, setPage] = useState(1);
   let page;
-  console.log(UserData, "this is userdata Fetch");
   useEffect(() => {
-    dispatch(fetchUserData(page));
-  }, [dispatch]);
-
-  const [category, setCategory] = useState("All");
+    dispatch(fetchUserData(page, category));
+  }, [dispatch, page, category]);
   const radio = [
     {
       id: "1",
@@ -117,7 +115,7 @@ const AppUserCardView = () => {
           })}
         </div>
       </div>
-      <AppViewUser UserData={UserData || []} />
+      <AppViewUser category={category} UserData={UserData || []} />
     </div>
   );
 };
