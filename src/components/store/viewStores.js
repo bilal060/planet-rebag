@@ -29,6 +29,7 @@ const ViewStores = ({ stores }) => {
                   storeIcon={data.image}
                   btnText="View Store"
                   storeType={data.storeType}
+                  isActive={data.isActive}
                 />
               </Col>
             );
