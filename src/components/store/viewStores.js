@@ -19,6 +19,7 @@ const ViewStores = ({ stores }) => {
             return (
               <Col xl="6" className="mb-4 col" key={index}>
                 <StoresCard
+                  id={data._id}
                   storeName={data.storeName}
                   storeId={data.storeId}
                   itemsReturned={data.itemsReturned}

@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "../../assets/css/stores.css";
-// import AddNewCategoryIcon from "../../assets/images/icons/dashboardicons/addNewCategory";
 import { Col, Modal, Row } from "react-bootstrap";
-// import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import TextField from "../../shared/TextField";
-//import UploadIcon from "../../assets/images/icons/dashboardicons/uploadIcon";
-// import { addStore } from "../../../store/user/actions/actionCreators";
-// import { addStore } from "../../store/user/actions/actionCreators";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import EyeIcon from "../../assets/images/EyeIcon";
 import * as Yup from "yup";
@@ -27,7 +22,11 @@ const signupValidationSchema = Yup.object().shape({
   ),
   storeType: Yup.string().required("Store Type is Required"),
   hasBottles: Yup.boolean(),
-  ownBottlesPrice: Yup.number().required("Own Bottles Price is required"),
+  ownBottlesPrice: Yup.number().when("hasBottles", {
+    is: true,
+    then: () => Yup.number().required("Own Bottles Price is required"),
+    otherwise: () => Yup.number(),
+  }),
 });
 
 const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
@@ -56,7 +55,7 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
     setStoreImg(file);
   };
 
-  const handleAddStore = async (values) => {
+  const handleAddStore = async (values, resetForm) => {
     const formData = new FormData();
     formData.append("storeName", values.storeName);
     formData.append("storeEmail", values.storeEmail);
@@ -73,11 +72,19 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
     addStore(formData)
       .then(() => {
         Toast.success("Store Added Successfully");
+        resetForm();
+        setStoreImg(null);
         setModalShow(false);
       })
       .catch((err) => {
         console.log(err, "err");
       });
+  };
+
+  const handleCancel = (resetForm) => {
+    resetForm();
+    setStoreImg(null);
+    setModalShow(false);
   };
 
   return (
@@ -101,9 +108,11 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
           <Formik
             initialValues={initialValues}
             validationSchema={signupValidationSchema}
-            onSubmit={handleAddStore}
+            onSubmit={(values, { resetForm }) =>
+              handleAddStore(values, resetForm)
+            }
           >
-            {({ values }) => (
+            {({ values, resetForm }) => (
               <Form>
                 <div className="form-group">
                   <div className="label-inputs-start mb-2">
@@ -248,7 +257,7 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                     <Field
                       className="mx-1"
                       type="checkbox"
-                      name="hasBottles" // Match this name to the formik field name
+                      name="hasBottles"
                       checked={values.hasBottles}
                     />
                   </div>
@@ -278,11 +287,7 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                       Store Type
                     </label>
                   </div>
-                  <Field
-                    as="select" // Use "as" prop to render a select input
-                    name="storeType" // Match this name to the Formik field name
-                    className="form-select" // Add any necessary classes
-                  >
+                  <Field as="select" name="storeType" className="form-select">
                     <option value="superMart">Super Mart</option>
                     <option value="gasStation">Gas Station</option>
                   </Field>
@@ -294,20 +299,28 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                       Store Image
                     </label>
                   </div>
-                  <input
-                    type="file"
-                    name="storeImage"
-                    id="storeImage"
-                    accept="image/*"
-                    onChange={(e) => handleImageUpload(e)}
-                  />
+                  <label className="upload-files cr-p">
+                    <input
+                      type="file"
+                      className="d-none"
+                      accept=".jpg, .jpeg, .png"
+                      onChange={(e) => handleImageUpload(e)}
+                    />
+                    <div className="d-flex justify-content-center align-items-center h-100 w-100 gap-2">
+                      <p className="font-16 font-weight-500">
+                        {storeImg === null || storeImg === ""
+                          ? "Choose File / Drag & Drop Here"
+                          : storeImg.name}
+                      </p>
+                    </div>
+                  </label>
                 </div>
 
                 <Row className="w-100">
                   <Col lg="6" className="mb-lg-0 mb-3">
                     <button
                       className="w-100 green-btn-outline"
-                      onClick={() => setModalShow(false)}
+                      onClick={() => handleCancel(resetForm)}
                     >
                       Cancel
                     </button>
