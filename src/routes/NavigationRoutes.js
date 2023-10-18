@@ -66,7 +66,7 @@ function NavigationRoutes() {
       <Route path="/item-categories" element={<ItemCategories />} />
       <Route path="/requests" element={<Requests />} />
       <Route path="/users" element={<AppUserCardView />} />
-      <Route path="/users/detail" element={<AppUserDetailView />} />
+      <Route path="/users/detail/:id" element={<AppUserDetailView />} />
       <Route path="/redeemCategory1" element={<AppUserDetailView2 />} />
       <Route path="/redeemCategory2" element={<AppUserDetailView3 />} />
     </>
