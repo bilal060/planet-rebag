@@ -2,7 +2,6 @@ import React from "react";
 import "../../assets/css/stores.css";
 import StoresCard from "../StoresCard";
 import { Col, Row } from "react-bootstrap";
-import StoreLogo from "../../assets/images/icons/dashboardicons/storeLogo";
 import PropTypes from "prop-types";
 
 const ViewStores = ({ stores }) => {
@@ -27,7 +26,7 @@ const ViewStores = ({ stores }) => {
                   totalSubStores={data.totalSubStores}
                   numberOfPos={data.numberOfPos}
                   storeLocation={data.storeLocation}
-                  storeIcon={<StoreLogo />}
+                  storeIcon={data.image}
                   btnText="View Store"
                   storeType={data.storeType}
                 />

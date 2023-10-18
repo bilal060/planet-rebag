@@ -4,6 +4,7 @@ import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
 import { Col, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import ImageDisplay from "../shared/ImageDisplay";
 
 const StoresCard = (props) => {
   const {
@@ -23,7 +24,12 @@ const StoresCard = (props) => {
         <Card.Header className="px-4 py-2">
           <div className="d-flex align-items-center justify-content-between gap-3">
             <div className="d-flex align-items-center gap-3">
-              <div className="store-logo">{storeIcon}</div>
+              <div className="store-logo">
+                <ImageDisplay
+                  src={`${process.env.REACT_APP_SERVER_URL}/${storeIcon}`}
+                  className="store-logo"
+                />
+              </div>
               <h3 className="fs-5 d-sm-block d-none">{storeName}</h3>
             </div>
             <div className="d-flex align-items-center gap-3">

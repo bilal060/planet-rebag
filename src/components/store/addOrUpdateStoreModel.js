@@ -32,6 +32,7 @@ const signupValidationSchema = Yup.object().shape({
 
 const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [storeImg, setStoreImg] = useState(null);
 
   const initialValues = {
     storeName: "",
@@ -50,19 +51,25 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
     setShowPassword(!showPassword);
   };
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    setStoreImg(file);
+  };
+
   const handleAddStore = async (values) => {
-    const formData = {
-      storeName: values.storeName,
-      storeEmail: values.storeEmail,
-      password: values.password,
-      storeType: values.storeType,
-      ownBagsPrice: values.ownBagsPrice,
-      otherBagsPrice: values.otherBagsPrice,
-      otherBottlesPrice: values.otherBottlesPrice,
-      maiDubaiBottlesPrice: values.maiDubaiBottlesPrice,
-      hasBottles: values.hasBottles,
-      ownBottlesPrice: values.ownBottlesPrice,
-    };
+    const formData = new FormData();
+    formData.append("storeName", values.storeName);
+    formData.append("storeEmail", values.storeEmail);
+    formData.append("password", values.password);
+    formData.append("storeType", values.storeType);
+    formData.append("ownBagsPrice", values.ownBagsPrice);
+    formData.append("otherBagsPrice", values.otherBagsPrice);
+    formData.append("otherBottlesPrice", values.otherBottlesPrice);
+    formData.append("maiDubaiBottlesPrice", values.maiDubaiBottlesPrice);
+    formData.append("hasBottles", values.hasBottles);
+    formData.append("ownBottlesPrice", values.ownBottlesPrice);
+    formData.append("storeImage", storeImg);
+
     addStore(formData)
       .then(() => {
         Toast.success("Store Added Successfully");
@@ -98,7 +105,7 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
           >
             {({ values }) => (
               <Form>
-                <div className="form-group mt-5 mb-3">
+                <div className="form-group">
                   <div className="label-inputs-start mb-2">
                     <label htmlFor="storeName" className="font-16">
                       Store Name
@@ -116,7 +123,7 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                     className="invalid-feedback"
                   />
                 </div>
-                <div className="form-group mt-5 mb-3">
+                <div className="form-group">
                   <div className="label-inputs-start mb-2">
                     <label htmlFor="storeEmail" className="font-16">
                       Store email
@@ -281,6 +288,21 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                   </Field>
                 </div>
 
+                <div className="form-group mb-3">
+                  <div className="label-inputs-start mb-2">
+                    <label htmlFor="storeType" className="font-16">
+                      Store Image
+                    </label>
+                  </div>
+                  <input
+                    type="file"
+                    name="storeImage"
+                    id="storeImage"
+                    accept="image/*"
+                    onChange={(e) => handleImageUpload(e)}
+                  />
+                </div>
+
                 <Row className="w-100">
                   <Col lg="6" className="mb-lg-0 mb-3">
                     <button
@@ -304,9 +326,6 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
             )}
           </Formik>
         </Modal.Body>
-        {/* <Modal.Footer className="mt-5">
-
-        </Modal.Footer> */}
       </Modal>
     </div>
   );
