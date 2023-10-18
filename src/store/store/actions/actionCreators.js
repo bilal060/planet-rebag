@@ -18,11 +18,12 @@ export const fetchStoreData = (data) => (dispatch) => {
 
 export const updateStoreIsActive = (storeId, isActive) => (dispatch) => {
   Axios.patch(`store/updateStore/${storeId}`, { isActive })
-    .then((response) => {
+    .then(() => {
       dispatch({
         type: actionTypes.UPDATE_STORE_IS_ACTIVE_SUCCESS,
         payload: { storeId, isActive },
       });
+      Toast.success("Store status updated successfully");
     })
     .catch((error) => {
       console.error(error);
