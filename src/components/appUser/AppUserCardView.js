@@ -6,6 +6,7 @@ import Radios from "../../components/Radios";
 // import AppViewUser from "./AppViewUser";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData } from "../../store/user/actions/actionCreators";
+import AppViewUser from "./AppViewUser";
 // const cardData = [
 //   {
 //     userName: "Carrefour",
@@ -75,9 +76,11 @@ import { fetchUserData } from "../../store/user/actions/actionCreators";
 const AppUserCardView = () => {
   const dispatch = useDispatch();
   const UserData = useSelector((state) => state?.user?.getUsers);
+  // const [page, setPage] = useState(1);
+  let page;
   console.log(UserData, "this is userdata Fetch");
   useEffect(() => {
-    dispatch(fetchUserData());
+    dispatch(fetchUserData(page));
   }, [dispatch]);
 
   const [category, setCategory] = useState("All");
@@ -114,7 +117,7 @@ const AppUserCardView = () => {
           })}
         </div>
       </div>
-      {/* <AppViewUser UserData={UserData || []} /> */}
+      <AppViewUser UserData={UserData || []} />
     </div>
   );
 };

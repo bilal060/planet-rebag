@@ -91,16 +91,18 @@ export const addStore = async (formData) => {
   }
   /* eslint-enable no-async-promise-executor */
 };
-export const fetchUserData = (data) => (dispatch) => {
-  Axios.get("user", data, { withCredentials: true })
-    .then((response) => {
-      console.log(response);
-      dispatch({
-        type: actionTypes.FETCH_USER_DATA_SUCCESS,
-        payload: response?.data?.data,
+export const fetchUserData =
+  (page = 1) =>
+  (dispatch) => {
+    Axios.get(`user?page=${page}`, { withCredentials: true })
+      .then((response) => {
+        console.log(response);
+        dispatch({
+          type: actionTypes.FETCH_USER_DATA_SUCCESS,
+          payload: response?.data?.data,
+        });
+      })
+      .catch((error) => {
+        Toast.error(error?.response?.data?.message);
       });
-    })
-    .catch((error) => {
-      Toast.error(error?.response?.data?.message);
-    });
-};
+  };
