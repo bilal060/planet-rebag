@@ -3,6 +3,7 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   isLogin: false,
   user: {},
+  getUsers: null,
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -18,6 +19,8 @@ const UserReducer = (state = initialState, action) => {
         isLogin: false,
         user: {},
       };
+    case actionTypes.FETCH_USER_DATA_SUCCESS:
+      return { ...state, isLogin: true, getUsers: action.payload, error: null };
     default:
       return state;
   }

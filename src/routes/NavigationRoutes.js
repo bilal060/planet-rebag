@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Stores from "../pages/Stores.js";
 import AppUserDetailView3 from "../components/appUser/AppUserDetailView3.js";
 import AppUserDetailView2 from "../components/appUser/AppUserDetailView2.js";
+import SubStores from "../pages/SubStores.js";
 const StoreDetail = React.lazy(() => import("../pages/StoreDetail.js"));
 const AppUserCardView = React.lazy(() => import("../pages/AppUserCardView.js"));
 const ItemCategories = React.lazy(() => import("../pages/ItemCategories.js"));
@@ -51,9 +52,9 @@ const USER_ROLES = {
 };
 
 function NavigationRoutes() {
-  const userRole = useSelector((store) => {
-    console.log(store.user, "store");
-    return store?.user?.user?.user?.role;
+  const userRole = useSelector((users) => {
+    console.log(users.user, "store");
+    return users?.user?.user?.user?.role;
   });
 
   const adminRoutes = (
@@ -61,6 +62,7 @@ function NavigationRoutes() {
       <Route path="/adminlogin" element={<AdminLoginPage />} />
       <Route path="/stores" element={<Stores />} />
       <Route path="/stores/detail" element={<StoreDetail />} />
+      <Route path="/substores" element={<SubStores />} />
       <Route path="/item-categories" element={<ItemCategories />} />
       <Route path="/requests" element={<Requests />} />
       <Route path="/users" element={<AppUserCardView />} />

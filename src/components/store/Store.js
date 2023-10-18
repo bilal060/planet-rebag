@@ -29,7 +29,6 @@ const Store = () => {
         </button>
       </div>
       <ViewStores stores={storeData || []} />
-
       <AddOrUpdateStoreModel
         setModalShow={setModalShow}
         modalShow={modalShow}
