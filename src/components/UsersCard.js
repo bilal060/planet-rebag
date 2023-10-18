@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const UsersCard = (props) => {
-  const { userName, userId, scannedItems, status, btnText, icon } = props;
+  const { userName, userId, scannedItems, status, btnText, icon, id } = props;
   const navigate = useNavigate();
   return (
     <>
@@ -16,7 +16,7 @@ const UsersCard = (props) => {
             <div className="store-logo">{icon}</div>
             <div className="d-flex align-items-center gap-3">
               <button
-                onClick={() => navigate("/users/detail")}
+                onClick={() => navigate(`/users/detail/${id}`)}
                 className="green-btn height-32px font-weight-600 rounded-8px py-2 px-3"
               >
                 {btnText}
@@ -64,6 +64,7 @@ UsersCard.propTypes = {
   status: PropTypes.any,
   btnText: PropTypes.any,
   icon: PropTypes.any,
+  id: PropTypes.any,
 };
 
 export default UsersCard;

@@ -11,6 +11,7 @@ const AppViewUser = ({ UserData }) => {
           return (
             <Col xl="4" lg="6" md="12" className="mb-4 col" key={index}>
               <UsersCard
+                id={data._id}
                 userName={data.name}
                 userId={data._id.slice(0, 8)}
                 scannedItems={data.scannedItems ? data.scannedItems : 0}
