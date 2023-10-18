@@ -2,85 +2,16 @@ import React, { useEffect, useState } from "react";
 import "../../assets/css/stores.css";
 import ActiveUserIcon from "../../assets/images/icons/dashboardicons/activeUser";
 import Radios from "../../components/Radios";
-// import UserIcon from "../../assets/images/icons/userIcon";
-// import AppViewUser from "./AppViewUser";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData } from "../../store/user/actions/actionCreators";
 import AppViewUser from "./AppViewUser";
-// const cardData = [
-//   {
-//     userName: "Carrefour",
-//     icon: <UserIcon />,
-//     userId: "CF783457",
-//     scannedItems: "1209",
-//     status: "Active",
-//   },
-//   {
-//     userName: "Al Maya Group",
-//     icon: <UserIcon />,
-//     userId: "CF783457",
-//     scannedItems: "1209",
-//     status: "Active",
-//   },
-//   {
-//     userName: "Carrefour",
-//     icon: <UserIcon />,
-//     userId: "CF783457",
-//     scannedItems: "1209",
-//     status: "Active",
-//   },
-//   {
-//     userName: "Al Maya Group",
-//     icon: <UserIcon />,
-//     userId: "CF783457",
-//     scannedItems: "1209",
-//     status: "Active",
-//   },
-//   {
-//     userName: "Carrefour",
-//     icon: <UserIcon />,
-//     userId: "CF783457",
-//     scannedItems: "1209",
-//     status: "Active",
-//   },
-//   {
-//     userName: "Al Maya Group",
-//     icon: <UserIcon />,
-//     userId: "CF783457",
-//     scannedItems: "1209",
-//     status: "Active",
-//   },
-//   {
-//     userName: "Al Maya Group",
-//     icon: <UserIcon />,
-//     userId: "CF783457",
-//     scannedItems: "1209",
-//     status: "Active",
-//   },
-//   {
-//     userName: "Carrefour",
-//     icon: <UserIcon />,
-//     userId: "CF783457",
-//     scannedItems: "1209",
-//     status: "Active",
-//   },
-//   {
-//     userName: "Al Maya Group",
-//     icon: <UserIcon />,
-//     userId: "CF783457",
-//     scannedItems: "1209",
-//     status: "Active",
-//   },
-// ];
 
 const AppUserCardView = () => {
   const dispatch = useDispatch();
   const UserData = useSelector((state) => state?.user?.getUsers);
-  // const [page, setPage] = useState(1);
-  let page;
-  console.log(UserData, "this is userdata Fetch");
+
   useEffect(() => {
-    dispatch(fetchUserData(page));
+    dispatch(fetchUserData());
   }, [dispatch]);
 
   const [category, setCategory] = useState("All");
