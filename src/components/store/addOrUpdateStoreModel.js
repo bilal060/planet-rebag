@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "../../assets/css/stores.css";
-// import AddNewCategoryIcon from "../../assets/images/icons/dashboardicons/addNewCategory";
 import { Col, Modal, Row } from "react-bootstrap";
-// import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import TextField from "../../shared/TextField";
-//import UploadIcon from "../../assets/images/icons/dashboardicons/uploadIcon";
-// import { addStore } from "../../../store/user/actions/actionCreators";
-// import { addStore } from "../../store/user/actions/actionCreators";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import EyeIcon from "../../assets/images/EyeIcon";
 import * as Yup from "yup";
@@ -27,7 +22,11 @@ const signupValidationSchema = Yup.object().shape({
   ),
   storeType: Yup.string().required("Store Type is Required"),
   hasBottles: Yup.boolean(),
-  ownBottlesPrice: Yup.number().required("Own Bottles Price is required"),
+  ownBottlesPrice: Yup.number().when("hasBottles", {
+    is: true,
+    then: () => Yup.number().required("Own Bottles Price is required"),
+    otherwise: () => Yup.number(),
+  }),
 });
 
 const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {

@@ -8,6 +8,7 @@ import ImageDisplay from "../shared/ImageDisplay";
 
 const StoresCard = (props) => {
   const {
+    id,
     storeName,
     storeId,
     itemsReturned,
@@ -21,7 +22,7 @@ const StoresCard = (props) => {
   } = props;
   return (
     <>
-      <Card className="store-card">
+      <Card className="store-card" key={id}>
         <Card.Header className="px-4 py-2">
           <div className="d-flex align-items-center justify-content-between gap-3">
             <div className="d-flex align-items-center gap-3">
@@ -101,6 +102,7 @@ const StoresCard = (props) => {
 
 StoresCard.propTypes = {
   children: PropTypes.any,
+  id: PropTypes.any,
   storeName: PropTypes.any,
   storeId: PropTypes.any,
   itemsReturned: PropTypes.any,
