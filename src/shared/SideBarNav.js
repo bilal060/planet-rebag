@@ -47,14 +47,14 @@ const SidebarNav = () => {
             <span className="menu-text">Stores</span>
           </MenuItem>
         </NavLink>
-        <NavLink to="/substores" className="menu-item-link">
+        {/* <NavLink to="/substores" className="menu-item-link">
           <MenuItem>
             <span className="menu-icon">
               <StoreIcon />
             </span>
             <span className="menu-text">Sub Stores</span>
           </MenuItem>
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/users" className="menu-item-link">
           <MenuItem>
             <span className="menu-icon">

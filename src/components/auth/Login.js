@@ -69,6 +69,7 @@ const Login = () => {
     const data = {
       email: values.email,
       password: values.password,
+      //role: "User",
     };
     dispatch(userLogin(data, navigate));
   };

@@ -17,6 +17,7 @@ const StoresCard = (props) => {
     btnText,
     storeIcon,
     storeType,
+    isActive,
   } = props;
   return (
     <>
@@ -88,6 +89,7 @@ const StoresCard = (props) => {
               type="switch"
               id="custom-switch"
               label="Available"
+              checked={isActive}
               className="d-flex align-items-center gap-2 p-0 font-weight-700"
             />
           </Form>
@@ -108,5 +110,6 @@ StoresCard.propTypes = {
   btnText: PropTypes.any,
   storeIcon: PropTypes.any,
   storeType: PropTypes.any,
+  isActive: PropTypes.bool,
 };
 export default StoresCard;
