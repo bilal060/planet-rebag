@@ -248,7 +248,7 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                     <Field
                       className="mx-1"
                       type="checkbox"
-                      name="hasBottles" // Match this name to the formik field name
+                      name="hasBottles"
                       checked={values.hasBottles}
                     />
                   </div>
@@ -278,11 +278,7 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                       Store Type
                     </label>
                   </div>
-                  <Field
-                    as="select" // Use "as" prop to render a select input
-                    name="storeType" // Match this name to the Formik field name
-                    className="form-select" // Add any necessary classes
-                  >
+                  <Field as="select" name="storeType" className="form-select">
                     <option value="superMart">Super Mart</option>
                     <option value="gasStation">Gas Station</option>
                   </Field>
@@ -294,13 +290,21 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                       Store Image
                     </label>
                   </div>
-                  <input
-                    type="file"
-                    name="storeImage"
-                    id="storeImage"
-                    accept="image/*"
-                    onChange={(e) => handleImageUpload(e)}
-                  />
+                  <label className="upload-files cr-p">
+                    <input
+                      type="file"
+                      className="d-none"
+                      accept=".jpg, .jpeg, .png"
+                      onChange={(e) => handleImageUpload(e)}
+                    />
+                    <div className="d-flex justify-content-center align-items-center h-100 w-100 gap-2">
+                      <p className="font-16 font-weight-500">
+                        {storeImg === null || storeImg === ""
+                          ? "Choose File / Drag & Drop Here"
+                          : storeImg.name}
+                      </p>
+                    </div>
+                  </label>
                 </div>
 
                 <Row className="w-100">

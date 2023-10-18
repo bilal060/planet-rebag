@@ -122,3 +122,29 @@ small.pt-2 {
   padding: 0px 20px;
   margin-top: 25px !important;
 }
+
+.upload-file {
+  height: 45px;
+  background-color: #848484 !important;
+  color: #404040;
+  border-radius: 12px;
+  width: 100%;
+  padding: 10px 20px;
+  outline: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.upload-file::before {
+  content: "";
+  position: absolute;
+  border: 2px dashed white;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  border-radius: 12px;
+}
