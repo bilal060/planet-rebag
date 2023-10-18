@@ -8,10 +8,10 @@ export const fetchStoreData = (data) => (dispatch) => {
     .then((response) => {
       dispatch({
         type: actionTypes.FETCH_STORE_DATA_SUCCESS,
-        payload: response.data.data,
+        payload: response?.data?.data,
       });
     })
     .catch((error) => {
-      Toast.error(error.response.data.message);
+      Toast.error(error?.response?.data?.message);
     });
 };

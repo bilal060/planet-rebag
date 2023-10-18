@@ -11,11 +11,11 @@ const StoresCard = (props) => {
     storeId,
     itemsReturned,
     totalRedeemPrice,
-    totalSubStores,
     numberOfPos,
     storeLocation,
     btnText,
     storeIcon,
+    storeType,
   } = props;
   return (
     <>
@@ -47,26 +47,32 @@ const StoresCard = (props) => {
             <Col sm="4" md="6" xxl="4" className="p-0">
               <div className="mb-4">
                 <h6 className="mb-2 font-weight-700">Items Returned</h6>
-                <p>{itemsReturned}</p>
+                <p>{itemsReturned || 0}</p>
               </div>
             </Col>
             <Col sm="4" md="6" xxl="4" className="p-0">
               <div className="mb-4">
                 <h6 className="mb-2 font-weight-700">Total Redeem Price</h6>
-                <p>{totalRedeemPrice}</p>
+                <p>{totalRedeemPrice || 0}</p>
               </div>
             </Col>
             <Col sm="4" md="6" xxl="4" className="p-0">
-              <h6 className="mb-2 font-weight-700">Total Sub Stores</h6>
-              <p>{totalSubStores}</p>
+              <div className="mb-4">
+                <h6 className="mb-2 font-weight-700">No. of POS</h6>
+                <p>{numberOfPos || 0}</p>
+              </div>
             </Col>
             <Col sm="4" md="6" xxl="4" className="p-0">
-              <h6 className="mb-2 font-weight-700">No. of POS</h6>
-              <p>{numberOfPos}</p>
+              <div className="mb-4">
+                <h6 className="mb-2 font-weight-700">Store Location</h6>
+                <p>{storeLocation}</p>
+              </div>
             </Col>
             <Col sm="4" md="6" xxl="4" className="p-0">
-              <h6 className="mb-2 font-weight-700">Store Location</h6>
-              <p>{storeLocation}</p>
+              <div className="mb-4">
+                <h6 className="mb-2 font-weight-700">Store Type</h6>
+                <p>{storeType}</p>
+              </div>
             </Col>
           </Row>
         </Card.Body>
@@ -91,10 +97,10 @@ StoresCard.propTypes = {
   storeId: PropTypes.any,
   itemsReturned: PropTypes.any,
   totalRedeemPrice: PropTypes.any,
-  totalSubStores: PropTypes.any,
   numberOfPos: PropTypes.any,
   storeLocation: PropTypes.any,
   btnText: PropTypes.any,
   storeIcon: PropTypes.any,
+  storeType: PropTypes.any,
 };
 export default StoresCard;

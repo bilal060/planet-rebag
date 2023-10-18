@@ -8,7 +8,7 @@ import { fetchStoreData } from "../../store/store/actions/actionCreators";
 
 const Store = () => {
   const dispatch = useDispatch();
-  const storeData = useSelector((state) => state.store.storeData);
+  const storeData = useSelector((state) => state?.store?.storeData);
 
   const [modalShow, setModalShow] = useState(false);
 
@@ -28,7 +28,7 @@ const Store = () => {
           <span className="d-sm-block d-none">Add New Store</span>
         </button>
       </div>
-      <ViewStores stores={storeData} />
+      <ViewStores stores={storeData || []} />
 
       <AddOrUpdateStoreModel
         setModalShow={setModalShow}
