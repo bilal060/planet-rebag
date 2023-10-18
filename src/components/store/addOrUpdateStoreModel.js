@@ -56,7 +56,7 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
     setStoreImg(file);
   };
 
-  const handleAddStore = async (values) => {
+  const handleAddStore = async (values, resetForm) => {
     const formData = new FormData();
     formData.append("storeName", values.storeName);
     formData.append("storeEmail", values.storeEmail);
@@ -73,11 +73,19 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
     addStore(formData)
       .then(() => {
         Toast.success("Store Added Successfully");
+        resetForm();
+        setStoreImg(null);
         setModalShow(false);
       })
       .catch((err) => {
         console.log(err, "err");
       });
+  };
+
+  const handleCancel = (resetForm) => {
+    resetForm();
+    setStoreImg(null);
+    setModalShow(false);
   };
 
   return (
@@ -101,9 +109,11 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
           <Formik
             initialValues={initialValues}
             validationSchema={signupValidationSchema}
-            onSubmit={handleAddStore}
+            onSubmit={(values, { resetForm }) =>
+              handleAddStore(values, resetForm)
+            }
           >
-            {({ values }) => (
+            {({ values, resetForm }) => (
               <Form>
                 <div className="form-group">
                   <div className="label-inputs-start mb-2">
@@ -311,7 +321,7 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                   <Col lg="6" className="mb-lg-0 mb-3">
                     <button
                       className="w-100 green-btn-outline"
-                      onClick={() => setModalShow(false)}
+                      onClick={() => handleCancel(resetForm)}
                     >
                       Cancel
                     </button>
