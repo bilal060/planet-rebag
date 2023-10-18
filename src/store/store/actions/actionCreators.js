@@ -15,3 +15,16 @@ export const fetchStoreData = (data) => (dispatch) => {
       Toast.error(error?.response?.data?.message);
     });
 };
+
+export const updateStoreIsActive = (storeId, isActive) => (dispatch) => {
+  Axios.patch(`store/updateStore/${storeId}`, { isActive })
+    .then((response) => {
+      dispatch({
+        type: actionTypes.UPDATE_STORE_IS_ACTIVE_SUCCESS,
+        payload: { storeId, isActive },
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};

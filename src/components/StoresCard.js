@@ -5,6 +5,8 @@ import { Col, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import ImageDisplay from "../shared/ImageDisplay";
+import { useDispatch } from "react-redux";
+import { updateStoreIsActive } from "../store/store/actions/actionCreators";
 
 const StoresCard = (props) => {
   const {
@@ -20,6 +22,13 @@ const StoresCard = (props) => {
     storeType,
     isActive,
   } = props;
+
+  const dispatch = useDispatch();
+
+  const handleUpdateIsActive = (isActive) => {
+    dispatch(updateStoreIsActive(id, isActive));
+  };
+
   return (
     <>
       <Card className="store-card" key={id}>
@@ -91,6 +100,7 @@ const StoresCard = (props) => {
               id="custom-switch"
               label="Available"
               checked={isActive}
+              onChange={(e) => handleUpdateIsActive(e.target.checked)}
               className="d-flex align-items-center gap-2 p-0 font-weight-700"
             />
           </Form>
