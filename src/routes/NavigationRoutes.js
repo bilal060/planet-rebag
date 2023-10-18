@@ -78,11 +78,7 @@ function NavigationRoutes() {
       <Route path="/forgetPassword" element={<ForgetPasswordPage />} />
       <Route path="/temppassword" element={<TempPasswordPage />} />
       <Route path="/newpassword" element={<NewPasswordPage />} />
-      <Route path="/signup" element={<SignupPage />} />
       <Route path="/substorelogin" element={<SubstoreLogin />} />
-      <Route path="/otpmobile" element={<OtpMobile />} />
-      <Route path="/otpmail" element={<OtpMail />} />
-      <Route path="/confirmation" element={<Confirmation />} />
     </>
   );
   const freeRoutes = (
@@ -93,6 +89,10 @@ function NavigationRoutes() {
       <Route path="/settings/addbagprice" element={<AddBagPrice />} />
       <Route path="/settings/Contact" element={<ContactUs />} />
       <Route path="/settings/Faqs" element={<AccountFaqs />} />
+      <Route path="/otpmobile" element={<OtpMobile />} />
+      <Route path="/otpmail" element={<OtpMail />} />
+      <Route path="/confirmation" element={<Confirmation />} />
+      <Route path="/signup" element={<SignupPage />} />
       <Route
         path="/settings/PrivacyPolicy"
         element={<AccountPrivacyPolicy />}
