@@ -10,20 +10,22 @@ const AppViewUser = ({ UserData }) => {
       <Row className="m-0 stores-cards">
         {UserData.map((data, index) => {
           return (
-            <Col xl="4" lg="6" md="12" className="mb-4 col" key={index}>
-              <UsersCard
-                id={data._id}
-                total={data.total}
-                page={data.page}
-                limit={data.limit}
-                userName={data.name}
-                userId={data._id.slice(0, 8)}
-                scannedItems={data.scannedItems ? data.scannedItems : 0}
-                status={data.verified === true ? "Active" : "Inactive"}
-                btnText="View Profile"
-                icon={<UserIcon />}
-              />
-            </Col>
+            <>
+              <Col xl="4" lg="6" md="12" className="mb-4 col" key={index}>
+                <UsersCard
+                  id={data._id}
+                  total={data.total}
+                  page={data.page}
+                  limit={data.limit}
+                  userName={data.name}
+                  userId={data._id.slice(0, 8)}
+                  scannedItems={data.scannedItems ? data.scannedItems : 0}
+                  status={data.verified === true ? "Active" : "Inactive"}
+                  btnText="View Profile"
+                  icon={<UserIcon />}
+                />
+              </Col>
+            </>
           );
         })}
       </Row>

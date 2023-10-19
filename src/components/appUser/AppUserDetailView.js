@@ -25,8 +25,6 @@ function AppUserDetailView() {
         Toast.error(error?.response?.data?.message);
       });
   }, [id]);
-  console.log("userData");
-  console.log(userData);
   const radio = [
     {
       id: "1",

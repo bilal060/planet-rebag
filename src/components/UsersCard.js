@@ -4,21 +4,8 @@ import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { PaginationControl } from "react-bootstrap-pagination-control";
-
 const UsersCard = (props) => {
-  const {
-    userName,
-    userId,
-    scannedItems,
-    status,
-    btnText,
-    icon,
-    id,
-    total,
-    limit,
-    page,
-  } = props;
+  const { userName, userId, scannedItems, status, btnText, icon, id } = props;
   const navigate = useNavigate();
   return (
     <>
@@ -66,20 +53,6 @@ const UsersCard = (props) => {
           </Row>
         </Card.Body>
       </Card>
-      <div>
-        {" "}
-        {total > 10 && (
-          <div className="d-flex justify-content-center mt-4">
-            <PaginationControl
-              page={page}
-              between={3}
-              total={total}
-              limit={limit}
-              ellipsis={1}
-            />
-          </div>
-        )}
-      </div>
     </>
   );
 };
@@ -91,9 +64,6 @@ UsersCard.propTypes = {
   btnText: PropTypes.any,
   icon: PropTypes.any,
   id: PropTypes.any,
-  total: PropTypes.any,
-  page: PropTypes.any,
-  limit: PropTypes.any,
 };
 
 export default UsersCard;
