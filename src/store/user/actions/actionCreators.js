@@ -88,7 +88,6 @@ export const fetchUserData =
       withCredentials: true,
     })
       .then((response) => {
-        console.log(response);
         dispatch({
           type: actionTypes.FETCH_USER_DATA_SUCCESS,
           payload: response?.data?.data,
