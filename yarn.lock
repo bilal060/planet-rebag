@@ -3354,7 +3354,7 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.npmjs.org/boolbase/-/boolbase-1.0.0.tgz"
   integrity sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==
 
-bootstrap@^5.3.1:
+bootstrap@^5.2.1, bootstrap@^5.3.1:
   version "5.3.1"
   resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.1.tgz"
   integrity sha512-jzwza3Yagduci2x0rr9MeFSORjcHpt0lRZukZPZQJT1Dth5qzV7XcgGqYzi39KGAVYR8QEDVoO0ubFKOxzMG+g==
@@ -8304,7 +8304,15 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
-react-bootstrap@^2.8.0:
+react-bootstrap-pagination-control@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/react-bootstrap-pagination-control/-/react-bootstrap-pagination-control-1.0.5.tgz"
+  integrity sha512-6OW9NUz0CAYLZ3hBEBWkxEgHggGo/RcxW+Owo0D2FUkgwtWyDEH40gSwZf0hX3r36vl5WfOg1VYkzLPMv3Rqbw==
+  dependencies:
+    bootstrap "^5.2.1"
+    react-bootstrap "^2.5.0"
+
+react-bootstrap@^2.5.0, react-bootstrap@^2.8.0:
   version "2.8.0"
   resolved "https://registry.npmjs.org/react-bootstrap/-/react-bootstrap-2.8.0.tgz"
   integrity sha512-e/aNtxl0Z2ozrIaR82jr6Zz7ss9GSoaXpQaxmvtDUsTZIq/XalkduR/ZXP6vbQHz2T4syvjA+4FbtwELxxmpww==

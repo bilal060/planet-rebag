@@ -4,6 +4,7 @@ import UsersCard from "../UsersCard";
 import UserIcon from "../../assets/images/icons/userIcon";
 import PropTypes from "prop-types";
 const AppViewUser = ({ UserData }) => {
+  console.log(UserData);
   return (
     <>
       <Row className="m-0 stores-cards">
@@ -12,6 +13,9 @@ const AppViewUser = ({ UserData }) => {
             <Col xl="4" lg="6" md="12" className="mb-4 col" key={index}>
               <UsersCard
                 id={data._id}
+                total={data.total}
+                page={data.page}
+                limit={data.limit}
                 userName={data.name}
                 userId={data._id.slice(0, 8)}
                 scannedItems={data.scannedItems ? data.scannedItems : 0}

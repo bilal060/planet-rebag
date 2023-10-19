@@ -108,3 +108,19 @@ export const fetchUserData =
         Toast.error(error?.response?.data?.message);
       });
   };
+
+// export const fetchOneUserData = (id) => (dispatch) => {
+//   Axios.get(`user/${id}`, {
+//     withCredentials: true,
+//   })
+//     .then((response) => {
+//       console.log(response);
+//       dispatch({
+//         type: actionTypes.FETCH_USER_DATA_SUCCESS,
+//         payload: response?.data?.data,
+//       });
+//     })
+//     .catch((error) => {
+//       Toast.error(error?.response?.data?.message);
+//     });
+// };
