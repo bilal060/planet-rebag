@@ -6,48 +6,15 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import TextField from "../../shared/TextField";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import EyeIcon from "../../assets/images/EyeIcon";
-import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addStore,
   updateStore,
 } from "../../store/store/actions/actionCreators";
-
-const storeSignupValidationSchema = Yup.object().shape({
-  storeName: Yup.string().required("Store Name is Required"),
-  storeEmail: Yup.string().email().required("Email is Required"),
-  password: Yup.string().required("Password is Required").length(8),
-  ownBagsPrice: Yup.number().required("Own Bags Price is Required"),
-  otherBagsPrice: Yup.number().required("Other Bags Price is Required"),
-  otherBottlesPrice: Yup.number().required("Other Bottles Price is Required"),
-  maiDubaiBottlesPrice: Yup.number().required(
-    "Mai Dubai Bottles Price is Required",
-  ),
-  storeType: Yup.string().required("Store Type is Required"),
-  hasBottles: Yup.boolean(),
-  ownBottlesPrice: Yup.number().when("hasBottles", {
-    is: true,
-    then: () => Yup.number().required("Own Bottles Price is required"),
-    otherwise: () => Yup.number(),
-  }),
-});
-
-const storeEditValidationSchema = Yup.object().shape({
-  storeName: Yup.string().required("Store Name is Required"),
-  ownBagsPrice: Yup.number().required("Own Bags Price is Required"),
-  otherBagsPrice: Yup.number().required("Other Bags Price is Required"),
-  otherBottlesPrice: Yup.number().required("Other Bottles Price is Required"),
-  maiDubaiBottlesPrice: Yup.number().required(
-    "Mai Dubai Bottles Price is Required",
-  ),
-  storeType: Yup.string().required("Store Type is Required"),
-  hasBottles: Yup.boolean(),
-  ownBottlesPrice: Yup.number().when("hasBottles", {
-    is: true,
-    then: () => Yup.number().required("Own Bottles Price is required"),
-    otherwise: () => Yup.number(),
-  }),
-});
+import {
+  storeEditValidationSchema,
+  storeSignupValidationSchema,
+} from "./storeFormIkYupData";
 
 const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
   const dispatch = useDispatch();
@@ -90,15 +57,6 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
     ownBottlesPrice: "",
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    setStoreImg(file);
-  };
-
   const handleAddStore = async (values, resetForm) => {
     const formData = new FormData();
     formData.append("storeName", values.storeName);
@@ -136,7 +94,7 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
       type: "SET_STORE_IS_EDITING",
       payload: { isEditing: false },
     });
-    resetForm();
+    if (resetForm) resetForm();
     setStoreImg(null);
     setModalShow(false);
   };
@@ -149,6 +107,8 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        onExit={() => handleCancel()}
+        backdrop="static"
       >
         <Modal.Header closeButton className="">
           <Modal.Title
@@ -223,7 +183,9 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                       <div className="input-group mt-2">
                         <TextField
                           righticon={
-                            <span onClick={togglePasswordVisibility}>
+                            <span
+                              onClick={() => setShowPassword(!showPassword)}
+                            >
                               {showPassword ? <EyeiconClose /> : <EyeIcon />}
                             </span>
                           }
@@ -368,7 +330,10 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                         type="file"
                         className="d-none"
                         accept=".jpg, .jpeg, .png"
-                        onChange={(e) => handleImageUpload(e)}
+                        onChange={(e) => {
+                          const file = e.target.files[0];
+                          setStoreImg(file);
+                        }}
                       />
                       <div className="d-flex justify-content-center align-items-center h-100 w-100 gap-2">
                         <p className="font-16 font-weight-500">
