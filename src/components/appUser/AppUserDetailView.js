@@ -4,7 +4,7 @@ import BottleIcon from "../../assets/images/icons/dashboardicons/bottle";
 import Radios from "../../components/Radios";
 import { Col, Image, Row } from "react-bootstrap";
 import StoreLogo from "../../assets/images/AppUserLogo.svg";
-import EditIcon from "../../assets/images/icons/dashboardicons/editIcon";
+// import EditIcon from "../../assets/images/icons/dashboardicons/editIcon";
 import AppUserTransactionsTable from "./AppUserTransactionsTable";
 import AppUserItemsBagsTable from "./AppUserItemsBagsTable";
 import Axios from "../../axios/Axios";
@@ -47,9 +47,9 @@ function AppUserDetailView() {
       {userData && (
         <div className="pb-2 mb-4">
           <div className="bg-white p-4 custom-bg position-relative">
-            <div className="d-flex justify-content-end position-absolute end-1 top-1 cr-p">
+            {/* <div className="d-flex justify-content-end position-absolute end-1 top-1 cr-p">
               <EditIcon />
-            </div>
+            </div> */}
             <Row className="align-items-center">
               <Col xl="2" className="p-0 mb-xl-0 mb-3">
                 <span className="p- bg-greyDark">

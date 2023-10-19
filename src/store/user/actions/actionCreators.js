@@ -80,17 +80,7 @@ export const userLogout = (navigate) => (dispatch) => {
   });
   navigate("/login");
 };
-export const addStore = async (formData) => {
-  /* eslint-disable no-async-promise-executor */
-  // eslint-disable-next-line no-useless-catch
-  try {
-    const data = await Axios.post("store/addStore", formData);
-    return data;
-  } catch (err) {
-    throw err;
-  }
-  /* eslint-enable no-async-promise-executor */
-};
+
 export const fetchUserData =
   (page = 1, category) =>
   (dispatch) => {

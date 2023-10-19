@@ -53,8 +53,11 @@ const USER_ROLES = {
 
 function NavigationRoutes() {
   const userRole = useSelector((users) => {
-    console.log(users.user, "store");
     return users?.user?.user?.user?.role;
+  });
+
+  const isUserLogin = useSelector((users) => {
+    return users?.user?.isLogin;
   });
 
   const adminRoutes = (
@@ -69,6 +72,17 @@ function NavigationRoutes() {
       <Route path="/users/detail/:id" element={<AppUserDetailView />} />
       <Route path="/redeemCategory1" element={<AppUserDetailView2 />} />
       <Route path="/redeemCategory2" element={<AppUserDetailView3 />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/settings/addbagprice" element={<AddBagPrice />} />
+      <Route path="/settings/Contact" element={<ContactUs />} />
+      <Route
+        path="/settings/PrivacyPolicy"
+        element={<AccountPrivacyPolicy />}
+      />
+      <Route path="/settings/Faqs" element={<AccountFaqs />} />
+      <Route path="/settings/ChangePassword" element={<AccountNewPassword />} />
+      <Route path="/transaction-history" element={<TransactionHistory />} />
+      <Route path="*" element={<Home />} />
     </>
   );
   const userRoutes = (
@@ -79,32 +93,36 @@ function NavigationRoutes() {
       <Route path="/temppassword" element={<TempPasswordPage />} />
       <Route path="/newpassword" element={<NewPasswordPage />} />
       <Route path="/substorelogin" element={<SubstoreLogin />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/settings/addbagprice" element={<AddBagPrice />} />
+      <Route path="/settings/Contact" element={<ContactUs />} />
+      <Route
+        path="/settings/PrivacyPolicy"
+        element={<AccountPrivacyPolicy />}
+      />
+      <Route path="/settings/ChangePassword" element={<AccountNewPassword />} />
+      <Route path="/settings/Faqs" element={<AccountFaqs />} />
+      <Route path="*" element={<Home />} />
     </>
   );
   const freeRoutes = (
     <>
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/settings/addbagprice" element={<AddBagPrice />} />
-      <Route path="/settings/Contact" element={<ContactUs />} />
-      <Route path="/settings/Faqs" element={<AccountFaqs />} />
       <Route path="/otpmobile" element={<OtpMobile />} />
       <Route path="/otpmail" element={<OtpMail />} />
       <Route path="/confirmation" element={<Confirmation />} />
       <Route path="/signup" element={<SignupPage />} />
-      <Route
-        path="/settings/PrivacyPolicy"
-        element={<AccountPrivacyPolicy />}
-      />
-      <Route path="/settings/ChangePassword" element={<AccountNewPassword />} />
-      <Route path="/transaction-history" element={<TransactionHistory />} />
+      <Route path="*" element={<LoginPage />} />
     </>
   );
   return (
     <Routes>
-      {freeRoutes}
-      {userRole === USER_ROLES.ADMIN ? adminRoutes : userRoutes}
+      {isUserLogin
+        ? userRole === USER_ROLES.ADMIN
+          ? adminRoutes
+          : userRoutes
+        : freeRoutes}
     </Routes>
   );
 }

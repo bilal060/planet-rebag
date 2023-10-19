@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import ImageDisplay from "../shared/ImageDisplay";
 import { useDispatch } from "react-redux";
 import { updateStoreIsActive } from "../store/store/actions/actionCreators";
+import { SET_STORE_IS_EDITING } from "../store/store/actions/actionTypes";
 
 const StoresCard = (props) => {
   const {
@@ -27,6 +28,13 @@ const StoresCard = (props) => {
 
   const handleUpdateIsActive = (isActive) => {
     dispatch(updateStoreIsActive(id, isActive));
+  };
+
+  const handleEditStore = () => {
+    dispatch({
+      type: SET_STORE_IS_EDITING,
+      payload: { storeId: id, isEditing: true },
+    });
   };
 
   return (
@@ -93,7 +101,7 @@ const StoresCard = (props) => {
             </Col>
           </Row>
         </Card.Body>
-        <Card.Footer className="px-4 py-3 bg-white">
+        <Card.Footer className="px-4 py-3 bg-white d-flex justify-content-between">
           <Form>
             <Form.Check
               type="switch"
@@ -104,6 +112,10 @@ const StoresCard = (props) => {
               className="d-flex align-items-center gap-2 p-0 font-weight-700"
             />
           </Form>
+          <i
+            className="fas fa-edit text-muted"
+            onClick={() => handleEditStore()}
+          ></i>
         </Card.Footer>
       </Card>
     </>
