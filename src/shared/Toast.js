@@ -1,23 +1,19 @@
-import { toast } from "react-toast-notification";
+import { toast } from "react-toastify";
 
 const success = (message) => {
   if (message) {
-    toast(message, {
-      status: "Successful",
-      type: "success",
-      autoHide: true,
-      delay: "5000",
+    toast.success(message, {
+      position: "top-right",
+      autoClose: 5000,
     });
   }
 };
 
 const error = (message) => {
   if (message) {
-    toast(message, {
-      status: "Error",
-      type: "error",
-      autoHide: true,
-      delay: "5000",
+    toast.error(message, {
+      position: "top-right",
+      autoClose: 5000,
     });
   }
 };

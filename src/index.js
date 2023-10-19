@@ -16,6 +16,8 @@ import UserReducer from "./store/user/reducers/UserReducer";
 import storeReducer from "./store/store/reducers/StoreReducer";
 import TransactionReducer from "./store/transaction/reducers/TransactionReducer";
 import category from "./store/category/reducers/CategoryReducer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const rootReducer = combineReducers({
   user: UserReducer,
@@ -54,6 +56,7 @@ root.render(
     <Provider store={store}>
       <App />
     </Provider>
+    <ToastContainer />
   </React.StrictMode>,
 );
 
