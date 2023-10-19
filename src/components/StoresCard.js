@@ -2,14 +2,15 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
 import { Col, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import ImageDisplay from "../shared/ImageDisplay";
 import { useDispatch } from "react-redux";
 import { updateStoreIsActive } from "../store/store/actions/actionCreators";
 import { SET_STORE_IS_EDITING } from "../store/store/actions/actionTypes";
 
 const StoresCard = (props) => {
+  const navigate = useNavigate();
   const {
     id,
     storeName,
@@ -23,7 +24,6 @@ const StoresCard = (props) => {
     storeType,
     isActive,
   } = props;
-
   const dispatch = useDispatch();
 
   const handleUpdateIsActive = (isActive) => {
@@ -52,11 +52,12 @@ const StoresCard = (props) => {
               <h3 className="fs-5 d-sm-block d-none">{storeName}</h3>
             </div>
             <div className="d-flex align-items-center gap-3">
-              <Link to="/stores/detail">
-                <button className="green-btn height-32px font-weight-600 rounded-8px py-2 px-3">
-                  {btnText}
-                </button>
-              </Link>
+              <button
+                onClick={() => navigate(`/stores/detail/${id}`)}
+                className="green-btn height-32px font-weight-600 rounded-8px py-2 px-3"
+              >
+                {btnText}
+              </button>
               <ThreeDotsIcon />
             </div>
           </div>

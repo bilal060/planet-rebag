@@ -4,7 +4,6 @@ import UsersCard from "../UsersCard";
 import UserIcon from "../../assets/images/icons/userIcon";
 import PropTypes from "prop-types";
 const AppViewUser = ({ UserData }) => {
-  console.log(UserData);
   return (
     <>
       <Row className="m-0 stores-cards">

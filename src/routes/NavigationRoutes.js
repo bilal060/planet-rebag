@@ -64,7 +64,7 @@ function NavigationRoutes() {
     <>
       <Route path="/adminlogin" element={<AdminLoginPage />} />
       <Route path="/stores" element={<Stores />} />
-      <Route path="/stores/detail" element={<StoreDetail />} />
+      <Route path="/stores/detail/:id" element={<StoreDetail />} />
       <Route path="/substores" element={<SubStores />} />
       <Route path="/item-categories" element={<ItemCategories />} />
       <Route path="/requests" element={<Requests />} />
