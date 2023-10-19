@@ -10,15 +10,24 @@ import bags from "../assets/images/bags.svg";
 import camera from "../assets/images/camera.svg";
 import Counter from "../components/Counter";
 import thanks_icon from "../assets/images/thanks.svg";
+import { userLogout } from "../store/storeIndex";
+import { useDispatch, useSelector } from "react-redux";
 const withMainLayout = (WrappedComponent) => {
   return function MainLayoutHOC(props) {
+    const isUserLogin = useSelector((users) => {
+      return users?.user?.isLogin;
+    });
+    const { role } = useSelector((users) => {
+      return users?.user?.user?.user;
+    });
+
     const location = useLocation();
     const heroMessage = ["/home"];
     const navigate = useNavigate();
     const [modalShow, setModalShow] = useState(false);
     const [thankYouModalShow, setThankYouModalShow] = useState(false);
     const [uniqueIDModalShow, setUniqueIDModalShow] = useState(false);
-
+    const dispatch = useDispatch();
     const handleConfirmCount = () => {
       setModalShow(false);
       setUniqueIDModalShow(true);
@@ -235,13 +244,21 @@ const withMainLayout = (WrappedComponent) => {
                   </div>
                 </Modal.Footer>
               </Modal>
-              <div className="d-flex align-items-center gap-2">
-                <div>
-                  <h4 className="fs-5">Tony Stark</h4>
-                  <p className="fs-6">Super Admin</p>
+              {isUserLogin && (
+                <div className="d-flex align-items-center gap-2">
+                  <div>
+                    <h4 className="fs-5">Tony Stark</h4>
+                    <p className="fs-6">{role || ""}</p>
+                    <p
+                      onClick={() => dispatch(userLogout(navigate))}
+                      className="d-flex justify-content-end text-muted btn-link"
+                    >
+                      Logout
+                    </p>
+                  </div>
+                  <img src={userimage} alt="userimage" className="userimage" />
                 </div>
-                <img src={userimage} alt="userimage" className="userimage" />
-              </div>
+              )}
             </div>
             <WrappedComponent {...props} />
           </div>
