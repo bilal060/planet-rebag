@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "../../assets/css/stores.css";
 import { Col, Modal, Row } from "react-bootstrap";
@@ -7,13 +7,33 @@ import TextField from "../../shared/TextField";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import EyeIcon from "../../assets/images/EyeIcon";
 import * as Yup from "yup";
-import { addStore } from "../../store/user/actions/actionCreators";
-import Toast from "../../shared/Toast";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addStore,
+  updateStore,
+} from "../../store/store/actions/actionCreators";
 
-const signupValidationSchema = Yup.object().shape({
+const storeSignupValidationSchema = Yup.object().shape({
   storeName: Yup.string().required("Store Name is Required"),
   storeEmail: Yup.string().email().required("Email is Required"),
-  password: Yup.string().required("Password is Required"),
+  password: Yup.string().required("Password is Required").length(8),
+  ownBagsPrice: Yup.number().required("Own Bags Price is Required"),
+  otherBagsPrice: Yup.number().required("Other Bags Price is Required"),
+  otherBottlesPrice: Yup.number().required("Other Bottles Price is Required"),
+  maiDubaiBottlesPrice: Yup.number().required(
+    "Mai Dubai Bottles Price is Required",
+  ),
+  storeType: Yup.string().required("Store Type is Required"),
+  hasBottles: Yup.boolean(),
+  ownBottlesPrice: Yup.number().when("hasBottles", {
+    is: true,
+    then: () => Yup.number().required("Own Bottles Price is required"),
+    otherwise: () => Yup.number(),
+  }),
+});
+
+const storeEditValidationSchema = Yup.object().shape({
+  storeName: Yup.string().required("Store Name is Required"),
   ownBagsPrice: Yup.number().required("Own Bags Price is Required"),
   otherBagsPrice: Yup.number().required("Other Bags Price is Required"),
   otherBottlesPrice: Yup.number().required("Other Bottles Price is Required"),
@@ -30,8 +50,32 @@ const signupValidationSchema = Yup.object().shape({
 });
 
 const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [storeImg, setStoreImg] = useState(null);
+  const isEditing = useSelector((state) => state?.store?.isEditing);
+  const updatedStoreData = useSelector(
+    (state) => state?.store?.updatedStoreData,
+  );
+
+  useEffect(() => {
+    if (isEditing) {
+      setModalShow(true);
+    }
+  }, [isEditing && updatedStoreData]);
+
+  const editInitialValues = {
+    storeName: !isEditing ? "" : updatedStoreData.storeName,
+    storeType: !isEditing ? "gasStation" : updatedStoreData.storeType,
+    ownBagsPrice: !isEditing ? "" : updatedStoreData.ownBagsPrice,
+    otherBagsPrice: !isEditing ? "" : updatedStoreData.otherBagsPrice,
+    otherBottlesPrice: !isEditing ? "" : updatedStoreData.otherBottlesPrice,
+    maiDubaiBottlesPrice: !isEditing
+      ? ""
+      : updatedStoreData.maiDubaiBottlesPrice,
+    hasBottles: !isEditing ? false : updatedStoreData.hasBottles,
+    ownBottlesPrice: !isEditing ? "" : updatedStoreData.ownBottlesPrice,
+  };
 
   const initialValues = {
     storeName: "",
@@ -67,21 +111,31 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
     formData.append("maiDubaiBottlesPrice", values.maiDubaiBottlesPrice);
     formData.append("hasBottles", values.hasBottles);
     formData.append("ownBottlesPrice", values.ownBottlesPrice);
-    formData.append("storeImage", storeImg);
+    if (storeImg) formData.append("storeImage", storeImg);
 
-    addStore(formData)
-      .then(() => {
-        Toast.success("Store Added Successfully");
-        resetForm();
-        setStoreImg(null);
-        setModalShow(false);
-      })
-      .catch((err) => {
-        console.log(err, "err");
-      });
+    try {
+      if (isEditing) {
+        dispatch(updateStore(updatedStoreData._id, values));
+      } else {
+        dispatch(addStore(formData));
+      }
+      resetForm();
+      setStoreImg(null);
+      setModalShow(false);
+    } catch (err) {
+      console.log(err, "err");
+    }
+    dispatch({
+      type: "SET_STORE_IS_EDITING",
+      payload: { isEditing: false },
+    });
   };
 
   const handleCancel = (resetForm) => {
+    dispatch({
+      type: "SET_STORE_IS_EDITING",
+      payload: { isEditing: false },
+    });
     resetForm();
     setStoreImg(null);
     setModalShow(false);
@@ -101,13 +155,17 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
             className="ps-12 pe-12"
             id="contained-modal-title-vcenter"
           >
-            Add Stores
+            {isEditing ? "Update" : "Add"} Stores
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik
-            initialValues={initialValues}
-            validationSchema={signupValidationSchema}
+            initialValues={!isEditing ? initialValues : editInitialValues}
+            validationSchema={
+              !isEditing
+                ? storeSignupValidationSchema
+                : storeEditValidationSchema
+            }
             onSubmit={(values, { resetForm }) =>
               handleAddStore(values, resetForm)
             }
@@ -132,51 +190,56 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                     className="invalid-feedback"
                   />
                 </div>
-                <div className="form-group">
-                  <div className="label-inputs-start mb-2">
-                    <label htmlFor="storeEmail" className="font-16">
-                      Store email
-                    </label>
-                  </div>
 
-                  <TextField
-                    placeholder="Enter your Email"
-                    name="storeEmail"
-                    type={"email"}
-                  />
-                  <ErrorMessage
-                    component="div"
-                    name="storeEmail"
-                    className="invalid-feedback"
-                  />
-                </div>
-                <div className="form-group mt-2">
-                  <div className="label-inputs-start">
-                    <label
-                      htmlFor="passwordInput"
-                      className="font-16 text-start"
-                    >
-                      Password
-                    </label>
-                  </div>
-                  <div className="input-group mt-2">
-                    <TextField
-                      righticon={
-                        <span onClick={togglePasswordVisibility}>
-                          {showPassword ? <EyeiconClose /> : <EyeIcon />}
-                        </span>
-                      }
-                      placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-                      name="password"
-                      type={showPassword ? "text" : "password"}
-                    />
-                    <ErrorMessage
-                      component="div"
-                      name="password"
-                      className="invalid-feedback"
-                    />
-                  </div>
-                </div>
+                {!isEditing && (
+                  <>
+                    <div className="form-group">
+                      <div className="label-inputs-start mb-2">
+                        <label htmlFor="storeEmail" className="font-16">
+                          Store email
+                        </label>
+                      </div>
+
+                      <TextField
+                        placeholder="Enter your Email"
+                        name="storeEmail"
+                        type={"email"}
+                      />
+                      <ErrorMessage
+                        component="div"
+                        name="storeEmail"
+                        className="invalid-feedback"
+                      />
+                    </div>
+                    <div className="form-group mt-2">
+                      <div className="label-inputs-start">
+                        <label
+                          htmlFor="passwordInput"
+                          className="font-16 text-start"
+                        >
+                          Password
+                        </label>
+                      </div>
+                      <div className="input-group mt-2">
+                        <TextField
+                          righticon={
+                            <span onClick={togglePasswordVisibility}>
+                              {showPassword ? <EyeiconClose /> : <EyeIcon />}
+                            </span>
+                          }
+                          placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                          name="password"
+                          type={showPassword ? "text" : "password"}
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="password"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                    </div>
+                  </>
+                )}
                 <div className="form-group  mb-3">
                   <div className="label-inputs-start mb-2">
                     <label htmlFor="ownBagsPrice" className="font-16">
@@ -293,28 +356,30 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                   </Field>
                 </div>
 
-                <div className="form-group mb-3">
-                  <div className="label-inputs-start mb-2">
-                    <label htmlFor="storeType" className="font-16">
-                      Store Image
+                {!isEditing && (
+                  <div className="form-group mb-3">
+                    <div className="label-inputs-start mb-2">
+                      <label htmlFor="storeType" className="font-16">
+                        Store Image
+                      </label>
+                    </div>
+                    <label className="upload-files cr-p">
+                      <input
+                        type="file"
+                        className="d-none"
+                        accept=".jpg, .jpeg, .png"
+                        onChange={(e) => handleImageUpload(e)}
+                      />
+                      <div className="d-flex justify-content-center align-items-center h-100 w-100 gap-2">
+                        <p className="font-16 font-weight-500">
+                          {storeImg === null || storeImg === ""
+                            ? "Choose File / Drag & Drop Here"
+                            : storeImg.name}
+                        </p>
+                      </div>
                     </label>
                   </div>
-                  <label className="upload-files cr-p">
-                    <input
-                      type="file"
-                      className="d-none"
-                      accept=".jpg, .jpeg, .png"
-                      onChange={(e) => handleImageUpload(e)}
-                    />
-                    <div className="d-flex justify-content-center align-items-center h-100 w-100 gap-2">
-                      <p className="font-16 font-weight-500">
-                        {storeImg === null || storeImg === ""
-                          ? "Choose File / Drag & Drop Here"
-                          : storeImg.name}
-                      </p>
-                    </div>
-                  </label>
-                </div>
+                )}
 
                 <Row className="w-100">
                   <Col lg="6" className="mb-lg-0 mb-3">
@@ -331,7 +396,7 @@ const AddOrUpdateStoreModel = ({ modalShow, setModalShow }) => {
                       // onClick={() => setModalShow(false)}
                       type="submit"
                     >
-                      Add Store
+                      {isEditing ? "Update" : "Add"} Store
                     </button>
                   </Col>
                 </Row>
