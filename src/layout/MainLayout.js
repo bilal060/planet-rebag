@@ -17,7 +17,7 @@ const withMainLayout = (WrappedComponent) => {
     const isUserLogin = useSelector((users) => {
       return users?.user?.isLogin;
     });
-    const { role } = useSelector((users) => {
+    const { role, name } = useSelector((users) => {
       return users?.user?.user?.user;
     });
 
@@ -55,7 +55,7 @@ const withMainLayout = (WrappedComponent) => {
               {heroMessage.includes(location.pathname) && (
                 <>
                   <div>
-                    <h1>Welcome, Tony!</h1>
+                    <h1>Welcome, {name || ""}!</h1>
                   </div>
                   {/* <button
                     className="green-btn w-max-content d-flex"
@@ -247,7 +247,7 @@ const withMainLayout = (WrappedComponent) => {
               {isUserLogin && (
                 <div className="d-flex align-items-center gap-2">
                   <div>
-                    <h4 className="fs-5">Tony Stark</h4>
+                    <h4 className="fs-5">{name || ""}</h4>
                     <p className="fs-6">{role || ""}</p>
                     <p
                       onClick={() => dispatch(userLogout(navigate))}
