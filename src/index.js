@@ -40,7 +40,7 @@ if (isClient) {
 
   store.__PERSISTOR = persistStore(store);
 } else {
-  store = createStore(rootReducer, compose(applyMiddleware(thunk)));
+  store = (rootReducer, compose(applyMiddleware(thunk)));
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

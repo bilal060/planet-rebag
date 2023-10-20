@@ -10,13 +10,16 @@ import { PaginationControl } from "react-bootstrap-pagination-control";
 const AppUserCardView = () => {
   const [category, setCategory] = useState("All");
   const dispatch = useDispatch();
-  const UserData = useSelector((state) => state?.user?.getUsers);
-  const test = useSelector((state) => state);
+  const UserData = useSelector((state) => state?.user?.getUsers?.data);
+  const Usertotal = useSelector((state) => state?.user?.getUsers?.total);
+  console.log(Usertotal);
   const [page, setPage] = useState(1);
-  console.log(test);
   useEffect(() => {
     dispatch(fetchUserData(page, category));
   }, [dispatch, page, category]);
+  useEffect(() => {
+    setPage(1);
+  }, [category]);
   const radio = [
     {
       id: "1",
@@ -36,6 +39,7 @@ const AppUserCardView = () => {
   const handlePageChange = (newPage) => {
     setPage(newPage);
   };
+
   return (
     <div className="stores">
       <div className="d-flex align-items-center justify-content-between gap-3 flex-wrap mb-4 ps-12 pe-12">
@@ -58,8 +62,8 @@ const AppUserCardView = () => {
         <PaginationControl
           page={page}
           between={3}
-          total={UserData ? UserData.total : 0}
-          limit={UserData ? UserData.limit : 0}
+          limit={10}
+          total={Usertotal}
           changePage={(page) => handlePageChange(page)}
           ellipsis={1}
         />

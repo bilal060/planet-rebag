@@ -90,7 +90,7 @@ export const fetchUserData =
       .then((response) => {
         dispatch({
           type: actionTypes.FETCH_USER_DATA_SUCCESS,
-          payload: response?.data?.data,
+          payload: response?.data,
         });
       })
       .catch((error) => {
