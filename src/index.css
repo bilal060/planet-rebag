@@ -148,3 +148,9 @@ small.pt-2 {
   right: 0px;
   border-radius: 12px;
 }
+
+.one-line-description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -18,12 +18,14 @@ import TransactionReducer from "./store/transaction/reducers/TransactionReducer"
 import category from "./store/category/reducers/CategoryReducer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import dealReducer from "./store/deal/reducers/DealReducer";
 
 const rootReducer = combineReducers({
   user: UserReducer,
   store: storeReducer,
   transaction: TransactionReducer,
   category: category,
+  deal: dealReducer,
 });
 
 let devtools, store;
