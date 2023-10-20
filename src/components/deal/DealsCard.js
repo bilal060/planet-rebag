@@ -4,19 +4,17 @@ import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import PropTypes from "prop-types";
 import ImageDisplay from "../../shared/ImageDisplay";
 
-const DealsCard = (props) => {
-  const {
-    id,
-    couponCode,
-    description,
-    vendor,
-    link,
-    name,
-    percentage,
-    amount,
-    dealIcon,
-  } = props;
-
+const DealsCard = ({
+  id,
+  couponCode,
+  description,
+  vendor,
+  link,
+  name,
+  percentage,
+  amount,
+  dealIcon,
+}) => {
   return (
     <>
       <Card className="store-card" key={id}>
@@ -37,13 +35,13 @@ const DealsCard = (props) => {
           <Row className="flex-wrap">
             <Col sm="4" md="6" xxl="4" className="p-0">
               <div className="mb-4">
-                <h6 className="mb-2 font-weight-700">vendor</h6>
+                <h6 className="mb-2 font-weight-700">Vendor</h6>
                 <p>{vendor || ""}</p>
               </div>
             </Col>
             <Col sm="4" md="6" xxl="4" className="p-0">
               <div className="mb-4">
-                <h6 className="mb-2 font-weight-700">couponCode</h6>
+                <h6 className="mb-2 font-weight-700">Coupon Code</h6>
                 <p>{couponCode || ""}</p>
               </div>
             </Col>
@@ -56,14 +54,14 @@ const DealsCard = (props) => {
 
             <Col sm="4" md="6" xxl="4" className="p-0">
               <div className="mb-4">
-                <h6 className="mb-2 font-weight-700">percentage</h6>
+                <h6 className="mb-2 font-weight-700">Percentage</h6>
                 <p>{percentage || 0}</p>
               </div>
             </Col>
 
             <Col sm="4" md="6" xxl="4" className="p-0">
               <div className="mb-4">
-                <h6 className="mb-2 font-weight-700">link</h6>
+                <h6 className="mb-2 font-weight-700">Link</h6>
                 <a href={link} target="_blank" rel="noreferrer">
                   Deal Link
                 </a>
@@ -71,7 +69,7 @@ const DealsCard = (props) => {
             </Col>
             <Col sm="12" md="126" xxl="12" className="p-0">
               <div className="mb-4">
-                <h6 className="mb-2 font-weight-700">description</h6>
+                <h6 className="mb-2 font-weight-700">Description</h6>
                 <OverlayTrigger
                   placement="top"
                   overlay={
@@ -79,7 +77,7 @@ const DealsCard = (props) => {
                   }
                 >
                   <p className="one-line-description">
-                    {description.length > 100
+                    {description?.length > 100
                       ? `${description.slice(0, 100)}...`
                       : description}
                   </p>
