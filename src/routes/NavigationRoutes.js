@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Stores from "../pages/Stores.js";
+import Deals from "../pages/Deals.js";
 import AppUserDetailView3 from "../components/appUser/AppUserDetailView3.js";
 import AppUserDetailView2 from "../components/appUser/AppUserDetailView2.js";
 import SubStores from "../pages/SubStores.js";
@@ -64,6 +65,7 @@ function NavigationRoutes() {
     <>
       <Route path="/adminlogin" element={<AdminLoginPage />} />
       <Route path="/stores" element={<Stores />} />
+      <Route path="/deals" element={<Deals />} />
       <Route path="/stores/detail/:id" element={<StoreDetail />} />
       <Route path="/substores" element={<SubStores />} />
       <Route path="/item-categories" element={<ItemCategories />} />

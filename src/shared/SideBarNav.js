@@ -11,8 +11,16 @@ import TransactionHistoryIcon from "../assets/images/icons/dashboardicons/transa
 import ItemCategoriesIcon from "../assets/images/icons/dashboardicons/itemCategories";
 import AppUsersIcon from "../assets/images/icons/dashboardicons/appUsers";
 import StoreIcon from "../assets/images/icons/dashboardicons/store";
+import { useSelector } from "react-redux";
 
 const SidebarNav = () => {
+  const userRole = useSelector((users) => {
+    return users?.user?.user?.user?.role;
+  });
+
+  const isUserLogin = useSelector((users) => {
+    return users?.user?.isLogin;
+  });
   return (
     <Sidebar
       defaultCollapsed={useWindowDimensions()}
@@ -39,54 +47,75 @@ const SidebarNav = () => {
             <span className="menu-text">Home</span>
           </MenuItem>
         </NavLink>
-        <NavLink to="/stores" className="menu-item-link">
-          <MenuItem>
-            <span className="menu-icon">
-              <StoreIcon />
-            </span>
-            <span className="menu-text">Stores</span>
-          </MenuItem>
-        </NavLink>
-        {/* <NavLink to="/substores" className="menu-item-link">
-          <MenuItem>
-            <span className="menu-icon">
-              <StoreIcon />
-            </span>
-            <span className="menu-text">Sub Stores</span>
-          </MenuItem>
-        </NavLink> */}
-        <NavLink to="/users" className="menu-item-link">
-          <MenuItem>
-            <span className="menu-icon">
-              <AppUsersIcon />
-            </span>
-            <span className="menu-text">App Users</span>
-          </MenuItem>
-        </NavLink>
-        <NavLink to="/item-categories" className="menu-item-link">
-          <MenuItem>
-            <span className="menu-icon">
-              <ItemCategoriesIcon />
-            </span>
-            <span className="menu-text">Items Categories</span>
-          </MenuItem>
-        </NavLink>
-        <NavLink to="/transaction-history" className="menu-item-link">
-          <MenuItem>
-            <span className="menu-icon">
-              <TransactionHistoryIcon />
-            </span>
-            <span className="menu-text">Transactions History</span>
-          </MenuItem>
-        </NavLink>
-        <NavLink to="/requests" className="menu-item-link">
-          <MenuItem>
-            <span className="menu-icon">
-              <RequestIcon />
-            </span>
-            <span className="menu-text">Requests</span>
-          </MenuItem>
-        </NavLink>
+        {isUserLogin && userRole === "superAdminUser" && (
+          <>
+            <NavLink to="/stores" className="menu-item-link">
+              <MenuItem>
+                <span className="menu-icon">
+                  <StoreIcon />
+                </span>
+                <span className="menu-text">Stores</span>
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/deals" className="menu-item-link">
+              <MenuItem>
+                <span className="menu-icon">
+                  <StoreIcon />
+                </span>
+                <span className="menu-text">Deals</span>
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/users" className="menu-item-link">
+              <MenuItem>
+                <span className="menu-icon">
+                  <AppUsersIcon />
+                </span>
+                <span className="menu-text">App Users</span>
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/item-categories" className="menu-item-link">
+              <MenuItem>
+                <span className="menu-icon">
+                  <ItemCategoriesIcon />
+                </span>
+                <span className="menu-text">Items Categories</span>
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/transaction-history" className="menu-item-link">
+              <MenuItem>
+                <span className="menu-icon">
+                  <TransactionHistoryIcon />
+                </span>
+                <span className="menu-text">Transactions History</span>
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/requests" className="menu-item-link">
+              <MenuItem>
+                <span className="menu-icon">
+                  <RequestIcon />
+                </span>
+                <span className="menu-text">Requests</span>
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/redeemCategory1" className="menu-item-link">
+              <MenuItem>
+                <span className="menu-icon">
+                  <AppUsersIcon />
+                </span>
+                <span className="menu-text">Redeemed Items Details</span>
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/redeemCategory2" className="menu-item-link">
+              <MenuItem>
+                <span className="menu-icon">
+                  <AppUsersIcon />
+                </span>
+                <span className="menu-text">Redeemed Items Details 2</span>
+              </MenuItem>
+            </NavLink>
+          </>
+        )}
+
         <NavLink
           to="/settings/ChangePassword"
           className={`menu-item-link footer ${
@@ -98,22 +127,6 @@ const SidebarNav = () => {
               <SettingsIcon />
             </span>
             <span className="menu-text">Settings</span>
-          </MenuItem>
-        </NavLink>
-        <NavLink to="/redeemCategory1" className="menu-item-link">
-          <MenuItem>
-            <span className="menu-icon">
-              <AppUsersIcon />
-            </span>
-            <span className="menu-text">Redeemed Items Details</span>
-          </MenuItem>
-        </NavLink>
-        <NavLink to="/redeemCategory2" className="menu-item-link">
-          <MenuItem>
-            <span className="menu-icon">
-              <AppUsersIcon />
-            </span>
-            <span className="menu-text">Redeemed Items Details 2</span>
           </MenuItem>
         </NavLink>
       </Menu>

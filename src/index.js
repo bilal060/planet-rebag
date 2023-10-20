@@ -14,10 +14,14 @@ const { persistStore, persistReducer } = require("redux-persist");
 
 import UserReducer from "./store/user/reducers/UserReducer";
 import storeReducer from "./store/store/reducers/StoreReducer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import dealReducer from "./store/deal/reducers/DealReducer";
 
 const rootReducer = combineReducers({
   user: UserReducer,
   store: storeReducer,
+  deal: dealReducer,
 });
 
 let devtools, store;
@@ -50,6 +54,7 @@ root.render(
     <Provider store={store}>
       <App />
     </Provider>
+    <ToastContainer />
   </React.StrictMode>,
 );
 

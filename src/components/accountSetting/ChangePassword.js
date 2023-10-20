@@ -6,6 +6,8 @@ import { Button, Col, Row } from "react-bootstrap";
 import EyeIcon from "../../assets/images/EyeIcon";
 import withAccountSettingLayout from "../../layout/AccountSettingLayout";
 import withMainLayout from "../../layout/MainLayout";
+import Axios from "../../axios/Axios";
+import Toast from "../../shared/Toast";
 
 const newPasswordValidationSchema = Yup.object().shape({
   oldPassword: Yup.string().required("Password is Required"),
@@ -38,12 +40,34 @@ const ChangeAccountPassword = () => {
   const [eye1, setEye1] = useState(false);
   const [eye2, setEye2] = useState(false);
 
+  const onChangePasswordSubmit = async (values, formikBag) => {
+    try {
+      await Axios.patch(
+        "/user/updatepassword",
+        {
+          passwordCurrent: values.oldPassword,
+          newPassword: values.newPassword,
+        },
+        {
+          withCredentials: true,
+        },
+      );
+      formikBag.resetForm();
+      Toast.success("Password Updated Successfully");
+    } catch (error) {
+      Toast.error(error?.response?.data?.message || "Something went wrong");
+    }
+  };
+
   return (
     <div>
       <h3 className="font-24 font-weight-700 mb-5">Change Password</h3>
       <Formik
         initialValues={initialValues}
         validationSchema={newPasswordValidationSchema}
+        onSubmit={(values, formikBag) => {
+          onChangePasswordSubmit(values, formikBag);
+        }}
       >
         {() => (
           <Form action="" className="text-light-black">
@@ -55,7 +79,7 @@ const ChangeAccountPassword = () => {
                   </label>
                   <TextField
                     righticon={
-                      <span onClick={() => setEye(!setEye)}>
+                      <span onClick={() => setEye(!eye)}>
                         <EyeIcon />
                       </span>
                     }
@@ -79,7 +103,7 @@ const ChangeAccountPassword = () => {
 
                   <TextField
                     righticon={
-                      <span onClick={() => setEye1(!setEye1)}>
+                      <span onClick={() => setEye1(!eye1)}>
                         <EyeIcon />
                       </span>
                     }
@@ -102,7 +126,7 @@ const ChangeAccountPassword = () => {
 
                   <TextField
                     righticon={
-                      <span onClick={() => setEye2(!setEye2)}>
+                      <span onClick={() => setEye2(!eye2)}>
                         <EyeIcon />
                       </span>
                     }
