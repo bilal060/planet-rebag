@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/css/itemcategory.css";
 import Modal from "react-bootstrap/Modal";
 import Radios from "../components/Radios";
@@ -8,15 +8,32 @@ import AddNewCategoryIcon from "../assets/images/icons/dashboardicons/addNewCate
 import { Form } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import UploadIcon from "../assets/images/icons/dashboardicons/uploadIcon";
+import { fetchAllCategories, addCategories } from "../store/storeIndex";
 import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
+import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
+import ImageDisplay from "../shared/ImageDisplay";
 const ItemCategory = () => {
   const [modalShow, setModalShow] = useState(false);
-  const [file, setFile] = useState(null);
-  const [setAddCategory] = useState({
+  const [addCategory, setAddCategory] = useState({
     categoryName: "",
     photo: "",
   });
   const [category, setCategory] = useState("All");
+  const dispatch = useDispatch();
+  const categoryData = useSelector(
+    (state) => state?.category?.categories?.data,
+  );
+  useEffect(() => {
+    dispatch(fetchAllCategories(category));
+  }, [dispatch, category]);
+
+  const addcatHandler = () => {
+    const data = new FormData();
+    data.append("name", addCategory.categoryName);
+    data.append("image", addCategory.photo);
+    dispatch(addCategories(data, setModalShow));
+  };
   const radio = [
     {
       id: "1",
@@ -33,80 +50,13 @@ const ItemCategory = () => {
       text: "Bottle",
     },
   ];
-  const tableData = [
-    {
-      id: 1,
-      categoryIcon: <BagIcon />,
-      categoryName: "Bag",
-      noofStores: 3,
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      id: 2,
-      categoryIcon: <BottleIcon />,
-      categoryName: "Bottle",
-      noofStores: 5,
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      id: 2,
-      categoryIcon: <BagIcon />,
-      categoryName: "Bag",
-      noofStores: 5,
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      id: 1,
-      categoryIcon: <BagIcon />,
-      categoryName: "Bag",
-      noofStores: 3,
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      id: 2,
-      categoryIcon: <BottleIcon />,
-      categoryName: "Bottle",
-      noofStores: 5,
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      id: 2,
-      categoryIcon: <BagIcon />,
-      categoryName: "Bag",
-      noofStores: 5,
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      id: 1,
-      categoryIcon: <BagIcon />,
-      categoryName: "Bag",
-      noofStores: 3,
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      id: 2,
-      categoryIcon: <BottleIcon />,
-      categoryName: "Bottle",
-      noofStores: 5,
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      id: 2,
-      categoryIcon: <BagIcon />,
-      categoryName: "Bag",
-      noofStores: 5,
-      time: "10:19 AM  |  23/07/2023",
-    },
-  ];
-
   const attachFile = (e) => {
     if (e.target.files) {
       let imageFile = e.target.files[0];
       setAddCategory((prevState) => ({
         ...prevState,
-        photo: Array.from(e.target.files),
+        photo: imageFile,
       }));
-      setFile(imageFile?.name);
     }
   };
   return (
@@ -157,19 +107,27 @@ const ItemCategory = () => {
             </tr>
           </thead>
           <tbody>
-            {(tableData || []).map((data, index) => {
-              return (
-                <tr key={index}>
-                  <td>{data.categoryIcon}</td>
-                  <td>{data.categoryName}</td>
-                  <td>{data.noofStores}</td>
-                  <td>{data.time}</td>
-                  <td>
-                    <ThreeDotsIcon />
-                  </td>
-                </tr>
-              );
-            })}
+            {categoryData?.length > 0 &&
+              (categoryData || []).map((data, index) => {
+                return (
+                  <tr key={index}>
+                    <td>
+                      <ImageDisplay
+                        src={`${process.env.REACT_APP_SERVER_URL}/${data?.image}`}
+                        className="store-logo"
+                      />
+                    </td>
+                    <td>{data.name}</td>
+                    <td>{data.noofStores ? data.noofStores : 0}</td>
+                    <td>
+                      {moment(data.createdAt).format("h:mm A | DD/MM/YYYY")}
+                    </td>
+                    <td>
+                      <ThreeDotsIcon />
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </Table>
       </div>
@@ -211,7 +169,9 @@ const ItemCategory = () => {
                 <div className="d-flex justify-content-center align-items-center h-100 w-100 gap-2">
                   <UploadIcon />
                   <p className="font-16 font-weight-500">
-                    {file === null ? "Upload File" : file}
+                    {addCategory?.photo?.name === null
+                      ? "Upload File"
+                      : addCategory?.photo?.name}
                   </p>
                 </div>
                 <Form.Control
@@ -232,7 +192,7 @@ const ItemCategory = () => {
             >
               Cancel
             </button>
-            <button className="green-btn" onClick={() => setModalShow(false)}>
+            <button className="green-btn" onClick={addcatHandler}>
               Add Store
             </button>
           </div>

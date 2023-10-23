@@ -30,6 +30,7 @@ const ImageDisplay = (props) => {
         <img
           src={image}
           alt={props?.alt}
+          crossOrigin="anonymous"
           className={props?.className || ""}
           style={props?.style || {}}
           onError={handleImageError}

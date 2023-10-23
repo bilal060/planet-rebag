@@ -12,7 +12,6 @@ const AppUserCardView = () => {
   const dispatch = useDispatch();
   const UserData = useSelector((state) => state?.user?.getUsers?.data);
   const Usertotal = useSelector((state) => state?.user?.getUsers?.total);
-  console.log(Usertotal);
   const [page, setPage] = useState(1);
   useEffect(() => {
     dispatch(fetchUserData(page, category));

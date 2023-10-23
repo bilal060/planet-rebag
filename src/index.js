@@ -14,10 +14,14 @@ const { persistStore, persistReducer } = require("redux-persist");
 
 import UserReducer from "./store/user/reducers/UserReducer";
 import storeReducer from "./store/store/reducers/StoreReducer";
+import TransactionReducer from "./store/transaction/reducers/TransactionReducer";
+import category from "./store/category/reducers/CategoryReducer";
 
 const rootReducer = combineReducers({
   user: UserReducer,
   store: storeReducer,
+  transaction: TransactionReducer,
+  category: category,
 });
 
 let devtools, store;

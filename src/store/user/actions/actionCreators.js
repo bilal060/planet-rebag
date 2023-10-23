@@ -44,7 +44,6 @@ export const resetNewPassword = (data, navigate) => (dispatch) => {
 };
 
 export const userSignup = (data, navigation) => {
-  console.log(data);
   Axios.post("user/register", data)
     .then((response) => {
       if (data.email) {

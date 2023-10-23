@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TotalCard from "../components/TotalCard";
 import "../assets/css/itemcategory.css";
 
@@ -11,9 +11,19 @@ import TotalBottles from "../assets/images/icons/TotalBottles";
 import TotalStore from "../assets/images/icons/TotalStore";
 import TotalPrice from "../assets/images/icons/TotalPrice";
 import ThreeDotsIcon from "../assets/images/icons/dashboardicons/threeDots";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserTransactions } from "../store/storeIndex";
+import moment from "moment/moment";
 const Transactions = () => {
   const [category, setCategory] = useState("All");
-
+  const dispatch = useDispatch();
+  const transactionData = useSelector(
+    (state) => state?.transaction?.userTransactions?.data,
+  );
+  console.log(transactionData);
+  useEffect(() => {
+    dispatch(fetchUserTransactions(category));
+  }, [dispatch, category]);
   const radio = [
     {
       id: "1",
@@ -30,35 +40,36 @@ const Transactions = () => {
       text: "Bottle",
     },
   ];
-  const tableData = [
-    {
-      id: "CF783457",
-      itemType: "Bag",
-      returnedQuantity: "7",
-      totalQty: "14",
-      RedeemPrice: "AED 5.00",
-      StoreLocation: "Al Ain, Abu Dhabi",
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      id: "CF783457",
-      itemType: "Bottle",
-      returnedQuantity: "20",
-      totalQty: "40",
-      RedeemPrice: "AED 5.00",
-      StoreLocation: "Al Ain, Abu Dhabi",
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      id: "CF783457",
-      itemType: "Bag",
-      returnedQuantity: "13",
-      totalQty: "26",
-      RedeemPrice: "AED 5.00",
-      StoreLocation: "Al Ain, Abu Dhabi",
-      time: "10:19 AM  |  23/07/2023",
-    },
-  ];
+  console.log(category);
+  // const tableData = [
+  //   {
+  //     id: "CF783457",
+  //     itemType: "Bag",
+  //     returnedQuantity: "7",
+  //     totalQty: "14",
+  //     RedeemPrice: "AED 5.00",
+  //     StoreLocation: "Al Ain, Abu Dhabi",
+  //     time: "10:19 AM  |  23/07/2023",
+  //   },
+  //   {
+  //     id: "CF783457",
+  //     itemType: "Bottle",
+  //     returnedQuantity: "20",
+  //     totalQty: "40",
+  //     RedeemPrice: "AED 5.00",
+  //     StoreLocation: "Al Ain, Abu Dhabi",
+  //     time: "10:19 AM  |  23/07/2023",
+  //   },
+  //   {
+  //     id: "CF783457",
+  //     itemType: "Bag",
+  //     returnedQuantity: "13",
+  //     totalQty: "26",
+  //     RedeemPrice: "AED 5.00",
+  //     StoreLocation: "Al Ain, Abu Dhabi",
+  //     time: "10:19 AM  |  23/07/2023",
+  //   },
+  // ];
 
   return (
     <div>
@@ -158,21 +169,31 @@ const Transactions = () => {
             </tr>
           </thead>
           <tbody>
-            {(tableData || []).map((data, index) => {
-              return (
-                <tr key={index}>
-                  <td>{data.itemType}</td>
-                  <td>{data.returnedQuantity}</td>
-                  <td>{data.totalQty}</td>
-                  <td>{data.RedeemPrice}</td>
-                  <td>{data.StoreLocation}</td>
-                  <td>{data.time}</td>
-                  <td>
-                    <ThreeDotsIcon />
-                  </td>
-                </tr>
-              );
-            })}
+            {transactionData?.length > 0 &&
+              (transactionData || []).map((data, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{data.sessionId.itemType}</td>
+                    <td>
+                      {data.sessionId.returnBagsQty +
+                        data.sessionId.returnBottelsQty}
+                    </td>
+                    <td>{data.sessionId.total}</td>
+                    <td>{data.discountPrice + " AED "}</td>
+                    <td>
+                      {data.storeId.address
+                        ? data.storeId.address
+                        : "no address"}
+                    </td>
+                    <td>
+                      {moment(data.createdAt).format("h:mm A | DD/MM/YYYY")}
+                    </td>
+                    <td>
+                      <ThreeDotsIcon />
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </Table>
       </div>
