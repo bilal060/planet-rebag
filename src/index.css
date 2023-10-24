@@ -148,6 +148,7 @@ small.pt-2 {
   right: 0px;
   border-radius: 12px;
 }
+<<<<<<< HEAD
 .active>.page-link{
   background-color:#79AA00 !important;
 }
@@ -157,4 +158,10 @@ small.pt-2 {
 }
 .page-link:focus {
   background-color:#79AA00 !important;
+}
+
+.one-line-description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
