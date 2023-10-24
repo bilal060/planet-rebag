@@ -79,7 +79,7 @@ const DealsCard = (props) => {
                   }
                 >
                   <p className="one-line-description">
-                    {description.length > 100
+                    {description && description?.length > 100
                       ? `${description.slice(0, 100)}...`
                       : description}
                   </p>

@@ -6,7 +6,7 @@ import DealsCard from "./DealsCard";
 const ViewDeals = ({ deals }) => {
   return (
     <Row className="m-0 deals-cards">
-      {deals?.length === 0 ? (
+      {deals && deals?.length === 0 ? (
         <Col xl="12" className="mb-4 col">
           <div className="d-flex justify-content-center align-content-center border border-lg p-5">
             <h4 className="fs-3 ">No Deals Available</h4>
