@@ -217,3 +217,20 @@ table.table-design tbody tr:nth-child(odd) td {
         width: 100% !important;
     }
 }
+/* MyPagination.css */
+.pagination .page-item.active .page-link {
+    /* Style for the selected page */
+    background-color: var(--primary-green, #79AA00) !important;
+    border-color: var(--primary-green, #79AA00) !important;
+    color: white;
+}
+
+.pagination .page-item .page-link {
+    /* Style for unselected pages */
+    background-color: #FFFFFF;
+    /* Change to your unselected background color */
+    border-color: #CCCCCC;
+    /* Change to your unselected border color */
+    color: #333;
+    /* Change to your unselected text color */
+}
