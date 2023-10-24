@@ -8,7 +8,6 @@ import { fetchDealData } from "../../store/deal/actions/actionCreators";
 const Deal = () => {
   const dispatch = useDispatch();
   const dealData = useSelector((state) => state?.deal?.dealData);
-  console.log("🚀 ~ file: Deal.js:11 ~ Deal ~ dealData:", dealData);
 
   const [modalShow, setModalShow] = useState(false);
 

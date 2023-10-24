@@ -97,7 +97,7 @@ const SidebarNav = () => {
                 <span className="menu-text">Requests</span>
               </MenuItem>
             </NavLink>
-            <NavLink to="/redeemCategory1" className="menu-item-link">
+            {/* <NavLink to="/redeemCategory1" className="menu-item-link">
               <MenuItem>
                 <span className="menu-icon">
                   <AppUsersIcon />
@@ -112,7 +112,7 @@ const SidebarNav = () => {
                 </span>
                 <span className="menu-text">Redeemed Items Details 2</span>
               </MenuItem>
-            </NavLink>
+            </NavLink> */}
           </>
         )}
 
