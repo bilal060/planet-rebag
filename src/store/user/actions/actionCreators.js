@@ -11,10 +11,10 @@ export const userLogin = (data, navigation) => (dispatch) => {
         payload: response.data,
       });
       navigation("/home");
-      Toast.success(response.data.status);
+      Toast.success(response?.data?.status);
     })
     .catch((error) => {
-      Toast.error(error.response.data.message);
+      Toast.error(error?.response?.data?.message);
     });
 };
 
@@ -97,18 +97,15 @@ export const fetchUserData =
       });
   };
 
-// export const fetchOneUserData = (id) => (dispatch) => {
-//   Axios.get(`user/${id}`, {
-//     withCredentials: true,
-//   })
-//     .then((response) => {
-//       console.log(response);
-//       dispatch({
-//         type: actionTypes.FETCH_USER_DATA_SUCCESS,
-//         payload: response?.data?.data,
-//       });
-//     })
-//     .catch((error) => {
-//       Toast.error(error?.response?.data?.message);
-//     });
-// };
+export const fetchCountData = () => (dispatch) => {
+  Axios.get("user/getCountData")
+    .then((response) => {
+      dispatch({
+        type: actionTypes.FETCH_COUNT,
+        payload: response?.data,
+      });
+    })
+    .catch((error) => {
+      Toast.error(error?.response?.data?.message);
+    });
+};

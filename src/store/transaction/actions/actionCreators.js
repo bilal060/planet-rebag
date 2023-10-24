@@ -18,18 +18,27 @@ export const fetchUserTransactions = (category) => (dispatch) => {
     });
 };
 
-// export const fetchOneUserData = (id) => (dispatch) => {
-//   Axios.get(`user/${id}`, {
-//     withCredentials: true,
-//   })
-//     .then((response) => {
-//       console.log(response);
-//       dispatch({
-//         type: actionTypes.FETCH_USER_DATA_SUCCESS,
-//         payload: response?.data?.data,
-//       });
-//     })
-//     .catch((error) => {
-//       Toast.error(error?.response?.data?.message);
-//     });
-// };
+export const fetchUserTransactionsById = (id, category) => (dispatch) => {
+  Axios.get(`session/gettransactionByUserId?uid=${id}&category=${category}`)
+    .then((response) => {
+      dispatch({
+        type: actionTypes.USER_TRANSACTIONSBYID,
+        payload: response?.data,
+      });
+    })
+    .catch((error) => {
+      Toast.error(error?.response?.data?.message);
+    });
+};
+export const fetchUserTransactionsByStoreId = (id, category) => (dispatch) => {
+  Axios.get(`session/gettransactionByStoreId?sid=${id}&category=${category}`)
+    .then((response) => {
+      dispatch({
+        type: actionTypes.USER_TRANSACTIONSBYSTIOREID,
+        payload: response?.data,
+      });
+    })
+    .catch((error) => {
+      Toast.error(error?.response?.data?.message);
+    });
+};

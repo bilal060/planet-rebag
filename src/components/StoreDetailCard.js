@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import { Col, Form, Image, Row, Table } from "react-bootstrap";
+import { Col, Image, Row } from "react-bootstrap";
 import StoreLogo from "../assets/images/StoreLogo.svg";
 import "../assets/css/detailcard.css";
-import Radios from "./Radios";
-import BagIcon from "../assets/images/icons/dashboardicons/bag";
-import BottleIcon from "../assets/images/icons/dashboardicons/bottle";
 import Axios from "../axios/Axios";
 import { useEffect } from "react";
 import Toast from "../shared/Toast";
 import { useParams } from "react-router";
+import TransactionHistoryDetail from "./TransactionHistoryDetail";
 
 function StoreDetailCard() {
-  const [category, setCategory] = useState("All");
   const { id } = useParams();
   const [storeData, setstoreData] = useState(null);
   useEffect(() => {
@@ -19,58 +16,12 @@ function StoreDetailCard() {
       withCredentials: true,
     })
       .then((response) => {
-        setstoreData(response.data.data);
+        setstoreData(response?.data?.data);
       })
       .catch((error) => {
         Toast.error(error?.response?.data?.message);
       });
   }, [id]);
-
-  const radio = [
-    {
-      id: "1",
-      text: "All",
-    },
-    {
-      id: "2",
-      imgSrc: <BagIcon />,
-      text: "Bag",
-    },
-    {
-      id: "3",
-      imgSrc: <BottleIcon />,
-      text: "Bottle",
-    },
-  ];
-  const tableData = [
-    {
-      id: "CF783457",
-      returnedBag: "7",
-      returnedBottle: "7",
-      TotalQty: "14",
-      RedeemPrice: "AED 5.00",
-      StoreLocation: "Al Ain, Abu Dhabi",
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      id: "CF783457",
-      returnedBag: "20",
-      returnedBottle: "20",
-      TotalQty: "40",
-      RedeemPrice: "AED 5.00",
-      StoreLocation: "Al Ain, Abu Dhabi",
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      id: "CF783457",
-      returnedBag: "13",
-      returnedBottle: "13",
-      TotalQty: "26",
-      RedeemPrice: "AED 5.00",
-      StoreLocation: "Al Ain, Abu Dhabi",
-      time: "10:19 AM  |  23/07/2023",
-    },
-  ];
   return (
     <div>
       {storeData && (
@@ -131,80 +82,7 @@ function StoreDetailCard() {
           </div>
         </div>
       )}
-
-      <Row className="justify-content-between pt-5">
-        <Col className="p-0 d-flex align-items-center gap-5" lg="7" xl="8">
-          <Row>
-            <Col xl="8" className="mb-3 p-0">
-              <h4 className="fs-3">Transactions History </h4>
-            </Col>
-
-            <Col xl="4 p-0">
-              <div className="d-flex justify-content-start gap-3">
-                {radio.map((data, index) => {
-                  return (
-                    <Radios
-                      key={index}
-                      data={data}
-                      category={category}
-                      setCategory={setCategory}
-                    />
-                  );
-                })}
-              </div>
-            </Col>
-          </Row>
-        </Col>
-
-        <Col className="p-0">
-          <Form className="d-flex justify-content-start gap-2 flex-lg-row flex-column">
-            <Form.Label className="d-flex justify-content-lg-end mt-2 w-100 font-weight-600">
-              Select Store:
-            </Form.Label>
-            <Form.Select
-              aria-label="Default drop-input select example"
-              className="w-100 d-flex justify-content-end"
-              defaultValue="all"
-              // onChange={(e) => filterSpaceHandler(e.target.value)}
-            >
-              <option value="all">All Stores</option>
-            </Form.Select>
-          </Form>
-        </Col>
-      </Row>
-
-      <div className="table-main mt-3">
-        <Table className="table-design" striped hover>
-          <thead>
-            <tr>
-              <th>Session ID</th>
-              <th>Returned Bags</th>
-              <th>Returned Bottles</th>
-              <th>Total Qty</th>
-              <th>Redeem Price</th>
-              <th>Store Location</th>
-              <th>Time & Date</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {(tableData || []).map((data, index) => {
-              return (
-                <tr key={index}>
-                  <td>{data.id}</td>
-                  <td>{data.returnedBag}</td>
-                  <td>{data.returnedBottle}</td>
-                  <td>{data.TotalQty}</td>
-                  <td>{data.RedeemPrice}</td>
-                  <td>{data.StoreLocation}</td>
-                  <td>{data.time}</td>
-                  <td>{/* <ThreeDotsIcon /> */}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
-      </div>
+      <TransactionHistoryDetail pageType="store" />
     </div>
   );
 }

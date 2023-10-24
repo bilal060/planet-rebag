@@ -119,7 +119,7 @@ function AppUserDetailView() {
           })}
         </div>
       </div>
-      <AppUserTransactionsTable />
+      <AppUserTransactionsTable category={category} />
       <AppUserItemsBagsTable />
       <AppUserItemsBagsTable />
     </div>
