@@ -174,6 +174,7 @@ const ChangePriceFormModal = ({ modalShow, setModalShow, myStore }) => {
                     </Col>
                     <Col lg="12" className="mt-3">
                       <button
+                        type="button"
                         className="w-100 green-btn-outline"
                         onClick={() => handleCancel()}
                       >

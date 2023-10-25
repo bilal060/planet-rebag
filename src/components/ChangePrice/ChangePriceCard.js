@@ -74,10 +74,10 @@ const ChangePriceCard = (props) => {
                 <p>{maiDubaiBottlesPrice}</p>
               </div>
             </Col>
-            <Col sm="4" md="6" xxl="4" className="p-0">
+            <Col sm="4" md="12" xxl="4" className="p-0">
               <div className="mb-4">
                 <h6 className="mb-2 font-weight-700">Date</h6>
-                <p>{moment(createdAt).format("YYYY-MM-DD HH:mm:ss")}</p>
+                <p>{moment(createdAt).format("h:mm A | DD/MM/YYYY")}</p>
               </div>
             </Col>
           </Row>

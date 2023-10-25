@@ -62,7 +62,7 @@ const ChangePrice = () => {
         <Row className="m-0 stores-cards">
           {myPriceRequests?.map((data, index) => (
             <Col
-              xl={4}
+              xl={6}
               md={6}
               lg={6}
               sm={12}
@@ -73,6 +73,11 @@ const ChangePrice = () => {
               <ChangePriceCard key={index} {...data} />
             </Col>
           ))}
+          {myPriceRequests?.length === 0 && (
+            <h4 className="text-center w-100 mt-5 pt-5">
+              No Price Change Request yet
+            </h4>
+          )}
         </Row>
 
         <ChangePriceFormModal
