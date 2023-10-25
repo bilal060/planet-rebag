@@ -4,6 +4,7 @@ const initialState = {
   isLogin: false,
   user: {},
   getUsers: null,
+  count: {},
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -21,6 +22,8 @@ const UserReducer = (state = initialState, action) => {
       };
     case actionTypes.FETCH_USER_DATA_SUCCESS:
       return { ...state, isLogin: true, getUsers: action.payload, error: null };
+    case actionTypes.FETCH_COUNT:
+      return { ...state, isLogin: true, count: action.payload, error: null };
     default:
       return state;
   }

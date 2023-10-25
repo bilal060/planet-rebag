@@ -148,6 +148,16 @@ small.pt-2 {
   right: 0px;
   border-radius: 12px;
 }
+.active>.page-link{
+  background-color:#79AA00 !important;
+}
+.page-link{
+  color:black !important;
+  border: #79AA00 1px solid !important;
+}
+.page-link:focus {
+  background-color:#79AA00 !important;
+}
 
 .one-line-description {
   white-space: nowrap;
