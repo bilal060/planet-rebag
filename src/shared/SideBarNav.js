@@ -115,6 +115,26 @@ const SidebarNav = () => {
             </NavLink> */}
           </>
         )}
+        {isUserLogin && userRole === "storeAdminUser" && (
+          <>
+            <NavLink to="/transaction-history" className="menu-item-link">
+              <MenuItem>
+                <span className="menu-icon">
+                  <TransactionHistoryIcon />
+                </span>
+                <span className="menu-text">Transactions History</span>
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/changePrice" className="menu-item-link">
+              <MenuItem>
+                <span className="menu-icon">
+                  <TransactionHistoryIcon />
+                </span>
+                <span className="menu-text">Request Price Change</span>
+              </MenuItem>
+            </NavLink>
+          </>
+        )}
 
         <NavLink
           to="/settings/ChangePassword"

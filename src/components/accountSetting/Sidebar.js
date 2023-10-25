@@ -5,17 +5,22 @@ import PrivacyPolicyIcon from "../../assets/images/icons/PrivacyPolicyIcon";
 import FAQsIcon from "../../assets/images/icons/FAQsIcon";
 import ContactUsIcon from "../../assets/images/icons/ContactUsIcon";
 import ChangePasswordIcon from "../../assets/images/icons/ChangePassword";
-import AddPriceIcon from "../../assets/images/icons/AddPriceIcon";
+// import AddPriceIcon from "../../assets/images/icons/AddPriceIcon";
 import LogoutIcon from "../../assets/images/icons/Logout";
 import { useDispatch } from "react-redux";
 import { userLogout } from "../../store/storeIndex";
 
 const settingRoute = [
-  {
-    name: "Add Bag Price",
-    img: <AddPriceIcon />,
-    link: "/settings/addbagprice",
-  },
+  // {
+  //   name: "Add Bag Price",
+  //   img: <AddPriceIcon />,
+  //   link: "/settings/addbagprice",
+  // },
+  // {
+  //   name: "Change Price",
+  //   img: <AddPriceIcon />,
+  //   link: "/settings/changePrice",
+  // },
   {
     name: "Change Password",
     img: <ChangePasswordIcon />,
