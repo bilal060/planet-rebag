@@ -121,7 +121,6 @@ function AppUserDetailView() {
       </div>
       <AppUserTransactionsTable category={category} />
       <AppUserItemsBagsTable />
-      <AppUserItemsBagsTable />
     </div>
   );
 }

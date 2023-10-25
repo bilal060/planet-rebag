@@ -14,8 +14,6 @@ const AppUserTransactionsTable = (props) => {
   const transactionDataById = useSelector(
     (state) => state?.transaction?.userTransactionsById?.data,
   );
-  console.log(transactionDataById);
-  console.log(category);
   useEffect(() => {
     dispatch(fetchUserTransactionsById(id, category));
   }, [dispatch, category]);

@@ -1,43 +1,22 @@
-import React from "react";
 import { Table } from "react-bootstrap";
 import ThreeDotsIcon from "../../assets/images/icons/dashboardicons/threeDots";
-import AlainBottleIcon from "../../assets/images/icons/dashboardicons/alainBottle";
-import DubaiBottleIcon from "../../assets/images/icons/dashboardicons/dubaiBottleIcon";
-import MusafiBottleIcon from "../../assets/images/icons/dashboardicons/musafiBottle";
+import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchUserTransactionsById } from "../../store/storeIndex";
+import moment from "moment";
 
 const AppUserItemsBagsTable = () => {
-  const tableData = [
-    {
-      itemType: "Bag",
-      RedeemPrice: "AED 5.00",
-      bagName: <AlainBottleIcon />,
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      itemType: "Bottle",
-      RedeemPrice: "AED 5.00",
-      bagName: <DubaiBottleIcon />,
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      itemType: "Bag",
-      RedeemPrice: "AED 5.00",
-      bagName: <MusafiBottleIcon />,
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      itemType: "Bottle",
-      RedeemPrice: "AED 5.00",
-      bagName: <DubaiBottleIcon />,
-      time: "10:19 AM  |  23/07/2023",
-    },
-    {
-      itemType: "Bag",
-      RedeemPrice: "AED 5.00",
-      bagName: <MusafiBottleIcon />,
-      time: "10:19 AM  |  23/07/2023",
-    },
-  ];
+  const category = "All";
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const transactionDataById = useSelector(
+    (state) => state?.transaction?.userTransactionsById?.data,
+  );
+  console.log(transactionDataById);
+  useEffect(() => {
+    dispatch(fetchUserTransactionsById(id, category));
+  }, [dispatch, category]);
   return (
     <div className="table-main mt-4">
       <Table className="table-design" striped hover>
@@ -51,19 +30,29 @@ const AppUserItemsBagsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {(tableData || []).map((data, index) => {
-            return (
-              <tr key={index}>
-                <td>{data.itemType}</td>
-                <td>{data.RedeemPrice}</td>
-                <td>{data.bagName}</td>
-                <td>{data.time}</td>
-                <td>
-                  <ThreeDotsIcon />
-                </td>
-              </tr>
-            );
-          })}
+          {transactionDataById?.length > 0 ? (
+            (transactionDataById || []).map((data, index) => {
+              return (
+                <tr key={index}>
+                  <td>{data.itemType}</td>
+                  <td>{data.total}</td>
+                  <td>{data.itemType}</td>
+                  <td>
+                    {moment(data.createdAt).format("h:mm A | DD/MM/YYYY")}
+                  </td>
+                  <td>
+                    <ThreeDotsIcon />
+                  </td>
+                </tr>
+              );
+            })
+          ) : (
+            <tr>
+              <td colSpan="7" className="text-center">
+                NO DATA FOUND
+              </td>
+            </tr>
+          )}
         </tbody>
       </Table>
     </div>

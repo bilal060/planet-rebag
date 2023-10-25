@@ -109,7 +109,7 @@ function TransactionHistoryDetail({ pageType }) {
             </tr>
           </thead>
           <tbody>
-            {transactionData.length > 0 ? (
+            {transactionData?.length > 0 ? (
               (transactionData || []).map((data, index) => {
                 return (
                   <tr key={index}>

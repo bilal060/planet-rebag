@@ -5,7 +5,7 @@ import Radios from "../components/Radios";
 import BagIcon from "../assets/images/icons/dashboardicons/bag";
 import BottleIcon from "../assets/images/icons/dashboardicons/bottle";
 import AddNewCategoryIcon from "../assets/images/icons/dashboardicons/addNewCategory";
-import { Form } from "react-bootstrap";
+import { Form, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import UploadIcon from "../assets/images/icons/dashboardicons/uploadIcon";
 import { fetchAllCategories, addCategories } from "../store/storeIndex";
@@ -107,7 +107,7 @@ const ItemCategory = () => {
             </tr>
           </thead>
           <tbody>
-            {categoryData?.length > 0 &&
+            {categoryData?.length > 0 ? (
               (categoryData || []).map((data, index) => {
                 return (
                   <tr key={index}>
@@ -127,7 +127,14 @@ const ItemCategory = () => {
                     </td>
                   </tr>
                 );
-              })}
+              })
+            ) : (
+              <Col xl="12" className="mb-4 col">
+                <div className="d-flex justify-content-center align-content-center border border-lg p-5">
+                  <h4 className="fs-3 ">No Category Available</h4>
+                </div>
+              </Col>
+            )}
           </tbody>
         </Table>
       </div>
