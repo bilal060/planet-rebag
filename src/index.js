@@ -19,6 +19,7 @@ import category from "./store/category/reducers/CategoryReducer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import dealReducer from "./store/deal/reducers/DealReducer";
+import RequestReducer from "./store/request/reducers/RequestReducer";
 
 const rootReducer = combineReducers({
   user: UserReducer,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   transaction: TransactionReducer,
   category: category,
   deal: dealReducer,
+  priceRequest: RequestReducer,
 });
 
 let devtools, store;
