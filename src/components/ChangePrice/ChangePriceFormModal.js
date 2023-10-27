@@ -6,6 +6,8 @@ import TextField from "../../shared/TextField";
 import PropTypes from "prop-types";
 import Axios from "../../axios/Axios";
 import Toast from "../../shared/Toast";
+import { useDispatch } from "react-redux";
+import { setLoadingState } from "../../store/app/actions/actionCreators";
 
 export const changePriceValidationSchema = Yup.object().shape({
   ownBagsPrice: Yup.number().required("Own Bags Price is Required"),
@@ -18,6 +20,8 @@ export const changePriceValidationSchema = Yup.object().shape({
 });
 
 const ChangePriceFormModal = ({ modalShow, setModalShow, myStore }) => {
+  const dispatch = useDispatch();
+
   const initialValues = {
     ownBagsPrice: myStore?.ownBagsPrice || 0,
     otherBagsPrice: myStore?.otherBagsPrice || 0,
@@ -27,6 +31,8 @@ const ChangePriceFormModal = ({ modalShow, setModalShow, myStore }) => {
   };
 
   const handleAddNewRequest = async (values) => {
+    dispatch(setLoadingState(true));
+
     try {
       const requestData = {
         userId: myStore.userId,
@@ -40,6 +46,7 @@ const ChangePriceFormModal = ({ modalShow, setModalShow, myStore }) => {
     } catch (error) {
       Toast.error(error?.response?.data?.message);
     }
+    dispatch(setLoadingState(false));
   };
   const handleCancel = (resetForm) => {
     if (resetForm) resetForm();

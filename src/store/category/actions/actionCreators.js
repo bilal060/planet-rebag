@@ -2,8 +2,10 @@
 import * as actionTypes from "./actionTypes";
 import Toast from "../../../shared/Toast";
 import Axios from "../../../axios/Axios";
+import { setLoadingState } from "../../app/actions/actionCreators";
 
 export const fetchAllCategories = (category) => (dispatch) => {
+  dispatch(setLoadingState(true));
   Axios.get(`category?category=${category}`, {
     withCredentials: true,
   })
@@ -17,8 +19,10 @@ export const fetchAllCategories = (category) => (dispatch) => {
     .catch((error) => {
       Toast.error(error?.response?.data?.message);
     });
+  dispatch(setLoadingState(false));
 };
 export const addCategories = (data, showModal) => (dispatch) => {
+  dispatch(setLoadingState(true));
   Axios.post("category/addcategory", data)
     .then((response) => {
       dispatch(fetchAllCategories("All"));
@@ -27,4 +31,5 @@ export const addCategories = (data, showModal) => (dispatch) => {
     .catch((error) => {
       Toast.error(error?.response?.data?.message);
     });
+  dispatch(setLoadingState(false));
 };

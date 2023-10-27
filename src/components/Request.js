@@ -8,26 +8,38 @@ import { useDispatch, useSelector } from "react-redux";
 import Axios from "../axios/Axios";
 // import { PaginationControl } from "react-bootstrap-pagination-control";
 import Toast from "../shared/Toast";
+import moment from "moment";
+import { setLoadingState } from "../store/app/actions/actionCreators";
+
 const Request = () => {
   const dispatch = useDispatch();
   const priceRequestData = useSelector(
     (state) => state?.priceRequest?.PriceRequest?.requests,
   );
+
   useEffect(() => {
+    dispatch(setLoadingState(true));
     dispatch(fetchAllPriceRequest());
+    dispatch(setLoadingState(false));
   }, []);
-  const ApprovedHandler = (id, status) => {
-    Axios.patch(`priceChange/changeRequestStatus/${id}`, {
-      status: status,
-    })
-      .then((response) => {
-        Toast.success(response?.data?.message);
-        dispatch(fetchAllPriceRequest());
-      })
-      .catch((error) => {
-        Toast.error(error?.response?.data?.message);
-      });
+
+  const ApprovedHandler = async (id, status) => {
+    dispatch(setLoadingState(true));
+    try {
+      const response = await Axios.patch(
+        `priceChange/changeRequestStatus/${id}`,
+        {
+          status,
+        },
+      );
+      Toast.success(response?.data?.message);
+      dispatch(fetchAllPriceRequest());
+    } catch (error) {
+      Toast.error(error?.response?.data?.message);
+    }
+    dispatch(setLoadingState(false));
   };
+
   return (
     <div>
       <h4 className="fs-3">Price Change Requests</h4>
@@ -36,40 +48,56 @@ const Request = () => {
         <Table className="table-design" striped hover>
           <thead>
             <tr>
-              <th>Store</th>
+              <th>Store Name</th>
               <th>
                 Current Own <br /> Bag Price
+              </th>
+              <th>
+                New Own <br /> Bag Price
               </th>
               <th>
                 Current Other
                 <br /> Bag Price
               </th>
               <th>
+                New Other
+                <br /> Bag Price
+              </th>
+              <th>
+                Current Own <br /> Bag Price
+              </th>
+              <th>
                 New Own <br /> Bag Price
+              </th>
+              <th>
+                Current Other
+                <br /> Bag Price
               </th>
               <th>
                 New Other
                 <br /> Bag Price
               </th>
-              <th>Store Location</th>
-              <th></th>
+              <th>Date</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {priceRequestData.length > 0 ? (
+            {priceRequestData?.length > 0 ? (
               (priceRequestData || []).map((data, index) => {
                 return (
                   <>
                     <tr key={index}>
-                      <td>{data.storeId.storeName}</td>
-                      <td>{data.storeId.ownBagsPrice}</td>
-                      <td>{data.storeId.otherBagsPrice}</td>
-                      <td>{data.ownBagsPrice}</td>
-                      <td>{data.otherBagsPrice}</td>
+                      <td>{data?.storeId?.storeName}</td>
+                      <td>{"AED " + data?.storeId?.ownBagsPrice}</td>
+                      <td>{"AED " + data?.ownBagsPrice}</td>
+                      <td>{"AED " + data?.storeId?.otherBagsPrice}</td>
+                      <td>{"AED " + data?.otherBagsPrice}</td>
+                      <td>{"AED " + data?.storeId?.ownBottlesPrice}</td>
+                      <td>{"AED " + data?.ownBottlesPrice}</td>
+                      <td>{"AED " + data?.storeId?.otherBottlesPrice}</td>
+                      <td>{"AED " + data?.otherBottlesPrice}</td>
                       <td>
-                        {data.storeId.address
-                          ? data.storeId.address
-                          : "no address"}
+                        {moment(data.createdAt).format("h:mm A | DD/MM/YYYY")}
                       </td>
                       <td className="d-flex align-items-center gap-3">
                         <span
