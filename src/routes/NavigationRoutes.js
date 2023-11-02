@@ -55,7 +55,7 @@ const USER_ROLES = {
 
 function NavigationRoutes() {
   const userRole = useSelector((users) => {
-    return users?.user?.user?.user?.role;
+    return users?.user?.user?.user?.role || {};
   });
 
   const isUserLogin = useSelector((users) => {

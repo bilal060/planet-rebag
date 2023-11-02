@@ -7,18 +7,34 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import TextField from "../../shared/TextField";
-//import PhoneInput from "react-phone-input-2";
 import Logo from "../../assets/images/Logo.svg";
 import "react-phone-input-2/lib/style.css";
 import { ErrorMessage, Form, Formik } from "formik";
-const loginValidationSchema = Yup.object().shape({
-  email: Yup.string().email().optional("Email is Required"),
-  mobNo: Yup.string().optional("Mobile Number is Required"),
+
+// Define separate validation schemas for "email" and "mobile" login types
+const emailValidationSchema = Yup.object().shape({
+  email: Yup.string().email().required("Email is Required"),
   password: Yup.string().required("Password is Required"),
 });
+
+const mobileValidationSchema = Yup.object().shape({
+  mobNo: Yup.string().required("Mobile Number is Required"),
+  password: Yup.string().required("Password is Required"),
+});
+
+// Define a function to select the validation schema based on login type
+const getValidationSchema = (loginType) => {
+  if (loginType === "email") {
+    return emailValidationSchema;
+  } else if (loginType === "mobile") {
+    return mobileValidationSchema;
+  }
+  return Yup.object(); // Return an empty schema if loginType is unknown
+};
+
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
-//import { loginUser } from "../../API/API";
 import { userLogin } from "../../store/user/actions/actionCreators";
+
 const Login = () => {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
@@ -27,16 +43,9 @@ const Login = () => {
     email: "",
     mobNo: "",
     password: "",
+    loginType: "email",
   };
-  // const handleLogin = async (values) => {
-  //   try {
-  //     const response = await loginUser(values.email, values.password);
-  //     console.log("Login Successful", response);
-  //   } catch (error) {
-  //     console.error("Login Error", error);
-  //   }
-  // };
-  // const [phone, setPhone] = useState();
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -46,10 +55,6 @@ const Login = () => {
   };
 
   const navigate = useNavigate();
-
-  // const direct = () => {
-  //   navigate("/signup");
-  // };
 
   const [dimension, setDimension] = useState();
   useEffect(() => {
@@ -73,6 +78,7 @@ const Login = () => {
     };
     dispatch(userLogin(data, navigate));
   };
+
   return (
     <>
       <div
@@ -96,10 +102,9 @@ const Login = () => {
           </div>
           <Formik
             initialValues={initialValues}
-            validationSchema={loginValidationSchema}
+            validationSchema={getValidationSchema(selectedLoginOption)}
             onSubmit={loginHandler}
           >
-            {/* {({ touched, errors }) => ( */}
             {() => (
               <Form>
                 <div className="radio-btn mt-4">
@@ -109,6 +114,7 @@ const Login = () => {
                         type="radio"
                         className="input-radio mobile-radio ps-2"
                         name="login_option"
+                        value="email"
                         checked={selectedLoginOption === "email"}
                         onChange={() => handleLoginOptionChange("email")}
                       />
@@ -122,6 +128,7 @@ const Login = () => {
                         type="radio"
                         className="input-radio mobile-radio ps-2"
                         name="login_option"
+                        value="mobile"
                         checked={selectedLoginOption === "mobile"}
                         onChange={() => handleLoginOptionChange("mobile")}
                       />
@@ -138,7 +145,7 @@ const Login = () => {
                         Email
                       </label>
                     </div>
-                    <TextField
+                    <TextField // Use TextField for email input
                       placeholder="Enter your email"
                       name="email"
                       type={"email"}
@@ -153,27 +160,20 @@ const Login = () => {
                 {selectedLoginOption === "mobile" && (
                   <div className="form-group mb-3">
                     <div className="label-inputs-start mb-2">
-                      <label htmlFor="emailInput" className="font-16">
+                      <label htmlFor="mobNoInput" className="font-16">
                         Mobile Number
                       </label>
                     </div>
-                    {/* <div className="custom-phone-input auth-input d-flex align-items-center">
-                      <PhoneInput
-                        countrySelectProps={{ unicodeFlags: false }}
-                        placeholder="Enter Phone Number"
-                        onChange={(phone) => setPhone(phone)}
-                        inputProps={{
-                          name: "phone",
-                        }}
-                        buttonClass="d-none"
-                        inputClass="bg-transparent outline-0 p-0 m-0 border-0 shadow-none custom-phone-input-1 font-18-100"
-                      />
-                    </div>
-                    {touched && errors && !phone && (
-                      <p className="invalid-feedback d-block mt-2 fw-bold text-start">
-                        Phone is required
-                      </p>
-                    )} */}
+                    <TextField // Use TextField for mobile number input
+                      placeholder="Enter your mobile number"
+                      name="mobNo"
+                      type="text"
+                    />
+                    <ErrorMessage
+                      component="div"
+                      name="mobNo"
+                      className="invalid-feedback"
+                    />
                   </div>
                 )}
                 <div className="form-group mt-2">
@@ -204,7 +204,7 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="remember-forgot mt-3">
-                  <div className="remember-me">
+                  {/*<div className="remember-me">
                     <input type="checkbox" id="remember" name="remember" />
                     <label htmlFor="remember">
                       <svg
@@ -220,13 +220,13 @@ const Login = () => {
                         />
                         <path
                           className="checkmark"
-                          d="M6.86733 10.8639C6.70725 10.8639 6.55518 10.7999 6.44312 10.6879L4.17799 8.42388C3.94588 8.19188 3.94588 7.80788 4.17799 7.57588C4.41011 7.34388 4.7943 7.34388 5.02642 7.57588L6.86733 9.41588L10.9814 5.30388C11.2135 5.07188 11.5977 5.07188 11.8298 5.30388C12.0619 5.53588 12.0619 5.91988 11.8298 6.15188L7.29154 10.6879C7.17949 10.7999 7.02741 10.8639 6.86733 10.8639Z"
+                          d="M6.86733 10.8639C6.70725 10.8639 6.55518 10.7999 6.44312 10.6879L4.17799 8.42388C3.94588 8.19188 3.94588 7.80788 4.17799 7.57588C4.41011 7.34388 4.79430 7.34388 5.02642 7.57588L6.86733 9.41588L10.9814 5.30388C11.2135 5.07188 11.5977 5.07188 11.8298 5.30388C12.0619 5.53588 12.0619 5.91988 11.8298 6.15188L7.29154 10.6879C7.17949 10.7999 7.02741 10.8639 6.86733 10.8639Z"
                           fill="#A3A3A3"
                         />
                       </svg>
                       Remember me
                     </label>
-                  </div>
+                  </div> */}
                   <div className="forgot-password">
                     <a
                       onClick={() => {
@@ -245,14 +245,17 @@ const Login = () => {
                     Login
                   </button>
                 </div>
-                {/* <div className="account-signup mt-4">
+                <div className="account-signup mt-4">
                   <div className="signup-link">
-                    <span>Don’t have an account? </span>
-                    <a onClick={direct} className="text-green">
+                    <span>Register as new user? </span>
+                    <a
+                      onClick={() => navigate("/signup")}
+                      className="text-green"
+                    >
                       Sign up
                     </a>
                   </div>
-                </div> */}
+                </div>
               </Form>
             )}
           </Formik>
