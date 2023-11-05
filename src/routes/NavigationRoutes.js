@@ -91,7 +91,7 @@ function NavigationRoutes() {
   );
   const storeAdminRoutes = (
     <>
-      <Route path="/home" element={<Home />} />
+      <Route path="/home" element={<TransactionHistory />} />
       {/* <Route path="/settings/addbagprice" element={<AddBagPrice />} /> */}
 
       <Route path="/changePrice" element={<ChangePricePage />} />

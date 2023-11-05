@@ -87,6 +87,7 @@ export const userLogout = (navigate) => (dispatch) => {
   dispatch({
     type: actionTypes.USER_LOGOUT,
   });
+  localStorage.clear();
   navigate("/login");
   dispatch(setLoadingState(false));
 };
