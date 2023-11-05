@@ -87,7 +87,7 @@ export const userLogout = (navigate) => (dispatch) => {
   dispatch({
     type: actionTypes.USER_LOGOUT,
   });
-  localStorage.clear();
+  setTimeout(() => localStorage.clear(), 1000);
   navigate("/login");
   dispatch(setLoadingState(false));
 };
