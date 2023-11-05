@@ -64,10 +64,10 @@ const Request = () => {
                 <br /> Bag Price
               </th>
               <th>
-                Current Own <br /> Bag Price
+                Current Own <br /> Bottle Price
               </th>
               <th>
-                New Own <br /> Bag Price
+                New Own <br /> Bottle Price
               </th>
               <th>
                 Current Other
@@ -88,14 +88,14 @@ const Request = () => {
                   <>
                     <tr key={index}>
                       <td>{data?.storeId?.storeName}</td>
-                      <td>{"AED " + data?.storeId?.ownBagsPrice}</td>
-                      <td>{"AED " + data?.ownBagsPrice}</td>
-                      <td>{"AED " + data?.storeId?.otherBagsPrice}</td>
-                      <td>{"AED " + data?.otherBagsPrice}</td>
-                      <td>{"AED " + data?.storeId?.ownBottlesPrice}</td>
-                      <td>{"AED " + data?.ownBottlesPrice}</td>
-                      <td>{"AED " + data?.storeId?.otherBottlesPrice}</td>
-                      <td>{"AED " + data?.otherBottlesPrice}</td>
+                      <td>{"AED " + data?.storeId || 0?.ownBagsPrice}</td>
+                      <td>{"AED " + data?.ownBagsPrice || 0}</td>
+                      <td>{"AED " + data?.storeId || 0?.otherBagsPrice}</td>
+                      <td>{"AED " + data?.otherBagsPrice || 0}</td>
+                      <td>{"AED " + data?.storeId || 0?.ownBottlesPrice}</td>
+                      <td>{"AED " + data?.ownBottlesPrice || 0}</td>
+                      <td>{"AED " + data?.storeId || 0?.otherBottlesPrice}</td>
+                      <td>{"AED " + data?.otherBottlesPrice || 0}</td>
                       <td>
                         {moment(data.createdAt).format("h:mm A | DD/MM/YYYY")}
                       </td>
