@@ -113,16 +113,16 @@ function TransactionHistoryDetail({ pageType }) {
               (transactionData || []).map((data, index) => {
                 return (
                   <tr key={index}>
-                    <td>{data.sessionId._id.slice(0, 8)}</td>
-                    <td>{data.sessionId.returnBagsQty}</td>
-                    <td>{data.sessionId.returnBottelsQty}</td>
+                    <td>{data?.sessionId?._id.slice(0, 8)}</td>
+                    <td>{data?.sessionId?.returnBagsQty}</td>
+                    <td>{data?.sessionId?.returnBottelsQty}</td>
                     <td>
-                      {data.sessionId.returnBagsQty +
-                        data.sessionId.returnBottelsQty}
+                      {data?.sessionId?.returnBagsQty +
+                        data?.sessionId?.returnBottelsQty}
                     </td>
-                    <td>{data.sessionId.total}</td>
+                    <td>{data?.sessionId?.total}</td>
                     <td>
-                      {data.storeId.address
+                      {data?.storeId?.address
                         ? data.storeId.address
                         : "no location"}
                     </td>
