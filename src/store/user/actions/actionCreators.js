@@ -2,8 +2,10 @@
 import * as actionTypes from "./actionTypes";
 import Toast from "../../../shared/Toast";
 import Axios from "../../../axios/Axios";
+import { setLoadingState } from "../../app/actions/actionCreators";
 
 export const userLogin = (data, navigation) => (dispatch) => {
+  dispatch(setLoadingState(true));
   Axios.post("user/login", data)
     .then((response) => {
       dispatch({
@@ -16,9 +18,11 @@ export const userLogin = (data, navigation) => (dispatch) => {
     .catch((error) => {
       Toast.error(error?.response?.data?.message);
     });
+  dispatch(setLoadingState(false));
 };
 
 export const forgetPassword = (data) => (dispatch) => {
+  dispatch(setLoadingState(true));
   Axios.post("user/forgotpassword", data)
     .then((response) => {
       Toast.success(response.data.message);
@@ -26,9 +30,11 @@ export const forgetPassword = (data) => (dispatch) => {
     .catch((error) => {
       Toast.error(error.response.data.message);
     });
+  dispatch(setLoadingState(false));
 };
 
 export const resetNewPassword = (data, navigate) => (dispatch) => {
+  dispatch(setLoadingState(true));
   Axios.patch("user/resetpassword", data)
     .then((response) => {
       dispatch({
@@ -41,6 +47,7 @@ export const resetNewPassword = (data, navigate) => (dispatch) => {
     .catch((error) => {
       Toast.error(error.response.data.message);
     });
+  dispatch(setLoadingState(false));
 };
 
 export const userSignup = (data, navigation) => {
@@ -59,6 +66,7 @@ export const userSignup = (data, navigation) => {
 };
 
 export const verifyToken = (data, navigate) => (dispatch) => {
+  dispatch(setLoadingState(true));
   Axios.post("user/verify-otp", data)
     .then((response) => {
       dispatch({
@@ -71,18 +79,23 @@ export const verifyToken = (data, navigate) => (dispatch) => {
     .catch((error) => {
       Toast.error(error.response.data.message);
     });
+  dispatch(setLoadingState(false));
 };
 
 export const userLogout = (navigate) => (dispatch) => {
+  dispatch(setLoadingState(true));
   dispatch({
     type: actionTypes.USER_LOGOUT,
   });
+  setTimeout(() => localStorage.clear(), 1000);
   navigate("/login");
+  dispatch(setLoadingState(false));
 };
 
 export const fetchUserData =
   (page = 1, category) =>
   (dispatch) => {
+    dispatch(setLoadingState(true));
     Axios.get(`user?page=${page}&category=${category}`, {
       withCredentials: true,
     })
@@ -95,9 +108,11 @@ export const fetchUserData =
       .catch((error) => {
         Toast.error(error?.response?.data?.message);
       });
+    dispatch(setLoadingState(false));
   };
 
 export const fetchCountData = () => (dispatch) => {
+  dispatch(setLoadingState(true));
   Axios.get("user/getCountData")
     .then((response) => {
       dispatch({
@@ -108,4 +123,5 @@ export const fetchCountData = () => (dispatch) => {
     .catch((error) => {
       Toast.error(error?.response?.data?.message);
     });
+  dispatch(setLoadingState(false));
 };

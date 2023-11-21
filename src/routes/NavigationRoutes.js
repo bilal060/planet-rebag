@@ -50,12 +50,13 @@ const AppUserDetailView = React.lazy(() =>
 );
 const USER_ROLES = {
   ADMIN: "superAdminUser",
+  STOREADMIN: "storeAdminUser",
   USER: "user",
 };
 
 function NavigationRoutes() {
   const userRole = useSelector((users) => {
-    return users?.user?.user?.user?.role;
+    return users?.user?.user?.user?.role || {};
   });
 
   const isUserLogin = useSelector((users) => {
@@ -88,9 +89,9 @@ function NavigationRoutes() {
       <Route path="*" element={<Home />} />
     </>
   );
-  const userRoutes = (
+  const storeAdminRoutes = (
     <>
-      <Route path="/home" element={<Home />} />
+      <Route path="/home" element={<TransactionHistory />} />
       {/* <Route path="/settings/addbagprice" element={<AddBagPrice />} /> */}
 
       <Route path="/changePrice" element={<ChangePricePage />} />
@@ -105,6 +106,21 @@ function NavigationRoutes() {
       <Route path="*" element={<Home />} />
     </>
   );
+
+  const useRoutes = (
+    <>
+      <Route path="/settings/Contact" element={<ContactUs />} />
+      <Route
+        path="/settings/PrivacyPolicy"
+        element={<AccountPrivacyPolicy />}
+      />
+      <Route path="/settings/Faqs" element={<AccountFaqs />} />
+      <Route path="/settings/ChangePassword" element={<AccountNewPassword />} />
+      <Route path="/transaction-history" element={<TransactionHistory />} />
+      <Route path="*" element={<ChangePricePage />} />
+    </>
+  );
+
   const freeRoutes = (
     <>
       <Route path="/" element={<LandingPage />} />
@@ -127,7 +143,9 @@ function NavigationRoutes() {
       {isUserLogin
         ? userRole === USER_ROLES.ADMIN
           ? adminRoutes
-          : userRoutes
+          : userRole === USER_ROLES.STOREADMIN
+          ? storeAdminRoutes
+          : useRoutes
         : freeRoutes}
     </Routes>
   );

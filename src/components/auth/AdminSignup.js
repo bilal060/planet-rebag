@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { ErrorMessage, Form, Formik } from "formik";
 import * as Yup from "yup";
 import TextField from "../../shared/TextField";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import EyeiconClose from "../../assets/images/EyeiconClose";
 import { getWindowDimensions } from "../../helpers/getWindowDimentions";
@@ -18,8 +17,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 const signupValidationSchema = Yup.object().shape({
   name: Yup.string().required("Full Name is Required"),
-  email: Yup.string().email().required("Email is Required"),
-  phone: Yup.string().optional("Mobile Number is Required"),
+  email: Yup.string().when("login_option", {
+    is: (option) => option === "email",
+    then: Yup.string().email().required("Email is Required"),
+  }),
+  phone: Yup.string().when("login_option", {
+    is: (option) => option === "mobile",
+    then: Yup.string().required("Mobile Number is Required"),
+  }),
   password: Yup.string().required("Password is Required"),
 });
 const SignUp = () => {
@@ -28,7 +33,6 @@ const SignUp = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [selectedLoginOption, setSelectedLoginOption] = useState("email");
-  const [phone, setPhone] = useState();
   const initialValues = {
     name: "",
     email: "",
@@ -108,7 +112,7 @@ const SignUp = () => {
               validationSchema={signupValidationSchema}
               onSubmit={handleRegistration}
             >
-              {({ touched, errors }) => (
+              {() => (
                 <Form>
                   <div className="radio-btn mt-4">
                     <div className="mobile-radio-btn">
@@ -178,27 +182,20 @@ const SignUp = () => {
                   {selectedLoginOption === "mobile" && (
                     <div className="form-group mb-3">
                       <div className="label-inputs-start mb-2">
-                        <label htmlFor="emailInput" className="font-16">
+                        <label htmlFor="phoneInput" className="font-16">
                           Mobile Number
                         </label>
                       </div>
-                      <div className="custom-phone-input auth-input d-flex align-items-center">
-                        <PhoneInput
-                          countrySelectProps={{ unicodeFlags: false }}
-                          placeholder="Enter Phone Number"
-                          onChange={(phone) => setPhone(phone)}
-                          inputProps={{
-                            name: "phone",
-                          }}
-                          buttonClass="d-none"
-                          inputClass="bg-transparent outline-0 p-0 m-0 border-0 shadow-none custom-phone-input-1 font-18-100"
-                        />
-                      </div>
-                      {touched && errors && !phone && (
-                        <p className="invalid-feedback d-block mt-2 fw-bold text-start">
-                          Phone is required
-                        </p>
-                      )}
+                      <TextField
+                        placeholder="Enter your mobile number"
+                        name="phone"
+                        type={"text"}
+                      />
+                      <ErrorMessage
+                        component="div"
+                        name="phone"
+                        className="invalid-feedback"
+                      />
                     </div>
                   )}
                   <div className="form-group mt-2">

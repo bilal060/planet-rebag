@@ -3,11 +3,15 @@ import "../assets/css/loading.css";
 
 const Loading = () => {
   return (
-    <div className="lds-ellipsis">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div className="loading-container">
+      <div className="d-flex justify-content-center align-content-center">
+        <div className="loader">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
     </div>
   );
 };

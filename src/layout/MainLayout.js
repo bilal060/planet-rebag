@@ -18,7 +18,7 @@ const withMainLayout = (WrappedComponent) => {
       return users?.user?.isLogin;
     });
     const { role, name } = useSelector((users) => {
-      return users?.user?.user?.user;
+      return users?.user?.user?.user || {};
     });
 
     const location = useLocation();
