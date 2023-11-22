@@ -104,11 +104,11 @@ const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
                         htmlFor="co2emissionBottlesPrice"
                         className="font-16"
                       >
-                        co2emissionBottlesPrice
+                        Enter CO2Emission Bottles Value
                       </label>
                     </div>
                     <TextField
-                      placeholder="Enter your co2emissionBottlesPrice"
+                      placeholder="Enter CO2 EmissionBottles Value"
                       name="co2emissionBottlesPrice"
                       type="number"
                       min="0"
@@ -123,11 +123,11 @@ const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
                   <div className="form-group">
                     <div className="label-inputs-start mb-2">
                       <label htmlFor="storeName" className="font-16">
-                        co2emissionBagsPrice
+                        Enter CO2Emission Bags Value
                       </label>
                     </div>
                     <TextField
-                      placeholder="Enter your co2emissionBagsPrice"
+                      placeholder="Enter  CO2 EmissionBagsPrice Value"
                       name="co2emissionBagsPrice"
                       type="number"
                       min="0"
@@ -142,11 +142,11 @@ const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
                   <div className="form-group">
                     <div className="label-inputs-start mb-2">
                       <label htmlFor="storeName" className="font-16">
-                        wasteRecycledBagsPrice
+                        Enter Waste Recycled Bags Value
                       </label>
                     </div>
                     <TextField
-                      placeholder="Enter your wasteRecycledBagsPrice"
+                      placeholder="Enter Waste Recycled Bags Value"
                       name="wasteRecycledBagsPrice"
                       type="number"
                       min="0"
@@ -161,11 +161,11 @@ const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
                   <div className="form-group">
                     <div className="label-inputs-start mb-2">
                       <label htmlFor="storeName" className="font-16">
-                        wasteRecycledBottlesPrice
+                        Enter Waste Recycled Bottles Value
                       </label>
                     </div>
                     <TextField
-                      placeholder="Enter your wasteRecycledBottlesPrice"
+                      placeholder=" Enter Waste Recycled Bags Value"
                       name="wasteRecycledBottlesPrice"
                       type="number"
                       min="0"
