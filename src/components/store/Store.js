@@ -38,7 +38,7 @@ const Store = () => {
             onClick={() => setModalPriceShow(true)}
           >
             <AddNewCategoryIcon />
-            <span className="d-sm-block d-none">Add New Price</span>
+            <span className="d-sm-block d-none">Update Price</span>
           </button>
         </div>
       </div>
