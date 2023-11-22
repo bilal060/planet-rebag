@@ -48,8 +48,13 @@ const Landing = () => {
               </button>
             </div>
             <div className="login-btn mt-3">
-              <button className="guest-btn btn-lg btn-block">
-                Start Scanning as a Guest
+              <button
+                onClick={() => {
+                  navigate("/signup");
+                }}
+                className="guest-btn btn-lg btn-block"
+              >
+                Sign up
               </button>
             </div>
           </div>

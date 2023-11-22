@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 
 const SidebarNav = () => {
   const userRole = useSelector((users) => {
-    return users?.user?.user?.user?.role;
+    return users?.user?.user?.user?.role || {};
   });
 
   const isUserLogin = useSelector((users) => {

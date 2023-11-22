@@ -12,7 +12,7 @@ const ChangePrice = () => {
   const [myStore, setMyStore] = useState(null);
   const [myPriceRequests, setMyPriceRequests] = useState([]);
   const userId = useSelector((users) => {
-    return users?.user?.user?.user?.id;
+    return users?.user?.user?.user?.id || "";
   });
 
   useEffect(() => {

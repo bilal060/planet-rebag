@@ -15,18 +15,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCountData, fetchUserTransactions } from "../store/storeIndex";
 import moment from "moment/moment";
 const Transactions = () => {
+  const { role } = useSelector((users) => {
+    return users?.user?.user?.user || {};
+  });
+
   const [category, setCategory] = useState("All");
   const dispatch = useDispatch();
   const countData = useSelector((state) => state?.user?.count);
   console.log(countData);
   useEffect(() => {
-    dispatch(fetchCountData());
+    if (role === "superAdminUser") {
+      dispatch(fetchCountData());
+    }
   }, [dispatch]);
   const transactionData = useSelector(
     (state) => state?.transaction?.userTransactions?.data,
   );
   useEffect(() => {
-    dispatch(fetchUserTransactions(category));
+    if (role === "superAdminUser") {
+      dispatch(fetchUserTransactions(category));
+    }
   }, [dispatch, category]);
   const radio = [
     {
@@ -46,46 +54,48 @@ const Transactions = () => {
   ];
   return (
     <div>
-      <div className="total-cards">
-        <Row>
-          <Col sm="12" md="12" lg="6" xl="3" className="p-0">
-            <TotalCard
-              icon={<TotalItemsIcon />}
-              value={countData?.totalbags}
-              title="Transactions History"
-              classes="bg-light-green"
-              text="font-weight-700 cut-text text-green"
-            />
-          </Col>
-          <Col sm="12" md="12" lg="6" xl="3" className="p-0">
-            <TotalCard
-              icon={<TotalBottles />}
-              value={countData?.totalbottels}
-              title="Transactions History"
-              classes="bg-light-blue"
-              text="font-weight-700 cut-text text-blue"
-            />
-          </Col>
-          <Col sm="12" md="12" lg="6" xl="3" className="p-0">
-            <TotalCard
-              icon={<TotalStore />}
-              value={countData?.storeRecords}
-              title="Total Stores"
-              classes="bg-light-orange"
-              text="font-weight-700 cut-text text-orange"
-            />
-          </Col>
-          <Col sm="12" md="12" lg="6" xl="3" className="p-0">
-            <TotalCard
-              icon={<TotalPrice />}
-              value={"AED " + countData?.totalPrice?.toString()}
-              title="Total Redeem Price"
-              classes="bg-light-cyan"
-              text="font-weight-700 cut-text text-cyan"
-            />
-          </Col>
-        </Row>
-      </div>
+      {role === "superAdminUser" && (
+        <div className="total-cards">
+          <Row>
+            <Col sm="12" md="12" lg="6" xl="3" className="p-0">
+              <TotalCard
+                icon={<TotalItemsIcon />}
+                value={countData?.totalbags}
+                title="Transactions History"
+                classes="bg-light-green"
+                text="font-weight-700 cut-text text-green"
+              />
+            </Col>
+            <Col sm="12" md="12" lg="6" xl="3" className="p-0">
+              <TotalCard
+                icon={<TotalBottles />}
+                value={countData?.totalbottels}
+                title="Transactions History"
+                classes="bg-light-blue"
+                text="font-weight-700 cut-text text-blue"
+              />
+            </Col>
+            <Col sm="12" md="12" lg="6" xl="3" className="p-0">
+              <TotalCard
+                icon={<TotalStore />}
+                value={countData?.storeRecords}
+                title="Total Stores"
+                classes="bg-light-orange"
+                text="font-weight-700 cut-text text-orange"
+              />
+            </Col>
+            <Col sm="12" md="12" lg="6" xl="3" className="p-0">
+              <TotalCard
+                icon={<TotalPrice />}
+                value={"AED " + countData?.totalPrice?.toString()}
+                title="Total Redeem Price"
+                classes="bg-light-cyan"
+                text="font-weight-700 cut-text text-cyan"
+              />
+            </Col>
+          </Row>
+        </div>
+      )}
 
       <Row className="justify-content-between pt-5">
         <Col className="p-0 d-flex align-items-center gap-5" lg="7" xl="8">
