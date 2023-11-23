@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "../../assets/css/stores.css";
 import AddNewCategoryIcon from "../../assets/images/icons/dashboardicons/addNewCategory";
-import AddOrUpdateStoreModel from "./addOrUpdateStoreModel";
 import ViewStores from "./viewStores";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStoreData } from "../../store/store/actions/actionCreators";
 import AddOrUpdatePriceModel from "./addOrUpdatePriceModel";
+import NewAddOrUpdateStoreModel from "./NewAddOrUpdateStoreModel";
 
 const Store = () => {
   const dispatch = useDispatch();
   const storeData = useSelector((state) => state?.store?.storeData);
+  const [data, setData] = useState({
+    co2emissionBottlesPrice: 0,
+    co2emissionBagsPrice: 0,
+    wasteRecycledBagsPrice: 0,
+    wasteRecycledBottlesPrice: 0,
+  });
 
   const [modalShow, setModalShow] = useState(false);
   const [modalPriceShow, setModalPriceShow] = useState(false);
@@ -38,18 +44,23 @@ const Store = () => {
             onClick={() => setModalPriceShow(true)}
           >
             <AddNewCategoryIcon />
-            <span className="d-sm-block d-none">Update Price</span>
+            <span className="d-sm-block d-none">
+              {data && Object.keys(data).length > 0 ? "Update" : "Add New "}
+              Price
+            </span>
           </button>
         </div>
       </div>
       <ViewStores stores={storeData || []} />
-      <AddOrUpdateStoreModel
+      <NewAddOrUpdateStoreModel
         setModalShow={setModalShow}
         modalShow={modalShow}
       />
       <AddOrUpdatePriceModel
         setModalShow={setModalPriceShow}
         modalShow={modalPriceShow}
+        data={data}
+        setData={setData}
       />
     </div>
   );

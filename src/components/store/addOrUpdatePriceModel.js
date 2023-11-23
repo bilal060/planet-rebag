@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import PropTypes, { object } from "prop-types";
 import "../../assets/css/stores.css";
 import { Col, Modal, Row } from "react-bootstrap";
 import { ErrorMessage, Form, Formik } from "formik";
@@ -9,21 +9,15 @@ import * as Yup from "yup";
 import Axios from "../../axios/Axios";
 import Toast from "../../shared/Toast";
 
-const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
+const AddOrUpdatePriceModel = ({ modalShow, setModalShow, data, setData }) => {
   const [isLoading, setisLoading] = useState(false);
-  const [data, setData] = useState({
-    co2emissionBottlesPrice: 0,
-    co2emissionBagsPrice: 0,
-    wasteRecycledBagsPrice: 0,
-    wasteRecycledBottlesPrice: 0,
-  });
   const getPrice = () => {
     setisLoading(true);
     Axios.get(`price`, {
       withCredentials: true,
     })
       .then((response) => {
-        setData(response.data.data[0]);
+        setData(response.data.data.length > 0 ? response.data.data[0] : {});
         setisLoading(false);
       })
       .catch((error) => {
@@ -34,6 +28,7 @@ const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
   useEffect(() => {
     getPrice();
   }, []);
+
   const handleUpdatePrice = async (values) => {
     Axios.patch(`price/${data._id}`, values, {
       withCredentials: true,
@@ -47,13 +42,33 @@ const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
         Toast.error(error?.response?.data?.message);
       });
   };
+
+  const handleAddPrice = async (values) => {
+    Axios.post(`price/addPrice`, values, {
+      withCredentials: true,
+    })
+      .then(() => {
+        getPrice();
+        Toast.success(" Price Add Succecfully ");
+        setModalShow(false);
+      })
+      .catch((error) => {
+        Toast.error(error?.response?.data?.message);
+      });
+  };
   const initialValues = {
+    co2emissionBottlesPrice: 0,
+    wasteRecycledBottlesPrice: 0,
+    co2emissionBagsPrice: 0,
+    wasteRecycledBagsPrice: 0,
+  };
+
+  const UpdateValues = {
     co2emissionBottlesPrice: data?.co2emissionBottlesPrice,
     wasteRecycledBottlesPrice: data?.co2emissionBagsPrice,
     co2emissionBagsPrice: data?.wasteRecycledBagsPrice,
     wasteRecycledBagsPrice: data?.wasteRecycledBottlesPrice,
   };
-
   const ValidationSchema = Yup.object().shape({
     co2emissionBottlesPrice: Yup.number().required(
       "co2emissionBottlesPrice  is Required",
@@ -68,7 +83,6 @@ const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
       "wasteRecycledBagsPriceis Required",
     ),
   });
-
   return (
     <div className="stores">
       <Modal
@@ -76,7 +90,6 @@ const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
         onHide={() => setModalShow(false)}
         aria-labelledby="contained-modal-title-vcenter"
         centered
-        // onExit={() => handleCancel()}
         backdrop="static"
       >
         <Modal.Header closeButton className="">
@@ -84,16 +97,22 @@ const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
             className="ps-12 pe-12"
             id="contained-modal-title-vcenter"
           >
-            Update Price
+            {data && Object.keys(data).length > 0 ? "Update" : "Add"} Price
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {!isLoading && (
             <Formik
-              initialValues={initialValues}
+              initialValues={
+                data && Object.keys(data).length > 0
+                  ? UpdateValues
+                  : initialValues
+              }
               validationSchema={ValidationSchema}
               onSubmit={(values, { resetForm }) =>
-                handleUpdatePrice(values, resetForm)
+                data && Object.keys(data).length > 0
+                  ? handleUpdatePrice(values, resetForm)
+                  : handleAddPrice(values, resetForm)
               }
             >
               {() => (
@@ -146,7 +165,7 @@ const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
                       </label>
                     </div>
                     <TextField
-                      placeholder="Enter Waste Recycled Bags Value"
+                      placeholder="Enter Waste Recycled Bags Val6ue"
                       name="wasteRecycledBagsPrice"
                       type="number"
                       min="0"
@@ -188,7 +207,10 @@ const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
                     </Col>
                     <Col lg="6">
                       <button className="w-100 green-btn" type="submit">
-                        Update Price
+                        {data && Object.keys(data).length > 0
+                          ? "Update"
+                          : "Add"}
+                        Price
                       </button>
                     </Col>
                   </Row>
@@ -205,6 +227,8 @@ const AddOrUpdatePriceModel = ({ modalShow, setModalShow }) => {
 AddOrUpdatePriceModel.propTypes = {
   modalShow: PropTypes.bool.isRequired,
   setModalShow: PropTypes.func.isRequired,
+  data: PropTypes.any,
+  setData: PropTypes.any,
 };
 
 export default AddOrUpdatePriceModel;
