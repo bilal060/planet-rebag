@@ -37,6 +37,7 @@ export const updateStoreIsActive = (storeId, isActive) => (dispatch) => {
 
 export const updateStore = (storeId, data) => (dispatch) => {
   dispatch(setLoadingState(true));
+  console.log(data);
   Axios.patch(`store/updateStore/${storeId}`, data)
     .then((response) => {
       dispatch({
@@ -44,11 +45,12 @@ export const updateStore = (storeId, data) => (dispatch) => {
         payload: { storeId, data },
       });
       Toast.success(response.data.message);
+      dispatch(setLoadingState(false));
     })
     .catch((error) => {
       console.error(error);
+      dispatch(setLoadingState(false));
     });
-  dispatch(setLoadingState(false));
 };
 
 export const addStore = (formData) => (dispatch) => {
