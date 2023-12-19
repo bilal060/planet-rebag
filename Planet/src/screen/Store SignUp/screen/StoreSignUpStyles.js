@@ -1,0 +1,99 @@
+import { StyleSheet } from 'react-native';
+import color from '../../../assets/color/color';
+
+const styles = StyleSheet.create({ 
+    container:{
+        flex:1,
+        backgroundColor:'white'
+    },
+    header:{
+        marginHorizontal:24,
+        marginBottom:40,
+        marginTop:22,
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        alignSelf:'flex-start'
+    },
+    img:{
+        height:20,
+        width:20,
+        resizeMode:'contain'
+    },
+    title:{
+        color:color.green,
+        fontSize:32,
+        fontWeight:'700',
+        marginHorizontal:24,
+        lineHeight:32,
+        marginBottom:16
+    },
+    buttonContainer:{
+        marginHorizontal:24,
+    },
+    buttonText:{
+        color:'black',
+        fontSize:18,
+        fontWeight:'bold',
+        marginBottom:8,
+    },
+    input:{
+        backgroundColor:'#ebe8e8',
+        borderRadius:10,
+        color:'black',
+        marginBottom:16,
+    },
+    SubmitbuttonText:{
+        color:'white'
+    },
+    ButtonView:{
+        width:'90%',
+        alignItems:'center',
+        backgroundColor:color.green2,
+        borderRadius:10,
+        padding:15,
+        justifyContent:'center',
+        alignSelf:'center',
+        marginTop:20,
+    },
+    haveAccountText:{
+        color:color.green2,
+        textAlign:'center',
+        fontSize:16
+    },
+    contactText:{
+        color:'black',
+        textAlign:'center',
+        fontWeight:'bold',
+        fontSize:20,
+        marginVertical:10,
+    },
+    socialimageStyle:{
+        height:32,
+        width:32,
+        resizeMode:'contain',
+        tintColor:color.green2
+    },
+    socialImagesContainer:{
+        flexDirection:'row',
+        justifyContent:'space-evenly',
+        marginVertical:14,
+        marginHorizontal:30,
+    },
+    dropdown:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor:'#ebe8e8',
+        borderTopLeftRadius:10,
+        borderBottomLeftRadius:10,
+        paddingHorizontal:10,
+        width:'30%'
+    },
+    Numberinput:{
+        backgroundColor:'#ebe8e8',
+        color:'black',
+        borderTopRightRadius:10,
+        borderBottomRightRadius:10,
+        width:'70%'
+    },
+})
+export default styles;
