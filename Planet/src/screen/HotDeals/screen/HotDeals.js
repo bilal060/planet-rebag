@@ -29,7 +29,7 @@ const HotDeals = ({}) => {
     discount,
     redeemLink,
   ) => {
-    // console.log(IsRedeem);
+     console.log(imgpath);
     return (
       <TouchableOpacity
         activeOpacity={1}
@@ -93,7 +93,7 @@ const HotDeals = ({}) => {
   };
 
   const renderDeals = allDeals?.map((data, index) => {
-    // console.log(data);
+    //  console.log(data);
     return (
       <React.Fragment key={index}>
         {RenderDeals(

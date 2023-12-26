@@ -239,7 +239,7 @@ export const registerGuestUser = createAsyncThunk(
   'home/registerguest',
   async (data: any) => {
     try {
-      console.log("call")
+      // console.log("call")
       let payload = {
         // data:  data,
         url: `${rootUrl}/user/registerGuestUser`,

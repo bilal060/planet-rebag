@@ -100,14 +100,14 @@ const Home = () => {
         <BagsTypes
           // key={index}
           style={{backgroundColor: '#e5ffe5'}}
-            number={getcalculatedPrice?.totalCo2emission +" kg"}
+            number={getcalculatedPrice?.totalCo2emission +" lbs"}
             heading={`CO2 Emissions \n Reduced`}
             logoimg ={require('../../../../../images/cloud.png')}
         />
         <BagsTypes
           // key={index}
           style={{backgroundColor: '#e5ffe5'}}
-            number={getcalculatedPrice?.totalWasteRecycled  +" kg"}
+            number={getcalculatedPrice?.totalWasteRecycled  +" lbs"}
             heading={`Waste Recycled`}
             logoimg ={require('../../../../../images/lock1.png')}
         />
@@ -138,8 +138,9 @@ const Home = () => {
     const dataa = allTranscationHistory?.filter(function (item) {
       return item.status != 'pending';
     });
+    return;
     // console.log(dataa?.length);
-    if (dataa.length <= 0) {
+    if (dataa?.length <= 0) {
       return (
         <Text
           style={{
@@ -166,7 +167,8 @@ const Home = () => {
       return item.status == 'pending';
     });
     //  console.log(data);
-    if (data.length <= 0) {
+    return;
+    if (data?.length <= 0) {
       return (
         <Text
           style={{
