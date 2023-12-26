@@ -29,7 +29,7 @@ const HotDeals = ({}) => {
     discount,
     redeemLink,
   ) => {
-     console.log(imgpath);
+    //  console.log(imgpath);
     return (
       <TouchableOpacity
         activeOpacity={1}
@@ -53,7 +53,7 @@ const HotDeals = ({}) => {
           )}
 
           <View style={styles.dealsContentContainer}>
-            <Image source={{uri: imgUrl + imgpath}} style={styles.dealsimg} />
+            <Image source={{uri: imgUrl + imgpath?.replace(/\\/g, '/')}} style={styles.dealsimg} />
             <View style={styles.dealsTextContainer}>
               <Text numberOfLines={1} style={styles.dealsTitle}>
                 {title}

@@ -5,7 +5,7 @@
 // export const rootUrl = 'http://142.93.117.161:4000/api';
 // export const imgUrl = 'http://142.93.117.161:4000/';
 
- export const rootUrl = 'https://api.planetrebag.com/';
+ export const rootUrl = 'https://api.planetrebag.com/api';
  export const imgUrl = 'https://api.planetrebag.com/'
  
 export var PosData = null;

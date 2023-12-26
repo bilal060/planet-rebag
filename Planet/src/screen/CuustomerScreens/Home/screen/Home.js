@@ -138,7 +138,7 @@ const Home = () => {
     const dataa = allTranscationHistory?.filter(function (item) {
       return item.status != 'pending';
     });
-    return;
+    // return;
     // console.log(dataa?.length);
     if (dataa?.length <= 0) {
       return (
@@ -167,7 +167,7 @@ const Home = () => {
       return item.status == 'pending';
     });
     //  console.log(data);
-    return;
+    // return;
     if (data?.length <= 0) {
       return (
         <Text

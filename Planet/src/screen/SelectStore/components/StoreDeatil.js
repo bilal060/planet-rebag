@@ -20,7 +20,7 @@ export default function StoreDeatil({mall, data, NavigatetoScreen , index}) {
   const [selectedStore,setselectedStore]= useState(null);
   
 
-  //  console.log(data);
+    //  console.log(imgUrl + data?.image);
 
   return (
   
@@ -64,8 +64,9 @@ export default function StoreDeatil({mall, data, NavigatetoScreen , index}) {
            </Text>
           :<Image
             resizeMode="contain"
-             source={{uri: imgUrl + data?.image}}
-            // source={ data?.storeImagesPath}
+              source={{uri: imgUrl + data?.image?.replace(/\\/g, '/')}}
+            // https://api.planetrebag.com/uploads\store\Walmart-Logo.png
+              // source={{uri:"https://api.planetrebag.com/uploads/store/Walmart-Logo.png"}}
             style={{height: 120, width: 120}}
           />
         }
