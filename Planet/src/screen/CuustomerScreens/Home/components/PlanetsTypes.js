@@ -14,10 +14,10 @@ export default function PlanetsTypes({img, number, heading, style}) {
       <View style={{...styles.imgContainer, ...style}}>
         <View
           style={{
-            width: '30%',
+            width: '25%',
             justifyContent: 'center',
             alignItems: 'center',
-            // backgroundColor: 'red',
+            //  backgroundColor: 'red',
           }}>
           <Image
             source={img}
@@ -63,14 +63,14 @@ const styles = StyleSheet.create({
     height: 44,
   },
   txtContainer: {
-    width: '70%',
+    width: '75%',
     justifyContent: 'space-between',
     margin: 0,
     flexDirection: 'row',
   
   },
   numberTxt: {
-    fontSize: fontSize.twelve,
+    fontSize: fontSize.eleven,
     fontWeight: '700',
     marginRight: '7%',
     color: color.themeBlackColor,

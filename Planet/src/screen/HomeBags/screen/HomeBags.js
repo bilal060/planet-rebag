@@ -321,14 +321,14 @@ const HomeBags = ({navigation, route}) => {
       <BagsTypes
         // key={index}
         style={{backgroundColor: '#e5ffe5', width:"90%"}}
-          number={totale2Emission+ " kg"}
+          number={totale2Emission+ " lbs"}
           heading={`CO2 Emissions \n Reduced`}
           logoimg ={require('../../../../images/cloud.png')}
       />
       <BagsTypes
         // key={index}
         style={{backgroundColor: '#e5ffe5', width:"90%"}}
-          number={wasteRecycle + " kg"}
+          number={wasteRecycle + " lbs"}
           heading={`Waste Recycled`}
       
           logoimg ={require('../../../../images/lock1.png')}
