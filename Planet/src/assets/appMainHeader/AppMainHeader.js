@@ -4,10 +4,10 @@ import React from 'react';
 import images from '../images/images';
 import {fontSize} from '../responsiveness';
 
-export default function AppMainHeader({title, navigation}) {
+export default function AppMainHeader({title, navigation, isBack}) {
   return (
     <View style={styles.HeaderContainer}>
-      <TouchableOpacity onPress={() => navigation.replace('BottomStack')}>
+      <TouchableOpacity onPress={() => isBack && isBack ? navigation.goBack() : navigation.replace('BottomStack')}>
         <View style={styles.header}>
           <Image source={images.backtwo} style={styles.img} />
         </View>

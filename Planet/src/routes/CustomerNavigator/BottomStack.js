@@ -35,7 +35,7 @@ export default function BottomStack({}) {
       case 'Home':
         icon = require('../../../images/Home.png');
         break;
-      case 'Deals':
+      case 'Rewards':
         icon = require('../../../images/DeatilsIcon.png');
         break;
     }
@@ -205,7 +205,7 @@ export default function BottomStack({}) {
         component={() => <Home />}
       />
       <CurvedBottomBar.Screen
-        name="Deals"
+        name="Rewards"
         component={() => <routes.HotDeals />}
         position="RIGHT"
       />

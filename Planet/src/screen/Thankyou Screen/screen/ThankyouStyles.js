@@ -11,15 +11,18 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 40,
   },
   content: {
-    height:"40%",
+    // height:"40%",
     alignItems: 'center',
     justifyContent: 'center',
+     marginTop:7,
     // backgroundColor:"red"
   },
   img: {
-    width: 170,
-    height: 170,
+    width: 130,
+    height: 130,
     resizeMode: 'contain',
+    justifyContent:"center",
+    alignItems:"center"
   },
   title: {
     color: color.green,
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
     fontFamily:"SFProDisplay-Medium"
   },
   buttonContainer: {
-    marginBottom: 12,
+     marginBottom: 11,
     width: '100%',
   },
   button: {
@@ -47,7 +50,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     width:"91%",
-    height:60,
+    height:62,
     alignSelf:"center",
  
     justifyContent:"center"
@@ -56,7 +59,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: fontSize.nineteen,
     fontFamily:"SFProDisplay-Medium",
-    // fontWeight:"800"
+     fontWeight:"600"
   },
   dealsContainer: {
     borderRadius: 8,

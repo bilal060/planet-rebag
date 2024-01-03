@@ -11,6 +11,8 @@ import {
   StyleSheet,
   TextInput,
   Modal,
+  KeyboardAvoidingView,
+  SafeAreaView
 } from 'react-native';
 import images from '../../../assets/images/images';
 import styles from './OtpStyles';
@@ -63,7 +65,8 @@ const Otp = ({navigation, route}) => {
   }, [isVerifyOtp]);
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView behavior='padding' style={styles.container}>
+    <  SafeAreaView style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <View style={styles.header}>
           <Image source={images.back} style={styles.img} />
@@ -130,7 +133,8 @@ const Otp = ({navigation, route}) => {
           </View>
         </View>
       </Modal>
-    </View>
+    </  SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 

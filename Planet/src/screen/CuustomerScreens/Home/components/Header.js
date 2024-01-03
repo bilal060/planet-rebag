@@ -22,7 +22,7 @@ export default function Header() {
         resizeMode="contain"
         style={{width: 41, height: 41}}
         source={{
-          uri: 'https://w7.pngwing.com/pngs/336/946/png-transparent-avatar-user-medicine-surgery-patient-avatar-face-heroes-head.png',
+          uri: 'https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/default-profile-picture-grey-male-icon.png',
         }}
       />
     </View>

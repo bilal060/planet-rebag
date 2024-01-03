@@ -16,9 +16,9 @@ export default function BagsTypes({img, number, heading, style, logoimg}) {
   
         <View style={styles.txtContainer}>
          
-          <View style={{flexDirection:"row", width:"82%", alignItems:"center"}}>
+          <View style={{ width:"82%",}}>
           
-          <Image style={{width:20, height:20,}} resizeMode="contain" source={logoimg}/>
+          <Image style={{width:25, height:25, marginVertical:4}} resizeMode="contain" source={logoimg}/>
           
           <Text style={styles.headingTxt}>{heading}</Text>
           </View>
@@ -49,38 +49,40 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     // justifyContent: 'space-between',
     // flexDirection: 'row',
-       borderRadius: 7,
+    borderTopRightRadius:12,
+    borderBottomLeftRadius:12,
+     borderRadius:4,
     height: 44,
   },
   txtContainer: {
     width: '100%',
      justifyContent:"space-around",
      margin: 0,
-     flexDirection: 'row',
-    //  alignSelf:"center",
-     alignItems:"center",
-    // justifyContent:"center",
-    // backgroundColor:"red",
-    // height:"100%",
-    paddingHorizontal:8
+    //  flexDirection: 'row',
+    //  alignItems:"center",
+   
+    paddingHorizontal:18,
+    paddingVertical:8
 
   
   },
   numberTxt: {
-    fontSize: fontSize.eleven,
-    fontWeight: '700',
+    fontSize: fontSize.sixteen,
+    fontWeight: '800',
     // marginRight: '7%',
     color: color.themeBlackColor,
     color:"#000000",
+    marginVertical:1,
     fontFamily:"SFProDisplay-Medium"
   },
   headingTxt: {
-    fontSize: fontSize.nine,
-    fontWeight: '800',
-    color: color.themeBlackColor,
+    fontSize: fontSize.thirteen,
+    fontWeight: '500',
+    color: color.themeSilver,
     color:"#000000",
     fontFamily:"SFProDisplay-Medium",
-    marginLeft:5
+    marginVertical:2
+    // marginLeft:5
   },
 });
 

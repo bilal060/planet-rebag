@@ -7,7 +7,9 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  TextInput
+  TextInput,
+  Pressable,
+  Alert
 } from 'react-native';
 import React ,{useState} from 'react';
 import images from '../../../assets/images/images';
@@ -23,11 +25,10 @@ export default function StoreDeatil({mall, data, NavigatetoScreen , index}) {
     //  console.log(imgUrl + data?.image);
 
   return (
-  
+  <View style={{height:"33.33%", width:"100%"}}>
     <TouchableOpacity
       onPress={() => {
         NavigatetoScreen && NavigatetoScreen(data)
-        // console.log(data?.name)
         showMessage({
               message: 'Notification',
               description: 'Store ' + data?.name +" selected",
@@ -35,30 +36,34 @@ export default function StoreDeatil({mall, data, NavigatetoScreen , index}) {
             });
         setselectedStore (data);
         }}>
-      <ImageBackground
-        resizeMode="contain"
+      <View
+        // resizeMode="contain"
         style={{
           width: '100%',
-          height: 130,
+          height: "93%",
           // paddingHorizontal: 16,
-           marginVertical: 10,
+           marginVertical: 4,
+
         
-            backgroundColor: index == 0 ?  "#3486C11A" : index ==1 ? "#FF3D3D1A" :"#e4e4e4",
+             backgroundColor: index == 0 ?  "#3486C11A" : index ==1 ? "#FF3D3D1A" :"#e4e4e4",
             borderColor: index == 0 ?  "#3486C11A" : index ==1 ? "#FF3D3D1A" :"#e4e4e4",
-          // borderWidth: selectedStore?.name == data?.name && 1
+            // backgroundColor:"red",
+          
         }}
-        source={require('../../../../images/storebg.png')}>
+        // source={require('../../../../images/storebg.png')}>
+        >
         <View
           style={{
-            width: '40%',
+            width: '100%',
             height: '100%',
             justifyContent: 'center',
             alignItems:"center",
-            paddingHorizontal: 16,
+          //  paddingHorizontal: 140,
+            //  backgroundColor:"red"
            
           }}>
             {data?.name =='Other'?
-             <Text style={{color: '#1E252B', fontWeight: 'bold', fontSize: 25}}>
+             <Text style={{color: '#1E252B', fontWeight: 'bold', fontSize: 25,textAlign:"center", textAlignVertical:"center"}}>
   
              {data?.name} 
            </Text>
@@ -67,27 +72,42 @@ export default function StoreDeatil({mall, data, NavigatetoScreen , index}) {
               source={{uri: imgUrl + data?.image?.replace(/\\/g, '/')}}
             // https://api.planetrebag.com/uploads\store\Walmart-Logo.png
               // source={{uri:"https://api.planetrebag.com/uploads/store/Walmart-Logo.png"}}
-            style={{height: 120, width: 120}}
+            style={{height: 150, width: 150 , justifyContent:"center",alignItems:"center"}}
           />
         }
         </View>
         <View
           style={{
-            width: '90%',
+            width: '100%',
             height: '25%',
             justifyContent: 'space-between',
             flexDirection: 'row',
             paddingHorizontal: 13,
-            bottom:"15%"
-            // backgroundColor: 'red',
+            position:"absolute",
+            justifyContent:"flex-end",
+            alignItems:"flex-end",
+            bottom:"43%",
+            // bottom:"15%",
+            //  backgroundColor: 'red',
             // alignItems: 'center',
           }}>
-          
+            <Pressable onPress={()=>{
+              NavigatetoScreen && NavigatetoScreen(data)
+              showMessage({
+                    message: 'Notification',
+                    description: 'Store ' + data?.name +" selected",
+                    type: 'success',
+                  });
+              setselectedStore (data);
+            }}>
+            <Image resizeMode='contain' style={{width:26, height:26}} source={require('../../../../images/icon.png')}/>
+            </Pressable>
         </View>
 
-      </ImageBackground>
+      </View>
 
     </TouchableOpacity>
+    </View>
    
 
   );

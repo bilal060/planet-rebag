@@ -64,6 +64,10 @@ import barCode from '../../../images/barcode.png';
 import addnoc from '../../../images/newadnoc.png';
 import walmart from '../../../images/walmart.jpg'
 import target from '../../../images/target.png'
+import ellipse from '../../../images/eEllipse.png'
+import righttick from '../../../images/right.png'
+import banner from '../../../images/banner1.png'
+import newlogo from '../../../images/newlogo.png'
 const images = {
   back: back,
   whatsapp: whatsapp,
@@ -128,7 +132,11 @@ const images = {
   barCode: barCode,
   addnoc: addnoc,
   walmart:walmart,
-  target:target
+  target:target,
+  ellipse : ellipse,
+  righttick : righttick,
+  banner : banner,
+  newlogo : newlogo
 };
 
 export default images;

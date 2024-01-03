@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   subContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    // backgroundColor:"red"
   },
   SubmitContainer: {},
   SubmitbuttonText: {

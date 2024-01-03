@@ -28,7 +28,7 @@ export const Authenticate = createAsyncThunk(
       return await response?.data;
     } catch (err: any) {
       //console.log({ errorz: err.response?.data?.error_description });
-      console.log('1');
+      // console.log('1');
       console.log(err.response.data);
       //  console.log({errorz: err.response});
       if (err?.error?.error?.message) {
@@ -39,7 +39,7 @@ export const Authenticate = createAsyncThunk(
         });
         throw err;
       } else {
-        console.log('2');
+        // console.log('2');
         console.log(err.response.data);
         showMessage({
           message: 'Error',
@@ -128,11 +128,11 @@ export const AuthenticateLogin = createAsyncThunk(
         });
         throw err;
       } else {
-        console.log('2');
-        console.log(err.response.data);
+        // console.log('2');
+        // console.log(err.response.data);
         showMessage({
           message: 'Error',
-          description: 'Invalid email/phone or Password',
+          description: err?.response?.data?.message,
           type: 'danger',
         });
         throw err;
@@ -301,13 +301,24 @@ const authSlice = createSlice({
     builder.addCase(Authenticate.fulfilled, (state, action: any) => {
       state.loading = false;
 
-      state.isRegsiter = true;
-      console.log(action.payload);
+      // state.isRegsiter = true;
+      if(action.payload?.message=='Email already registered')
+      {
+        showMessage({
+          message: 'Error',
+          description: 'Email already registered',
+          type: 'danger',
+        });
+      }
+      else{
+        state.isRegsiter = true;
+      }
     });
     builder.addCase(Authenticate.rejected, (state, error: any) => {
       state.loading = false;
       state.isRegsiter = false;
-      console.log({error});
+      console.log("jdfjdg");
+      console.log(error);
     });
 
     builder.addCase(verifyOtp.pending, state => {

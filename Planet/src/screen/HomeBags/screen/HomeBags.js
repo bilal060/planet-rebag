@@ -275,59 +275,20 @@ const HomeBags = ({navigation, route}) => {
       return <>{CounterDisplay(data,  type, name)}</>;
     };
 
-  // const RenderAllStoreCalculation = finalData?.map((data, index) => {
-  
-
-  //   return (
-  //     <View
-  //       style={{
-  //         width: 160,
-  //         height: 80,
-  //         // backgroundColor: color.themeSilver,
-  //         justifyContent: 'center',
-  //         alignItems: 'center',
-  //         marginRight: 12,
-  //         backgroundColor: index== 0?  '#BF1C221A' : "#004E9F1A",
-  //       }}>
-  //       {/* <Text style={styles.cashText}>{data?.name}</Text> */}
-  //       <Image
-  //           resizeMode="contain"
-  //           style={{width: 50, height: 40}}
-  //           // source={image}
-  //           source={{uri: imgUrl + data?.image}}
-  //         />
-  //       <Text
-  //         style={{
-  //           ...styles.cashText,
-  //           fontWeight: '500',
-  //           marginTop: 3,
-  //           fontSize: 14,
-  //         }}>
-  //         {/* {selectedOption == 'Bags'
-  //           ? 'Total ' + data?.totalCalculationBags
-  //           : 'Total ' + data?.totalCalculationBottles} */}
-
-  //         {data?.totalCalculation}
-  //       </Text>
-  //     </View>
-  //     // </ScrollView>
-  //   );
-  // });
-
   const RenderAllStoreCalculation = ()=> {
 
     return (
       <>
       <BagsTypes
         // key={index}
-        style={{backgroundColor: '#e5ffe5', width:"90%"}}
+        style={{backgroundColor: '#e5ffe5', width:"90%",  height:105}}
           number={totale2Emission+ " lbs"}
           heading={`CO2 Emissions \n Reduced`}
           logoimg ={require('../../../../images/cloud.png')}
       />
       <BagsTypes
         // key={index}
-        style={{backgroundColor: '#e5ffe5', width:"90%"}}
+        style={{backgroundColor: '#e5ffe5', width:"90%" ,  height:105}}
           number={wasteRecycle + " lbs"}
           heading={`Waste Recycled`}
       
@@ -397,7 +358,7 @@ const HomeBags = ({navigation, route}) => {
               alignItems: 'center',
             }}>
             <Image
-              source={images.cash1 }
+              source={images.bagreturned }
               style={styles.cashimg}
             />
             <Text style={styles.cashHeading}>

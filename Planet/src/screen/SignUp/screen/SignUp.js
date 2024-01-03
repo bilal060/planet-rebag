@@ -11,6 +11,8 @@ import {
   StyleSheet,
   TextInput,
   Alert,
+  KeyboardAvoidingView,
+  SafeAreaView,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import styles from './SignUpStyles';
@@ -32,7 +34,7 @@ const SignUp = ({navigation}) => {
       label: 'Email',
     },
     {
-      label: 'Mobile Number',
+      label: 'Phone Number',
     },
   ];
   const [fieldType, setfieldType] = useState('Email');
@@ -86,12 +88,13 @@ const SignUp = ({navigation}) => {
     error,
     keyboardType,
     onErrorTxt,
+    placeholder,
   ) => {
     // console.log(fieldType);
     // const [passicon, setpassicon] = useState(false);
     return (
       <View style={styles.buttonContainer}>
-        <Text style={styles.buttonText}>{Title}</Text>
+        <Text style={styles.buttonText}>{ placeholder}</Text>
         <View
           style={[
             styles.inputContainer,
@@ -101,10 +104,11 @@ const SignUp = ({navigation}) => {
           ]}>
           <View style={styles.subContainer}>
             <Image resizeMode="cover" source={mainIcon} />
+            <View style={{width:"90%"}}>
             <TextInput
               placeholderTextColor={'#A3A3A3'}
               style={styles.input}
-              placeholder={'Enter your ' + Title}
+              placeholder={'Enter your ' + placeholder}
               value={value}
               onChangeText={txt => {
                 onchangeTxt && onchangeTxt(txt, Title);
@@ -121,6 +125,7 @@ const SignUp = ({navigation}) => {
                   : false
               }
             />
+          </View>
           </View>
           {subIcon != null ? (
             <TouchableOpacity
@@ -272,6 +277,9 @@ const SignUp = ({navigation}) => {
   }, [isRegsiter]);
 
   return (
+    <SafeAreaView style={styles.container}>
+    <KeyboardAvoidingView behavior='padding' style={styles.container}>
+
     <ScrollView style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate('Landing')}>
         <View style={styles.header}>
@@ -288,7 +296,7 @@ const SignUp = ({navigation}) => {
           fontSize: fontSize.sixteen,
           fontFamily:"SFProDisplay-Medium"
         }}>
-        Create your new account as.
+        Create your new account.
       </Text>
       <View style={styles.ButtonsConatiner}>
         {/* <OptionsList /> */}
@@ -303,6 +311,7 @@ const SignUp = ({navigation}) => {
           }}
           style={styles.RadioButtonContainer}
           box={false}
+          initial={true}
           boxStyle={{
             width: '45%',
           }}
@@ -328,6 +337,7 @@ const SignUp = ({navigation}) => {
           errorValidation['Full Name'],
           'default',
           onErrorText,
+          "Full Name",
         )}
         {fieldType === 'Email' ? (
           InputFields(
@@ -339,11 +349,12 @@ const SignUp = ({navigation}) => {
             errorValidation['Email/PhoneNo'],
             fieldType === 'Mobile Number' ? 'phone-pad' : 'default',
             onErrorText,
+            "Email"
           )
         ) : (
           <>
             <Text style={{...styles.buttonText, marginLeft: 30}}>
-              {'Email/PhoneNo'}
+              {'Phone Number'}
             </Text>
             <View
               style={{
@@ -396,6 +407,7 @@ const SignUp = ({navigation}) => {
           errorValidation.Password,
           'default',
           onErrorText,
+          "Password"
         )}
         {InputFields(
           'Confirm Password',
@@ -406,6 +418,7 @@ const SignUp = ({navigation}) => {
           errorValidation['Confirm Password'],
           'default',
           onErrorText,
+          'Confirm Password',
         )}
       </View>
       {/* <View style={styles.Pcontainer}>
@@ -442,6 +455,9 @@ const SignUp = ({navigation}) => {
         </TouchableOpacity>
       </View>
     </ScrollView>
+
+    </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 

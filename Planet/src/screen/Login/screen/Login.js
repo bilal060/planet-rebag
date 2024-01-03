@@ -10,6 +10,7 @@ import {
   Switch,
   TextInput,
   Platform,
+  SafeAreaView,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import styles from './LoginStyle';
@@ -49,7 +50,7 @@ const Login = ({navigation}) => {
       label: 'Email',
     },
     {
-      label: 'Mobile Number',
+      label: 'Phone Number',
     },
   ];
   const InputFields = (
@@ -61,10 +62,12 @@ const Login = ({navigation}) => {
     error,
     keyboardType,
     onErrorTxt,
+    placeholder,
+    
   ) => {
     return (
       <View style={styles.buttonContainer}>
-        <Text style={styles.buttonText}>{Title}</Text>
+        <Text style={styles.buttonText}>{placeholder}</Text>
         <CustomInput
           Title={Title}
           title={heading}
@@ -74,6 +77,8 @@ const Login = ({navigation}) => {
           error={error}
           keyboardType={keyboardType}
           onErrorTxt={onErrorTxt}
+          placeholder ={placeholder}
+
         />
       </View>
     );
@@ -186,6 +191,7 @@ const Login = ({navigation}) => {
     }
   }, [isAuthenticated]);
   return (
+    <SafeAreaView style={styles.container}>
     <ScrollView style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate('Landing')}>
         <View style={styles.header}>
@@ -193,15 +199,13 @@ const Login = ({navigation}) => {
         </View>
       </TouchableOpacity>
 
-      <Text style={styles.title}>Welcome Back!</Text>
+      <Text style={styles.title}>Welcome!</Text>
       <Text
         style={{
-          color: '#777777',
+          color: 'black',
           marginHorizontal: 24,
-          marginBottom: 2,
-          //backgroundColor: 'red',
-          fontSize: fontSize.eightteen,
-          // fontWeight: '500',
+          // marginBottom: 22,
+          fontSize: fontSize.seventeen,
           fontFamily:"SFProDisplay-Medium"
         }}>
         Login to your account
@@ -209,6 +213,7 @@ const Login = ({navigation}) => {
 
       <View>
          <RadioButtonRN
+         initial={true}
           data={data}
           selectedBtn={e => {
             setfieldType(e?.label);
@@ -222,7 +227,7 @@ const Login = ({navigation}) => {
           textStyle={{
             color: '#A3A3A3',
             paddingLeft: 5,
-            fontSize: 15,
+            fontSize: 16,
             fontWeight: '700',
             fontFamily:"SFProDisplay-Medium"
           }}
@@ -240,11 +245,12 @@ const Login = ({navigation}) => {
             errorValidation['Email/PhoneNo'],
             'default',
             onErrorText,
+            "Email",
           )
         ) : (
           <>
             <Text style={{...styles.buttonText, marginLeft: 30}}>
-              {'Email/PhoneNo'}
+              {'Phone Number'}
             </Text>
             <View
               style={{
@@ -298,6 +304,7 @@ const Login = ({navigation}) => {
           errorValidation['Password'],
           'default',
           onErrorText,
+          "Password"
         )}
 
         <View style={[styles.flexSetting, {justifyContent: 'space-between'}]}>
@@ -318,7 +325,7 @@ const Login = ({navigation}) => {
               style={{
                 color: '#79AA00',
                 fontWeight: '600',
-                fontSize: fontSize.fifteen,
+                fontSize: fontSize.sixteen,
                 fontFamily:"SFProDisplay-Bold"
               }}>
               Forgot Password?
@@ -377,6 +384,7 @@ const Login = ({navigation}) => {
         </View>
       </View>
     </ScrollView>
+    </SafeAreaView>
   );
 };
 

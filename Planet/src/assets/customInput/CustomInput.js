@@ -12,6 +12,7 @@ export function CustomInput({
   keyboardType,
   onErrorTxt,
   Title,
+  placeholder
 }) {
   // console.log(error);
   return (
@@ -20,7 +21,7 @@ export function CustomInput({
         placeholderStyle={{color: '#A3A3A3', fontWeight: '900'}}
         placeholderTextColor={'#A3A3A3'}
         style={styles.input}
-        placeholder={title}
+        placeholder={ title}
         secureTextEntry={secure}
         onChangeText={txt => {
           onchangeTxt && onchangeTxt(txt, Title);
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     color: 'black',
     marginBottom: 8,
     paddingLeft: 12,
-    fontSize: fontSize.fifteen,
+    fontSize: fontSize.sixteen,
     height: 56,
     fontWeight: '600',
     fontFamily:"SFProDisplay-Medium"

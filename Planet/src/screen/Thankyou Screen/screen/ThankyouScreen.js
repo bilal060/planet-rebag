@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {View, Text, Image, TouchableOpacity, StyleSheet, Linking} from 'react-native';
+import {View, Text, Image, TouchableOpacity, StyleSheet, Linking, ImageBackground, SafeAreaView} from 'react-native';
 import React ,{useEffect} from 'react';
 import images from '../../../../src/assets/images/images';
 import styles from './ThankyouStyles';
@@ -107,9 +107,11 @@ const ThankyouScreen = ({navigation, route}) => {
     dispatch(getAllDeals ());
   }, []);
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Image source={images.congrats} style={styles.img} />
+        <ImageBackground source={images.ellipse} style={styles.img} >
+          <Image source={images.righttick} style={{width:60,height:60}}/>
+          </ImageBackground>
         <Text style={{...styles.title,marginTop:28}}>Thank You!</Text>
         <Text style={styles.message}>
           {'For recycling ' +
@@ -119,20 +121,23 @@ const ThankyouScreen = ({navigation, route}) => {
             ' bottles'}
         </Text>
       </View>
-      <View style={{height:"45%"}}>
-      <Text style={{...styles.message,textAlign:"left", marginLeft:12}}>Choose your reward</Text>
+
+
+      <View style={{height:"53%",}}>
+      <Text style={{...styles.message,textAlign:"left", marginLeft:12 ,    fontFamily:"SFProDisplay-Semibold"}}>Choose your reward</Text>
         <ScrollView showsVerticalScrollIndicator={false}>
       {renderDeals}
       </ScrollView>
       </View>
-      <View style={styles.buttonContainer}>
+
+       <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => navigation.replace('BottomStack')}
           style={styles.button}>
           <Text style={{...styles.buttonText}}>I dont't want reward</Text>
         </TouchableOpacity>
-      </View>
-    </View>
+      </View> 
+    </SafeAreaView>
   );
 };
 

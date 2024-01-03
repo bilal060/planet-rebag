@@ -41,7 +41,14 @@ import {
   getSessionPrice
 } from '../../../../Store/homeApi';
 import {useDispatch, useSelector} from 'react-redux';
+import {SliderBox} from 'react-native-image-slider-box';
 const Home = () => {
+  const Bannerimages = [
+    images.banner,
+    images.banner,
+    
+  
+  ];
   const dispatch = useDispatch();
   const {
     getAllstoreBottle,
@@ -58,6 +65,7 @@ const Home = () => {
   const options = ['Bags', 'Bottles'];
   const [timervalue, settimervalue] = useState(0);
   const [selectedOption, setSelectedOption] = useState('Bags');
+  const [activeImg, setActiveImg] = useState(0);
   const [couponCount, setCouponCount] = useState(1);
   const renderSelectedOption = () => {
     if (selectedOption === 'Bags') {
@@ -75,13 +83,19 @@ const Home = () => {
   }, [selectedOption]);
 
   useEffect(() => {
+    // console.log(getcalculatedPrice?.totalCo2emission);
+    // console.log("sgdgdg")
+    if(getcalculatedPrice?.totalCo2emission == undefined)
+    {
+    dispatch(getSessionPrice())
+    }
     dispatch(getAllStore());
   }, []);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       dispatch(getPrice())
-      dispatch(getSessionPrice())
+      // dispatch(getSessionPrice())
       dispatch(getAllSessionsasUser());
       dispatch(getRedeemTranscationHistory());
        dispatch(getSessionByStatus({status: 'redeem', categoryName: 'bottles'}));
@@ -99,15 +113,15 @@ const Home = () => {
         <>
         <BagsTypes
           // key={index}
-          style={{backgroundColor: '#e5ffe5'}}
-            number={getcalculatedPrice?.totalCo2emission +" lbs"}
+             style={{backgroundColor: '#e5ffe5', height:105}}
+            number={getcalculatedPrice?.totalCo2emission ?  getcalculatedPrice?.totalCo2emission : 0 +" lbs"}
             heading={`CO2 Emissions \n Reduced`}
             logoimg ={require('../../../../../images/cloud.png')}
         />
         <BagsTypes
           // key={index}
-          style={{backgroundColor: '#e5ffe5'}}
-            number={getcalculatedPrice?.totalWasteRecycled  +" lbs"}
+          style={{backgroundColor: '#e5ffe5', height:105}}
+            number={getcalculatedPrice?.totalWasteRecycled? getcalculatedPrice?.totalWasteRecycled: 0  +" lbs"}
             heading={`Waste Recycled`}
             logoimg ={require('../../../../../images/lock1.png')}
         />
@@ -256,6 +270,9 @@ const Home = () => {
   return (
     <SafeAreaView style={styles.parentContainer}>
       <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{width:"100%", marginTop:6,justifyContent:"center",alignItems:"center"}}>
+        {/* <Image source={require('../../../../../images/logo.png')}/> */}
+        </View>
         <Header />
         <View style={styles.welcomeContainer}>
           <Text style={styles.welcomeTxt}>Welcome!</Text>
@@ -303,6 +320,59 @@ const Home = () => {
             heading={'Bottles Recycled'}
           />
         </View>
+
+        <SliderBox
+            images={Bannerimages}
+            onCurrentImagePressed={index => {
+              
+              isActive = activeImg === index;
+            }}
+            currentImageEmitter={index => {
+              setActiveImg(index);
+              isActive = activeImg - 1 === index;
+              // console.log(
+              //   '🚀 ~ file: Explore.js:134 ~ Explore ~ isActive:',
+              //   isActive,
+              //   index,
+              //   activeImg - 1,
+              // );
+
+              // console.warn(`current pos is: ${index}`);
+            }}
+            resizeMethod={'resize'}
+            resizeMode={'cover'}
+            dotColor="rgba(255,255,225,1)"
+            inactiveDotColor="rgba(63,128,225,1)"
+            activeDotColor="rgba(255,255,225,1)"
+            paginationBoxVerticalPadding={0}
+            paginationBoxStyle={{
+              position: 'absolute',
+              left: 0,
+              bottom: 5,
+              padding: 0,
+              alignItems: 'center',
+              alignSelf: 'center',
+              justifyContent: 'center',
+              paddingVertical: 10,
+            }}
+            // dotStyle={{
+            //   width: isActive ? 25 : 10,
+            //   height: 10,
+            //   borderRadius: 5,
+            //   marginHorizontal: -5,
+            //   padding: 0,
+            //   margin: 0,
+            //   backgroundColor: '#000',
+            // }}
+            dotStyle={{ display: 'none' }}
+            ImageComponentStyle={{
+              borderRadius: 15,
+              width: '100%',
+              marginTop: 16,
+              alignSelf: 'flex-start',
+            }}
+            imageLoadingColor="#2196F3"
+          />   
 
         <View style={styles.parentAllcomponent}>
           <View style={styles.historyContainer}>

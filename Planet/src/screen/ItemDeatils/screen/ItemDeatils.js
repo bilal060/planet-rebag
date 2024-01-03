@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
+  SafeAreaView,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import images from '../../../assets/images/images';
@@ -140,9 +141,9 @@ itemsData.items = finalData
   }, [createSessiondata]);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={{width: '100%', height: '87%'}}>
-        <AppMainHeader title="Item Deatils" navigation={navigation} />
+        <AppMainHeader title="Item Deatils" navigation={navigation} isBack={true}/>
         <Text style={styles.Title}>Bags Deatils</Text>
         {/* {Button(images.subStore, 'Carrefour Bags', '10')}
         {Button(images.subStore, 'Other Bags', '30')} */}
@@ -196,7 +197,7 @@ itemsData.items = finalData
           <Text style={styles.cbuttonText}>Confirm Count</Text>
         </View>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 

@@ -25,7 +25,7 @@ import {CustomButton} from '../../../assets/customButton/CustomButton';
 import StoreDeatil from '../components/StoreDeatil';
 import {useDispatch, useSelector} from 'react-redux';
 import color from '../../../assets/color/color';
-import { generateBarcode } from '../../../Store/homeApi';
+import { generateBarcode, getSessionPrice } from '../../../Store/homeApi';
 
 let payload = {
   name: "",
@@ -125,12 +125,13 @@ export default function SelectStore({navigation, route}) {
         return;
       }
     dispatch(generateBarcode(payload));
+    dispatch(getSessionPrice())
     payload.name="";
     payload.sessionId="";
     navigation.replace("ThankyouScreen",{data:data});
   }
   return (
-    <ScrollView>
+  <>
           <Modal
         animationType="slide"
         transparent={true}
@@ -141,16 +142,92 @@ export default function SelectStore({navigation, route}) {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <View style={{width:"100%", justifyContent:"flex-end", alignItems:"flex-end"}}>
-            <Pressable
-              // style={[styles.button, styles.buttonClose]}
+            {/* <Pressable
               onPress={() => setModalVisible(!modalVisible)}>
              <Image style={{width:25, height:25,left:7}} resizeMode="contain" source={require('../../../../images/cross.jpg')}/>
-            </Pressable>
+            </Pressable> */}
             
             </View >
             <View style={{width:"100%", justifyContent:"center", alignItems:"center", height:"100%"}}>
+              <View style={{width:"100%", height:"75%" ,  justifyContent:"center", alignItems:"center",}}>
             <Image style={{width:300, height:300,}} resizeMode="cover" source={require('../../../../images/recycleBox.png')}/>
             </View>
+            <View
+        style={{
+          width: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+       <TouchableOpacity
+        onPress={() => {
+          GenerateBarCode();
+        
+        }}
+        style={{
+          width: '100%',
+        }}>
+        <View style={{ width: '98%',
+    alignItems: 'center',
+    backgroundColor: color.green2,
+    borderRadius: 10,
+
+    
+    // padding: 25,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    height: 61
+}}>
+          <Text style={{ color: 'white',
+    fontSize: 17,
+    fontWeight: '700',
+    // lineHeight: 16,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  }}>Finish Recycling</Text>
+        </View>
+      </TouchableOpacity>
+             </View>
+
+
+             <View
+        style={{
+          width: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop:12
+        }}>
+       <TouchableOpacity
+        onPress={() => {
+          setModalVisible(!modalVisible)
+        }}
+        style={{
+          width: '100%',
+        }}>
+        <View style={{ width: '98%',
+    alignItems: 'center',
+    backgroundColor: color.green2,
+    borderRadius: 10,
+
+    
+    // padding: 25,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    height: 61
+}}>
+          <Text style={{ color: 'white',
+    fontSize: 17,
+    fontWeight: '700',
+    // lineHeight: 16,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  }}>Back</Text>
+        </View>
+      </TouchableOpacity>
+             </View>
+            
+            </View>
+
+        
           </View>
         </View>
       </Modal>
@@ -184,67 +261,35 @@ export default function SelectStore({navigation, route}) {
           marginTop: 20,
         }}>
         <Text style={{fontSize: 22, color: '#1E252B', fontWeight: '700'}}>
-          Recycling Location
+         Choose Recycling Location
         </Text>
       </View>
-      <View
-        style={{
-          width: '100%',
-          // height: '70%',
-          marginTop: 12,
-        }}>
-        {/* <StoreDeatil mall={true} />
-        <StoreDeatil /> */}
-        {RenderAllStore()}
-      </View>
-{/* {IsstoreOther == true &&
-      <View
-        style={{
-          width: '100%',
-          // height: '15%',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop:12
-          // backgroundColor:"red"
-        }}>
-        <Text style={{fontSize: 16, color: '#1E252B', fontWeight: '700'}}>
-          Enter store name
-        </Text>
-        <TextInput
-          style={{
-            width: '94%',
-             height: 55,
-            backgroundColor: '#e4e4e4',
-            borderRadius: 7,
-            paddingHorizontal: 12,
-            marginTop: 6,
-            color: 'black',
-            fontSize: 15,
-          }}
-          // keyboardType="number-pad"
-          placeholder="Enter .."
-          value={totalshopping}
-          onChangeText={txt => [settotalshopping(txt)]}
-        />
-      </View>
-} */}
+
 
       <View
         style={{
           width: '100%',
-          // height: '15%',
+           height: '88%',
+          marginTop: 12,
+          //  backgroundColor:"red"
+        }}>
+        
+        {RenderAllStore()}
+      </View>
+
+
+      {/* <View
+        style={{
+          width: '100%',
           justifyContent: 'center',
           alignItems: 'center',
-          marginTop:17
         }}>
        <TouchableOpacity
         onPress={() => {
-          // NavigatetoScreen({});
           GenerateBarCode();
         }}
         style={{
           width: '100%',
-          // height:475,
         }}>
         <View style={{ width: '94%',
     alignItems: 'center',
@@ -266,10 +311,10 @@ export default function SelectStore({navigation, route}) {
   }}>Finish Recycling</Text>
         </View>
       </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
 
-    </ScrollView>
+    </>
   );
 }
 

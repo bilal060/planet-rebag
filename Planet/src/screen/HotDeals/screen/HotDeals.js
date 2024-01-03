@@ -7,6 +7,7 @@ import {
   Image,
   SafeAreaView,
   Linking,
+  Alert,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import images from '../../../assets/images/images';
@@ -16,6 +17,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getAllDeals} from '../../../Store/homeApi';
 import {imgUrl} from '../../../../utils/constants';
+import { showMessage } from 'react-native-flash-message';
 
 const HotDeals = ({}) => {
   const dispatch = useDispatch();
@@ -109,19 +111,31 @@ const HotDeals = ({}) => {
   });
 
   useEffect(() => {
-    dispatch(getAllDeals());
+    // Alert.alert("dhdhg")
+    // dispatch(getAllDeals());
   }, []);
+
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      // The screen is focused
+      // Call any action
+      Alert.alert("Rewards will be coming soon!")
+    });
+
+    // Return the function to unsubscribe from the event so it gets removed on unmount
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Hot Deals</Text>
+       <View style={styles.titleContainer}>
+        <Text style={styles.title}>Rewards</Text>
       </View>
       <View style={{marginTop: scalableheight.onepointfive}}>
-        {renderDeals}
-      </View>
+        {/* {renderDeals} */}
+      </View> 
     </SafeAreaView>
   );
 };
 
-export default HotDeals;
+export default  React.memo( HotDeals);

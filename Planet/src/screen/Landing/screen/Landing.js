@@ -34,10 +34,10 @@ const Landing = ({navigation}) => {
       <View style={styles.topCirlcle}></View>
 
       <View style={styles.rightCircle}></View>
-      <Image source={logo} style={styles.logo} />
+      <Image source={images.newlogo} style={styles.logo} />
       <View style={styles.TitleContainer}>
         <Text style={styles.LogoTitle}>PLANET RE-BAG</Text>
-        <Text style={{color: 'black'}}>Scan and Earn Money</Text>
+        {/* <Text style={{color: 'black'}}>Scan and Earn Money</Text> */}
       </View>
       <View style={styles.buttonViewContainer}>
         {/* <Button
