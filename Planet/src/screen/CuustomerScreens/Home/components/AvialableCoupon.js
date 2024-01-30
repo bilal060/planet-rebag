@@ -77,11 +77,14 @@ export default function AvialableCoupon(props) {
     // }, 1000);
   }
   return (
-    <>
+    <View style={{width:"100%", height:252, backgroundColor:"#F5F5F5"}}>
       <ImageBackground
-        // key={props?.key}
         source={require('../../../../../images/couponbg.png')}
-        style={style.parentContainer}>
+        style={style.parentContainer}
+        tintColor={"#79AA00"}
+        imageStyle={{tintColor:"white", alignSelf:"center"}}
+        resizeMode='contain'
+      >
         <View style={style.topContainer}>
           <Text style={style.topTxt}>{"#" + props?.index}</Text>
           <View
@@ -108,10 +111,10 @@ export default function AvialableCoupon(props) {
               alignItems: 'center',
               textAlign: 'center',
               top: 10,
-              color: color.green2,
+              color: "#A3A3A3",
               fontWeight: 'bold',
               fontSize: 18,
-              fontFamily:"SFProDisplay-Medium",
+              fontFamily:"SFProDisplay-Bold",
               minWidth:"80%"
             }}>
             {props?.data?.returnBagsQty +  " Bags and " + props?.data?.returnBottelsQty }
@@ -123,10 +126,10 @@ export default function AvialableCoupon(props) {
               alignItems: 'center',
               textAlign: 'center',
               top: 10,
-              color: color.green2,
+              color: "#A3A3A3",
               fontWeight: 'bold',
               fontSize: 18,
-              fontFamily:"SFProDisplay-Medium",
+              fontFamily:"SFProDisplay-Bold",
               // backgroundColor: color.green2,
             }}>
             {' Bottles are ready to recycle'}
@@ -170,19 +173,21 @@ export default function AvialableCoupon(props) {
           <Text style={style.buttonText}>Recycle</Text>
         </View>
       </TouchableOpacity>
-    </>
+      </View>
   );
 }
 
 const style = StyleSheet.create({
   parentContainer: {
-    marginVertical: '4%',
-    marginHorizontal: '4%',
-    // paddingHorizontal: '4%',
-    // paddingVertical: '4%',
-    width: '100%',
-    height: 150,
+     marginVertical: '4%',
+     marginHorizontal: '4%',
+    width: '97%',
+    height: 153,
     alignSelf: 'center',
+    tintColor:"#79AA00",
+    backgroundColor:"#F5F5F5",
+    
+   
     //borderColor: 'red',
   },
   topContainer: {
@@ -195,9 +200,11 @@ const style = StyleSheet.create({
     paddingHorizontal: '6%',
   },
   topTxt: {
-    fontSize: 19,
+    fontSize: 18,
     fontWeight: '600',
     color: '#1E252B',
+    marginLeft:5,
+    marginTop:"5%"
     // fontFamily: 'Inter',
     // lineHeight: 15,
   },
@@ -235,14 +242,15 @@ const style = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     color: 'white',
-    fontFamily:"SFProDisplay-Medium"
+    fontFamily:"SFProDisplay-Medium",
+    fontWeight:"700"
   },
   ButtonView: {
     width: '97%',
     alignItems: 'center',
     backgroundColor: color.green2,
     borderRadius: 10,
-    height:55,
+    height:58,
     // padding: 13,
     justifyContent: 'center',
     alignSelf: 'center',

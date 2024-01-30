@@ -14,7 +14,8 @@ import {
   TextInput,
   ScrollView,
   Modal,
-  Pressable
+  Pressable,
+  SafeAreaView
 } from 'react-native';
 
 import images from '../../../assets/images/images';
@@ -26,6 +27,8 @@ import StoreDeatil from '../components/StoreDeatil';
 import {useDispatch, useSelector} from 'react-redux';
 import color from '../../../assets/color/color';
 import { generateBarcode, getSessionPrice } from '../../../Store/homeApi';
+import Header from '../../CuustomerScreens/Home/components/Header';
+import AppMainHeader from '../../../assets/appMainHeader/AppMainHeader';
 
 let payload = {
   name: "",
@@ -35,6 +38,7 @@ let payload = {
 
 export default function SelectStore({navigation, route}) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [animmodalVisible, setanimModalVisible] = useState(false);
   const {data} = route?.params;
   const dispatch = useDispatch();
   allStore;
@@ -44,16 +48,6 @@ export default function SelectStore({navigation, route}) {
 
   const StoreData=[{storeName:"Walmart", storeImagesPath:images.walmart,total:"25$" , backgroundColor :'#004E9F1A'},{storeName:"Target", storeImagesPath:images.target,total:"40$" , backgroundColor: '#BF1C221A',} 
 ,{storeName:"Other", storeImagesPath:null, total:"20$"}]
-
-  // const RenderAllStore = storeBySession?.map((data, index) => {
-  //   return (
-  //     <StoreDeatil
-  //       key={index}
-  //       data={data}
-  //       NavigatetoScreen={NavigatetoScreen}
-  //     />
-  //   );
-  // });
 
   const RenderAllStore = ()=>{
     let allStoredata  =[...allStore];
@@ -68,6 +62,7 @@ export default function SelectStore({navigation, route}) {
         data={data}
         NavigatetoScreen={NavigatetoScreen}
         index={index}
+        openAnimationModal={openAnimationModal}
   
       />
     );
@@ -77,12 +72,6 @@ export default function SelectStore({navigation, route}) {
 
   function NavigatetoScreen(dataa) {
   
-      // let payload = {
-      //   storeid: dataa?._id,
-      //   sessionId: data?._id,
-      //   finalDiscountvalue: totalshopping,
-      // };
-
       payload.name= dataa?.name;
       payload.sessionId = data?._id;
 
@@ -96,25 +85,18 @@ export default function SelectStore({navigation, route}) {
       setModalVisible(true)
   }
 
+  function openAnimationModal()
+  {
+    setanimModalVisible(true);
+  }
+
   function GenerateBarCode() {
-    // console.log(data);
-     //console.log(payload);
-      // return;
+    
       if(IsstoreOther == true)
       {
         payload.name= "Other";
       }
-        //  console.log(payload);
-      // return;
-      // if(payload.name == '' && IsstoreOther == true )
-      // {
-      //   showMessage({
-      //     message: 'Error',
-      //     description: 'Please enter store name',
-      //     type: 'error',
-      //   });
-      //   return;
-      // }
+       
       if(payload.name == '')
       {
         showMessage({
@@ -131,7 +113,7 @@ export default function SelectStore({navigation, route}) {
     navigation.replace("ThankyouScreen",{data:data});
   }
   return (
-  <>
+    <><SafeAreaView style={{ flex: 0, backgroundColor: '#29542A' }} /><SafeAreaView style={{backgroundColor:"white"}}>
           <Modal
         animationType="slide"
         transparent={true}
@@ -139,6 +121,17 @@ export default function SelectStore({navigation, route}) {
         onRequestClose={() => {
           setModalVisible(!modalVisible);
         }}>
+
+
+
+
+          
+
+
+
+
+
+
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <View style={{width:"100%", justifyContent:"flex-end", alignItems:"flex-end"}}>
@@ -150,7 +143,7 @@ export default function SelectStore({navigation, route}) {
             </View >
             <View style={{width:"100%", justifyContent:"center", alignItems:"center", height:"100%"}}>
               <View style={{width:"100%", height:"75%" ,  justifyContent:"center", alignItems:"center",}}>
-            <Image style={{width:300, height:300,}} resizeMode="cover" source={require('../../../../images/recycleBox.png')}/>
+            <Image style={{width:240, height:240,}} resizeMode="cover" source={require('../../../../images/recycleBox.png')}/>
             </View>
             <View
         style={{
@@ -168,8 +161,10 @@ export default function SelectStore({navigation, route}) {
         }}>
         <View style={{ width: '98%',
     alignItems: 'center',
-    backgroundColor: color.green2,
+    backgroundColor: "#29542A1A",
     borderRadius: 10,
+    borderColor:"#29542A",
+    borderWidth:0.8,
 
     
     // padding: 25,
@@ -177,9 +172,9 @@ export default function SelectStore({navigation, route}) {
     alignSelf: 'center',
     height: 61
 }}>
-          <Text style={{ color: 'white',
+          <Text style={{ color: '#29542A',
     fontSize: 17,
-    fontWeight: '700',
+    fontWeight: '900',
     // lineHeight: 16,
     textAlign: 'center',
     textAlignVertical: 'center',
@@ -216,7 +211,7 @@ export default function SelectStore({navigation, route}) {
 }}>
           <Text style={{ color: 'white',
     fontSize: 17,
-    fontWeight: '700',
+    fontWeight: '800',
     // lineHeight: 16,
     textAlign: 'center',
     textAlignVertical: 'center',
@@ -231,6 +226,39 @@ export default function SelectStore({navigation, route}) {
           </View>
         </View>
       </Modal>
+
+
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={animmodalVisible}
+        onRequestClose={() => {
+          setanimModalVisible(!animmodalVisible);
+        }}>
+
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <View style={{width:"100%", justifyContent:"flex-end", alignItems:"flex-end", }}>
+             <Pressable
+              onPress={() =>   setanimModalVisible(!animmodalVisible)}>
+             <Image style={{width:25, height:25,left:7}} resizeMode="contain" source={require('../../../../images/cross.jpg')}/>
+            </Pressable> 
+            
+            </View >
+            <View style={{width:"100%", justifyContent:"center", alignItems:"center", height:"100%",}}>
+              <View style={{width:"100%", height:"100%" ,  justifyContent:"center", alignItems:"center"}}>
+            <Image style={{width:400, height:420,}} resizeMode="cover"  source={require('../../../../images/RecycleItems.gif')}/>
+            </View>
+            </View>
+
+          </View>
+        </View>
+      </Modal>
+
+
+
+      <AppMainHeader title="Location" navigation={navigation} isBack={true}/>
     <View
       style={{
         height: '100%',
@@ -238,27 +266,11 @@ export default function SelectStore({navigation, route}) {
         padding: scalableheight.three,
         width: '100%',
       }}>
-      <StatusBar hidden={true} />
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-            marginTop: '6%',
-            borderRadius: 8,
-          }}>
-          <Image
-            source={images.backarrowicon}
-            style={{height: 20, width: 20, resizeMode: 'contain'}}
-          />
-
-          <View />
-        </View>
-      </TouchableOpacity>
+    
+      
       <View
         style={{
-          marginTop: 20,
+          marginTop: 3,
         }}>
         <Text style={{fontSize: 22, color: '#1E252B', fontWeight: '700'}}>
          Choose Recycling Location
@@ -270,8 +282,8 @@ export default function SelectStore({navigation, route}) {
         style={{
           width: '100%',
            height: '88%',
-          marginTop: 12,
-          //  backgroundColor:"red"
+          marginTop: 10,
+
         }}>
         
         {RenderAllStore()}
@@ -313,7 +325,7 @@ export default function SelectStore({navigation, route}) {
       </TouchableOpacity>
       </View> */}
     </View>
-
+</SafeAreaView>
     </>
   );
 }
@@ -327,7 +339,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: '#e4e4e4',
+    backgroundColor: 'white',
     // borderRadius: 20,
     padding: 35,
     alignItems: 'center',
@@ -336,9 +348,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    // shadowOpacity: 0.25,
-    // shadowRadius: 4,
-    // elevation: 5,
+  
     height:"100%",
     width:"100%"
   },

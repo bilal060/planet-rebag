@@ -8,28 +8,36 @@ import React from 'react';
 import color from '../../../../assets/color/color';
 import {fontSize, scalableheight} from '../../../../assets/responsiveness';
 
-export default function PlanetsTypes({img, number, heading, style}) {
+export default function PlanetsTypes({img, number, heading, style, boxImgStyle, textStyle}) {
   return (
     <View style={styles.parentContainer}>
       <View style={{...styles.imgContainer, ...style}}>
         <View
           style={{
-            width: '25%',
+            width: '17%',
             justifyContent: 'center',
             alignItems: 'center',
-            //  backgroundColor: 'red',
+            // backgroundColor: '#29542A',
+            height:"90%",
+            // borderRadius:8,
+            alignSelf:"center",
+            marginLeft:10,
+            ...boxImgStyle
+            // backgroundColor:"red"
           }}>
           <Image
             source={img}
             resizeMode="contain"
             style={{
-              width: scalableheight.three,
-              height: scalableheight.three,
+              width: "100%",
+              height: 
+              '88%',
             }}
           />
         </View>
         <View style={styles.txtContainer}>
-          <Text style={styles.headingTxt}>{heading}</Text>
+          {/* <Text style={styles.headingTxt}>{heading}</Text> */}
+          <Text style={{...styles.numberTxt, ...textStyle}}>{number}</Text>
           <View
             style={
               {
@@ -39,7 +47,7 @@ export default function PlanetsTypes({img, number, heading, style}) {
                 // alignItems: 'flex-end',
               }
             }>
-            <Text style={styles.numberTxt}>{number}</Text>
+            <Text style={{...styles.headingTxt,...textStyle}}>{heading}</Text> 
           </View>
         </View>
       </View>
@@ -49,7 +57,8 @@ export default function PlanetsTypes({img, number, heading, style}) {
 
 const styles = StyleSheet.create({
   parentContainer: {
-    width: '47%',
+    width: '100%',
+    
 
   },
   imgContainer: {
@@ -57,29 +66,30 @@ const styles = StyleSheet.create({
     backgroundColor: '#E388001A',
  
     alignItems: 'center',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     flexDirection: 'row',
-    borderRadius: 7,
-    height: 44,
+    borderRadius: 9,
+    height: 67,
   },
   txtContainer: {
     width: '75%',
-    justifyContent: 'space-between',
-    margin: 0,
-    flexDirection: 'row',
+    // justifyContent: 'space-between',
+    margin: 12,
+    // flexDirection: 'row',
   
   },
   numberTxt: {
-    fontSize: fontSize.eleven,
+    fontSize: fontSize.fifteen,
     fontWeight: '700',
-    marginRight: '7%',
+    // marginRight: '3%',
     color: color.themeBlackColor,
     fontFamily:"SFProDisplay-Medium"
   },
   headingTxt: {
-    fontSize: fontSize.eleven,
-    fontWeight: '800',
-    color: color.themeBlackColor,
-    fontFamily:"SFProDisplay-Medium"
+    fontSize: fontSize.thirteen,
+    fontWeight: '500',
+    color: "#171D25",
+    fontFamily:"SFProDisplay-Medium",
+    marginTop:1.5
   },
 });

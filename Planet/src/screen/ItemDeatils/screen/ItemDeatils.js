@@ -19,6 +19,7 @@ import {fontSize, scalableheight} from '../../../assets/responsiveness';
 import AppMainHeader from '../../../assets/appMainHeader/AppMainHeader';
 import {createSessions, resethomeData} from '../../../Store/homeApi';
 import {useDispatch, useSelector} from 'react-redux';
+import PlanetsTypes from '../../CuustomerScreens/Home/components/PlanetsTypes';
 let totalBagsBottles = {
   totalBags: 0,
   totalBottles: 0,
@@ -141,30 +142,85 @@ itemsData.items = finalData
   }, [createSessiondata]);
 
   return (
+    <><SafeAreaView style={{ flex: 0, backgroundColor: '#29542A' }} />
     <SafeAreaView style={styles.container}>
       <View style={{width: '100%', height: '87%'}}>
         <AppMainHeader title="Item Deatils" navigation={navigation} isBack={true}/>
-        <Text style={styles.Title}>Bags Deatils</Text>
-        {/* {Button(images.subStore, 'Carrefour Bags', '10')}
-        {Button(images.subStore, 'Other Bags', '30')} */}
-        {BagsDeatils}
-
-        <Text style={styles.Title}>Bottle Deatils</Text>
-        {/* {Button(images.bottleicon, 'Mai Dubai Bottles', '4')}
-        {Button(images.bottleicon, 'Other Bottles', '0')} */}
-
-        {BottlesDeatils}
-
         <View
+          style={{
+            marginTop: '6%',
+            paddingHorizontal: '6%',
+            flexDirection:"row"
+            // backgroundColor:"red"
+          }}>
+          <Text style={{
+            ...styles.hsitroyTxt, fontSize: fontSize.nineteen,
+            fontWeight: '700',
+            color: '#1E252B',
+            fontFamily: "SFProDisplay-Medium"
+          }}>
+            Bags and Bottles
+          </Text>
+          <Text style={{
+            ...styles.hsitroyTxt, fontSize: fontSize.nineteen,
+            fontWeight: '700',
+            color: '#79AA00',
+            fontFamily: "SFProDisplay-Medium"
+          }}>
+            {" Deatils"}
+          </Text>
+        </View>
+
+
+
+        <View style={{backgroundColor:"white",   borderRadius: 7,
+          width:"90%",
+          alignSelf:"center",
+          marginVertical: '3%',
+          borderColor: '#EEEEEE',
+          paddingVertical:"6%",
+          // alignItems:"center",
+          borderWidth: 1.8,}}>
+           
+        {/* {BagsDeatils} */}
+        
+
+        {/* {BottlesDeatils} */}
+
+        <View style={styles.parentPlanetType}>
+          <PlanetsTypes
+            style={{ backgroundColor: '#F5F5F5' }}
+            img={images.greenbags}
+            number={data?.[0]?.total}
+            heading={'Total Bags'} />
+          <PlanetsTypes
+            style={{ backgroundColor: '#F5F5F5', marginTop:14 }}
+            img={images.greenbottles}
+            number={data?.[1]?.total}
+            heading={'Total Bottles'} />
+
+<PlanetsTypes
+            style={{ backgroundColor: '#29542A', marginTop:14 }}
+            img={images.trash}
+            textStyle={{color:"white"}}
+            boxImgStyle={{backgroundColor:"white", width:"14%",borderRadius:10, height:"71%"}}
+            number={calcualteTotal()}
+            heading={'Total Items'} />
+        </View>
+
+  
+        </View>
+
+        {/* <View
           style={{
             borderBottomColor: '#E7E6E9',
             borderBottomWidth: 1,
             width: '88%',
             alignSelf: 'center',
             marginTop: 9,
-          }}
-        />
-        <View
+          }} */}
+        {/* /> */}
+        {/* <View
           style={{
             marginTop: 9,
             width: '98%',
@@ -173,9 +229,9 @@ itemsData.items = finalData
           }}>
           <Text style={styles.Title}>Total Items:</Text>
           <Text style={styles.Title}>{calcualteTotal()}</Text>
-        </View>
+        </View> */}
 
-        <View
+        {/* <View
           style={{
             borderBottomColor: '#E7E6E9',
             borderBottomWidth: 1,
@@ -183,8 +239,8 @@ itemsData.items = finalData
             alignSelf: 'center',
             marginTop: 9,
           }}
-        />
-      </View>
+        /> */}
+       </View> 
       <TouchableOpacity
         onPress={() => {
           setApiData();
@@ -198,6 +254,7 @@ itemsData.items = finalData
         </View>
       </TouchableOpacity>
     </SafeAreaView>
+    </>
   );
 }
 
@@ -212,6 +269,16 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     alignItems: 'flex-start',
     justifyContent: 'center',
+  },
+  parentPlanetType: {
+    width: '100%',
+    // marginTop: '3%',
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
+    // alignItems: 'center',
+    paddingHorizontal: '4.2%',
+    // marginTop: '3%',
+    // backgroundColor: 'red',
   },
   img: {
     height: 20,
@@ -231,7 +298,7 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 20,
     marginHorizontal: 24,
-    marginVertical: 10,
+    marginVertical: 14,
     fontWeight: 'bold',
   },
   buttonimg: {

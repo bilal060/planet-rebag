@@ -13,6 +13,7 @@ import {
   SafeAreaView,
   TextInput,
   StatusBar,
+  LogBox
 } from 'react-native';
 import React, {useEffect} from 'react';
 import images from '../../../assets/images/images';
@@ -28,6 +29,7 @@ import { undefine } from 'xtype';
 const Splash = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
+      LogBox.ignoreAllLogs();
       checkLoginalready();
       // deleteData();
     }, 2000);

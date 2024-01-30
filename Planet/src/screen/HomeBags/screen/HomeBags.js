@@ -11,7 +11,8 @@ import {
   Image,
   ScrollView,
   Alert,
-  SafeAreaView
+  SafeAreaView,
+  ImageBackground
 
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
@@ -20,13 +21,14 @@ import images from '../../../assets/images/images';
 import styles from './HomeBagsStyle';
 import RenderQRView from '../components/RenderQRView';
 import RenderIDView from '../components/RenderIDView';
-import {scalableheight} from '../../../assets/responsiveness';
+import {fontSize, scalableheight} from '../../../assets/responsiveness';
 import {Shadow} from 'react-native-shadow-2';
 import {getAllstoreBycategory} from '../../../../Store/homeApi';
 import {useDispatch, useSelector} from 'react-redux';
 import color from '../../../assets/color/color';
 import { imgUrl } from '../../../../utils/constants';
 import BagsTypes from '../../CuustomerScreens/Home/components/BagsTypes';
+import PlanetsTypes from '../../CuustomerScreens/Home/components/PlanetsTypes';
 
 const HomeBags = ({navigation, route}) => {
   const dispatch = useDispatch();
@@ -212,8 +214,27 @@ const HomeBags = ({navigation, route}) => {
     return (
       <>
         {type == 'Bottles' ? (
-          <View>
+          <View style={{backgroundColor:"white",   borderRadius: 7,
+          width:"90%",
+          alignSelf:"center",
+          marginVertical: '4%',
+          borderColor: '#EEEEEE',
+          // alignItems:"center",
+          borderWidth: 1.8,}}>
+            <View style={{ 
+    width: '100%',
+    backgroundColor: '#29542A',
+    height: 44,
+    flexDirection: 'row',
+    borderRadius:7,
+    alignItems: 'center',
+    flexDirection:"row",
+
+  }}>
+
+            <Image resizeMode='contain'  style={{height:36,marginLeft:10,width:36,}} source={images.greenbottles}/>
             <Text style={styles.counterTitle}>{name}</Text>
+            </View>
             <View style={styles.counterConatiner}>
               <TouchableOpacity onPress={handleDecrement}>
                 <Text style={styles.addSubText}>-</Text>
@@ -229,10 +250,28 @@ const HomeBags = ({navigation, route}) => {
             </View>
           </View>
         ) : type == 'Bags' ? (
-          <View>
+          <View style={{backgroundColor:"white",   borderRadius: 7,
+          width:"90%",
+          alignSelf:"center",
+          marginVertical: '4%',
+          borderColor: '#EEEEEE',
+          // alignItems:"center",
+          borderWidth: 1.8,}}>
+            <View style={{ 
+    width: '100%',
+    backgroundColor: '#29542A',
+    height: 44,
+    flexDirection: 'row',
+    borderRadius:7,
+    alignItems: 'center',
+    flexDirection:"row",
+
+  }}>
+             <Image resizeMode='contain'  style={{height:36,marginLeft:10,width:36,}} source={images.greenbags}/>
             <Text style={styles.counterTitle}>{name}</Text>
+            </View>
             <View style={styles.counterConatiner}>
-              <TouchableOpacity onPress={handleDecrement}>
+              <TouchableOpacity  onPress={handleDecrement}>
                 <Text style={styles.addSubText}>-</Text>
               </TouchableOpacity>
 
@@ -280,19 +319,16 @@ const HomeBags = ({navigation, route}) => {
     return (
       <>
       <BagsTypes
-        // key={index}
-        style={{backgroundColor: '#e5ffe5', width:"90%",  height:105}}
+        style={{backgroundColor: '#305543', height:162, width:"98%"}}
           number={totale2Emission+ " lbs"}
           heading={`CO2 Emissions \n Reduced`}
-          logoimg ={require('../../../../images/cloud.png')}
+          logoimg ={require('../../../../images//cloud2.png')}
       />
       <BagsTypes
-        // key={index}
-        style={{backgroundColor: '#e5ffe5', width:"90%" ,  height:105}}
+        style={{backgroundColor: '#305543', height:162,  width:"98%"}}
           number={wasteRecycle + " lbs"}
           heading={`Waste Recycled`}
-      
-          logoimg ={require('../../../../images/lock1.png')}
+          logoimg ={require('../../../../images/trash.png')}
       />
       </>
       
@@ -313,8 +349,9 @@ const HomeBags = ({navigation, route}) => {
   },[totaltotal])
 
   return (
+    <><SafeAreaView style={{ flex: 0, backgroundColor: '#29542A' }} />
     < SafeAreaView style={{flex:1, backgroundColor: 'white'}}>
-    <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+    <ScrollView  bounces ={false}style={{flex: 1, backgroundColor: 'white'}} >
       <AppMainHeader title="Add Items" navigation={navigation} />
       {/* <Shadow
       
@@ -341,15 +378,23 @@ const HomeBags = ({navigation, route}) => {
           ))}
         </View>
       </Shadow> */}
+       <View style={{width:"91%", height:210, alignSelf:"center", marginTop:12}}>
+          <ImageBackground resizeMode='contain' imageStyle={{width:"100%", height:210 , alignSelf:"center" , justifyContent:"center", alignItems:"center"}} source={require('../../../../images/AddBagsBottles.png')}>
+        
+
+         
+          </ImageBackground>
+        </View>
+
 
 <View
        
-        style={{margin: 24,  width:"100%",flexDirection:"row"}}>
+        style={{ width:"93%",flexDirection:"row",justifyContent:"space-around", marginTop:12, alignSelf:"center"}}>
         { (RenderAllStoreCalculation())}
       </View>
 
 
-      <View style={{margin: 24, flexDirection:"row",justifyContent:"space-between",marginTop:6}}>
+      {/* <View style={{margin: 24, flexDirection:"row",justifyContent:"space-between",marginTop:6}}>
        
         <View style={styles.cashContainer}>
           <View
@@ -394,13 +439,43 @@ const HomeBags = ({navigation, route}) => {
 
 
 
-      </View>
+      </View> */}
 
       
-     
+<View style={styles.parentPlanetType}>
+          <PlanetsTypes
+            style={{ backgroundColor: '#F5F5F5' }}
+            img={images.greenbags}
+            number={totalbag}
+            heading={'Total Bags'} />
+          <PlanetsTypes
+            style={{ backgroundColor: '#F5F5F5', marginTop:14 }}
+            img={images.greenbottles}
+            number={totaltotal}
+            heading={'Total Bottles'} />
+        </View>
 
     
 
+        <View
+         style={styles.historyContainer}>
+          <Text style={{
+            ...styles.hsitroyTxt, fontSize: fontSize.nineteen,
+            fontWeight: '700',
+            color: '#1E252B',
+            fontFamily: "SFProDisplay-Medium"
+          }}>
+            Let's Recycle
+          </Text>
+          <Text style={{
+            ...styles.hsitroyTxt, fontSize: fontSize.nineteen,
+            fontWeight: '700',
+            color: '#79AA00',
+            fontFamily: "SFProDisplay-Medium"
+          }}>
+            {" Items"}
+          </Text>
+        </View>
       
      {  RenderAllBags(allStore,  'Bags')}
        {RenderAllBottles(
@@ -427,6 +502,7 @@ const HomeBags = ({navigation, route}) => {
 
     </ScrollView>
     </ SafeAreaView>
+    </>
   );
 };
 

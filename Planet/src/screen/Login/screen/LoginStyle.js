@@ -21,13 +21,19 @@ const styles = StyleSheet.create({
     width: 20,
     resizeMode: 'contain',
   },
+  loginimg: {
+    height: 110,
+    width: 110,
+    resizeMode: 'contain',
+  },
   title: {
-    color: color.green,
+    color: "#000000",
     fontSize: 32,
     fontWeight: '700',
     marginHorizontal: 24,
     lineHeight: 32,
-    marginBottom: 16,
+    marginBottom: 12,
+    marginTop:10,
    
     fontFamily:"SFProDisplay-Bold"
   },
@@ -96,7 +102,7 @@ const styles = StyleSheet.create({
   socialImagesContainer: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    marginVertical: scalableheight.twopointfour,
+    marginVertical: scalableheight.onepointfive,
     //marginHorizontal: 30,
     //backgroundColor: 'red',
     width: '64%',

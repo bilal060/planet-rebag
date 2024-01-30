@@ -67,7 +67,14 @@ import target from '../../../images/target.png'
 import ellipse from '../../../images/eEllipse.png'
 import righttick from '../../../images/right.png'
 import banner from '../../../images/banner1.png'
+import banner2 from '../../../images/banner11.png'
 import newlogo from '../../../images/newlogo.png'
+import login from '../../../images/login.png'
+import lockk from '../../../images/lockk.png'
+import trash from '../../../images/trash.png'
+import cloud2 from '../../../images/cloud2.png'
+import greenbottles from '../../../images/greenbottles.png'
+import greenbags from '../../../images/greenbags.png'
 const images = {
   back: back,
   whatsapp: whatsapp,
@@ -136,7 +143,15 @@ const images = {
   ellipse : ellipse,
   righttick : righttick,
   banner : banner,
-  newlogo : newlogo
+  newlogo : newlogo,
+  banner2: banner2,
+  login: login ,
+  lockk : lockk,
+  trash : trash,
+  cloud2 : cloud2,
+  greenbags: greenbags,
+  greenbottles: greenbottles
+
 };
 
 export default images;

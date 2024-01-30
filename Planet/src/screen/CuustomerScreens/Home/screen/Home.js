@@ -38,14 +38,15 @@ import {
   getUserProfileRedeemStatus,
   getstoreBySession,
   getPrice,
-  getSessionPrice
+  getSessionPrice,
+  getUserTreeCount
 } from '../../../../Store/homeApi';
 import {useDispatch, useSelector} from 'react-redux';
 import {SliderBox} from 'react-native-image-slider-box';
 const Home = () => {
   const Bannerimages = [
-    images.banner,
-    images.banner,
+    images.banner2,
+    images.banner2,
     
   
   ];
@@ -59,7 +60,8 @@ const Home = () => {
     allStore,
     allTranscationHistory,
     userRedeemStatus,
-    getcalculatedPrice
+    getcalculatedPrice,
+    gettreeCount,
   } = useSelector(state => state.home);
   const navigation = useNavigation();
   const options = ['Bags', 'Bottles'];
@@ -97,6 +99,7 @@ const Home = () => {
       dispatch(getPrice())
       // dispatch(getSessionPrice())
       dispatch(getAllSessionsasUser());
+      dispatch(getUserTreeCount())
       dispatch(getRedeemTranscationHistory());
        dispatch(getSessionByStatus({status: 'redeem', categoryName: 'bottles'}));
       dispatch(getSessionByStatus({status: 'redeem', categoryName: 'bags'}));
@@ -113,17 +116,17 @@ const Home = () => {
         <>
         <BagsTypes
           // key={index}
-             style={{backgroundColor: '#e5ffe5', height:105}}
+             style={{backgroundColor: '#305543', height:162}}
             number={getcalculatedPrice?.totalCo2emission ?  getcalculatedPrice?.totalCo2emission : 0 +" lbs"}
             heading={`CO2 Emissions \n Reduced`}
-            logoimg ={require('../../../../../images/cloud.png')}
+            logoimg ={require('../../../../../images/cloud2.png')}
         />
         <BagsTypes
           // key={index}
-          style={{backgroundColor: '#e5ffe5', height:105}}
+          style={{backgroundColor: '#305543', height:162}}
             number={getcalculatedPrice?.totalWasteRecycled? getcalculatedPrice?.totalWasteRecycled: 0  +" lbs"}
             heading={`Waste Recycled`}
-            logoimg ={require('../../../../../images/lock1.png')}
+            logoimg ={require('../../../../../images/trash.png')}
         />
         </>
       );
@@ -268,16 +271,33 @@ const Home = () => {
   }
 
   return (
-    <SafeAreaView style={styles.parentContainer}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{width:"100%", marginTop:6,justifyContent:"center",alignItems:"center"}}>
-        {/* <Image source={require('../../../../../images/logo.png')}/> */}
-        </View>
+    <><SafeAreaView style={{ flex: 0, backgroundColor: '#29542A' }} /><SafeAreaView style={styles.parentContainer}>
+      <ScrollView  bounces ={false}  showsVerticalScrollIndicator={false}>
+
         <Header />
+
         <View style={styles.welcomeContainer}>
           <Text style={styles.welcomeTxt}>Welcome!</Text>
         </View>
-        
+
+        <View style={{width:"90%", height:150, alignSelf:"center", }}>
+          <ImageBackground resizeMode='contain' imageStyle={{width:"100%", height:140 , alignSelf:"center" , justifyContent:"center", alignItems:"center"}} source={require('../../../../../images/tree1.png')}>
+          <Text style={{
+             fontSize: fontSize.twentyone,
+            fontWeight: '800',
+            color: 'white',
+            fontFamily: "SFProDisplay-Bold",
+             textAlignVertical:"center",
+             left:"10%",
+             top:"80%"
+          }}>
+           {`Total Trees\nGrow ${gettreeCount}`} 
+          </Text>
+
+         
+          </ImageBackground>
+        </View>
+
 
         <View
           style={{
@@ -287,107 +307,144 @@ const Home = () => {
             padding: '6%',
             paddingTop: 0,
             paddingBottom: 0,
+            paddingTop:"0.25%"
           }}>
-            {RenderAllStore()}
+          {RenderAllStore()}
         </View>
+
+        <SliderBox
+          autoplay={true}
+          circleLoop={true}
+          images={Bannerimages}
+          onCurrentImagePressed={index => {
+
+            isActive = activeImg === index;
+          } }
+          currentImageEmitter={index => {
+
+          } }
+          resizeMethod={'resize'}
+          resizeMode={'cover'}
+          dotColor="rgba(255,255,225,1)"
+          inactiveDotColor="rgba(63,128,225,1)"
+          activeDotColor="rgba(255,255,225,1)"
+          paginationBoxVerticalPadding={0}
+          paginationBoxStyle={{
+            position: 'absolute',
+            left: 0,
+            bottom: 5,
+            padding: 0,
+            alignItems: 'center',
+            alignSelf: 'center',
+            justifyContent: 'center',
+            paddingVertical: 10,
+          }}
+         
+          dotStyle={{ display: 'none' }}
+          ImageComponentStyle={{
+            borderRadius: 11,
+            width: '92%',
+            marginTop: 15,
+            alignSelf: "center",
+            height: 200,
+            resizeMode:"contain"
+          }}
+          imageLoadingColor="#2196F3" />
 
         <View
           style={{
- 
-            marginTop: '3%',
+            marginTop: '6%',
             paddingHorizontal: '6%',
-            
+            flexDirection:"row"
+            // backgroundColor:"red"
           }}>
-          <Text style={{...styles.hsitroyTxt,   fontSize: fontSize.nineteen,
-    fontWeight: '700',
-    color: '#1E252B',
-    fontFamily:"SFProDisplay-Medium"}}>
-            Recycled Items
+          <Text style={{
+            ...styles.hsitroyTxt, fontSize: fontSize.nineteen,
+            fontWeight: '700',
+            color: '#1E252B',
+            fontFamily: "SFProDisplay-Medium"
+          }}>
+            Recycled
+          </Text>
+          <Text style={{
+            ...styles.hsitroyTxt, fontSize: fontSize.nineteen,
+            fontWeight: '700',
+            color: '#79AA00',
+            fontFamily: "SFProDisplay-Medium"
+          }}>
+            {" Items"}
           </Text>
         </View>
 
         <View style={styles.parentPlanetType}>
           <PlanetsTypes
-            style={{backgroundColor: '#E388001A'}}
-            img={images.bagreturned}
+            style={{ backgroundColor: '#F5F5F5' }}
+            img={images.greenbags}
             number={sessionBagStatus?.totalBags}
-            heading={'Bags Recycled'}
-          />
+            heading={'Total Bags Recycled'} />
           <PlanetsTypes
-            style={{backgroundColor: '#3486C11A'}}
-            img={images.bottle1}
+            style={{ backgroundColor: '#F5F5F5', marginTop:14 }}
+            img={images.greenbottles}
             number={sessionBottleStatus?.totalBottles}
-            heading={'Bottles Recycled'}
-          />
+            heading={'Total Bottles Recycled'} />
         </View>
 
-        <SliderBox
-            images={Bannerimages}
-            onCurrentImagePressed={index => {
-              
-              isActive = activeImg === index;
-            }}
-            currentImageEmitter={index => {
-              setActiveImg(index);
-              isActive = activeImg - 1 === index;
-              // console.log(
-              //   '🚀 ~ file: Explore.js:134 ~ Explore ~ isActive:',
-              //   isActive,
-              //   index,
-              //   activeImg - 1,
-              // );
-
-              // console.warn(`current pos is: ${index}`);
-            }}
-            resizeMethod={'resize'}
-            resizeMode={'cover'}
-            dotColor="rgba(255,255,225,1)"
-            inactiveDotColor="rgba(63,128,225,1)"
-            activeDotColor="rgba(255,255,225,1)"
-            paginationBoxVerticalPadding={0}
-            paginationBoxStyle={{
-              position: 'absolute',
-              left: 0,
-              bottom: 5,
-              padding: 0,
-              alignItems: 'center',
-              alignSelf: 'center',
-              justifyContent: 'center',
-              paddingVertical: 10,
-            }}
-            // dotStyle={{
-            //   width: isActive ? 25 : 10,
-            //   height: 10,
-            //   borderRadius: 5,
-            //   marginHorizontal: -5,
-            //   padding: 0,
-            //   margin: 0,
-            //   backgroundColor: '#000',
-            // }}
-            dotStyle={{ display: 'none' }}
-            ImageComponentStyle={{
-              borderRadius: 15,
-              width: '100%',
-              marginTop: 16,
-              alignSelf: 'flex-start',
-            }}
-            imageLoadingColor="#2196F3"
-          />   
+      
 
         <View style={styles.parentAllcomponent}>
-          <View style={styles.historyContainer}>
-            <Text style={styles.hsitroyTxt}>{'Recycled History'}</Text>
-          </View>
+          
+           <View
+         style={styles.historyContainer}>
+          <Text style={{
+            ...styles.hsitroyTxt, fontSize: fontSize.nineteen,
+            fontWeight: '700',
+            color: '#1E252B',
+            fontFamily: "SFProDisplay-Medium"
+          }}>
+            Recycled
+          </Text>
+          <Text style={{
+            ...styles.hsitroyTxt, fontSize: fontSize.nineteen,
+            fontWeight: '700',
+            color: '#79AA00',
+            fontFamily: "SFProDisplay-Medium"
+          }}>
+            {" History"}
+          </Text>
+        </View>
+
           <View style={styles.allcomponentContainer}></View>
         </View>
-        <View style={{paddingHorizontal: '6%'}}>{renderTransaction()}</View>
+        <View style={{ paddingHorizontal: '6%' }}>{renderTransaction()}</View>
         <View style={styles.parentAllcomponent}>
-          <View style={styles.historyContainer}>
+          {/* <View style={styles.historyContainer}>
             <Text style={styles.hsitroyTxt}>{'Ready for Recycle'}</Text>
-          </View>
+          </View> */}
+
+<View
+         style={styles.historyContainer}>
+          <Text style={{
+            ...styles.hsitroyTxt, fontSize: fontSize.nineteen,
+            fontWeight: '700',
+            color: '#1E252B',
+            fontFamily: "SFProDisplay-Medium"
+          }}>
+            Ready for 
+          </Text>
+          <Text style={{
+            ...styles.hsitroyTxt, fontSize: fontSize.nineteen,
+            fontWeight: '700',
+            color: '#79AA00',
+            fontFamily: "SFProDisplay-Medium"
+          }}>
+            {" Recycle"}
+          </Text>
+        </View>
+
+
           <View style={styles.allcomponentContainer}></View>
         </View>
-        <View style={{paddingHorizontal: '6%'}}>
+        <View style={{ paddingHorizontal: '6%' }}>
           {userRedeemStatus?.[0]?.isLocked == true &&
             timervalue > 0 &&
             getAllSessions?.length > 0 && (
@@ -425,7 +482,7 @@ const Home = () => {
                     // backgroundColor: 'red',
                   }}
                   source={require('../../../../../images/blue.png')}>
-                  <View style={{zIndex: 2, elevation: 2, marginTop: 10}}>
+                  <View style={{ zIndex: 2, elevation: 2, marginTop: 10 }}>
                     {renderCountDown()}
                   </View>
                 </ImageBackground>
@@ -437,8 +494,11 @@ const Home = () => {
         <Text></Text>
         <Text></Text>
         <Text></Text>
+        <Text></Text>
+        <Text></Text>
       </ScrollView>
-    </SafeAreaView>
+    </SafeAreaView></>
+   
   );
 };
 

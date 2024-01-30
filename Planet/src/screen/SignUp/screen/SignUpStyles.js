@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   title: {
-    color: color.green,
+    color: "#000000",
     fontSize: 32,
     fontWeight: '700',
     marginHorizontal: 24,
@@ -175,6 +175,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#79AA0033',
     borderRadius: 5,
+  },
+  socialImagesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginVertical: scalableheight.onepointfive,
+    //marginHorizontal: 30,
+    //backgroundColor: 'red',
+    width: '64%',
+    alignSelf: 'center',
+  },
+  socialimageStyle: {
+    height: 34,
+    width: 34,
+    resizeMode: 'contain',
+    tintColor: color.green2,
   },
 });
 export default styles;

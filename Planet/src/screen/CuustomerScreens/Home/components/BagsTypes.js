@@ -16,12 +16,12 @@ export default function BagsTypes({img, number, heading, style, logoimg}) {
   
         <View style={styles.txtContainer}>
          
-          <View style={{ width:"82%",}}>
-          
-          <Image style={{width:25, height:25, marginVertical:4}} resizeMode="contain" source={logoimg}/>
-          
-          <Text style={styles.headingTxt}>{heading}</Text>
+          <View style={{ width:"99%",height:120}}>
+          <View style={{width:66, height:66,borderRadius:6,backgroundColor:"#F8F8F8", justifyContent:"center", alignItems:"center"}}>
+          <Image style={{width:30, height:30, marginVertical:4}} resizeMode="contain" source={logoimg}/>
           </View>
+          <Text style={styles.headingTxt}>{heading}</Text>
+        
           <View
             style={
               {
@@ -29,6 +29,7 @@ export default function BagsTypes({img, number, heading, style, logoimg}) {
               }
             }>
             <Text style={styles.numberTxt}>{number}</Text>
+          </View>
           </View>
         </View>
       </View>
@@ -41,17 +42,18 @@ const styles = StyleSheet.create({
     width: '47%',
 
 
+
   },
   imgContainer: {
     width: '100%',
-    backgroundColor: '#E388001A',
+    backgroundColor: '#305543',
     alignItems: 'center',
     justifyContent:"center",
     // justifyContent: 'space-between',
     // flexDirection: 'row',
-    borderTopRightRadius:12,
-    borderBottomLeftRadius:12,
-     borderRadius:4,
+    // borderTopRightRadius:12,
+    // borderBottomLeftRadius:12,
+     borderRadius:9,
     height: 44,
   },
   txtContainer: {
@@ -67,21 +69,21 @@ const styles = StyleSheet.create({
   
   },
   numberTxt: {
-    fontSize: fontSize.sixteen,
-    fontWeight: '800',
+    fontSize: fontSize.ten,
+    fontWeight: '600',
     // marginRight: '7%',
-    color: color.themeBlackColor,
-    color:"#000000",
-    marginVertical:1,
+   
+    color:"white",
+    // marginVertical:1,
     fontFamily:"SFProDisplay-Medium"
   },
   headingTxt: {
     fontSize: fontSize.thirteen,
-    fontWeight: '500',
+    fontWeight: '700',
     color: color.themeSilver,
-    color:"#000000",
+    color:"white",
     fontFamily:"SFProDisplay-Medium",
-    marginVertical:2
+    marginVertical:6
     // marginLeft:5
   },
 });

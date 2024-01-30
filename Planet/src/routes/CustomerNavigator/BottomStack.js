@@ -43,7 +43,7 @@ export default function BottomStack({}) {
     return (
       <>
         <Image
-          tintColor={routeName === selectedTab ? '#79AA00' : '#040400'}
+          tintColor={routeName === selectedTab ? '#29542A' : '#040400'}
           resizeMode="cover"
           source={icon}
         />
@@ -52,7 +52,7 @@ export default function BottomStack({}) {
             fontSize: 13,
             top: '2%',
             fontWeight: '600',
-            color: routeName === selectedTab ? '#79AA00' : '#040400',
+            color: routeName === selectedTab ? '#29542A' : '#040400',
           }}>
           {routeName}
         </Text>
@@ -238,7 +238,7 @@ export const styles = StyleSheet.create({
     borderRadius: 68 / 2,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#79AA00',
+    backgroundColor: '#29542A',
     bottom: 38,
     shadowColor: '#000',
     shadowOffset: {

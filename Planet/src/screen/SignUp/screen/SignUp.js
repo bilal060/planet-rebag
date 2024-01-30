@@ -290,10 +290,10 @@ const SignUp = ({navigation}) => {
       <Text style={styles.title}>Sign Up</Text>
       <Text
         style={{
-          color: 'black',
+          color: '#777777',
           marginHorizontal: 24,
           marginBottom: 22,
-          fontSize: fontSize.sixteen,
+          fontSize: fontSize.fifteen,
           fontFamily:"SFProDisplay-Medium"
         }}>
         Create your new account.
@@ -454,6 +454,16 @@ const SignUp = ({navigation}) => {
           <Text style={styles.haveAccountText}>Login</Text>
         </TouchableOpacity>
       </View>
+      
+      <View style={styles.socialImagesContainer}>
+          <Image
+            // resizeMode="cover"
+            source={images.whatsapp}
+            style={styles.socialimageStyle}
+          />
+          <Image source={images.insta} style={styles.socialimageStyle} />
+          <Image source={images.adrLogo} style={styles.socialimageStyle} />
+        </View>
     </ScrollView>
 
     </KeyboardAvoidingView>

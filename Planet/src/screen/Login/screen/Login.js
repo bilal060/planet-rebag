@@ -198,20 +198,33 @@ const Login = ({navigation}) => {
           <Image source={images.back} style={styles.img} />
         </View>
       </TouchableOpacity>
-
+      <View style={{width:"100%",justifyContent:"center",alignItems:"center"}}>
+      <Image source={images.lockk} style={styles.loginimg} />
       <Text style={styles.title}>Welcome!</Text>
       <Text
         style={{
-          color: 'black',
-          marginHorizontal: 24,
+          color: '#777777',
+           marginHorizontal: 10,
           // marginBottom: 22,
           fontSize: fontSize.seventeen,
-          fontFamily:"SFProDisplay-Medium"
+          fontFamily:"SFProDisplay-Medium",
+          fontWeight:"500"
         }}>
         Login to your account
       </Text>
+      </View>
 
       <View>
+      <Text
+        style={{
+          color: '#1E252B',
+           marginHorizontal: 30,
+          fontSize: fontSize.fourteen,
+          fontFamily:"SFProDisplay-Medium",
+          fontWeight:"800",top:20
+        }}>
+        Sign Up with
+      </Text>
          <RadioButtonRN
          initial={true}
           data={data}
@@ -310,7 +323,7 @@ const Login = ({navigation}) => {
         <View style={[styles.flexSetting, {justifyContent: 'space-between'}]}>
           <View style={[styles.flexSetting, {justifyContent: 'flex-start'}]}>
             <Switch
-              trackColor={{false: '#CCCCCC', true: '#79AA00'}}
+              trackColor={{false: '#CCCCCC', true: color.green2}}
               thumbColor={'#FFFFFF'}
               ios_backgroundColor="#3e3e3e"
               value={isEnabled}
@@ -323,9 +336,9 @@ const Login = ({navigation}) => {
             onPress={() => navigation.navigate('ForgorPassword')}>
             <Text
               style={{
-                color: '#79AA00',
-                fontWeight: '600',
-                fontSize: fontSize.sixteen,
+                color: color.green2,
+                fontWeight: '700',
+                fontSize: fontSize.fourteen,
                 fontFamily:"SFProDisplay-Bold"
               }}>
               Forgot Password?
@@ -371,7 +384,7 @@ const Login = ({navigation}) => {
           width: '70%',
           alignSelf: 'center',
         }}>
-        <Text style={styles.contactText}>Contact Us: </Text>
+        {/* <Text style={styles.contactText}>Contact Us: </Text> */}
 
         <View style={styles.socialImagesContainer}>
           <Image

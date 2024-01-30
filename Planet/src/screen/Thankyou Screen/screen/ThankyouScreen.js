@@ -7,6 +7,7 @@ import { getAllDeals } from '../../../Store/homeApi';
 import {useDispatch, useSelector} from 'react-redux';
 import { imgUrl } from '../../../../utils/constants';
 import { ScrollView } from 'react-native-gesture-handler';
+import { fontSize } from '../../../assets/responsiveness';
 
 const ThankyouScreen = ({navigation, route}) => {
   const dispatch = useDispatch();
@@ -60,27 +61,11 @@ const ThankyouScreen = ({navigation, route}) => {
             </View>
           </View>
           <View style={styles.line} />
-          <View style={{width:"100%", marginVertical:10, justifyContent:"flex-end", alignItems:"flex-end"}}>
-          <Text numberOfLines={2} style={{...styles.dealsText1, textAlign:"right", marginRight:20 , fontFamily:"SFProDisplay-Medium"}}>
+          <View style={{width:"100%", paddingVertical:6.5, justifyContent:"flex-end", alignItems:"flex-end", backgroundColor:"#29542A", borderTopEndRadius:9, borderTopStartRadius:9, marginTop:5}}>
+          <Text numberOfLines={2} style={{...styles.dealsText1, textAlign:"right", marginRight:20 , fontFamily:"SFProDisplay-Bold", color:"white", fontWeight:"800"}}>
                 { discount  +" discount" }
               </Text>
           </View>
-          {/* <View style={styles.bottomContainer}>
-            <View style={styles.redeemPointContainer}>
-              <Text style={styles.redeemPoints}>
-                {discount + ' redeem discount'}
-              </Text>
-            </View>
-            <View style={styles.RedeemBtnContainer}>
-              <View
-                style={{
-                  ...styles.redeemBtn,
-                  backgroundColor: IsRedeem == true ? '#79AA00' : '#A3A3A3',
-                }}>
-                <Text style={styles.btnText}>{'Redeem'}</Text>
-              </View>
-            </View>
-          </View> */}
 
           
         </View>
@@ -109,22 +94,50 @@ const ThankyouScreen = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <ImageBackground source={images.ellipse} style={styles.img} >
-          <Image source={images.righttick} style={{width:60,height:60}}/>
-          </ImageBackground>
-        <Text style={{...styles.title,marginTop:28}}>Thank You!</Text>
+        {/* <ImageBackground source={images.ellipse} style={styles.img} > */}
+          <Image source={images.righttick} style={{width:85,height:85}}/>
+          {/* </ImageBackground> */}
+        <Text style={{...styles.title,marginTop:20, color:"#000000", fontWeight:"700"}}>Thank You!</Text>
         <Text style={styles.message}>
           {'For recycling ' +
             data?.returnBagsQty +
             ' bags and ' +
             data?.returnBottelsQty+
-            ' bottles'}
+            '\n bottles'}
         </Text>
       </View>
 
 
-      <View style={{height:"53%",}}>
-      <Text style={{...styles.message,textAlign:"left", marginLeft:12 ,    fontFamily:"SFProDisplay-Semibold"}}>Choose your reward</Text>
+      <View style={{height:"53%"}}>
+{/* 
+      <Text style={{...styles.message,textAlign:"left", marginLeft:12 ,    fontFamily:"SFProDisplay-Semibold"}}>Choose your </Text>
+      <Text style={{...styles.message,textAlign:"left", marginLeft:12 ,    fontFamily:"SFProDisplay-Semibold"}}> reward</Text> */}
+
+<View
+          style={{
+            marginTop: '4%',
+            paddingHorizontal: '6%',
+            flexDirection:"row"
+            // backgroundColor:"red"
+          }}>
+          <Text style={{
+            ...styles.hsitroyTxt, fontSize: fontSize .nineteen,
+            fontWeight: '700',
+            color: '#1E252B',
+            fontFamily: "SFProDisplay-Medium"
+          }}>
+            Choose your
+          </Text>
+          <Text style={{
+            ...styles.hsitroyTxt, fontSize: fontSize.nineteen,
+            fontWeight: '700',
+            color: '#79AA00',
+            fontFamily: "SFProDisplay-Medium"
+          }}>
+            {" rewards"}
+          </Text>
+        </View>
+     
         <ScrollView showsVerticalScrollIndicator={false}>
       {renderDeals}
       </ScrollView>

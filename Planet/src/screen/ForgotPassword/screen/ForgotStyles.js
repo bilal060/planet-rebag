@@ -21,13 +21,19 @@ const styles = StyleSheet.create({
     width: 20,
     resizeMode: 'contain',
   },
+  loginimg: {
+    height: 110,
+    width: 110,
+    resizeMode: 'contain',
+  },
   title: {
-    color: color.green,
-    fontSize: fontSize.twentyeight,
+    color: "#000000",
+    fontSize: fontSize.twentysix,
     fontWeight: '700',
     marginHorizontal: 24,
     lineHeight: 32,
     marginBottom: 16,
+    top:20
   },
   buttonContainer: {
     marginHorizontal: 24,
@@ -65,7 +71,7 @@ const styles = StyleSheet.create({
   },
   emailContainer: {
     marginHorizontal: 24,
-    marginTop: 50,
+    marginTop: 6,
   },
   modalContent: {
     backgroundColor: 'white',

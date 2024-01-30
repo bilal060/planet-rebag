@@ -42,11 +42,12 @@ const styles = StyleSheet.create({
     marginTop:60,
   },
   title: {
-    color: color.green,
-    fontSize: fontSize.twentyeight,
-    fontWeight: 'bold',
+    color: "#000000",
+    fontSize: fontSize.thirty,
+    fontWeight: '800',
     marginHorizontal: 20,
     letterSpacing: 1,
+    marginTop:10
   },
   text: {
     color: 'black',

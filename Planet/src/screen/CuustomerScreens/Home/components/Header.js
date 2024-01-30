@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     padding: '6%',
-    marginTop: 4,
+    // marginTop: 4,
+    backgroundColor:"#29542A"
   },
   imageContainer: {
     width: '10%',
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     //backgroundColor: 'red',
   },
   textStyle: {
-    color: color.themeBlackColor,
+    color: "white",
     fontSize: fontSize.twenty,
     //fontFamily: fontsfamily.SFPRODISPLAYBOLD,
     fontWeight: '800',

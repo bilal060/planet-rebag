@@ -5,16 +5,19 @@ import {fontSize, scalableheight} from '../../../../assets/responsiveness';
 
 const styles = StyleSheet.create({
   parentContainer: {
-    width: '100%',
-    height: '100%',
+    // width: '100%',
+    // height: '100%',
     // padding: '6%',
     backgroundColor: 'white',
   },
   welcomeContainer: {
     width: '100%',
     // marginTop: '8%',
-    padding: '6%',
-    paddingTop: '1%',
+    padding: '3%',
+    paddingTop: '3.4%',
+    paddingLeft:"4%"
+    // backgroundColor:"red"
+    
   },
   welcomeTxt: {
     fontSize: 23,
@@ -23,10 +26,7 @@ const styles = StyleSheet.create({
   },
   historyContainer: {
     width: '65%',
-    // backgroundColor: 'red',
-    //flex: 1,
-    justifyContent: 'center',
-    //alignItems: 'center',
+    flexDirection:"row",
   },
   hsitroyTxt: {
     fontSize: fontSize.nineteen,
@@ -44,16 +44,16 @@ const styles = StyleSheet.create({
   parentPlanetType: {
     width: '100%',
     // marginTop: '3%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
+    // alignItems: 'center',
     paddingHorizontal: '6%',
     marginTop: '3%',
     // backgroundColor: 'red',
   },
   parentAllcomponent: {
     width: '100%',
-    marginTop: '3%',
+    marginTop: '4%',
     flexDirection: 'row',
     alignItems: 'center',
     //paddingVertical: '1%',

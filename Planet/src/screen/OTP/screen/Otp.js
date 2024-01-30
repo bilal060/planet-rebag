@@ -72,14 +72,16 @@ const Otp = ({navigation, route}) => {
           <Image source={images.back} style={styles.img} />
         </View>
       </TouchableOpacity>
-      <View>
+      <View style={{justifyContent:"center", alignItems:"center"}}>
+      <Image source={require('../../../../images/otplock.png')} style={{width:110, height:110}} />
         <Text style={styles.title}>Enter OTP</Text>
         <Text
           style={{
-            color: 'black',
+            color: '#777777',
             margin: 20,
             marginTop: 12,
             fontSize: fontSize.fifteen,
+            fontWeight:"500"
           }}>
           {'A 4 digit code sent to '}
           {email}

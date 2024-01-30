@@ -4,11 +4,14 @@ import color from '../../../assets/color/color';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
+    height:"100%",
+    width:"100%",
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
+    // backgroundColor:"red"
   },
   topCirlcle: {
     position: 'absolute',
@@ -51,14 +54,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 12,
     paddingVertical: 20,
-    borderColor: color.green2,
+    borderColor: "#29542A",
     marginVertical: 5,
     marginHorizontal: 24,
     //  top: '20%',
   },
   buttonViewContainer: {
-    marginTop: '30%',
+    // marginTop: '30%',
     width: '100%',
+    position:"absolute",
+    bottom:"6%"
   },
   GuestButtonContainer: {
     alignItems: 'center',
@@ -86,9 +91,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignSelf: 'center',
     top: '14%',
-    // paddingTop: '0.3%',
-    // top: '10%',
-    //backgroundColor: 'red',
+
   },
 });
 

@@ -8,6 +8,8 @@ import {
   SafeAreaView,
   Linking,
   Alert,
+  Modal,
+  Pressable,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import images from '../../../assets/images/images';
@@ -20,6 +22,7 @@ import {imgUrl} from '../../../../utils/constants';
 import { showMessage } from 'react-native-flash-message';
 
 const HotDeals = ({}) => {
+  const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch();
   const {allDeals} = useSelector(state => state.home);
   const navigation = useNavigation();
@@ -71,24 +74,7 @@ const HotDeals = ({}) => {
                 { discount  +" discount" }
               </Text>
           </View>
-          {/* <View style={styles.bottomContainer}>
-            <View style={styles.redeemPointContainer}>
-              <Text style={styles.redeemPoints}>
-                {discount + ' redeem discount'}
-              </Text>
-            </View>
-            <View style={styles.RedeemBtnContainer}>
-              <View
-                style={{
-                  ...styles.redeemBtn,
-                  backgroundColor: IsRedeem == true ? '#79AA00' : '#A3A3A3',
-                }}>
-                <Text style={styles.btnText}>{'Redeem'}</Text>
-              </View>
-            </View>
-          </View> */}
-
-          {/* <Text></Text> */}
+         
         </View>
       </TouchableOpacity>
     );
@@ -118,8 +104,9 @@ const HotDeals = ({}) => {
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       // The screen is focused
-      // Call any action
-      Alert.alert("Rewards will be coming soon!")
+      
+      // Alert.alert("Rewards will be coming soon!")
+      setModalVisible(true)
     });
 
     // Return the function to unsubscribe from the event so it gets removed on unmount
@@ -131,6 +118,40 @@ const HotDeals = ({}) => {
        <View style={styles.titleContainer}>
         <Text style={styles.title}>Rewards</Text>
       </View>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.centeredView}>
+      
+
+
+          <View style={styles.modalView}>
+
+          <View style={{width:"100%",height:20, justifyContent:"flex-end",alignItems:"flex-end", marginTop:20,marginRight:10}}>
+          <Pressable     onPress={() => setModalVisible(!modalVisible)}>
+           <Image resizeMode='contain' style={{width:30,height:30}} source={require('../../../../images/cross.jpg')}/>
+           </Pressable>
+          </View>
+
+          <Pressable     onPress={() => setModalVisible(!modalVisible)}>
+        <Image resizeMode='contain' style={{width:250,height:250}} source={require('../../../../images/rewards.png')}/>
+        </Pressable>
+            {/* <Text style={styles.modalText}>Hello World!</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}>
+              <Text style={styles.textStyle}>Hide Modal</Text>
+            </Pressable> */}
+          </View>
+        </View>
+      </Modal>
+  
       <View style={{marginTop: scalableheight.onepointfive}}>
         {/* {renderDeals} */}
       </View> 

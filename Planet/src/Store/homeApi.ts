@@ -25,6 +25,7 @@ const initialState = {
   getAllstoreBag: [],
   createSessiondata: null,
   getAllSessions: [],
+  gettreeCount: 0,
   sessionBottleStatus: null,
   getPriceo2waste: null,
   getcalculatedPrice: null,
@@ -144,6 +145,36 @@ export const getAllSessionsasUser = createAsyncThunk(
       return await {data: response.data, name: data};
     } catch (err: any) {
       //store.dispatch(logout());
+      console.log(err?.response?.data);
+      if (err?.error?.error?.message) {
+        console.log('11 error');
+        throw err;
+      } else {
+        console.log(err?.response?.data);
+        //console.log(err);
+
+        throw err;
+      }
+    }
+  },
+);
+
+export const getUserTreeCount = createAsyncThunk(
+  'home/userTreeCount',
+  async (data: object) => {
+    try {
+      let payload = {
+        // data: data,
+        url: `${rootUrl}/user/getUserTreeCount`,
+      };
+      console.log(data);
+      const response: any = await get(payload);
+      //  console.log({response});
+      // RootNavigation.navigate('Login', {});
+      return await {data: response.data, name: data};
+    } catch (err: any) {
+      //store.dispatch(logout());
+      console.log("tree errro")
       console.log(err?.response?.data);
       if (err?.error?.error?.message) {
         console.log('11 error');
@@ -449,6 +480,21 @@ const homeSlice = createSlice({
     builder.addCase(getAllSessionsasUser.rejected, (state, error: any) => {
       state.loading = false;
     });
+
+    builder.addCase(getUserTreeCount.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(getUserTreeCount.fulfilled, (state, action: any) => {
+      state.loading = false;
+      // console.log("call trerere" );
+      //  console.log(action.payload.data);
+      state.gettreeCount = action?.payload.data?.treeCount;
+    });
+    builder.addCase(getUserTreeCount.rejected, (state, error: any) => {
+      state.loading = false;
+    });
+
+    
 
     builder.addCase(getSessionByStatus.pending, state => {
       state.loading = true;

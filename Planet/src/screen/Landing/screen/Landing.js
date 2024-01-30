@@ -31,20 +31,16 @@ const Landing = ({navigation}) => {
   }, [isAuthenticated]);
   return (
     <View style={styles.container}>
-      <View style={styles.topCirlcle}></View>
+      {/* <View style={styles.topCirlcle}></View> */}
 
-      <View style={styles.rightCircle}></View>
+      {/* <View style={styles.rightCircle}></View> */}
       <Image source={images.newlogo} style={styles.logo} />
       <View style={styles.TitleContainer}>
         <Text style={styles.LogoTitle}>PLANET RE-BAG</Text>
         {/* <Text style={{color: 'black'}}>Scan and Earn Money</Text> */}
       </View>
       <View style={styles.buttonViewContainer}>
-        {/* <Button
-          title={'Store - Login or Sign up'}
-          page={'StoreSignUp'}
-          navigation={navigation}
-        /> */}
+       
         <Button
           title={'Login or Sign up'}
           page={'Login'}
@@ -55,7 +51,7 @@ const Landing = ({navigation}) => {
           action={() => callGuestUser()}
         />
       </View>
-      <View
+      {/* <View
         style={{
           width: '100%',
           position: 'absolute',
@@ -66,7 +62,7 @@ const Landing = ({navigation}) => {
           source={images.maskImg}
           resizeMode="cover"
         />
-      </View>
+      </View> */}
     </View>
   );
 };

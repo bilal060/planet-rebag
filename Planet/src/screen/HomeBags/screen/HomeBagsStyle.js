@@ -30,6 +30,29 @@ const styles = StyleSheet.create({
     // elevation: 19,
     // backgroundColor: 'red',
   },
+  parentPlanetType: {
+    width: '100%',
+    // marginTop: '3%',
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
+    // alignItems: 'center',
+    paddingHorizontal: '6%',
+    marginTop: '4%',
+    // backgroundColor: 'red',
+  },
+  historyContainer: {
+    width: '65%',
+    flexDirection:"row",
+     paddingHorizontal: '6%',
+     marginTop: '4%',
+  },
+  hsitroyTxt: {
+    fontSize: fontSize.nineteen,
+    fontWeight: '700',
+    color: '#1E252B',
+    fontFamily:"SFProDisplay-Medium"
+    //lineHeight: 17,
+  },
   optionsLabel: {
     fontSize: 16,
     fontWeight: '700',
@@ -230,31 +253,33 @@ const styles = StyleSheet.create({
     // marginTop: '24%',
   },
   counterTitle: {
-    marginHorizontal: 24,
+    marginHorizontal: 10,
     fontSize: 16,
     fontWeight: '700',
     lineHeight: 16,
-    color: 'black',
-    marginBottom: 8,
+    color: 'white',
+    textAlign:"center"
+    // marginBottom: 8,
   },
   counterConatiner: {
-    backgroundColor: '#F8F8F8',
-    marginHorizontal: 24,
+    backgroundColor: '#F5F5F5',
+    marginHorizontal: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 16,
-    borderRadius: 12,
+    padding: 15,
+    borderRadius: 9,
     alignItems: 'center',
-    marginBottom: 24,
+   marginVertical:20
+     
    
   },
   addSubText: {
-    backgroundColor: 'rgba(121, 170, 0, 0.4)',
+    backgroundColor: '#29542A',
     // paddingHorizontal: scalableheight.two,
-    borderRadius: 11,
+    borderRadius: 12,
     fontSize: 30,
-    color: 'rgba(121, 170, 0, 1)',
-    width:44,
+    color: 'white',
+    width:45,
     alignSelf:"center",
   
     textAlign:"center"

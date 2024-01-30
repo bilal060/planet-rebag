@@ -9,6 +9,7 @@ import {
   ScrollView,
   Modal,
   TextInput,
+  SafeAreaView,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import images from '../../../assets/images/images';
@@ -41,12 +42,17 @@ const ForgorPassword = ({navigation}) => {
     }
   }, [isForgot]);
   return (
+    <SafeAreaView style={{ flex: 1,
+      backgroundColor: 'white',}}>
     <ScrollView style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <View style={styles.header}>
           <Image source={images.back} style={styles.img} />
         </View>
       </TouchableOpacity>
+      <View style={{width:"100%",justifyContent:"center",alignItems:"center"}}>
+      <Image source={images.login} style={styles.loginimg} />
+      </View>
 
       <Text style={styles.title}>Forgot Password?</Text>
       <Text
@@ -54,9 +60,10 @@ const ForgorPassword = ({navigation}) => {
           color: '#777777',
           marginHorizontal: 24,
           marginBottom: 20,
-          fontSize: scalableheight.two,
+          fontSize: scalableheight.onepointfive,
           letterSpacing: 1,
           fontWeight: '400',
+          top:7
         }}>
         Enter your email associated with your account and we'll send you an
         email with instructions to reset your password.
@@ -101,6 +108,7 @@ const ForgorPassword = ({navigation}) => {
       </Modal>
       <CustomButton title={'Reset Password'} action={handleModal} />
     </ScrollView>
+    </SafeAreaView>
   );
 };
 

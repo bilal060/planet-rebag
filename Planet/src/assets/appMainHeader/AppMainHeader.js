@@ -9,7 +9,7 @@ export default function AppMainHeader({title, navigation, isBack}) {
     <View style={styles.HeaderContainer}>
       <TouchableOpacity onPress={() => isBack && isBack ? navigation.goBack() : navigation.replace('BottomStack')}>
         <View style={styles.header}>
-          <Image source={images.backtwo} style={styles.img} />
+          <Image tintColor={"white"} source={images.backtwo} style={styles.img} />
         </View>
       </TouchableOpacity>
       <Text style={styles.headerText}>{title}</Text>
@@ -29,15 +29,18 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     resizeMode: 'contain',
+    tintColor:"white"
   },
   HeaderContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    backgroundColor:"#29542A"
   },
   headerText: {
-    color: 'black',
+    color: 'white',
     fontSize: fontSize.twenty,
-    fontWeight: '700',
+    fontWeight: '500',
+    fontFamily:"SFProDisplay-Medium"
   },
 });

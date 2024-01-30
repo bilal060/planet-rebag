@@ -17,53 +17,47 @@ import {useNavigation} from '@react-navigation/native';
 import {imgUrl} from '../../../../utils/constants';
 import {showMessage} from 'react-native-flash-message';
 
-export default function StoreDeatil({mall, data, NavigatetoScreen , index}) {
+export default function StoreDeatil({mall, data, NavigatetoScreen , index, openAnimationModal}) {
   const navigation = useNavigation();
   const [selectedStore,setselectedStore]= useState(null);
   
 
-    //  console.log(imgUrl + data?.image);
-
   return (
-  <View style={{height:"33.33%", width:"100%"}}>
+  <View style={{height:93, width:"100%", marginTop:3}}>
     <TouchableOpacity
       onPress={() => {
-        NavigatetoScreen && NavigatetoScreen(data)
-        showMessage({
-              message: 'Notification',
-              description: 'Store ' + data?.name +" selected",
-              type: 'success',
-            });
         setselectedStore (data);
+        NavigatetoScreen && NavigatetoScreen(data)
+       
         }}>
       <View
-        // resizeMode="contain"
         style={{
           width: '100%',
           height: "93%",
-          // paddingHorizontal: 16,
-           marginVertical: 4,
-
+           backgroundColor:"#F5F5F5",
+           borderRadius:8
         
-             backgroundColor: index == 0 ?  "#3486C11A" : index ==1 ? "#FF3D3D1A" :"#e4e4e4",
-            borderColor: index == 0 ?  "#3486C11A" : index ==1 ? "#FF3D3D1A" :"#e4e4e4",
-            // backgroundColor:"red",
-          
         }}
-        // source={require('../../../../images/storebg.png')}>
+
         >
         <View
           style={{
             width: '100%',
             height: '100%',
-            justifyContent: 'center',
+            //  justifyContent: 'center',
+             flexDirection:"row",
             alignItems:"center",
-          //  paddingHorizontal: 140,
-            //  backgroundColor:"red"
+            paddingHorizontal:12
            
           }}>
+            {/* <Image
+            resizeMode="contain"
+              source={require('../../../../images/itema.png')}
+      
+            style={{height: 50, width: 50 , justifyContent:"center",alignItems:"center"}}
+          /> */}
             {data?.name =='Other'?
-             <Text style={{color: '#1E252B', fontWeight: 'bold', fontSize: 25,textAlign:"center", textAlignVertical:"center"}}>
+             <Text style={{color: '#1E252B', fontWeight: 'bold', fontSize: 25, textAlignVertical:"center",marginLeft:10}}>
   
              {data?.name} 
            </Text>
@@ -72,7 +66,7 @@ export default function StoreDeatil({mall, data, NavigatetoScreen , index}) {
               source={{uri: imgUrl + data?.image?.replace(/\\/g, '/')}}
             // https://api.planetrebag.com/uploads\store\Walmart-Logo.png
               // source={{uri:"https://api.planetrebag.com/uploads/store/Walmart-Logo.png"}}
-            style={{height: 150, width: 150 , justifyContent:"center",alignItems:"center"}}
+            style={{height: 105, width: 105 , justifyContent:"center",alignItems:"center", marginLeft:6}}
           />
         }
         </View>
@@ -86,21 +80,19 @@ export default function StoreDeatil({mall, data, NavigatetoScreen , index}) {
             position:"absolute",
             justifyContent:"flex-end",
             alignItems:"flex-end",
-            bottom:"43%",
+            bottom:"38%",
             // bottom:"15%",
             //  backgroundColor: 'red',
             // alignItems: 'center',
           }}>
             <Pressable onPress={()=>{
-              NavigatetoScreen && NavigatetoScreen(data)
-              showMessage({
-                    message: 'Notification',
-                    description: 'Store ' + data?.name +" selected",
-                    type: 'success',
-                  });
+              // NavigatetoScreen && NavigatetoScreen(data)
+              openAnimationModal && openAnimationModal()
+              
+              
               setselectedStore (data);
             }}>
-            <Image resizeMode='contain' style={{width:26, height:26}} source={require('../../../../images/icon.png')}/>
+            <Image resizeMode='contain' style={{width:23, height:23}} source={require('../../../../images/Danger2.png')}/>
             </Pressable>
         </View>
 

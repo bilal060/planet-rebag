@@ -60,24 +60,25 @@ const style = StyleSheet.create({
   },
   topContainer: {
     width: '100%',
-    backgroundColor: '#EEEEEE',
+    backgroundColor: '#29542A',
     height: 40,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: '6%',
+    borderRadius:8
   },
   topTxt: {
     fontSize: 17,
     fontWeight: '700',
-    color: '#1E252B',
+    color: 'white',
     // lineHeight: 15,
   },
   contentContainer: {
     width: '100%',
     alignSelf: 'center',
     flexDirection: 'row',
-    // backgroundColor: 'red',
+  //  backgroundColor: 'red',
     marginVertical: '3%',
     paddingVertical: '1%',
   },
